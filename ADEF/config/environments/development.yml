@@ -1,0 +1,25 @@
+version: "0.1.0"
+
+# Minimal development configuration for ADEF integration verification
+reddit:
+  client_id: "placeholder"
+  client_secret: "placeholder"
+  username: "placeholder"
+  password: "placeholder"
+  user_agent: "ADEF-Demo/0.1 (+https://example.com)"
+
+youtube:
+  api_key: "placeholder"
+
+database:
+  url: "sqlite:///./tmp.db"
+
+logging:
+  level: "INFO"
+  console_output: true
+  file_enabled: false
+  file_path: "logs/app.log"
+  rotation_size_mb: 10
+  retention_days: 7
+
+

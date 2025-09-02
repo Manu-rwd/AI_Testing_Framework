@@ -1,0 +1,21 @@
+---
+description: Load configuration via ADEF environment manager; no hardcoded secrets.
+globs: ["**/*.py", "ADEF/config/environments/**/*.yml", "config/**/*.yml", ".env*", "**/*.env"]
+alwaysApply: true
+---
+
+# Configuration & Security
+
+- Load config with src.shared.config.environment.load_config(...).
+- Never hardcode credentials; use env vars and environment YAML.
+- Validate config; fail fast on missing/invalid keys.
+
+Example:
+```python
+from src.shared.config.environment import load_config
+result = load_config(env_override="development", config_file="ADEF/config/environments/development.yml")
+```
+
+References:
+@ADEF/framework/src/shared/config/environment.py
+@ADEF/config/environments/development.yml

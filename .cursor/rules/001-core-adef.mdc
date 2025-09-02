@@ -1,0 +1,15 @@
+---
+description: Enforce ADEF core principles and workflow across the project.
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# ADEF Core Principles
+
+- Follow AI Development Excellence Framework (ADEF) for all work.
+- Before coding, create/update a change doc using ADEF templates.
+- Meet quality gates before merging; no partial merges.
+
+References:
+@ADEF/framework/README.md
+@ADEF/framework/docs/changes/README.md

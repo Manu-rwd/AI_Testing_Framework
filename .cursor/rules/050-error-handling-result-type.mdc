@@ -1,0 +1,24 @@
+---
+description: Use Result (Ok/Err) for recoverable operations; no silent failures.
+globs: ["**/*.py"]
+alwaysApply: true
+---
+
+# Error Handling with Result
+
+- Functions that can fail should return Ok/Err; no silent exceptions.
+- Callers must branch on is_ok()/is_err().
+
+Example:
+```python
+from src.shared.utils.result import Ok, Err
+
+def do_work() -> Ok[int] | Err[str]:
+    try:
+        return Ok(42)
+    except Exception as e:
+        return Err(str(e))
+```
+
+References:
+@ADEF/framework/src/shared/utils/result.py
