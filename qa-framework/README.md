@@ -1,0 +1,25 @@
+# QA Framework
+
+AI-driven QA framework that mirrors the Romanian manual testing workflow (Excel library → Romanian test plan) and generates Playwright tests in English.
+
+## Packages & Apps
+- `apps/web` — Next.js GUI (no auth in local dev)
+- `apps/api` — API service (Fastify/NestJS — TBD)
+- `packages/db` — Prisma schema & migrations (PostgreSQL)
+- `packages/agents` — Planner/Codegen/Executor logic
+- `packages/schemas` — Zod schemas for typed contracts
+- `packages/codegen` — Playwright TypeScript generator
+- `packages/executors` — local runner (MCP later)
+
+## Quickstart (local, Postgres only)
+```bash
+pnpm i
+docker compose -f docker/compose.local.yml up -d
+pnpm -w prisma:generate
+pnpm -w prisma:migrate
+```
+
+More detail: see `docs/roadmap.md`.
+
+
+

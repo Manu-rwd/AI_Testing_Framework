@@ -1,0 +1,5 @@
+- Use TypeScript strict everywhere.
+- Keep functions pure in agents where possible.
+- Validate all LLM outputs with Zod.
+- Prefer role-based or data-testid selectors in Playwright.
+
