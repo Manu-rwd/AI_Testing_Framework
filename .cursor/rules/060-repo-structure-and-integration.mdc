@@ -1,0 +1,15 @@
+---
+description: Keep framework isolated under ADEF; import through ADEF/framework/src.
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Repository Structure & Integration
+
+- Framework lives under ADEF/framework; do not scatter framework code elsewhere.
+- Scripts and config for the framework live under ADEF/scripts and ADEF/config.
+- Add ADEF/framework to sys.path in tooling; do not duplicate code.
+
+References:
+@ADEF/scripts/verify_adef_integration.py
+@ADEF/framework/README.md

@@ -1,0 +1,21 @@
+---
+description: PRs must reference change doc and show gate results.
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Commit & PR Standards
+
+- Commit message and PR must link the ADEF change doc.
+- Include summary of tests, gate results, and risk/rollback notes.
+- No merge until all CI checks pass.
+
+Checklist:
+- [ ] Change doc created and linked
+- [ ] Gates pass locally (lint, mypy, verify, gates)
+- [ ] CI green
+- [ ] Secrets not in code/logs
+
+References:
+@ADEF/framework/docs/changes/README.md
+@.github/workflows/ci.yml

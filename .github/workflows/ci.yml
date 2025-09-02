@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install framework requirements
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f ADEF/framework/requirements.txt ]; then pip install -r ADEF/framework/requirements.txt; fi
+          if [ -f ADEF/framework/requirements-dev.txt ]; then pip install -r ADEF/framework/requirements-dev.txt; else pip install flake8 mypy types-PyYAML; fi
+
+      - name: Lint (flake8)
+        run: |
+          flake8 ADEF/scripts || (echo "flake8 errors" && exit 1)
+
+      - name: Type check (mypy)
+        run: |
+          mypy --config-file mypy.ini ADEF/scripts
+
+      - name: Verify integration script
+        run: |
+          python ADEF/scripts/verify_adef_integration.py
+
+      - name: Quality gates
+        run: |
+          python ADEF/tools/check_quality_gates.py
+

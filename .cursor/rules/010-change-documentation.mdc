@@ -1,0 +1,22 @@
+---
+description: Require ADEF change documentation for every code change.
+globs: ["**/*.py", "**/*.ts", "**/*.tsx", "**/*.md", "**/*.yml"]
+alwaysApply: true
+---
+
+# Change Documentation Required
+
+- For every change, create a doc using the right template (feature/modification/fix).
+- Include what/why/how, alternatives, impacts, testing, and links to edited files.
+- Reference the change doc in commit messages and PR descriptions.
+
+How:
+- Copy from templates and file under docs/changes/[category]/YYYY-MM-DD_title.md
+- Use Feature/Modification/Fix/Architecture templates.
+
+References:
+@ADEF/framework/docs/changes/README.md
+@ADEF/framework/docs/changes/templates/feature_template.md
+@ADEF/framework/docs/changes/templates/modification_template.md
+@ADEF/framework/docs/changes/templates/fix_template.md
+@ADEF/framework/docs/changes/templates/architecture_template.md

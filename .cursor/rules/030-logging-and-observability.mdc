@@ -1,0 +1,22 @@
+---
+description: Require structured logging, correlation IDs, and timing via ADEF logger.
+globs: ["**/*.py"]
+alwaysApply: true
+---
+
+# Logging & Observability
+
+- Use get_logger(__name__) from ADEF and logger.timer("operation") for timings.
+- Sanitize sensitive fields; never log secrets.
+- Prefer audit logs for config/security events.
+
+Examples:
+```python
+from src.infrastructure.monitoring.logger import get_logger
+logger = get_logger(__name__)
+with logger.timer("operation_name"):
+    pass
+```
+
+References:
+@ADEF/framework/src/infrastructure/monitoring/logger.py

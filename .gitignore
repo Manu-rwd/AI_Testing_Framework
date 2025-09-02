@@ -1,0 +1,25 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.pytest_cache/
+
+# Environments
+.venv/
+venv/
+.env
+.env.*
+
+# Logs & artifacts
+logs/
+ADEF/logs_root/
+*.log
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
