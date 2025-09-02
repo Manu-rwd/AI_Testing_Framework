@@ -1,0 +1,21 @@
+{
+  "name": "qa-framework",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "dev:web": "pnpm --filter @app/web dev",
+    "dev:api": "pnpm --filter @app/api dev",
+    "prisma:generate": "pnpm --filter @pkg/db prisma:generate",
+    "prisma:migrate": "pnpm --filter @pkg/db prisma:migrate",
+    "db:seed": "pnpm --filter @pkg/db seed",
+    "lint": "echo 'add linter later'",
+    "typecheck": "echo 'add typecheck later'"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
+
+
+
