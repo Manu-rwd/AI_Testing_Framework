@@ -1,0 +1,7 @@
+US: Ca utilizator, vreau sa adaug un element in sistem.
+Permisiune: rol_operator
+Camp Nume (text): regex=^[A-Za-zăîâșț ]{3,50}$
+Camp Data (date): regex=^\\d{4}-\\d{2}-\\d{2}$
+Contine tabel si formular pentru introducere.
+
+

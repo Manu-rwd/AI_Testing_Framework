@@ -1,0 +1,8 @@
+name: Adaugare
+flow:
+  - sheet: Accesare
+    filter: { tip_functionalitate: Adaugare }
+    include_general_valabile_within_filter: true
+outputs: { csv: true, md: true }
+
+

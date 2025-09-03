@@ -1,0 +1,11 @@
+{
+  "name": "@pkg/planner",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "tsx src/cli.ts" },
+  "dependencies": { "fs-extra": "^11.2.0", "zod": "^3.23.8", "yaml": "^2.5.0", "csv-stringify": "^6.5.1" },
+  "devDependencies": { "tsx": "^4.7.0" }
+}
+
+

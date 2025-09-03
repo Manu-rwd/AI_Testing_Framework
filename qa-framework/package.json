@@ -9,6 +9,7 @@
     "prisma:migrate": "pnpm --filter @pkg/db prisma:migrate",
     "db:seed": "pnpm --filter @pkg/db seed",
     "importer:acceseaza": "pnpm --filter @pkg/importer start:acceseaza",
+    "planner:run": "pnpm --filter @pkg/planner start",
     "lint": "echo 'add linter later'",
     "typecheck": "echo 'add typecheck later'"
   },
