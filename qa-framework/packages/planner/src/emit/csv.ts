@@ -4,7 +4,15 @@ import { stringify } from "csv-stringify";
 export async function emitCSV(filePath: string, rows: any[]) {
   const stringifier = stringify({
     header: true,
-    columns: ["Modul","TipFunctionalitate","Bucket","GeneralValabile","Caz","Placeholders","StepHints","Automat","Local","Test","Prod","Impact","Efort","Importanta"]
+    // base columns
+    columns: [
+      "Modul","TipFunctionalitate","Bucket","GeneralValabile",
+      "Caz","Placeholders","StepHints",
+      "Automat","Local","Test","Prod",
+      "Impact","Efort","Importanta",
+      // review workflow columns (empty by default)
+      "disposition","feasibility","selector_needs","parameter_needs","notes"
+    ]
   });
   const ws = fs.createWriteStream(filePath);
   stringifier.pipe(ws);
@@ -23,7 +31,13 @@ export async function emitCSV(filePath: string, rows: any[]) {
       Prod: r.env?.prod ?? "",
       Impact: r.impact ?? "",
       Efort: r.efort ?? "",
-      Importanta: r.importanta ?? ""
+      Importanta: r.importanta ?? "",
+      // review fields default blank
+      disposition: "",
+      feasibility: "",
+      selector_needs: "",
+      parameter_needs: "",
+      notes: ""
     } as any);
   }
   stringifier.end();

@@ -3,6 +3,10 @@ flow:
   - sheet: Accesare
     filter: { tip_functionalitate: Adaugare }
     include_general_valabile_within_filter: true
+    buckets:
+      match_from_us:
+        source: "us.text"
+        also_card_content: false
 outputs: { csv: true, md: true }
 
 
