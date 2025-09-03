@@ -1,5 +1,12 @@
 # Plan RO — Tip: Adaugare
 
+### Câmpuri & regex din US
+
+- **Nume** (text): `^[A-Za-zăîâșț ]{3,50}$`
+- **Data** (date): `^\\d{4}-\\d{2}-\\d{2}$`
+
+---
+
 ## Accesare
 
 1. Accesarea functionalitatii prin apasare <element> [nume_element](comportament_element_activ, comportament_element_dezactivat), {prezenta, pozitionare, stil_forma, stil_border, stil_culoare, text-valoare, text-font-size, text-font-family, text-traducere, text-culoare, dimensiune, container-tip_link, container-tip_buton, container-tip_badge, container-stil_border, container-stil_culoare, container-comportament}

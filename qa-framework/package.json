@@ -10,6 +10,7 @@
     "db:seed": "pnpm --filter @pkg/db seed",
     "importer:acceseaza": "pnpm --filter @pkg/importer start:acceseaza",
     "planner:run": "pnpm --filter @pkg/planner start",
+    "review:extend:accesare": "tsx packages/tools/review/extend_csv.ts ./exports/Accesare.csv",
     "lint": "echo 'add linter later'",
     "typecheck": "echo 'add typecheck later'"
   },

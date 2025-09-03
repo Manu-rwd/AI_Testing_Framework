@@ -15,7 +15,22 @@ export async function runPlanner(opts: { rulesPath: string; usPath: string; type
     const normPath = path.join(repoRoot, `data/templates/${sheet}.normalized.json`);
     if (!fs.existsSync(normPath)) continue;
     const rows: any[] = JSON.parse(await fs.readFile(normPath, "utf8"));
+    // 1) filter by Tip functionalitate
     let scoped = rows.filter(r => (r.tipFunctionalitate || []).includes(opts.type));
+
+    // 2) optional bucket restriction (only if rules request it)
+    const wantsBucketMatch = (step as any)?.buckets?.match_from_us;
+    if (wantsBucketMatch) {
+      const usBuckets = (us.buckets || []).map(b => b.toLowerCase());
+      if (usBuckets.length > 0) {
+        scoped = scoped.filter(r => {
+          const b = (r.bucket || "").toLowerCase();
+          // keep empty bucket rows too (they're often general)
+          return b === "" || usBuckets.includes(b);
+        });
+      }
+    }
+
     outputs.push(...scoped.map(r => ({ ...r, _sheet: sheet })));
   }
 

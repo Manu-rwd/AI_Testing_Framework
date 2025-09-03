@@ -24,7 +24,7 @@ for (let i = 0; i < argv.length; i += 2) {
 
 (async () => {
   if (!type) throw new Error("--type is required (e.g., Adaugare)");
-  const { outputs } = await runPlanner({ rulesPath, usPath, type });
+  const { us, outputs } = await runPlanner({ rulesPath, usPath, type });
   const grouped = new Map<string, any[]>();
   for (const r of outputs) {
     const key = `${r._sheet}${r.bucket ? " — " + r.bucket : ""}`;
@@ -34,7 +34,7 @@ for (let i = 0; i < argv.length; i += 2) {
   await fs.mkdirp(path.dirname(outCsv));
   await fs.mkdirp(path.dirname(outMd));
   await emitCSV(outCsv, outputs);
-  await emitMarkdown(outMd, type, grouped);
+  await emitMarkdown(outMd, type, grouped, us);
   console.log(`Plan generated → ${outCsv} & ${outMd}`);
 })();
 
