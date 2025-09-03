@@ -27,32 +27,36 @@ async function main() {
   // Resolve xlsx path relative to monorepo root (INIT_CWD) if provided relative
   const rootCwd = process.env.INIT_CWD || process.cwd();
   const resolvedXlsxPath = path.isAbsolute(XLSX_PATH) ? XLSX_PATH : path.resolve(rootCwd, XLSX_PATH);
+  const outputBase = rootCwd;
 
-  const { rows, comments } = readSheetRows(resolvedXlsxPath, SHEET);
+  const { rows, commentsByRow } = readSheetRows(resolvedXlsxPath, SHEET);
 
-  const mapCol = (r: any, key: string) => r[key] ?? r[key.toUpperCase()] ?? r[key.toLowerCase()];
+  const mapCol = (r: any, key: string) => {
+    const variants = [key, key.toUpperCase(), key.toLowerCase()];
+    for (const k of variants) if (r[k] !== undefined) return ("" + r[k]).trim();
+    return "";
+  };
 
   // Filter by Tip functionalitate contains FUNC_TYPE
   const matchType = rows.filter((r) => {
-    const tf = splitCsv(mapCol(r, "Tip functionalitate") || "");
+    const tf = splitCsv(mapCol(r, "Tip functionalitate"));
     return tf.includes(FUNC_TYPE!);
   });
   // Always include General valabile == 1
-  const generalRows = rows.filter((r) => String(mapCol(r, "General valabile") || "").trim() === "1");
+  const generalRows = rows.filter((r) => mapCol(r, "General valabile") === "1");
   // Union while preserving order as in sheet
   const finalRows = rows.filter((r) => matchType.includes(r) || generalRows.includes(r));
 
   const out = finalRows.map((r, idx) => {
-    const narrative = String(mapCol(r, "Caz de testare") || "").trim();
+    const narrative = mapCol(r, "Caz de testare");
     const placeholders = extractPlaceholders(narrative);
-    const rowIndex = idx + 2; // approximate (header row offset varies per file)
-    const stepHint = comments?.[rowIndex];
+    const stepHint = commentsByRow[idx + 1];
 
     const rec = {
       module: "Accesare" as const,
-      tipFunctionalitate: splitCsv(mapCol(r, "Tip functionalitate") || "").filter(Boolean),
-      bucket: String(mapCol(r, "Bucket") || "").trim() || undefined,
-      generalValabile: String(mapCol(r, "General valabile") || "").trim() === "1",
+      tipFunctionalitate: splitCsv(mapCol(r, "Tip functionalitate")),
+      bucket: mapCol(r, "Bucket") || undefined,
+      generalValabile: mapCol(r, "General valabile") === "1",
       narrative_ro: narrative,
       placeholders,
       atoms: [],
@@ -71,19 +75,20 @@ async function main() {
     return NormalizedRow.parse(rec);
   });
 
-  await fs.mkdirp("./data/templates");
-  await fs.mkdirp("./exports");
-  await fs.mkdirp("./docs/modules");
+  await fs.mkdirp(path.resolve(outputBase, "data/templates"));
+  await fs.mkdirp(path.resolve(outputBase, "exports"));
+  await fs.mkdirp(path.resolve(outputBase, "docs/modules"));
 
   // JSON
-  await fs.writeJson("./data/templates/Accesare.normalized.json", out, { spaces: 2 });
+  const jsonPath = path.resolve(outputBase, "data/templates/Accesare.normalized.json");
+  await fs.writeJson(jsonPath, out, { spaces: 2 });
 
   // CSV
   const stringifier = stringify({
     header: true,
     columns: ["Modul","TipFunctionalitate","Bucket","GeneralValabile","Caz","Placeholders","StepHints","Automat","Local","Test","Prod","Impact","Efort","Importanta"]
   });
-  const csvPath = "./exports/Accesare.csv";
+  const csvPath = path.resolve(outputBase, "exports/Accesare.csv");
   const ws = fs.createWriteStream(csvPath);
   stringifier.pipe(ws);
   for (const r of out) {
@@ -124,12 +129,13 @@ async function main() {
     });
     md += `\n`;
   }
-  await fs.writeFile("./docs/modules/Accesare.md", md, "utf8");
+  const mdPath = path.resolve(outputBase, "docs/modules/Accesare.md");
+  await fs.writeFile(mdPath, md, "utf8");
 
   console.log(`Accesare normalized: ${out.length} rows`);
-  console.log(`→ data/templates/Accesare.normalized.json`);
-  console.log(`→ exports/Accesare.csv`);
-  console.log(`→ docs/modules/Accesare.md`);
+  console.log(`→ ${path.relative(process.cwd(), jsonPath)}`);
+  console.log(`→ ${path.relative(process.cwd(), csvPath)}`);
+  console.log(`→ ${path.relative(process.cwd(), mdPath)}`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
