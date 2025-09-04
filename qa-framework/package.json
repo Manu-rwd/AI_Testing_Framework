@@ -23,7 +23,10 @@
     "lint": "echo 'add linter later'",
     "typecheck": "echo 'add typecheck later'",
     "planner:v2:adaugare": "tsx packages/planner/src/cli_v2.ts --type Adaugare --rules packages/rules/rules_v2/adaugare.yaml --us ./docs/us/US_Normalized.yaml --project ./projects/example --apply-project-fallbacks",
-    "planner:v2:vizualizare": "tsx packages/planner/src/cli_v2.ts --type Vizualizare --rules packages/rules/rules_v2/vizualizare.yaml --us ./docs/us/US_Normalized.yaml --project ./projects/example --apply-project-fallbacks"
+    "planner:v2:vizualizare": "tsx packages/planner/src/cli_v2.ts --type Vizualizare --rules packages/rules/rules_v2/vizualizare.yaml --us ./docs/us/US_Normalized.yaml --project ./projects/example --apply-project-fallbacks",
+    "planner:emit:manual": "tsx packages/planner/src/cli/manual.ts",
+    "test:manual-emitter": "vitest run packages/planner/test/manual_emitter.test.ts",
+    "planner:verify:snapshot": "tsx packages/planner/src/cli/verify-snapshot.ts"
   },
   "workspaces": [
     "apps/*",
@@ -32,7 +35,8 @@
   "devDependencies": {
     "@types/node": "^24.3.0",
     "tsx": "^4.20.5",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vitest": "^2.0.5"
   },
   "dependencies": {
     "yaml": "^2.5.0",
