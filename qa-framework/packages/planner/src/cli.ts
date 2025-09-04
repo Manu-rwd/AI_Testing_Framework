@@ -5,8 +5,15 @@ import fs from "fs-extra";
 import { runPlanner } from "./engine";
 import { emitMarkdown } from "./emit/markdown";
 import { emitCSV } from "./emit/csv";
+import { precheckUS } from "./engine_precheck";
 
 const argv = process.argv.slice(2);
+const hasPrecheck = argv.includes("--review-precheck");
+const getFlag = (k: string, def?: string) => {
+  const i = argv.indexOf(k);
+  return i >= 0 ? argv[i + 1] : def;
+};
+const strictFlag = argv.includes("--lax") ? false : true;
 let type = "";
 let rulesPath = path.join(repoRoot, "packages/rules/rules/adaugare.yaml");
 let usPath = path.join(repoRoot, "input/us_and_test_cases.txt");
@@ -23,6 +30,21 @@ for (let i = 0; i < argv.length; i += 2) {
 }
 
 (async () => {
+  if (hasPrecheck) {
+    const usFlag = getFlag("--us");
+    if (!usFlag) {
+      console.error("Eroare: --us este obligatoriu pentru --review-precheck.");
+      process.exit(1);
+    }
+    const projectFlag = getFlag("--project");
+    const minc = parseFloat(getFlag("--min-confidence", "0.6")!);
+    try {
+      await precheckUS({ usPath: path.resolve(repoRoot, usFlag), projectPath: projectFlag ? path.resolve(repoRoot, projectFlag) : undefined, minConfidence: minc, strict: strictFlag });
+    } catch (e: any) {
+      console.error(String(e?.message || e));
+      process.exit(2);
+    }
+  }
   if (!type) throw new Error("--type is required (e.g., Adaugare)");
   const { us, outputs } = await runPlanner({ rulesPath, usPath, type });
   const grouped = new Map<string, any[]>();

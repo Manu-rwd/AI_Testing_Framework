@@ -1,0 +1,24 @@
+Titlu: Adăugare cont utilizator
+Descriere: Ca administrator, vreau să pot adăuga un cont nou.
+
+Formular de adăugare cont
+Câmp: Nume, tip: text, regex: ^[A-ZĂÂÎȘȚ][a-zăâîșț]+(?:\\s[A-ZĂÂÎȘȚ][a-zăâîșț]+)+$
+Câmp: Email, tip: email, regex: ^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$
+Câmp: Parolă, tip: password
+
+Permisiuni: admin, editor
+
+Ruta: /conturi/adauga [POST]
+
+Mesaje:
+- toast: Cont salvat cu succes
+- eroare: Email invalid
+- gol: Niciun rezultat
+
+Negative:
+- Nu se permite parola mai scurtă de 8 caractere
+
+Presupuneri:
+- Utilizatorul este autentificat
+
+
