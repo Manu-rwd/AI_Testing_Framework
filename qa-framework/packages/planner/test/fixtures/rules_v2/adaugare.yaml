@@ -1,0 +1,23 @@
+type: "Adaugare"
+version: 2
+buckets_policy: strict
+aaa_templates:
+  setup:
+    - "Navighează la {{routes.form}}"
+    - "Completează {{field.name}} cu {{field.example}}"
+  action:
+    - "Trimite formularul ({{routes.submit}})"
+  assert:
+    - "Apare mesajul {{messages.success}}"
+selector_hints:
+  preferred: ["data-testid","role"]
+data_profile_hints:
+  required: ["email","password"]
+  generators:
+    email: "faker:internet.email"
+    password: "faker:internet.password"
+oracle_kinds: ["dom"]
+rule_tags: ["crud","create"]
+required_sections: ["fields","routes","messages"]
+
+
