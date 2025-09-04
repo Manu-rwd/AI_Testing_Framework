@@ -1,58 +1,60 @@
-import { USNormalized } from "./schema";
+import { TUSNormalized } from "./schema";
 
-export interface GapItem { message: string; }
+export function buildGaps(us: TUSNormalized): string[] {
+  const gaps: string[] = [];
 
-export function buildGaps(n: USNormalized): GapItem[] {
-  const gaps: GapItem[] = [];
-
-  if (!n.buckets.length) {
-    gaps.push({ message: "Lipsește tipul de bucket. Specificați dacă este **Formular** sau **Tabel**." });
+  // Buckets
+  if (us.buckets.length === 0) {
+    gaps.push("Confirmați bucket-urile UI implicate: **Tabel** și/sau **Formular**.");
   }
 
-  const fields = n.fields || [];
-  const missingRegex = fields.filter(f => !f.regex).map(f => f.name);
-  if (fields.length === 0) {
-    gaps.push({ message: "Nu sunt definite câmpuri. Enumerați câmpurile (nume, tip, regex dacă e posibil)." });
-  } else if (missingRegex.length) {
-    gaps.push({ message: `Lipsesc **regex-urile** pentru câmpurile: ${missingRegex.join(", ")}.` });
+  // Fields + regex
+  if (us.fields.length === 0) {
+    gaps.push("Lipsesc câmpurile formularului/tabelei. Vă rugăm să listați câmpurile și tipurile acestora.");
+  } else {
+    const missing = us.fields.filter(f => !f.regex).map(f => f.name);
+    if (missing.length) {
+      gaps.push(`Lipsesc regex-urile pentru câmpurile: ${missing.join(", ")}.`);
+    }
   }
 
-  if (!n.permissions.length) {
-    gaps.push({ message: "Nu sunt definite **permisiuni**. Enumerați rolurile/permisiunile necesare (ex.: admin, editor, vizualizare)." });
+  // Permissions
+  if (us.permissions.length === 0) {
+    gaps.push("Specificați permisiunile/rolurile care pot accesa/acționa această funcționalitate (ex.: SuperAdmin, ProjectManager).");
   }
 
-  if (!n.routes.length) {
-    gaps.push({ message: "Nu este definită **Ruta** (ex.: /conturi/adauga [POST])." });
+  // Routes
+  if (us.routes.length === 0) {
+    gaps.push("Indicați rutele/endpoint-urile relevante (Ruta:, URL:, Endpoint:).");
   }
 
-  const msgCount = (n.messages.toasts?.length || 0) + (n.messages.errors?.length || 0) + (n.messages.empty_states?.length || 0);
-  if (msgCount === 0) {
-    gaps.push({ message: "Nu sunt definite **Mesaje** (toast/eroare/gol)." });
+  // Messages
+  if (us.messages.toasts.length + us.messages.errors.length + us.messages.empty_states.length === 0) {
+    gaps.push("Adăugați mesaje așteptate (toast/eroare/empty state) pentru acțiunile principale.");
   }
 
-  // Negatives are optional but useful
-  if (!n.negatives.length) {
-    gaps.push({ message: "Adăugați câteva **Negative** (scenarii care nu trebuie să se întâmple)." });
+  // Negatives
+  if (us.negatives.length === 0) {
+    gaps.push("Adăugați scenarii negative (ex.: input invalid, permisiuni insuficiente, timeouts).");
   }
 
   return gaps;
 }
 
-export function gapsMarkdown(gaps: GapItem[]): string {
-  const lines: string[] = [];
-  lines.push("# US_Gaps");
-  lines.push("");
-  if (!gaps.length) {
-    lines.push("Nu au fost identificate lacune majore. ✅");
-  } else {
-    lines.push("Întrebări și lipsuri identificate:");
-    lines.push("");
-    for (const g of gaps) {
-      lines.push(`- ${g.message}`);
-    }
-  }
-  lines.push("");
-  return lines.join("\n");
+export function gapsMarkdown(us: TUSNormalized, gaps: string[]): string {
+  return [
+    `# US_Gaps`,
+    ``,
+    `Scor încredere (overall): **${us.confidence.overall}**`,
+    ``,
+    `## Întrebări / Clarificări`,
+    ...gaps.map(g => `- ${g}`),
+    ``,
+    `## Observații`,
+    `- Proveniență respectată: US > Project > Defaults.`,
+    `- Vă rugăm să răspundeți în același document sau în ticketul asociat.`,
+    ``,
+  ].join("\n");
 }
 
 

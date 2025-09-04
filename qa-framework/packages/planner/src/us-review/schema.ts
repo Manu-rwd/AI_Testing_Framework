@@ -1,80 +1,74 @@
 import { z } from "zod";
 
-export const SourceEnum = z.enum(["us", "project", "defaults"]);
+export const SourceTag = z.enum(["us", "project", "defaults"]);
 
-export const BucketSchema = z.object({
+export const Bucket = z.object({
   name: z.string().min(1),
-  source: SourceEnum.default("us"),
+  source: SourceTag.default("us"),
 });
 
-export const FieldSchema = z.object({
+export const Field = z.object({
   name: z.string().min(1),
   type: z.string().optional(),
   regex: z.string().optional(),
-  source: SourceEnum.default("us"),
+  source: SourceTag.default("us"),
 });
 
-export const PermissionSchema = z.object({
+export const Permission = z.object({
   key: z.string().min(1),
-  source: SourceEnum.default("us"),
+  source: SourceTag.default("us"),
 });
 
-export const RouteSchema = z.object({
-  path: z.string().min(1),
-  method: z.string().optional(),
-  source: SourceEnum.default("us"),
+export const Messages = z.object({
+  toasts: z.array(z.string()).default([]),
+  errors: z.array(z.string()).default([]),
+  empty_states: z.array(z.string()).default([]),
 });
 
-export const MessageItemSchema = z.object({
-  text: z.string().min(1),
-  source: SourceEnum.default("us"),
-});
-
-export const MessagesSchema = z.object({
-  toasts: z.array(MessageItemSchema).default([]),
-  errors: z.array(MessageItemSchema).default([]),
-  empty_states: z.array(MessageItemSchema).default([]),
-});
-
-export const ConfidenceSchema = z.object({
-  per_section: z.object({
-    fields: z.number().min(0).max(1),
-    buckets: z.number().min(0).max(1),
-    permissions: z.number().min(0).max(1),
-    routes: z.number().min(0).max(1),
-    messages: z.number().min(0).max(1),
-    negatives: z.number().min(0).max(1),
-  }),
-  overall: z.number().min(0).max(1),
+export const Confidence = z.object({
+  per_section: z.record(z.number().min(0).max(1)).default({}),
+  overall: z.number().min(0).max(1).default(0),
   weights: z.object({
-    fields: z.number(),
-    buckets: z.number(),
-    permissions: z.number(),
-    routes: z.number(),
-    messages: z.number(),
-    negatives: z.number(),
-  }),
+    fields: z.number().default(0.35),
+    buckets: z.number().default(0.25),
+    permissions: z.number().default(0.15),
+    routes: z.number().default(0.1),
+    messages: z.number().default(0.1),
+    negatives: z.number().default(0.05),
+  }).default({} as any),
 });
 
-export const USNormalizedSchema = z.object({
-  buckets: z.array(BucketSchema).default([]),
-  fields: z.array(FieldSchema).default([]),
-  permissions: z.array(PermissionSchema).default([]),
-  routes: z.array(RouteSchema).default([]),
-  messages: MessagesSchema.default({ toasts: [], errors: [], empty_states: [] }),
-  negatives: z.array(z.object({ text: z.string(), source: SourceEnum.default("us") })).default([]),
-  assumptions: z.array(z.object({ text: z.string(), source: SourceEnum.default("us") })).default([]),
-  confidence: ConfidenceSchema.optional(),
+export const Provenance = z.object({
+  buckets: z.record(SourceTag).default({}),
+  fields: z.record(SourceTag).default({}),
+  permissions: z.record(SourceTag).default({}),
+  routes: z.record(SourceTag).default({}),
+  messages: z.object({
+    toasts: z.record(SourceTag).default({}),
+    errors: z.record(SourceTag).default({}),
+    empty_states: z.record(SourceTag).default({}),
+  }).default({} as any),
+  negatives: z.record(SourceTag).default({}),
+  assumptions: z.record(SourceTag).default({}),
 });
 
-export type SourceTag = z.infer<typeof SourceEnum>;
-export type Bucket = z.infer<typeof BucketSchema>;
-export type Field = z.infer<typeof FieldSchema>;
-export type Permission = z.infer<typeof PermissionSchema>;
-export type Route = z.infer<typeof RouteSchema>;
-export type MessageItem = z.infer<typeof MessageItemSchema>;
-export type Messages = z.infer<typeof MessagesSchema>;
-export type Confidence = z.infer<typeof ConfidenceSchema>;
-export type USNormalized = z.infer<typeof USNormalizedSchema>;
+export const USNormalized = z.object({
+  buckets: z.array(Bucket).default([]),
+  fields: z.array(Field).default([]),
+  permissions: z.array(Permission).default([]),
+  routes: z.array(z.string()).default([]),
+  messages: Messages.default({} as any),
+  negatives: z.array(z.string()).default([]),
+  assumptions: z.array(z.string()).default([]),
+  confidence: Confidence.default({} as any),
+  provenance: Provenance.default({} as any),
+});
+
+export type TUSNormalized = z.infer<typeof USNormalized>;
+export type TSourceTag = z.infer<typeof SourceTag>;
+
+export function emptyUS(): TUSNormalized {
+  return USNormalized.parse({});
+}
 
 

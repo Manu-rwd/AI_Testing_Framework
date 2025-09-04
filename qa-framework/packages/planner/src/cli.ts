@@ -5,15 +5,21 @@ import fs from "fs-extra";
 import { runPlanner } from "./engine";
 import { emitMarkdown } from "./emit/markdown";
 import { emitCSV } from "./emit/csv";
-import { precheckUS } from "./engine_precheck";
-
+// --- [US Review precheck integration - additive] ---
 const argv = process.argv.slice(2);
-const hasPrecheck = argv.includes("--review-precheck");
-const getFlag = (k: string, def?: string) => {
-  const i = argv.indexOf(k);
-  return i >= 0 ? argv[i + 1] : def;
-};
-const strictFlag = argv.includes("--lax") ? false : true;
+const hasReviewPrecheck = argv.includes("--review-precheck");
+let minConfidenceIdx = argv.indexOf("--min-confidence");
+const minConfidence = minConfidenceIdx >= 0 ? Number(argv[minConfidenceIdx + 1]) : 0.6;
+
+let usPathIdx = argv.indexOf("--us");
+const usPathFromFlag = usPathIdx >= 0 ? argv[usPathIdx + 1] : undefined;
+
+let projectIdx = argv.indexOf("--project");
+const projectPathFromFlag = projectIdx >= 0 ? argv[projectIdx + 1] : undefined;
+
+const strictFlag = argv.includes("--strict") && !argv.includes("--lax");
+// --- [end precheck integration] ---
+
 let type = "";
 let rulesPath = path.join(repoRoot, "packages/rules/rules/adaugare.yaml");
 let usPath = path.join(repoRoot, "input/us_and_test_cases.txt");
@@ -30,18 +36,16 @@ for (let i = 0; i < argv.length; i += 2) {
 }
 
 (async () => {
-  if (hasPrecheck) {
-    const usFlag = getFlag("--us");
+  if (hasReviewPrecheck) {
+    const usFlag = usPathFromFlag;
     if (!usFlag) {
-      console.error("Eroare: --us este obligatoriu pentru --review-precheck.");
+      console.error("US Review precheck necesită --us <path>.");
       process.exit(1);
     }
-    const projectFlag = getFlag("--project");
-    const minc = parseFloat(getFlag("--min-confidence", "0.6")!);
-    try {
-      await precheckUS({ usPath: path.resolve(repoRoot, usFlag), projectPath: projectFlag ? path.resolve(repoRoot, projectFlag) : undefined, minConfidence: minc, strict: strictFlag });
-    } catch (e: any) {
-      console.error(String(e?.message || e));
+    const { precheckUS } = await import("./engine_precheck");
+    const res = await precheckUS({ usPath: path.resolve(repoRoot, usFlag), projectPath: projectPathFromFlag ? path.resolve(repoRoot, projectPathFromFlag) : undefined, minConfidence, strict: strictFlag, outDir: undefined });
+    if (!res.ok) {
+      console.error(`US Review gate a eșuat (${res.score} < ${minConfidence}). Consultați gaps: ${res.gapsPath}`);
       process.exit(2);
     }
   }

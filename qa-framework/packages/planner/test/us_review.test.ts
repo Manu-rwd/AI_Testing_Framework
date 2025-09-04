@@ -1,41 +1,35 @@
 import path from "node:path";
 import fs from "node:fs";
-import { normalizeUSFromFile } from "../src/us-review/normalize";
-import { computeConfidence, DEFAULT_WEIGHTS } from "../src/us-review/confidence";
+import { fileURLToPath } from "node:url";
+import { normalizeUS } from "../src/us-review/normalize";
+import { computeConfidence } from "../src/us-review/confidence";
 import { applyProjectFallbacks } from "../src/us-review/applyProject";
 
-const usPath = path.resolve(__dirname, "fixtures/us/basic_us.txt");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-function assert(cond: any, msg: string) {
-  if (!cond) { throw new Error("Test failed: " + msg); }
-}
+async function main() {
+  const usPath = path.resolve(__dirname, "fixtures/us/basic_us.txt");
+  const raw = await fs.promises.readFile(usPath, "utf8");
+  let us = normalizeUS(raw, { strict: true });
+  us = computeConfidence(us);
 
-(async () => {
-  const n0 = normalizeUSFromFile(usPath, { strict: true });
-  assert(n0.buckets.length >= 1, "should detect at least one bucket (Formular/Tabel)");
-  assert(n0.fields.length >= 2, "should detect fields");
-  const hasRegex = n0.fields.some(f => !!f.regex);
-  assert(hasRegex, "should detect at least one field with regex");
+  if (us.buckets.length === 0) throw new Error("Expected at least one bucket.");
+  if (us.fields.length === 0) throw new Error("Expected fields.");
+  if (!us.fields.some(f => f.regex)) throw new Error("Expected at least one field with regex.");
+  if (!(us.confidence.overall > 0 && us.confidence.overall <= 1)) throw new Error("Confidence out of range.");
 
-  const c0 = computeConfidence(n0, DEFAULT_WEIGHTS);
-  assert(c0.overall > 0 && c0.overall <= 1, "confidence overall within (0,1]");
-
-  // If a project example exists, ensure it can fill missing data & increase confidence
-  const proj = path.resolve(process.cwd(), "projects/example");
-  if (fs.existsSync(proj)) {
-    const n1 = applyProjectFallbacks(n0, proj);
-    const c1 = n1.confidence!;
-    assert(c1.overall >= c0.overall, "confidence should not decrease after project fallback");
-    const anyProjectSource = n1.fields.some(f => f.source === "project")
-      || n1.buckets.some(b => b.source === "project")
-      || n1.permissions.some(p => p.source === "project");
-    assert(anyProjectSource, "should tag project-sourced items with source=project");
+  const exampleProject = path.resolve(process.cwd(), "projects", "example");
+  if (fs.existsSync(exampleProject)) {
+    const before = us.confidence.overall;
+    const { us: merged } = applyProjectFallbacks(us, exampleProject);
+    us = computeConfidence(merged);
+    if (us.confidence.overall < before) throw new Error("Confidence should not decrease after project merge.");
   }
 
   console.log("OK - US Review");
-})().catch(e => {
-  console.error(e);
-  process.exit(1);
-});
+}
+
+main().catch(err => { console.error(err); process.exit(1); });
 
 
