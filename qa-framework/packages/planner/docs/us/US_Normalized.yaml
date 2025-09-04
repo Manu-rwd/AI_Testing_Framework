@@ -1,0 +1,43 @@
+buckets:
+  - name: Tabel
+    source: us
+  - name: Formular
+    source: us
+fields: []
+permissions: []
+routes: []
+messages:
+  toasts: []
+  errors: []
+  empty_states: []
+negatives: []
+assumptions: []
+confidence:
+  per_section:
+    fields: 0
+    buckets: 1
+    permissions: 0
+    routes: 0
+    messages: 0
+    negatives: 0
+  overall: 0.25
+  weights:
+    fields: 0.35
+    buckets: 0.25
+    permissions: 0.15
+    routes: 0.1
+    messages: 0.1
+    negatives: 0.05
+provenance:
+  buckets:
+    Tabel: us
+    Formular: us
+  fields: {}
+  permissions: {}
+  routes: {}
+  messages:
+    toasts: {}
+    errors: {}
+    empty_states: {}
+  negatives: {}
+  assumptions: {}
