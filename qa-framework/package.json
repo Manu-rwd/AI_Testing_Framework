@@ -1,7 +1,11 @@
 {
   "name": "qa-framework",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev:web": "pnpm --filter @app/web dev",
     "dev:api": "pnpm --filter @app/api dev",
@@ -11,14 +15,23 @@
     "importer:acceseaza": "pnpm --filter @pkg/importer start:acceseaza",
     "planner:run": "pnpm --filter @pkg/planner start",
     "review:extend:accesare": "tsx packages/tools/review/extend_csv.ts ./exports/Accesare.csv",
+    "build": "pnpm -r --filter ./packages/** run build",
+    "dev": "pnpm -r --filter ./packages/** run dev",
+    "test": "pnpm -r --filter ./packages/** run test",
     "lint": "echo 'add linter later'",
     "typecheck": "echo 'add typecheck later'"
   },
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "yaml": "^2.5.0",
+    "zod": "^3.23.8"
+  }
 }
-
-
-

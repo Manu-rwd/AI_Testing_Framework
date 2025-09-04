@@ -1,0 +1,38 @@
+# Profil proiect implicit — folosit pentru a completa golurile din planul generat.
+meta:
+  id: default
+  name: "Standardele Implicite"
+  version: 1
+  language: "ro-RO"
+  description: "Set minim de standarde pentru planurile de testare."
+defaults:
+  # Câmpuri generice pe care le completăm când lipsesc în User Story sau în planul curent.
+  plan:
+    titlu_prefix: "Plan de testare — "
+    descriere_generala: "Acest plan respectă standardele proiectului și completează câmpurile lipsă."
+    severitate_implicita: "medie"
+    prioritate_implicita: "P2"
+    reguli_date:
+      # Reguli de completare a datelor de intrare atunci când lipsesc regex-urile sau exemplele.
+      input_regex_generic: "^[\\p{L}0-9 _.,:'\"-]{1,255}$"
+      email_regex: "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+      telefon_regex: "^(\\+?4?0)?[0-9]{9,10}$"
+  # Meta/proveniență utilă pentru toate elementele completate.
+  provenance:
+    rule_id_prefix: "PRJ-DEFAULT"
+    source_label: "project_default"
+# Reguli pe module pot fi adăugate aici; exemplu pentru „Accesare”
+modules:
+  Accesare:
+    buckets:
+      - "Formular"
+      - "Tabel"
+    implicite:
+      campuri_obligatorii:
+        - "Utilizator"
+        - "Parolă"
+      mesaje_standard:
+        succes: "Autentificare reușită."
+        eroare: "Credențiale invalide."
+
+
