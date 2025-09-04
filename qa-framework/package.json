@@ -21,7 +21,9 @@
     "dev": "pnpm -r --filter ./packages/** run dev",
     "test": "pnpm -r --filter ./packages/** run test",
     "lint": "echo 'add linter later'",
-    "typecheck": "echo 'add typecheck later'"
+    "typecheck": "echo 'add typecheck later'",
+    "planner:v2:adaugare": "tsx packages/planner/src/cli_v2.ts --type Adaugare --rules packages/rules/rules_v2/adaugare.yaml --us ./docs/us/US_Normalized.yaml --project ./projects/example --apply-project-fallbacks",
+    "planner:v2:vizualizare": "tsx packages/planner/src/cli_v2.ts --type Vizualizare --rules packages/rules/rules_v2/vizualizare.yaml --us ./docs/us/US_Normalized.yaml --project ./projects/example --apply-project-fallbacks"
   },
   "workspaces": [
     "apps/*",

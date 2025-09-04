@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "exports": { ".": "./src/index.ts" },
+  "exports": {
+    ".": "./src/index.ts",
+    "./v2/schema": "./src/v2/schema.ts"
+  },
   "dependencies": { "yaml": "^2.5.0", "zod": "^3.23.8" }
 }
 

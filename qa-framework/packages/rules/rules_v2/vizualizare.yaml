@@ -1,0 +1,25 @@
+type: "Vizualizare"
+version: 2
+buckets_policy: lax
+aaa_templates:
+  setup:
+    - "Deschide aplicația și navighează la ruta {{routes.list}}"
+    - "Asigură-te că tabelul este vizibil"
+  action:
+    - "Aplică filtrul pe coloana {{field.name}} cu valoarea '{{field.example}}'"
+  assert:
+    - "Rândurile afișate corespund filtrului aplicat"
+    - "Numărul de rezultate este afișat corect"
+selector_hints:
+  preferred: ["data-testid","role","label"]
+data_profile_hints:
+  required: ["filter_value"]
+  generators:
+    filter_value: "faker:lorem.word"
+oracle_kinds: ["dom","visual"]
+rule_tags: ["crud","read"]
+negatives:
+  - "Filtrul nu trebuie să modifice datele sursă"
+required_sections: ["fields","routes"]
+
+
