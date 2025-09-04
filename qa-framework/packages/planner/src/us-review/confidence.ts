@@ -10,9 +10,12 @@ export function computeConfidence(us: TUSNormalized, weights: Partial<Weights> =
   const w = { ...DEFAULT_WEIGHTS, ...weights };
   const per: Record<string, number> = {};
 
-  const fieldCount = us.fields.length;
-  const fieldsWithRegex = us.fields.filter(f => !!f.regex).length;
-  per.fields = fieldCount === 0 ? 0 : Math.min(1, 0.5 + 0.5 * (fieldsWithRegex / fieldCount));
+  const total = us.fields.length;
+  const namesScore = total > 0 ? 1 : 0;
+  const typeScore = total === 0 ? 0 : us.fields.filter(f => !!f.type).length / total;
+  const regexScore = total === 0 ? 0 : us.fields.filter(f => !!f.regex).length / total;
+  // weights within the field section: 0.4 names, 0.3 type, 0.3 regex
+  per.fields = total === 0 ? 0 : Math.min(1, 0.4 * namesScore + 0.3 * typeScore + 0.3 * regexScore);
 
   per.buckets = us.buckets.length > 0 ? 1 : 0;
   per.permissions = us.permissions.length > 0 ? 1 : 0;

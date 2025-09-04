@@ -47,8 +47,12 @@ async function main() {
   }
   const strict = args.strict ?? !args.lax;
   const minConfidence = args.minConfidence ?? 0.6;
-  const outUs = path.resolve(args.outUs ?? "./docs/us/US_Normalized.yaml");
-  const outGaps = path.resolve(args.outGaps ?? "./docs/us/US_Gaps.md");
+  const cwd = process.cwd();
+  const defaultOutDir = (/[\\\/]packages[\\\/]planner$/i.test(cwd)
+    ? path.resolve(cwd, "../../docs/us")
+    : path.resolve(cwd, "docs/us"));
+  const outUs = path.resolve(args.outUs ?? path.join(defaultOutDir, "US_Normalized.yaml"));
+  const outGaps = path.resolve(args.outGaps ?? path.join(defaultOutDir, "US_Gaps.md"));
   const projectPath = args.project ? path.resolve(args.project) : undefined;
 
   const raw = await fs.promises.readFile(path.resolve(args.us), "utf8");
