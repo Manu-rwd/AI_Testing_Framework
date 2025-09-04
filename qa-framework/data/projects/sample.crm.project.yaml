@@ -1,0 +1,21 @@
+meta:
+  id: crm
+  name: "CRM — Standardele Proiectului"
+  version: 1
+  language: "ro-RO"
+  description: "Standardele CRM pentru fluxurile de accesare și autorizare."
+defaults:
+  plan:
+    severitate_implicita: "ridicata"
+    prioritate_implicita: "P1"
+    reguli_date:
+      telefon_regex: "^(\\+?40)?7[0-9]{8}$"
+  provenance:
+    rule_id_prefix: "PRJ-CRM"
+    source_label: "project_default"
+modules:
+  Accesare:
+    buckets:
+      - "Formular"
+
+
