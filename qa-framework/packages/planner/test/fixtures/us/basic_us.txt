@@ -1,0 +1,21 @@
+Titlu: Adăugare utilizator
+Formular: utilizator nou
+Permisiuni: SuperAdmin, ProjectManager
+Ruta: /users/create
+
+Câmp: Nume (text) regex=^[A-Z][a-z]+$
+Câmp: Email (email) regex=^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$
+Câmp: Parolă (password)
+
+Mesaj (toast): Utilizatorul a fost creat cu succes.
+Mesaj (eroare): Adresa de email nu este validă.
+Empty state: Nu există utilizatori.
+
+Negative:
+- Email invalid
+- Parolă prea scurtă
+
+Asumptii:
+- Utilizatorul are sesiune activă
+
+
