@@ -1,73 +1,85 @@
-#!/usr/bin/env tsx
+#!/usr/bin/env node
+import fs from "node:fs";
 import path from "node:path";
-import fs from "fs-extra";
-import { normalizeUSFromFile } from "./normalize";
-import { computeConfidence, DEFAULT_WEIGHTS } from "./confidence";
-import { buildGaps } from "./gaps";
-import { writeGapsMd, writeUSYaml } from "./emit";
+import { normalizeUS } from "./normalize";
+import { computeConfidence } from "./confidence";
+import { buildGaps, gapsMarkdown } from "./gaps";
+import { writeGapsMd, writeNormalizedYaml } from "./emit";
 import { applyProjectFallbacks } from "./applyProject";
 
-function parseArgs(argv: string[]) {
-  const out: Record<string, any> = {
-    "apply-project-fallbacks": true,
-    strict: true,
-    "min-confidence": 0.6,
-    "out-us": "./docs/us/US_Normalized.yaml",
-    "out-gaps": "./docs/us/US_Gaps.md",
-  };
-  for (let i = 2; i < argv.length; i++) {
-    const a = argv[i];
-    const next = argv[i + 1];
-    const setBool = (k: string, v: boolean) => { out[k] = v; };
-    if (a === "--us") { out.us = next; i++; }
-    else if (a === "--project") { out.project = next; i++; }
-    else if (a === "--apply-project-fallbacks") { setBool("apply-project-fallbacks", true); }
-    else if (a === "--no-apply-project-fallbacks") { setBool("apply-project-fallbacks", false); }
-    else if (a === "--strict") { setBool("strict", true); }
-    else if (a === "--lax") { setBool("strict", false); }
-    else if (a === "--min-confidence") { out["min-confidence"] = parseFloat(next); i++; }
-    else if (a === "--out-us") { out["out-us"] = next; i++; }
-    else if (a === "--out-gaps") { out["out-gaps"] = next; i++; }
-    else if (a === "--json") { out.json = true; }
+type Args = {
+  us?: string;
+  project?: string;
+  applyProjectFallbacks?: boolean;
+  strict?: boolean;
+  lax?: boolean;
+  minConfidence?: number;
+  outUs?: string;
+  outGaps?: string;
+  json?: boolean;
+};
+
+function parseArgv(argv: string[]): Args {
+  const a: Args = {};
+  for (let i = 0; i < argv.length; i++) {
+    const k = argv[i];
+    const v = argv[i + 1];
+    switch (k) {
+      case "--us": a.us = v; i++; break;
+      case "--project": a.project = v; i++; break;
+      case "--apply-project-fallbacks": a.applyProjectFallbacks = true; break;
+      case "--strict": a.strict = true; break;
+      case "--lax": a.lax = true; break;
+      case "--min-confidence": a.minConfidence = Number(v); i++; break;
+      case "--out-us": a.outUs = v; i++; break;
+      case "--out-gaps": a.outGaps = v; i++; break;
+      case "--json": a.json = true; break;
+    }
   }
-  return out;
+  return a;
 }
 
 async function main() {
-  const args = parseArgs(process.argv);
-
+  const args = parseArgv(process.argv.slice(2));
   if (!args.us) {
-    console.error("Eroare: --us <path> este obligatoriu.");
+    console.error("Lipsă argument: --us <path-către-user-story>");
     process.exit(1);
   }
+  const strict = args.strict ?? !args.lax;
+  const minConfidence = args.minConfidence ?? 0.6;
+  const cwd = process.cwd();
+  const defaultOutDir = (/[\\\/]packages[\\\/]planner$/i.test(cwd)
+    ? path.resolve(cwd, "../../docs/us")
+    : path.resolve(cwd, "docs/us"));
+  const outUs = path.resolve(args.outUs ?? path.join(defaultOutDir, "US_Normalized.yaml"));
+  const outGaps = path.resolve(args.outGaps ?? path.join(defaultOutDir, "US_Gaps.md"));
+  const projectPath = args.project ? path.resolve(args.project) : undefined;
 
-  let n = normalizeUSFromFile(args.us, { strict: !!args.strict });
-  // Initial confidence & gaps
-  n.confidence = computeConfidence(n, DEFAULT_WEIGHTS);
-  let gaps = buildGaps(n);
+  const raw = await fs.promises.readFile(path.resolve(args.us), "utf8");
+  let us = normalizeUS(raw, { strict });
+  us = computeConfidence(us);
 
-  // Optional project fallbacks
-  if (args.project && args["apply-project-fallbacks"]) {
-    n = applyProjectFallbacks(n, args.project);
-    // Recompute gaps against new normalized
-    gaps = buildGaps(n);
+  if (args.applyProjectFallbacks ?? true) {
+    const { us: merged } = applyProjectFallbacks(us, projectPath);
+    us = computeConfidence(merged);
   }
 
-  // Emit outputs
-  const usOut = await writeUSYaml(n, args["out-us"]);
-  const gapsOut = await writeGapsMd(gaps, args["out-gaps"]);
+  const gaps = buildGaps(us);
+  const md = gapsMarkdown(us, gaps);
+
+  await writeNormalizedYaml(outUs, us);
+  console.log(`Scris: ${outUs}`);
+  await writeGapsMd(outGaps, md);
+  console.log(`Scris: ${outGaps}`);
+
+  console.log(`Scor încredere (overall): ${us.confidence.overall}`);
 
   if (args.json) {
-    process.stdout.write(JSON.stringify(n, null, 2) + "\n");
-  } else {
-    console.log(`Scris: ${usOut}`);
-    console.log(`Scris: ${gapsOut}`);
-    console.log(`Scor încredere (overall): ${n.confidence?.overall?.toFixed(3)}`);
+    console.log(JSON.stringify(us, null, 2));
   }
 
-  const minc = Number(args["min-confidence"] ?? 0);
-  if (n.confidence && n.confidence.overall < minc) {
-    console.error(`Prag de încredere neîndeplinit: ${n.confidence.overall.toFixed(3)} < ${minc}. Consultați: ${path.resolve(gapsOut)}`);
+  if (us.confidence.overall < minConfidence) {
+    console.error(`Prag de încredere neîndeplinit: ${us.confidence.overall} < ${minConfidence}. Consultați: ${outGaps}`);
     process.exit(2);
   }
 }

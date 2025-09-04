@@ -1,130 +1,99 @@
-import fs from "fs-extra";
+import { TUSNormalized } from "./schema";
 import path from "node:path";
+import fs from "node:fs";
 import YAML from "yaml";
-import { USNormalized, SourceTag } from "./schema";
-import { computeConfidence, DEFAULT_WEIGHTS, clamp01 } from "./confidence";
 
-type AnyObj = Record<string, any>;
+type ProjectPack = {
+  permissions?: string[];
+  routes?: string[];
+  regex?: Record<string, string>;
+  buckets?: string[];
+  messages?: { toasts?: string[]; errors?: string[]; empty_states?: string[] };
+};
 
-function safeReadYaml(p: string): any | null {
+function safeLoadProject(projectPath: string): ProjectPack {
   try {
-    const txt = fs.readFileSync(p, "utf8");
-    return YAML.parse(txt);
+    const projRoot = projectPath;
+    const standardsDir = path.join(projRoot, "standards");
+    const pack: ProjectPack = {};
+    const readIf = (p: string) => fs.existsSync(p) ? YAML.parse(fs.readFileSync(p, "utf8")) : undefined;
+
+    const permissions = readIf(path.join(standardsDir, "permissions.yaml"));
+    const routes = readIf(path.join(standardsDir, "routes.yaml")) || readIf(path.join(standardsDir, "routes.yml"));
+    const regex = readIf(path.join(standardsDir, "regex.yaml")) || readIf(path.join(standardsDir, "regex.yml"));
+    const buckets = readIf(path.join(standardsDir, "coverage.yaml"))?.buckets;
+    const messages = readIf(path.join(standardsDir, "messages.yaml"));
+
+    if (Array.isArray(permissions)) pack.permissions = permissions;
+    if (Array.isArray(routes)) pack.routes = routes;
+    if (regex && typeof regex === "object") pack.regex = regex;
+    if (Array.isArray(buckets)) pack.buckets = buckets;
+    if (messages && typeof messages === "object") pack.messages = messages;
+
+    return pack;
   } catch {
-    return null;
+    return {};
   }
 }
 
-function listYamlUnder(dir: string): any[] {
-  try {
-    const files = fs.readdirSync(dir).filter(f => f.toLowerCase().endsWith(".yaml") || f.toLowerCase().endsWith(".yml"));
-    return files.map(f => safeReadYaml(path.join(dir, f))).filter(Boolean);
-  } catch {
-    return [];
-  }
-}
-
-export interface ApplyProjectOptions {
-  bumpPerSection?: number; // default +0.15
-}
-
-export function applyProjectFallbacks(n: USNormalized, projectRoot: string, opts: ApplyProjectOptions = {}): USNormalized {
-  const bump = opts.bumpPerSection ?? 0.15;
-  const root = path.resolve(projectRoot);
-  const projectYaml = safeReadYaml(path.join(root, "Project.yaml")) || {};
-  const standardsDir = path.join(root, "standards");
-
-  const standards = [projectYaml, ...listYamlUnder(standardsDir)];
-  const merged: AnyObj = standards.reduce((acc, cur) => {
-    for (const k of Object.keys(cur || {})) {
-      if (acc[k] == null) acc[k] = cur[k];
-    }
-    return acc;
-  }, {} as AnyObj);
-
-  const out: USNormalized = JSON.parse(JSON.stringify(n)); // deep copy
+export function applyProjectFallbacks(us: TUSNormalized, projectPath?: string): { us: TUSNormalized; filled: number } {
+  if (!projectPath) return { us, filled: 0 };
+  const pack = safeLoadProject(projectPath);
+  let filled = 0;
 
   // Buckets
-  if ((!out.buckets || out.buckets.length === 0) && Array.isArray(merged.buckets) && merged.buckets.length) {
-    out.buckets = merged.buckets.map((b: any) => ({ name: String(b.name ?? b).trim(), source: "project" as SourceTag }));
+  if (us.buckets.length === 0 && Array.isArray(pack.buckets) && pack.buckets.length) {
+    for (const b of pack.buckets) {
+      us.buckets.push({ name: b, source: "project" });
+      us.provenance.buckets[b] = "project";
+    }
+    filled++;
   }
 
-  // Fields: fill missing regex/type for existing; if none exist, adopt project fields
-  const projFields: { name: string; type?: string; regex?: string }[] = Array.isArray(merged.fields) ? merged.fields : [];
-  if (out.fields.length === 0 && projFields.length) {
-    out.fields = projFields.map(f => ({ name: f.name, type: f.type, regex: f.regex, source: "project" as SourceTag }));
-  } else if (projFields.length) {
-    for (const f of out.fields) {
-      const found = projFields.find(pf => pf.name?.toLowerCase() === f.name.toLowerCase());
-      if (found) {
-        if (!f.type && found.type) { f.type = found.type; f.source = f.source ?? "project"; }
-        if (!f.regex && found.regex) { f.regex = found.regex; f.source = f.source ?? "project"; }
+  // Permissions
+  if (us.permissions.length === 0 && Array.isArray(pack.permissions) && pack.permissions.length) {
+    for (const k of pack.permissions) {
+      const key = String(k).replace(/\s+/g, "_");
+      us.permissions.push({ key, source: "project" });
+      us.provenance.permissions[key] = "project";
+    }
+    filled++;
+  }
+
+  // Routes
+  if (us.routes.length === 0 && Array.isArray(pack.routes) && pack.routes.length) {
+    for (const r of pack.routes) {
+      const val = String(r);
+      us.routes.push(val);
+      us.provenance.routes[val] = "project";
+    }
+    filled++;
+  }
+
+  // Messages
+  if ((us.messages.toasts.length + us.messages.errors.length + us.messages.empty_states.length) === 0 && pack.messages) {
+    for (const t of pack.messages.toasts ?? []) { us.messages.toasts.push(t); us.provenance.messages.toasts[t] = "project"; }
+    for (const e of pack.messages.errors ?? []) { us.messages.errors.push(e); us.provenance.messages.errors[e] = "project"; }
+    for (const em of pack.messages.empty_states ?? []) { us.messages.empty_states.push(em); us.provenance.messages.empty_states[em] = "project"; }
+    filled++;
+  }
+
+  // Field regex enrichment
+  if (pack.regex && Object.keys(pack.regex).length) {
+    for (const f of us.fields) {
+      if (!f.regex) {
+        const rx = pack.regex[f.name];
+        if (rx) {
+          f.regex = rx;
+          f.source = "project";
+          us.provenance.fields[f.name] = "project";
+          filled++;
+        }
       }
     }
   }
 
-  // Permissions
-  if ((!out.permissions || out.permissions.length === 0) && Array.isArray(merged.permissions) && merged.permissions.length) {
-    out.permissions = merged.permissions.map((k: any) => ({ key: String(k.key ?? k).trim().toLowerCase().replace(/\s+/g, "_"), source: "project" as SourceTag }));
-  }
-
-  // Routes
-  if ((!out.routes || out.routes.length === 0) && Array.isArray(merged.routes) && merged.routes.length) {
-    out.routes = merged.routes.map((r: any) => ({ path: String(r.path ?? r).trim(), method: r.method ? String(r.method) : undefined, source: "project" as SourceTag }));
-  }
-
-  // Messages
-  if (out.messages.toasts.length === 0 && merged.messages?.toasts?.length) {
-    out.messages.toasts = merged.messages.toasts.map((t: any) => ({ text: String(t.text ?? t), source: "project" as SourceTag }));
-  }
-  if (out.messages.errors.length === 0 && merged.messages?.errors?.length) {
-    out.messages.errors = merged.messages.errors.map((t: any) => ({ text: String(t.text ?? t), source: "project" as SourceTag }));
-  }
-  if (out.messages.empty_states.length === 0 && merged.messages?.empty_states?.length) {
-    out.messages.empty_states = merged.messages.empty_states.map((t: any) => ({ text: String(t.text ?? t), source: "project" as SourceTag }));
-  }
-
-  // Negatives / Assumptions (optional)
-  if (out.negatives.length === 0 && Array.isArray(merged.negatives) && merged.negatives.length) {
-    out.negatives = merged.negatives.map((t: any) => ({ text: String(t.text ?? t), source: "project" as SourceTag }));
-  }
-  if (out.assumptions.length === 0 && Array.isArray(merged.assumptions) && merged.assumptions.length) {
-    out.assumptions = merged.assumptions.map((t: any) => ({ text: String(t.text ?? t), source: "project" as SourceTag }));
-  }
-
-  // Recompute confidence, then apply per-section bump where project filled something
-  const before = computeConfidence(n, DEFAULT_WEIGHTS);
-  const after = computeConfidence(out, DEFAULT_WEIGHTS);
-
-  // Determine sections improved by project data
-  const improved: (keyof typeof after.per_section)[] = [];
-  (Object.keys(after.per_section) as (keyof typeof after.per_section)[]).forEach(k => {
-    if (after.per_section[k] > before.per_section[k]) improved.push(k);
-  });
-
-  // Apply +0.15 bump per improved section (cap at 1.0) then recompute overall
-  const bumped = { ...after.per_section };
-  for (const k of improved) {
-    bumped[k] = clamp01(bumped[k] + bump);
-  }
-  const weights = after.weights;
-  const overall =
-    Math.min(1,
-      bumped.fields * weights.fields +
-      bumped.buckets * weights.buckets +
-      bumped.permissions * weights.permissions +
-      bumped.routes * weights.routes +
-      bumped.messages * weights.messages +
-      bumped.negatives * weights.negatives
-    );
-
-  out.confidence = {
-    per_section: bumped,
-    overall,
-    weights,
-  };
-
-  return out;
+  return { us, filled };
 }
 
 

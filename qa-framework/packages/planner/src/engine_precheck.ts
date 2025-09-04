@@ -1,48 +1,45 @@
 import path from "node:path";
-import { normalizeUSFromFile } from "./us-review/normalize";
-import { computeConfidence, DEFAULT_WEIGHTS } from "./us-review/confidence";
-import { buildGaps } from "./us-review/gaps";
-import { writeGapsMd, writeUSYaml } from "./us-review/emit";
+import fs from "node:fs";
+import { normalizeUS } from "./us-review/normalize";
+import { computeConfidence } from "./us-review/confidence";
+import { buildGaps, gapsMarkdown } from "./us-review/gaps";
+import { writeGapsMd, writeNormalizedYaml } from "./us-review/emit";
 import { applyProjectFallbacks } from "./us-review/applyProject";
 
-export interface PrecheckArgs {
+export type PrecheckOptions = {
   usPath: string;
   projectPath?: string;
   minConfidence?: number;
   strict?: boolean;
-  outUs?: string;
-  outGaps?: string;
-  applyProjectFallbacks?: boolean;
-}
+  outDir?: string;
+};
 
-export async function precheckUS(args: PrecheckArgs) {
-  const {
-    usPath,
-    projectPath,
-    minConfidence = 0.6,
-    strict = true,
-    outUs = "./docs/us/US_Normalized.yaml",
-    outGaps = "./docs/us/US_Gaps.md",
-    applyProjectFallbacks: applyFallbacks = true,
-  } = args;
+export async function precheckUS(opts: PrecheckOptions): Promise<{ ok: boolean; score: number; gapsPath: string; usPath: string; }> {
+  const strict = !!opts.strict;
+  const cwd = process.cwd();
+  const outDir = opts.outDir
+    ?? (/[\\\/]packages[\\\/]planner$/i.test(cwd)
+        ? path.resolve(cwd, "../../docs/us")
+        : path.resolve(cwd, "docs/us"));
+  await fs.promises.mkdir(outDir, { recursive: true });
+  const outUs = path.join(outDir, "US_Normalized.yaml");
+  const outGaps = path.join(outDir, "US_Gaps.md");
+  const min = opts.minConfidence ?? 0.6;
 
-  let n = normalizeUSFromFile(usPath, { strict });
-  n.confidence = computeConfidence(n, DEFAULT_WEIGHTS);
-  let gaps = buildGaps(n);
+  const raw = await fs.promises.readFile(path.resolve(opts.usPath), "utf8");
+  let us = normalizeUS(raw, { strict });
+  us = computeConfidence(us);
 
-  if (projectPath && applyFallbacks) {
-    n = applyProjectFallbacks(n, projectPath);
-    gaps = buildGaps(n);
-  }
+  const { us: merged } = applyProjectFallbacks(us, opts.projectPath);
+  us = computeConfidence(merged);
 
-  await writeUSYaml(n, outUs);
-  const gapsAbs = await writeGapsMd(gaps, outGaps);
+  const gaps = buildGaps(us);
+  const md = gapsMarkdown(us, gaps);
 
-  if ((n.confidence?.overall ?? 0) < minConfidence) {
-    const err = new Error(`US Review gate a eșuat (${(n.confidence?.overall ?? 0).toFixed(3)} < ${minConfidence}). Consultați gaps: ${path.resolve(gapsAbs)}`);
-    (err as any).gapsPath = path.resolve(gapsAbs);
-    throw err;
-  }
+  await writeNormalizedYaml(outUs, us);
+  await writeGapsMd(outGaps, md);
+
+  return { ok: us.confidence.overall >= min, score: us.confidence.overall, gapsPath: outGaps, usPath: outUs };
 }
 
 

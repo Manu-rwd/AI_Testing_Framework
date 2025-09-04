@@ -1,62 +1,50 @@
-import { USNormalized, Confidence } from "./schema";
+import { TUSNormalized } from "./schema";
 
-export interface ConfidenceWeights {
-  fields: number;
-  buckets: number;
-  permissions: number;
-  routes: number;
-  messages: number;
-  negatives: number;
-}
-
-export const DEFAULT_WEIGHTS: ConfidenceWeights = {
-  fields: 0.35,
-  buckets: 0.25,
-  permissions: 0.15,
-  routes: 0.10,
-  messages: 0.10,
-  negatives: 0.05,
+export type Weights = {
+  fields: number; buckets: number; permissions: number; routes: number; messages: number; negatives: number;
 };
 
-export function clamp01(n: number) { return Math.max(0, Math.min(1, n)); }
+const DEFAULT_WEIGHTS: Weights = { fields: 0.35, buckets: 0.25, permissions: 0.15, routes: 0.10, messages: 0.10, negatives: 0.05 };
 
-export function computeConfidence(n: USNormalized, weights: ConfidenceWeights = DEFAULT_WEIGHTS): Confidence {
-  const totalFields = n.fields.length;
-  const fieldsWithType = n.fields.filter(f => !!f.type).length;
-  const fieldsWithRegex = n.fields.filter(f => !!f.regex).length;
-  const fieldsScore = totalFields === 0 ? 0 : clamp01(0.5 * (fieldsWithType / totalFields) + 0.5 * (fieldsWithRegex / totalFields));
+export function computeConfidence(us: TUSNormalized, weights: Partial<Weights> = {}): TUSNormalized {
+  const w = { ...DEFAULT_WEIGHTS, ...weights };
+  const per: Record<string, number> = {};
 
-  const bucketsScore = n.buckets.length > 0 ? 1 : 0;
-  const permissionsScore = n.permissions.length > 0 ? 1 : 0;
-  const routesScore = n.routes.length > 0 ? 1 : 0;
-  const messagesCount = (n.messages.toasts?.length || 0) + (n.messages.errors?.length || 0) + (n.messages.empty_states?.length || 0);
-  const messagesScore = messagesCount > 0 ? 1 : 0;
-  const negativesScore = n.negatives.length > 0 ? 1 : 0;
+  const total = us.fields.length;
+  const namesScore = total > 0 ? 1 : 0;
+  const typeScore = total === 0 ? 0 : us.fields.filter(f => !!f.type).length / total;
+  const regexScore = total === 0 ? 0 : us.fields.filter(f => !!f.regex).length / total;
+  // weights within the field section: 0.4 names, 0.3 type, 0.3 regex
+  per.fields = total === 0 ? 0 : Math.min(1, 0.4 * namesScore + 0.3 * typeScore + 0.3 * regexScore);
 
-  const per_section = {
-    fields: fieldsScore,
-    buckets: bucketsScore,
-    permissions: permissionsScore,
-    routes: routesScore,
-    messages: messagesScore,
-    negatives: negativesScore,
-  };
+  per.buckets = us.buckets.length > 0 ? 1 : 0;
+  per.permissions = us.permissions.length > 0 ? 1 : 0;
+  per.routes = us.routes.length > 0 ? 1 : 0;
+
+  const msgParts = [
+    us.messages.toasts.length > 0 ? 1 : 0,
+    us.messages.errors.length > 0 ? 1 : 0,
+    us.messages.empty_states.length > 0 ? 1 : 0,
+  ];
+  per.messages = msgParts.reduce((a, b) => a + b, 0) / msgParts.length;
+
+  per.negatives = us.negatives.length > 0 ? 1 : 0;
 
   const overall =
-    clamp01(
-      per_section.fields * weights.fields +
-      per_section.buckets * weights.buckets +
-      per_section.permissions * weights.permissions +
-      per_section.routes * weights.routes +
-      per_section.messages * weights.messages +
-      per_section.negatives * weights.negatives
-    );
+    per.fields * w.fields +
+    per.buckets * w.buckets +
+    per.permissions * w.permissions +
+    per.routes * w.routes +
+    per.messages * w.messages +
+    per.negatives * w.negatives;
 
-  return {
-    per_section,
-    overall,
-    weights,
+  us.confidence = {
+    per_section: per,
+    overall: Number(overall.toFixed(3)),
+    weights: w as any,
   };
+
+  return us;
 }
 
 

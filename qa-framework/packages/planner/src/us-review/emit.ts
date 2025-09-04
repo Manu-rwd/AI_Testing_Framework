@@ -1,23 +1,18 @@
-import fs from "fs-extra";
+import fs from "node:fs";
+import fse from "fs-extra";
 import path from "node:path";
 import YAML from "yaml";
-import { USNormalized } from "./schema";
-import { gapsMarkdown } from "./gaps";
+import { TUSNormalized } from "./schema";
 
-export async function writeUSYaml(n: USNormalized, outPath: string) {
-  const abs = path.resolve(outPath);
-  await fs.ensureDir(path.dirname(abs));
-  const doc = YAML.stringify(n);
-  await fs.writeFile(abs, doc, { encoding: "utf8" });
-  return abs;
+export async function writeNormalizedYaml(outPath: string, us: TUSNormalized) {
+  await fse.ensureDir(path.dirname(outPath));
+  const yaml = YAML.stringify(us);
+  await fs.promises.writeFile(outPath, yaml, { encoding: "utf8" });
 }
 
-export async function writeGapsMd(gaps: { message: string }[], outPath: string) {
-  const abs = path.resolve(outPath);
-  await fs.ensureDir(path.dirname(abs));
-  const md = gapsMarkdown(gaps);
-  await fs.writeFile(abs, md, { encoding: "utf8" });
-  return abs;
+export async function writeGapsMd(outPath: string, md: string) {
+  await fse.ensureDir(path.dirname(outPath));
+  await fs.promises.writeFile(outPath, md, { encoding: "utf8" });
 }
 
 
