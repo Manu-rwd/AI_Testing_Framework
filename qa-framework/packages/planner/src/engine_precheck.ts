@@ -16,7 +16,11 @@ export type PrecheckOptions = {
 
 export async function precheckUS(opts: PrecheckOptions): Promise<{ ok: boolean; score: number; gapsPath: string; usPath: string; }> {
   const strict = !!opts.strict;
-  const outDir = opts.outDir ?? path.resolve(process.cwd(), "docs/us");
+  const cwd = process.cwd();
+  const outDir = opts.outDir
+    ?? (/[\\\/]packages[\\\/]planner$/i.test(cwd)
+        ? path.resolve(cwd, "../../docs/us")
+        : path.resolve(cwd, "docs/us"));
   await fs.promises.mkdir(outDir, { recursive: true });
   const outUs = path.join(outDir, "US_Normalized.yaml");
   const outGaps = path.join(outDir, "US_Gaps.md");

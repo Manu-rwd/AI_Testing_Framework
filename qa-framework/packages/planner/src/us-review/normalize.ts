@@ -31,16 +31,52 @@ export function normalizeUS(text: string, opts: NormalizeOptions = {}): TUSNorma
     us.provenance.buckets[b] = "us";
   }
 
-  // Fields: heuristic
-  const fieldRe = /(?:(?:c[aâ]mp|camp|field|nume)\s*[:\-]\s*)([A-Za-z0-9 _.\-\[\]]+)(?:\s*\(([^)]+)\))?(?:.*?(?:regex\s*[:=]\s*([^\s,;]+)))?/gim;
-  let m: RegExpExecArray | null;
-  while ((m = fieldRe.exec(text)) !== null) {
-    const name = m[1]?.trim();
-    if (!name) continue;
-    const type = m[2]?.trim();
-    const regex = m[3]?.trim();
-    us.fields.push({ name, type, regex, source: "us" });
-    us.provenance.fields[name] = "us";
+  // --- Fields: more forgiving parsing ---
+  function grabBlock(all: string[], head: RegExp): string[] {
+    const i = all.findIndex(l => head.test(stripDiacritics(l).toLowerCase()));
+    if (i < 0) return [];
+    const out: string[] = [];
+    for (let j = i + 1; j < all.length; j++) {
+      const raw = all[j];
+      if (!raw.trim()) break;
+      if (/^\s*[A-ZĂÂÎȘȚ][A-Za-zĂÂÎȘȚăâîșț ]{1,20}\s*:/.test(raw)) break;
+      out.push(raw);
+    }
+    return out;
+  }
+
+  // 1) Block under "Câmpuri:" or "Fields:"
+  const fieldsBlock = grabBlock(L, /^(c[aâ]mpuri|campuri|fields)\s*:/i);
+  for (const ln of fieldsBlock) {
+    const m = ln.match(/^\s*(?:[-*•]\s*)?(?:c[aâ]mp|camp|field)?\s*:?\s*([^,;()]+?)\s*(?:\(([^)]+)\))?\s*(?:[,;]\s*(?:tip|type)\s*[:=\-]\s*([^,;()]+))?\s*(?:[,;]\s*(?:regex|pattern|expresie)\s*[:=\-]\s*(.+))?$/i);
+    if (m) {
+      const name = m[1].trim(); const type = (m[2] || m[3])?.trim(); const regex = m[4]?.trim();
+      if (name) { us.fields.push({ name, type, regex, source: "us" }); us.provenance.fields[name] = "us"; }
+    }
+  }
+
+  // 2) Also scan inline single-line entries
+  for (const ln of L) {
+    const m = ln.match(/^\s*(?:[-*•]\s*)?(?:c[aâ]mp|camp|field|nume)\s*[:=\-]\s*([^,;()]+?)\s*(?:\(([^)]+)\))?\s*(?:[,;]\s*(?:tip|type)\s*[:=\-]\s*([^,;()]+))?\s*(?:[,;]\s*(?:regex|pattern|expresie)\s*[:=\-]\s*(.+))?$/i);
+    if (m) {
+      const name = m[1].trim(); const type = (m[2] || m[3])?.trim(); const regex = m[4]?.trim();
+      if (name && !us.fields.some(f => f.name.toLowerCase() === name.toLowerCase())) {
+        us.fields.push({ name, type, regex, source: "us" }); us.provenance.fields[name] = "us";
+      }
+    }
+    // Fallback relaxed matcher when 'regex' appears later in the line
+    if (!/regex|pattern|expresie/i.test(ln)) continue;
+    const m2 = ln.match(/(?:c[aâ]mp|camp|field)\s*[:=\-]\s*([^,;()]+).*?(?:\(([^)]+)\))?.*?(?:regex|pattern|expresie)\s*[:=\-]\s*(.+)$/i);
+    if (m2) {
+      const name = m2[1].trim(); const type = m2[2]?.trim(); const regex = m2[3]?.trim();
+      if (name && !us.fields.some(f => f.name.toLowerCase() === name.toLowerCase())) {
+        us.fields.push({ name, type, regex, source: "us" }); us.provenance.fields[name] = "us";
+      } else if (name) {
+        const f = us.fields.find(f => f.name.toLowerCase() === name.toLowerCase());
+        if (f && !f.regex && regex) f.regex = regex;
+        if (f && !f.type && type) f.type = type;
+      }
+    }
   }
 
   // Permissions
@@ -68,24 +104,16 @@ export function normalizeUS(text: string, opts: NormalizeOptions = {}): TUSNorma
     }
   }
 
-  // Messages
-  for (const ln of L) {
-    const l = stripDiacritics(ln).toLowerCase();
-    if (l.includes("toast")) {
-      const v = ln.trim();
-      us.messages.toasts.push(v);
-      us.provenance.messages.toasts[v] = "us";
-    }
-    if (l.includes("eroare") || l.includes("error")) {
-      const v = ln.trim();
-      us.messages.errors.push(v);
-      us.provenance.messages.errors[v] = "us";
-    }
-    if (l.includes("empty state") || l.includes("stare goala") || l.includes("gol")) {
-      const v = ln.trim();
-      us.messages.empty_states.push(v);
-      us.provenance.messages.empty_states[v] = "us";
-    }
+  // --- Messages: header-driven block ---
+  const msgs = grabBlock(L, /^mesaje\s*:/i);
+  for (const raw of msgs) {
+    const l = stripDiacritics(raw).toLowerCase();
+    const v = raw.replace(/^\s*[-*•]\s*/, "").replace(/^(toast|eroare|error|gol|empty)\s*[:\-]\s*/i, "").trim();
+    if (!v) continue;
+    if (/toast/.test(l)) { us.messages.toasts.push(v); us.provenance.messages.toasts[v] = "us"; continue; }
+    if (/(eroare|error)/.test(l)) { us.messages.errors.push(v); us.provenance.messages.errors[v] = "us"; continue; }
+    if (/(gol|empty)/.test(l)) { us.messages.empty_states.push(v); us.provenance.messages.empty_states[v] = "us"; continue; }
+    us.messages.toasts.push(v); us.provenance.messages.toasts[v] = "us";
   }
 
   // Negatives & Assumptions
