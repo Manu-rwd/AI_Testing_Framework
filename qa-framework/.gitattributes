@@ -1,8 +1,7 @@
 ﻿* text=auto eol=lf
 *.md text eol=lf
-*.hbs text eol=lf
 *.ts text eol=lf
-*.json text eol=lf
+*.hbs text eol=lf
 
 * text=auto
 *.ts text eol=lf
