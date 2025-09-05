@@ -30,7 +30,10 @@
     "test:manual-emitter": "vitest run packages/planner/test/manual_emitter.test.ts",
     "planner:verify:snapshot": "tsx packages/planner/src/cli/verify-snapshot.ts",
     "check:lineendings": "tsx packages/planner/src/cli/check-lineendings.ts --paths qa-framework docs packages --exts .md,.mdx,.ts,.tsx,.js,.json,.hbs,.yaml,.yml",
-    "check:lineendings:changed": "tsx packages/planner/src/cli/check-lineendings.ts --since origin/main --paths qa-framework docs packages --exts .md,.mdx,.ts,.tsx,.js,.json,.hbs,.yaml,.yml"
+    "check:lineendings:changed": "tsx packages/planner/src/cli/check-lineendings.ts --since origin/main --paths qa-framework docs packages --exts .md,.mdx,.ts,.tsx,.js,.json,.hbs,.yaml,.yml",
+    "test:review-tools": "vitest run packages/planner/test/review-tools --run",
+    "review:init:sample": "node packages/planner/dist/cli/index.js plan:review:init --input qa-framework/tmp_exports/Accesare_Automation.csv --inPlace",
+    "review:summary:sample": "node packages/planner/dist/cli/index.js plan:review:summary --input qa-framework/tmp_exports/Accesare_Automation.csv --module Accesare --out qa-framework/tmp_docs/Accesare_Review_Summary.md"
   },
   "workspaces": [
     "apps/*",
