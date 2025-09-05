@@ -11,6 +11,10 @@ async function main() {
     await import("./emit.js");
     return;
   }
+  if (command === "plan:review:init" || command === "plan:review:summary") {
+    await import("./review.js");
+    return;
+  }
   // Default to manual CLI for backwards compatibility
   await import("./manual.js");
 }
