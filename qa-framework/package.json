@@ -26,7 +26,9 @@
     "planner:v2:vizualizare": "tsx packages/planner/src/cli_v2.ts --type Vizualizare --rules packages/rules/rules_v2/vizualizare.yaml --us ./docs/us/US_Normalized.yaml --project ./projects/example --apply-project-fallbacks",
     "planner:emit:manual": "tsx packages/planner/src/cli/manual.ts",
     "test:manual-emitter": "vitest run packages/planner/test/manual_emitter.test.ts",
-    "planner:verify:snapshot": "tsx packages/planner/src/cli/verify-snapshot.ts"
+    "planner:verify:snapshot": "tsx packages/planner/src/cli/verify-snapshot.ts",
+    "check:lineendings": "tsx packages/planner/src/cli/check-lineendings.ts --paths qa-framework docs packages --exts .md,.mdx,.ts,.tsx,.js,.json,.hbs,.yaml,.yml",
+    "check:lineendings:changed": "tsx packages/planner/src/cli/check-lineendings.ts --since origin/main --paths qa-framework docs packages --exts .md,.mdx,.ts,.tsx,.js,.json,.hbs,.yaml,.yml"
   },
   "workspaces": [
     "apps/*",
