@@ -1,0 +1,42 @@
+[
+  {
+    "module": "Accesare",
+    "tipFunctionalitate": "Adaugare",
+    "bucket": "Login",
+    "narrative_ro": "A narrative, with comma",
+    "atoms": {
+      "setup": ["Open app"],
+      "action": ["Click \"Login\""],
+      "assert": ["He said: \"quote\""]
+    },
+    "selector_needs": "needs-ids, roles",
+    "selector_strategy": "data-testid-preferred",
+    "data_profile": "{required:[user,pass]}",
+    "feasibility": "A",
+    "source": "US",
+    "confidence": 0.73456,
+    "rule_tags": ["auth","happy"],
+    "notes": "Line1\nLine2"
+  },
+  {
+    "module": "Accesare",
+    "tipFunctionalitate": "Adaugare",
+    "bucket": "Form",
+    "narrative_ro": "Fill form and submit",
+    "atoms": {
+      "setup": ["Navigate to form"],
+      "action": ["Type data","Submit"],
+      "assert": ["See success"]
+    },
+    "selector_needs": "labels",
+    "selector_strategy": "role",
+    "data_profile": "{required:[nume],generators:{nume:faker.name}}",
+    "feasibility": "B",
+    "source": "project",
+    "confidence": 0.9,
+    "rule_tags": ["forms"],
+    "notes": ""
+  }
+]
+
+
