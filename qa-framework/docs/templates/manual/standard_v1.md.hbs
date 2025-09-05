@@ -1,0 +1,32 @@
+{{!-- front matter --}}
+---
+Modul: {{module}}
+Tip funcționalitate: {{tipFunctionalitate}}
+User Story: {{usTitle}}
+Mediul țintă: {{env}}
+---
+{{#if notes}}
+> Note: {{notes}}
+{{/if}}
+{{#each sections}}
+## {{this.title}}
+{{#each this.groups}}
+### {{this.title}}
+{{#each this.cases}}
+{{this.nr}}. {{this.narrative_ro}}
+   - Importanță: {{this.importanta}}
+   - Impact: {{this.impact}}
+   - Efort: {{this.efort}}
+{{#if this.env}}   - Mediu: {{this.env}}{{/if}}
+{{#if this.notes}}   - Observații: {{this.notes}}{{/if}}
+{{~#unless @last~}}
+
+
+{{~/unless}}
+{{/each}}
+{{/each}}
+{{~#unless @last~}}
+
+{{~/unless}}
+{{/each}}
+
