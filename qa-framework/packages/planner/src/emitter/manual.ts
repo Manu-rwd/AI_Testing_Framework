@@ -1,5 +1,5 @@
 import path from "node:path";
-import fs from "fs-extra";
+import fs from "node:fs/promises";
 import Handlebars from "handlebars";
 import { repoRoot } from "../util/paths";
 import { ManualEmitterInputSchema } from "@pkg/schemas/src";
