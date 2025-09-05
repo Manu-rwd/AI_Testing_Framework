@@ -1,0 +1,7 @@
+preferences:
+  order: [data-testid, role, aria, text, css, xpath]
+disallow: [xpath]
+role_name_required: true
+fallback_text_max_len: 50
+
+

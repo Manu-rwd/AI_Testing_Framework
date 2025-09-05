@@ -9,13 +9,13 @@ export declare const RulesV2Schema: z.ZodObject<{
         action: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
         assert: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
     }, "strip", z.ZodTypeAny, {
-        setup: string[];
         action: string[];
         assert: string[];
+        setup: string[];
     }, {
-        setup?: string[] | undefined;
         action?: string[] | undefined;
         assert?: string[] | undefined;
+        setup?: string[] | undefined;
     }>;
     selector_hints: z.ZodOptional<z.ZodObject<{
         preferred: z.ZodDefault<z.ZodArray<z.ZodEnum<["data-testid", "role", "label", "text"]>, "many">>;
@@ -42,15 +42,15 @@ export declare const RulesV2Schema: z.ZodObject<{
     negatives: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
     required_sections: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
 }, "strip", z.ZodTypeAny, {
+    rule_tags: string[];
     type: string;
     version: 2;
     buckets_policy: "strict" | "lax";
     aaa_templates: {
-        setup: string[];
         action: string[];
         assert: string[];
+        setup: string[];
     };
-    rule_tags: string[];
     negatives: string[];
     required_sections: string[];
     min_confidence?: number | undefined;
@@ -67,10 +67,11 @@ export declare const RulesV2Schema: z.ZodObject<{
     type: string;
     version: 2;
     aaa_templates: {
-        setup?: string[] | undefined;
         action?: string[] | undefined;
         assert?: string[] | undefined;
+        setup?: string[] | undefined;
     };
+    rule_tags?: string[] | undefined;
     buckets_policy?: "strict" | "lax" | undefined;
     min_confidence?: number | undefined;
     selector_hints?: {
@@ -82,7 +83,6 @@ export declare const RulesV2Schema: z.ZodObject<{
         generators?: Record<string, string> | undefined;
     } | undefined;
     oracle_kinds?: ("none" | "visual" | "api" | "dom")[] | undefined;
-    rule_tags?: string[] | undefined;
     negatives?: string[] | undefined;
     required_sections?: string[] | undefined;
 }>;

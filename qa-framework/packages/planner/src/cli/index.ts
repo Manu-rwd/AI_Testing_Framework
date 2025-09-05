@@ -7,6 +7,10 @@ async function main() {
     await import("./emit-automation.js");
     return;
   }
+  if (command === "plan:enrich") {
+    await import("./enrich.js");
+    return;
+  }
   // Default to manual CLI for backwards compatibility
   await import("./manual.js");
 }

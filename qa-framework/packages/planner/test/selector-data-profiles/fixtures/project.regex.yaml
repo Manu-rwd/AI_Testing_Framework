@@ -1,0 +1,16 @@
+fields:
+  - name: email
+    type: email
+    regex: '^[^@\s]+@[^@\s]+\.[^@\s]+$'
+  - name: parola
+    type: password
+    minLen: 8
+  - name: telefon
+    type: phone
+    regex: '^\+40\d{9}$'
+  - name: nume
+    type: string
+    minLen: 2
+    maxLen: 60
+
+

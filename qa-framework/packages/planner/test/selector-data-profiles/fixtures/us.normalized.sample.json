@@ -1,0 +1,11 @@
+{
+  "buckets": ["Login", "Form", "Vizualizare"],
+  "fields": [
+    { "name": "email", "type": "email", "regex": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$", "source": "US" },
+    { "name": "parola", "type": "password", "minLen": 8, "source": "US" },
+    { "name": "telefon", "type": "phone", "regex": "^\\+40\\d{9}$", "source": "US" },
+    { "name": "nume", "type": "string", "minLen": 2, "maxLen": 60, "source": "US" }
+  ]
+}
+
+
