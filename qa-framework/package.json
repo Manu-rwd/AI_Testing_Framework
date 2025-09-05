@@ -20,6 +20,7 @@
     "build": "pnpm -r --filter ./packages/** run build",
     "dev": "pnpm -r --filter ./packages/** run dev",
     "test": "pnpm -r --filter ./packages/** run test",
+    "test:automation-emitter": "vitest run packages/planner/test/emitter/automation --run",
     "lint": "echo 'add linter later'",
     "typecheck": "echo 'add typecheck later'",
     "planner:v2:adaugare": "tsx packages/planner/src/cli_v2.ts --type Adaugare --rules packages/rules/rules_v2/adaugare.yaml --us ./docs/us/US_Normalized.yaml --project ./projects/example --apply-project-fallbacks",
