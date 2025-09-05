@@ -13,6 +13,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@pkg/rules/*": ["packages/rules/src/*"],
       "@pkg/*": ["packages/*/src"],
       "@app/*": ["apps/*/src"]
     }

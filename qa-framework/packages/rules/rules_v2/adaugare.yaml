@@ -1,0 +1,29 @@
+type: "Adaugare"
+version: 2
+buckets_policy: strict
+min_confidence: 0.6
+aaa_templates:
+  setup:
+    - "Deschide aplicația și navighează la ruta {{routes.form}}"
+    - "Completează câmpul {{field.name}} cu un exemplu valid ({{field.example}})"
+  action:
+    - "Apasă pe butonul de trimitere ({{routes.submit}})"
+  assert:
+    - "Verifică existența mesajului de confirmare: {{messages.success}}"
+selector_hints:
+  preferred: ["data-testid","role"]
+  anti_patterns:
+    - "nth-child"
+    - "div > span > span"
+data_profile_hints:
+  required: ["email","password"]
+  generators:
+    email: "faker:internet.email"
+    password: "faker:internet.password"
+oracle_kinds: ["dom"]
+rule_tags: ["crud","create"]
+negatives:
+  - "Nu trebuie să permită câmpuri goale"
+required_sections: ["fields","routes","messages"]
+
+
