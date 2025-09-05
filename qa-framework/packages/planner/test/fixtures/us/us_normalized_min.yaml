@@ -1,0 +1,20 @@
+buckets: ["Formular"]
+fields:
+  - name: "email"
+    type: "string"
+    regex: "^\\S+@\\S+\\.\\S+$"
+    example: "qa@example.com"
+  - name: "password"
+    type: "string"
+    example: "P@ssw0rd!"
+routes:
+  form: "/cont/nou"
+  submit: "/cont/nou/submit"
+messages:
+  success: "Cont creat cu succes"
+assumptions:
+  - "Utilizatorul are conexiune la internet"
+confidence:
+  overall: 0.7
+
+

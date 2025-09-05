@@ -1,0 +1,22 @@
+{
+  "module": "Accesare",
+  "tipFunctionalitate": "Adăugare",
+  "usTitle": "US: Domenii ECF — creare înregistrare",
+  "env": "Local",
+  "sections": [
+    {
+      "title": "Accesare — Pagina Index",
+      "groups": [
+        {
+          "title": "Tabel/Lista",
+          "cases": [
+            { "nr": 1, "narrative_ro": "Accesarea funcționalității prin apăsare buton [Adaugă] din pagina listă.", "importanta": "P1", "impact": 7, "efort": 3 },
+            { "nr": 2, "narrative_ro": "Accesarea funcționalității prin tastatură (shortcut definit).", "importanta": "P2", "impact": 5, "efort": 2 }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
