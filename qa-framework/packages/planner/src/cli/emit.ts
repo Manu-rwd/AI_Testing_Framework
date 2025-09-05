@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import path from "node:path";
-import { emitAutomationCsv } from "../emit/automation_csv.js";
-import { emitAutomationMd } from "../emit/automation_md.js";
+import { automationPlanToCsvBuffer } from "../emit/automation_csv.js";
+import { automationPlanToMarkdown } from "../emit/automation_md.js";
 
 type AnyRow = Record<string, any>;
 
@@ -49,12 +49,18 @@ export async function main() {
 
   const outputs: string[] = [];
   if (!mdOnly) {
-    const csv = await emitAutomationCsv(scoped as any, { moduleName, outDir });
-    outputs.push(csv);
+    await fs.ensureDir(outDir);
+    const csvPath = path.join(outDir, `${moduleName}_Automation.csv`);
+    const buf = automationPlanToCsvBuffer(scoped as any);
+    await fs.writeFile(csvPath, buf);
+    outputs.push(csvPath);
   }
   if (!csvOnly) {
-    const md = await emitAutomationMd(scoped as any, { moduleName, docDir });
-    outputs.push(md);
+    await fs.ensureDir(docDir);
+    const mdPath = path.join(docDir, `${moduleName}_Automation.md`);
+    const md = automationPlanToMarkdown(moduleName, scoped as any);
+    await fs.writeFile(mdPath, md, "utf8");
+    outputs.push(mdPath);
   }
   for (const p of outputs) console.log(path.resolve(p));
 }
