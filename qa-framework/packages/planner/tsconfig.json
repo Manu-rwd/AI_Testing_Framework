@@ -7,7 +7,13 @@
   "include": [
     "src/cli/index.ts",
     "src/cli/emit-automation.ts",
+    "src/cli/emit.ts",
+    "src/cli/enrich.ts",
     "src/emitter/automation/**/*",
+    "src/emit/**/*",
+    "src/selector/**/*",
+    "src/data-profiles/**/*",
+    "src/v2/enrich.ts",
     "src/util/**/*"
   ]
 }

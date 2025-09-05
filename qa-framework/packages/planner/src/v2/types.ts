@@ -32,6 +32,23 @@ export const PlanRowV2Schema = z.object({
 
 export type PlanRowV2 = z.infer<typeof PlanRowV2Schema>;
 
+// Shared emitter-facing type compatible with v2 rows
+export interface PlanRow {
+  module: string;
+  tipFunctionalitate?: string;
+  bucket?: string;
+  narrative_ro?: string;
+  atoms?: any[];
+  selector_needs?: string;
+  selector_strategy?: string;
+  data_profile?: string;
+  feasibility?: "A"|"B"|"C"|"D"|"E";
+  source?: string;
+  confidence?: number;
+  rule_tags?: string[];
+  notes?: string;
+}
+
 export const PlanV2Schema = z.object({
   rows: z.array(PlanRowV2Schema),
   overall_confidence: z.number().min(0).max(1),
