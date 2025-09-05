@@ -1,24 +1,7 @@
-import fs from "fs-extra";
-import path from "node:path";
+import type { PlanRow } from "../v2/types.js";
 
-export interface PlanRow {
-  module?: string;
-  tipFunctionalitate?: string;
-  featureKind?: string;
-  bucket?: string;
-  narrative_ro?: string;
-  atoms?: any[];
-  selector_needs?: string;
-  selector_strategy?: string;
-  data_profile?: string;
-  feasibility?: "A" | "B" | "C" | "D" | "E" | string;
-  source?: string;
-  confidence?: number;
-  rule_tags?: string[];
-  notes?: string;
-}
-
-const HEADER: ReadonlyArray<string> = [
+/** Keep in sync with tests & AC */
+export const AUTOMATION_CSV_COLUMNS = [
   "module",
   "tipFunctionalitate",
   "bucket",
@@ -32,48 +15,46 @@ const HEADER: ReadonlyArray<string> = [
   "confidence",
   "rule_tags",
   "notes",
-];
+] as const;
 
-function csvEscape(value: string): string {
-  const needsQuote = /[",\n\r]/.test(value);
-  let out = value.replace(/"/g, '""');
-  if (needsQuote) out = `"${out}"`;
-  return out;
+function csvEscape(field: string): string {
+  const needsQuote = /[",\r\n]/.test(field);
+  if (!needsQuote) return field;
+  return `"${field.replace(/"/g, '""')}"`;
 }
 
-export async function emitAutomationCsv(
-  rows: PlanRow[],
-  opts: { moduleName: string; outDir: string }
-): Promise<string> {
-  const moduleName = String(opts.moduleName || "");
-  const outDir = path.resolve(opts.outDir || ".");
-  await fs.ensureDir(outDir);
-  const outPath = path.join(outDir, `${moduleName}_Automation.csv`);
+function toCompactJSON(value: unknown): string {
+  return JSON.stringify(value);
+}
 
-  const lines: string[] = [];
-  lines.push(HEADER.join(","));
-  for (const row of rows || []) {
-    const rec = {
-      module: moduleName,
-      tipFunctionalitate: row.tipFunctionalitate || row.featureKind || "",
-      bucket: row.bucket || "",
-      narrative_ro: row.narrative_ro || "",
-      atoms: JSON.stringify(row.atoms ?? [], null, 0),
-      selector_needs: row.selector_needs || "",
-      selector_strategy: row.selector_strategy || "",
-      data_profile: row.data_profile || "",
-      feasibility: row.feasibility || "",
-      source: row.source || "",
-      confidence: Number(row.confidence ?? 0).toFixed(2),
-      rule_tags: (row.rule_tags ?? []).join("|"),
-      notes: String(row.notes ?? "").replace(/\r?\n/g, "  "),
-    } as Record<string, string>;
-    const vals = HEADER.map((h) => csvEscape(String((rec as any)[h] ?? "")));
-    lines.push(vals.join(","));
-  }
+function formatConfidence(n: number): string {
+  return (Math.round(n * 1000) / 1000).toString();
+}
 
-  await fs.writeFile(outPath, lines.join("\n"), { encoding: "utf8" });
-  return outPath;
+export function automationPlanToCsvBuffer(rows: PlanRow[]): Buffer {
+  const bom = "\uFEFF";
+  const header = AUTOMATION_CSV_COLUMNS.join(",") + "\r\n";
+  const body = (rows || []).map(r => {
+    const atoms = toCompactJSON(r.atoms ?? { setup: [], action: [], assert: [] });
+    const tags = toCompactJSON(r.rule_tags ?? []);
+    const fields = [
+      r.module ?? "",
+      r.tipFunctionalitate ?? "",
+      r.bucket ?? "",
+      r.narrative_ro ?? "",
+      atoms,
+      r.selector_needs ?? "",
+      r.selector_strategy ?? "",
+      r.data_profile ?? "",
+      r.feasibility ?? "",
+      r.source ?? "",
+      r.confidence != null ? formatConfidence(r.confidence) : "",
+      tags,
+      r.notes ?? "",
+    ].map(v => csvEscape(String(v)));
+    return fields.join(",") + "\r\n";
+  }).join("");
+  return Buffer.from(bom + header + body, "utf8");
 }
 
 
