@@ -1,15 +1,8 @@
-﻿* text=auto eol=lf
-*.md text eol=lf
-*.ts text eol=lf
-*.hbs text eol=lf
+﻿# Preserve exact bytes (BOM + CRLF) for emitted/fixture CSVs
+tmp_exports/*.csv -text
+tmp_review/*.csv -text
+packages/planner/test/**/*.csv -text
 
-* text=auto
+# Everything else can stay normalized
 *.ts text eol=lf
-*.tsx text eol=lf
-*.js text eol=lf
-*.mts text eol=lf
-*.cts text eol=lf
-*.json text eol=lf
 *.md text eol=lf
-*.yaml text eol=lf
-*.yml text eol=lf
