@@ -1,3 +1,13 @@
-module,tipFunctionalitate,bucket,narrative_ro,atoms,selector_needs,selector_strategy,data_profile,feasibility,source,confidence,rule_tags,notes
-Accesare,Adaugare,Login,"A narrative, with comma","{""setup"":[""Open app""],""action"":[""Click \""Login\""""],""assert"":[""He said: \""quote\""""]}","needs-ids, roles",data-testid-preferred,"{required:[user,pass]}",A,US,0.73,auth|happy,Line1  Line2
-Accesare,Adaugare,Form,Fill form and submit,"{""setup"":[""Navigate to form""],""action"":[""Type data"",""Submit""],""assert"":[""See success""]}",labels,role,"{required:[nume],generators:{nume:faker.name}}",B,project,0.90,forms,
+﻿module,tipFunctionalitate,bucket,narrative_ro,atoms,selector_needs,selector_strategy,data_profile,feasibility,source,confidence,rule_tags,notes,review_disposition,review_needs,review_notes,reviewer,reviewed_at
+Accesare,Adaugare,Login,"A narrative, with comma","{setup:[Open app],action:[Click \Login\]",assert:[He said: \quote\]},"needs-ids, roles",data-testid-preferred,"{required:[user,pass]}",A,US,0.73,auth|happy,Line1  Line2,,,,,
+Accesare,Adaugare,Form,Fill form and submit,"{setup:[Navigate to form],action:[Type data,Submit],assert:[See success]}",labels,role,"{required:[nume],generators:{nume:faker.name}}",B,project,0.90,forms,,,,,
+Accesare,Adaugare,M8-1,M8 review synthetic row,{},ids,data-testid,{},B,review,0.8,m8,M8 human review,ok,,Automatable,m8-reviewer,2025-09-05
+Accesare,Adaugare,M8-2,M8 review synthetic row,{},ids,data-testid,{},B,review,0.8,m8,M8 human review,needs-ids,ids,Needs prep,m8-reviewer,2025-09-05
+Accesare,Adaugare,M8-3,M8 review synthetic row,{},ids,data-testid,{},B,review,0.8,m8,M8 human review,needs-roles,roles,Needs prep,m8-reviewer,2025-09-05
+Accesare,Adaugare,M8-4,M8 review synthetic row,{},ids,data-testid,{},B,review,0.8,m8,M8 human review,needs-data,data,Needs prep,m8-reviewer,2025-09-05
+Accesare,Adaugare,M8-5,M8 review synthetic row,{},ids,data-testid,{},B,review,0.8,m8,M8 human review,skip,,Out of scope,m8-reviewer,2025-09-05
+Accesare,Adaugare,M8-6,M8 review synthetic row,{},ids,data-testid,{},B,review,0.8,m8,M8 human review,ambiguous,,Needs prep,m8-reviewer,2025-09-05
+Accesare,Adaugare,M8-7,M8 review synthetic row,{},ids,data-testid,{},B,review,0.8,m8,M8 human review,ok,,Automatable,m8-reviewer,2025-09-05
+Accesare,Adaugare,M8-8,M8 review synthetic row,{},ids,data-testid,{},B,review,0.8,m8,M8 human review,needs-ids,ids,Needs prep,m8-reviewer,2025-09-05
+Accesare,Adaugare,M8-9,M8 review synthetic row,{},ids,data-testid,{},B,review,0.8,m8,M8 human review,needs-roles,roles,Needs prep,m8-reviewer,2025-09-05
+Accesare,Adaugare,M8-10,M8 review synthetic row,{},ids,data-testid,{},B,review,0.8,m8,M8 human review,needs-data,data,Needs prep,m8-reviewer,2025-09-05
