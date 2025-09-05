@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import path from "node:path";
-import fs from "fs-extra";
+import fs from "node:fs/promises";
 import { repoRoot } from "../util/paths";
 import { emitManualMd } from "../emitter/manual";
 import { ManualEmitterInputSchema } from "@pkg/schemas/src";
@@ -17,12 +17,12 @@ async function main() {
   let verifyAgainst: string | undefined = undefined;
 
   for (let i = 0; i < argv.length; i++) {
-    const k = argv[i];
+    const k = argv[i]!;
     const v = argv[i + 1];
-    if (k === "--in") inPath = v;
-    if (k === "--out-manual-md") outManualMd = v;
-    if (k === "--manual-template") templatePath = v;
-    if (k === "--verify-against") verifyAgainst = v;
+    if (k === "--in" && typeof v === "string") inPath = v;
+    if (k === "--out-manual-md" && typeof v === "string") outManualMd = v;
+    if (k === "--manual-template" && typeof v === "string") templatePath = v;
+    if (k === "--verify-against" && typeof v === "string") verifyAgainst = v;
   }
 
   if (!inPath) {
@@ -47,8 +47,8 @@ async function main() {
     ? path.resolve(repoRoot, outManualMd)
     : path.resolve(repoRoot, `docs/modules/${input.module}_Manual.md`);
 
-  await fs.mkdirp(path.dirname(finalOutPath));
-  await fs.writeFile(finalOutPath, normalizeLf(output), { encoding: "utf8" });
+  await fs.mkdir(path.dirname(finalOutPath), { recursive: true });
+  await fs.writeFile(finalOutPath, normalizeLf(output), { encoding: "utf8" as any });
   console.log(`Manual plan written → ${finalOutPath}`);
 
   if (verifyAgainst) {
