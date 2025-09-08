@@ -2,6 +2,7 @@ import sys
 import os
 from pathlib import Path
 import importlib
+import importlib.util
 
 
 def add_framework_to_sys_path() -> None:
@@ -55,14 +56,37 @@ def main() -> int:
     os.environ["TESTING"] = "true"
 
     # Resolve imports robustly across environments (with or without 'src.' prefix)
-    try:
-        logger_mod = importlib.import_module("src.infrastructure.monitoring.logger")
-    except ModuleNotFoundError:
-        logger_mod = importlib.import_module("infrastructure.monitoring.logger")
-    try:
-        env_mod = importlib.import_module("src.shared.config.environment")
-    except ModuleNotFoundError:
-        env_mod = importlib.import_module("shared.config.environment")
+    def import_with_fallback(module_name: str, alt_name: str, file_path: Path):
+        try:
+            return importlib.import_module(module_name)
+        except ModuleNotFoundError:
+            try:
+                return importlib.import_module(alt_name)
+            except ModuleNotFoundError:
+                # Final fallback: import directly from file location
+                spec = importlib.util.spec_from_file_location(alt_name.replace(".", "_"), str(file_path))
+                if spec and spec.loader:
+                    mod = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(mod)  # type: ignore[assignment]
+                    return mod
+                raise
+
+    here = Path(__file__).resolve()
+    framework_root = (here.parents[1] / "framework").resolve()
+    src_dir = framework_root / "src"
+    logger_path = src_dir / "infrastructure" / "monitoring" / "logger.py"
+    env_path = src_dir / "shared" / "config" / "environment.py"
+
+    logger_mod = import_with_fallback(
+        "src.infrastructure.monitoring.logger",
+        "infrastructure.monitoring.logger",
+        logger_path,
+    )
+    env_mod = import_with_fallback(
+        "src.shared.config.environment",
+        "shared.config.environment",
+        env_path,
+    )
 
     get_logger = getattr(logger_mod, "get_logger")
     setup_logging = getattr(logger_mod, "setup_logging")
