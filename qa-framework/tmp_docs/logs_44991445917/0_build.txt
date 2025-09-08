@@ -1,0 +1,226 @@
+﻿2025-09-08T07:18:26.4896845Z Current runner version: '2.328.0'
+2025-09-08T07:18:26.4923731Z ##[group]Runner Image Provisioner
+2025-09-08T07:18:26.4924848Z Hosted Compute Agent
+2025-09-08T07:18:26.4925355Z Version: 20250829.383
+2025-09-08T07:18:26.4926098Z Commit: 27cb235aab5b0e52e153a26cd86b4742e89dac5d
+2025-09-08T07:18:26.4926784Z Build Date: 2025-08-29T13:48:48Z
+2025-09-08T07:18:26.4927364Z ##[endgroup]
+2025-09-08T07:18:26.4927978Z ##[group]Operating System
+2025-09-08T07:18:26.4928502Z Ubuntu
+2025-09-08T07:18:26.4928975Z 24.04.3
+2025-09-08T07:18:26.4929476Z LTS
+2025-09-08T07:18:26.4929978Z ##[endgroup]
+2025-09-08T07:18:26.4930440Z ##[group]Runner Image
+2025-09-08T07:18:26.4931035Z Image: ubuntu-24.04
+2025-09-08T07:18:26.4931524Z Version: 20250831.1.0
+2025-09-08T07:18:26.4932534Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250831.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-09-08T07:18:26.4934260Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250831.1
+2025-09-08T07:18:26.4935292Z ##[endgroup]
+2025-09-08T07:18:26.4936489Z ##[group]GITHUB_TOKEN Permissions
+2025-09-08T07:18:26.4938441Z Contents: read
+2025-09-08T07:18:26.4939082Z Metadata: read
+2025-09-08T07:18:26.4939717Z Packages: read
+2025-09-08T07:18:26.4940185Z ##[endgroup]
+2025-09-08T07:18:26.4942462Z Secret source: Actions
+2025-09-08T07:18:26.4943237Z Prepare workflow directory
+2025-09-08T07:18:26.5287434Z Prepare all required actions
+2025-09-08T07:18:26.5326660Z Getting action download info
+2025-09-08T07:18:26.8310480Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-09-08T07:18:26.9151700Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2025-09-08T07:18:27.0780468Z Complete job name: build
+2025-09-08T07:18:27.1490166Z ##[group]Run actions/checkout@v4
+2025-09-08T07:18:27.1491016Z with:
+2025-09-08T07:18:27.1491468Z   repository: Manu-rwd/AI_Testing_Framework
+2025-09-08T07:18:27.1492219Z   token: ***
+2025-09-08T07:18:27.1492630Z   ssh-strict: true
+2025-09-08T07:18:27.1493034Z   ssh-user: git
+2025-09-08T07:18:27.1493431Z   persist-credentials: true
+2025-09-08T07:18:27.1493886Z   clean: true
+2025-09-08T07:18:27.1494525Z   sparse-checkout-cone-mode: true
+2025-09-08T07:18:27.1495026Z   fetch-depth: 1
+2025-09-08T07:18:27.1495421Z   fetch-tags: false
+2025-09-08T07:18:27.1495833Z   show-progress: true
+2025-09-08T07:18:27.1496234Z   lfs: false
+2025-09-08T07:18:27.1496609Z   submodules: false
+2025-09-08T07:18:27.1497016Z   set-safe-directory: true
+2025-09-08T07:18:27.1497709Z ##[endgroup]
+2025-09-08T07:18:27.2593911Z Syncing repository: Manu-rwd/AI_Testing_Framework
+2025-09-08T07:18:27.2596375Z ##[group]Getting Git version info
+2025-09-08T07:18:27.2597326Z Working directory is '/home/runner/work/AI_Testing_Framework/AI_Testing_Framework'
+2025-09-08T07:18:27.2598503Z [command]/usr/bin/git version
+2025-09-08T07:18:27.2666548Z git version 2.51.0
+2025-09-08T07:18:27.2692634Z ##[endgroup]
+2025-09-08T07:18:27.2707903Z Temporarily overriding HOME='/home/runner/work/_temp/78987759-a264-4aae-a7f8-6fb3bde77f98' before making global git config changes
+2025-09-08T07:18:27.2709442Z Adding repository directory to the temporary git global config as a safe directory
+2025-09-08T07:18:27.2713659Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/AI_Testing_Framework/AI_Testing_Framework
+2025-09-08T07:18:27.2755784Z Deleting the contents of '/home/runner/work/AI_Testing_Framework/AI_Testing_Framework'
+2025-09-08T07:18:27.2760054Z ##[group]Initializing the repository
+2025-09-08T07:18:27.2765137Z [command]/usr/bin/git init /home/runner/work/AI_Testing_Framework/AI_Testing_Framework
+2025-09-08T07:18:27.2858749Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-09-08T07:18:27.2860052Z hint: is subject to change. To configure the initial branch name to use in all
+2025-09-08T07:18:27.2861696Z hint: of your new repositories, which will suppress this warning, call:
+2025-09-08T07:18:27.2862448Z hint:
+2025-09-08T07:18:27.2863709Z hint: 	git config --global init.defaultBranch <name>
+2025-09-08T07:18:27.2864937Z hint:
+2025-09-08T07:18:27.2865906Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-09-08T07:18:27.2867442Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-09-08T07:18:27.2868658Z hint:
+2025-09-08T07:18:27.2869335Z hint: 	git branch -m <name>
+2025-09-08T07:18:27.2870089Z hint:
+2025-09-08T07:18:27.2871066Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-09-08T07:18:27.2872894Z Initialized empty Git repository in /home/runner/work/AI_Testing_Framework/AI_Testing_Framework/.git/
+2025-09-08T07:18:27.2877128Z [command]/usr/bin/git remote add origin https://github.com/Manu-rwd/AI_Testing_Framework
+2025-09-08T07:18:27.2914901Z ##[endgroup]
+2025-09-08T07:18:27.2916142Z ##[group]Disabling automatic garbage collection
+2025-09-08T07:18:27.2919715Z [command]/usr/bin/git config --local gc.auto 0
+2025-09-08T07:18:27.2950043Z ##[endgroup]
+2025-09-08T07:18:27.2951206Z ##[group]Setting up auth
+2025-09-08T07:18:27.2957783Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-09-08T07:18:27.2989452Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-09-08T07:18:27.3303621Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-09-08T07:18:27.3334782Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-09-08T07:18:27.3556916Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-09-08T07:18:27.3592678Z ##[endgroup]
+2025-09-08T07:18:27.3593994Z ##[group]Fetching the repository
+2025-09-08T07:18:27.3602713Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +5650081d8ebd4abcb42b4f07eb41c1c6d196796a:refs/remotes/pull/1/merge
+2025-09-08T07:18:27.5958989Z From https://github.com/Manu-rwd/AI_Testing_Framework
+2025-09-08T07:18:27.5960159Z  * [new ref]         5650081d8ebd4abcb42b4f07eb41c1c6d196796a -> pull/1/merge
+2025-09-08T07:18:27.5993296Z ##[endgroup]
+2025-09-08T07:18:27.5994516Z ##[group]Determining the checkout info
+2025-09-08T07:18:27.5996074Z ##[endgroup]
+2025-09-08T07:18:27.6000534Z [command]/usr/bin/git sparse-checkout disable
+2025-09-08T07:18:27.6058092Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-09-08T07:18:27.6087661Z ##[group]Checking out the ref
+2025-09-08T07:18:27.6091784Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/1/merge
+2025-09-08T07:18:27.6131529Z (BOM is not a valid attribute name: qa-framework/.gitattributes:1
+2025-09-08T07:18:27.6243027Z Note: switching to 'refs/remotes/pull/1/merge'.
+2025-09-08T07:18:27.6243951Z 
+2025-09-08T07:18:27.6244737Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-09-08T07:18:27.6245761Z changes and commit them, and you can discard any commits you make in this
+2025-09-08T07:18:27.6246720Z state without impacting any branches by switching back to a branch.
+2025-09-08T07:18:27.6247428Z 
+2025-09-08T07:18:27.6248080Z If you want to create a new branch to retain commits you create, you may
+2025-09-08T07:18:27.6249721Z do so (now or later) by using -c with the switch command. Example:
+2025-09-08T07:18:27.6250725Z 
+2025-09-08T07:18:27.6251110Z   git switch -c <new-branch-name>
+2025-09-08T07:18:27.6251782Z 
+2025-09-08T07:18:27.6252166Z Or undo this operation with:
+2025-09-08T07:18:27.6252789Z 
+2025-09-08T07:18:27.6253141Z   git switch -
+2025-09-08T07:18:27.6253616Z 
+2025-09-08T07:18:27.6254564Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-09-08T07:18:27.6255646Z 
+2025-09-08T07:18:27.6257338Z HEAD is now at 5650081 Merge 2cdcdc81fcfde4d5e8c57cb5bf11d28eaf0b2871 into 56f47acc530adf756e6ca84739457cbe327d8fd0
+2025-09-08T07:18:27.6260974Z ##[endgroup]
+2025-09-08T07:18:27.6292704Z [command]/usr/bin/git log -1 --format=%H
+2025-09-08T07:18:27.6315062Z 5650081d8ebd4abcb42b4f07eb41c1c6d196796a
+2025-09-08T07:18:27.6573248Z ##[group]Run actions/setup-python@v5
+2025-09-08T07:18:27.6573882Z with:
+2025-09-08T07:18:27.6574568Z   python-version: 3.12
+2025-09-08T07:18:27.6575055Z   check-latest: false
+2025-09-08T07:18:27.6575700Z   token: ***
+2025-09-08T07:18:27.6576140Z   update-environment: true
+2025-09-08T07:18:27.6576686Z   allow-prereleases: false
+2025-09-08T07:18:27.6577192Z   freethreaded: false
+2025-09-08T07:18:27.6577652Z ##[endgroup]
+2025-09-08T07:18:27.8350110Z ##[group]Installed versions
+2025-09-08T07:18:27.8459308Z Successfully set up CPython (3.12.11)
+2025-09-08T07:18:27.8461233Z ##[endgroup]
+2025-09-08T07:18:27.8616365Z ##[group]Run python -m pip install --upgrade pip
+2025-09-08T07:18:27.8618098Z [36;1mpython -m pip install --upgrade pip[0m
+2025-09-08T07:18:27.8620524Z [36;1mif [ -f ADEF/framework/requirements.txt ]; then pip install -r ADEF/framework/requirements.txt; fi[0m
+2025-09-08T07:18:27.8624930Z [36;1mif [ -f ADEF/framework/requirements-dev.txt ]; then pip install -r ADEF/framework/requirements-dev.txt; else pip install flake8 mypy types-PyYAML; fi[0m
+2025-09-08T07:18:27.8690587Z shell: /usr/bin/bash -e {0}
+2025-09-08T07:18:27.8691739Z env:
+2025-09-08T07:18:27.8692914Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:27.8695162Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.11/x64/lib/pkgconfig
+2025-09-08T07:18:27.8697191Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:27.8699007Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:27.8700881Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:27.8702685Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.11/x64/lib
+2025-09-08T07:18:27.8704415Z ##[endgroup]
+2025-09-08T07:18:28.5637730Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages (25.2)
+2025-09-08T07:18:29.2523824Z Collecting flake8
+2025-09-08T07:18:29.3026267Z   Downloading flake8-7.3.0-py2.py3-none-any.whl.metadata (3.8 kB)
+2025-09-08T07:18:29.4240273Z Collecting mypy
+2025-09-08T07:18:29.4313337Z   Downloading mypy-1.17.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.2 kB)
+2025-09-08T07:18:29.4579876Z Collecting types-PyYAML
+2025-09-08T07:18:29.4655865Z   Downloading types_pyyaml-6.0.12.20250822-py3-none-any.whl.metadata (1.7 kB)
+2025-09-08T07:18:29.4823228Z Collecting mccabe<0.8.0,>=0.7.0 (from flake8)
+2025-09-08T07:18:29.4896981Z   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+2025-09-08T07:18:29.5087001Z Collecting pycodestyle<2.15.0,>=2.14.0 (from flake8)
+2025-09-08T07:18:29.5157823Z   Downloading pycodestyle-2.14.0-py2.py3-none-any.whl.metadata (4.5 kB)
+2025-09-08T07:18:29.5354815Z Collecting pyflakes<3.5.0,>=3.4.0 (from flake8)
+2025-09-08T07:18:29.5426621Z   Downloading pyflakes-3.4.0-py2.py3-none-any.whl.metadata (3.5 kB)
+2025-09-08T07:18:29.5675485Z Collecting typing_extensions>=4.6.0 (from mypy)
+2025-09-08T07:18:29.5748519Z   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+2025-09-08T07:18:29.5914649Z Collecting mypy_extensions>=1.0.0 (from mypy)
+2025-09-08T07:18:29.5987324Z   Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+2025-09-08T07:18:29.6194661Z Collecting pathspec>=0.9.0 (from mypy)
+2025-09-08T07:18:29.6274707Z   Downloading pathspec-0.12.1-py3-none-any.whl.metadata (21 kB)
+2025-09-08T07:18:29.6567525Z Downloading flake8-7.3.0-py2.py3-none-any.whl (57 kB)
+2025-09-08T07:18:29.6707988Z Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+2025-09-08T07:18:29.6799283Z Downloading pycodestyle-2.14.0-py2.py3-none-any.whl (31 kB)
+2025-09-08T07:18:29.6896514Z Downloading pyflakes-3.4.0-py2.py3-none-any.whl (63 kB)
+2025-09-08T07:18:29.6996245Z Downloading mypy-1.17.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (12.7 MB)
+2025-09-08T07:18:29.7739392Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.7/12.7 MB 189.0 MB/s  0:00:00
+2025-09-08T07:18:29.7810211Z Downloading types_pyyaml-6.0.12.20250822-py3-none-any.whl (20 kB)
+2025-09-08T07:18:29.7905226Z Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+2025-09-08T07:18:29.8071016Z Downloading pathspec-0.12.1-py3-none-any.whl (31 kB)
+2025-09-08T07:18:29.8227923Z Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+2025-09-08T07:18:29.8703354Z Installing collected packages: typing_extensions, types-PyYAML, pyflakes, pycodestyle, pathspec, mypy_extensions, mccabe, mypy, flake8
+2025-09-08T07:18:31.5201904Z 
+2025-09-08T07:18:31.5230247Z Successfully installed flake8-7.3.0 mccabe-0.7.0 mypy-1.17.1 mypy_extensions-1.1.0 pathspec-0.12.1 pycodestyle-2.14.0 pyflakes-3.4.0 types-PyYAML-6.0.12.20250822 typing_extensions-4.15.0
+2025-09-08T07:18:31.6116709Z ##[group]Run flake8 ADEF/scripts || (echo "flake8 errors" && exit 1)
+2025-09-08T07:18:31.6117170Z [36;1mflake8 ADEF/scripts || (echo "flake8 errors" && exit 1)[0m
+2025-09-08T07:18:31.6149525Z shell: /usr/bin/bash -e {0}
+2025-09-08T07:18:31.6149750Z env:
+2025-09-08T07:18:31.6150004Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:31.6150411Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.11/x64/lib/pkgconfig
+2025-09-08T07:18:31.6150818Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:31.6151168Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:31.6151513Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:31.6151851Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.11/x64/lib
+2025-09-08T07:18:31.6152142Z ##[endgroup]
+2025-09-08T07:18:32.1415796Z ##[group]Run mypy --config-file mypy.ini ADEF/scripts
+2025-09-08T07:18:32.1416215Z [36;1mmypy --config-file mypy.ini ADEF/scripts[0m
+2025-09-08T07:18:32.1446955Z shell: /usr/bin/bash -e {0}
+2025-09-08T07:18:32.1447187Z env:
+2025-09-08T07:18:32.1447425Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:32.1447837Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.11/x64/lib/pkgconfig
+2025-09-08T07:18:32.1448230Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:32.1448584Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:32.1448921Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:32.1449253Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.11/x64/lib
+2025-09-08T07:18:32.1449535Z ##[endgroup]
+2025-09-08T07:18:33.7179207Z Success: no issues found in 1 source file
+2025-09-08T07:18:33.7272409Z ##[group]Run python ADEF/scripts/verify_adef_integration.py
+2025-09-08T07:18:33.7272819Z [36;1mpython ADEF/scripts/verify_adef_integration.py[0m
+2025-09-08T07:18:33.7303993Z shell: /usr/bin/bash -e {0}
+2025-09-08T07:18:33.7304466Z env:
+2025-09-08T07:18:33.7304711Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:33.7305112Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.11/x64/lib/pkgconfig
+2025-09-08T07:18:33.7305488Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:33.7305828Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:33.7306161Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.11/x64
+2025-09-08T07:18:33.7306500Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.11/x64/lib
+2025-09-08T07:18:33.7306789Z ##[endgroup]
+2025-09-08T07:18:33.7584612Z Traceback (most recent call last):
+2025-09-08T07:18:33.7596189Z   File "/home/runner/work/AI_Testing_Framework/AI_Testing_Framework/ADEF/scripts/verify_adef_integration.py", line 63, in <module>
+2025-09-08T07:18:33.7597323Z     raise SystemExit(main())
+2025-09-08T07:18:33.7597697Z                      ^^^^^^
+2025-09-08T07:18:33.7598674Z   File "/home/runner/work/AI_Testing_Framework/AI_Testing_Framework/ADEF/scripts/verify_adef_integration.py", line 19, in main
+2025-09-08T07:18:33.7600277Z     from src.infrastructure.monitoring.logger import get_logger, setup_logging
+2025-09-08T07:18:33.7600974Z ModuleNotFoundError: No module named 'src'
+2025-09-08T07:18:33.7642117Z ##[error]Process completed with exit code 1.
+2025-09-08T07:18:33.7745844Z Post job cleanup.
+2025-09-08T07:18:33.8691047Z [command]/usr/bin/git version
+2025-09-08T07:18:33.8727767Z git version 2.51.0
+2025-09-08T07:18:33.8781783Z Temporarily overriding HOME='/home/runner/work/_temp/ccea032f-7f2d-46dc-b3c6-7d1e08dc25aa' before making global git config changes
+2025-09-08T07:18:33.8783142Z Adding repository directory to the temporary git global config as a safe directory
+2025-09-08T07:18:33.8788288Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/AI_Testing_Framework/AI_Testing_Framework
+2025-09-08T07:18:33.8825623Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-09-08T07:18:33.8858891Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-09-08T07:18:33.9074619Z fatal: No url found for submodule path 'ADEF/framework' in .gitmodules
+2025-09-08T07:18:33.9113107Z ##[warning]The process '/usr/bin/git' failed with exit code 128
+2025-09-08T07:18:33.9190325Z Cleaning up orphan processes
