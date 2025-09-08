@@ -1,6 +1,7 @@
 import sys
 import os
 from pathlib import Path
+import importlib
 
 
 def add_framework_to_sys_path() -> None:
@@ -47,14 +48,19 @@ def main() -> int:
     # Prevent auto file logging to project root by disabling auto-setup
     os.environ["TESTING"] = "true"
 
+    # Resolve imports robustly across environments (with or without 'src.' prefix)
     try:
-        from src.infrastructure.monitoring.logger import get_logger, setup_logging
-        from src.shared.config.environment import load_config
+        logger_mod = importlib.import_module("src.infrastructure.monitoring.logger")
     except ModuleNotFoundError:
-        # Fallback import path when 'src' package name is not recognized but its
-        # contents are available directly on sys.path (namespace/package variance)
-        from infrastructure.monitoring.logger import get_logger, setup_logging  # type: ignore
-        from shared.config.environment import load_config  # type: ignore
+        logger_mod = importlib.import_module("infrastructure.monitoring.logger")
+    try:
+        env_mod = importlib.import_module("src.shared.config.environment")
+    except ModuleNotFoundError:
+        env_mod = importlib.import_module("shared.config.environment")
+
+    get_logger = getattr(logger_mod, "get_logger")
+    setup_logging = getattr(logger_mod, "setup_logging")
+    load_config = getattr(env_mod, "load_config")
 
     # Setup root logging and also explicitly setup the environment module logger
     setup_logging(level="INFO", console_output=True, file_output=False)
