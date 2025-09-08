@@ -16,6 +16,7 @@ jobs:
         with:
           node-version: 22
           cache: "pnpm"
+          cache-dependency-path: qa-framework/pnpm-lock.yaml
       - run: pnpm -w install
       - run: pnpm -w build
       - run: pnpm -w test
