@@ -1,0 +1,4 @@
+﻿module,tipFunctionalitate,bucket,narrative_ro,atoms,selector_needs,selector_strategy,data_profile,feasibility,source,confidence,rule_tags,notes
+Accesare,Adaugare,Login,"A narrative, with comma","{""setup"":[""Open app""],""action"":[""Click \""Login\""""],""assert"":[""He said: \""quote\""""]}","needs-ids, roles",data-testid-preferred,"{required:[user,pass]}",A,US,0.735,"[""auth"",""happy""]","Line1
+Line2"
+Accesare,Adaugare,Form,Fill form and submit,"{""setup"":[""Navigate to form""],""action"":[""Type data"",""Submit""],""assert"":[""See success""]}",labels,role,"{required:[nume],generators:{nume:faker.name}}",B,project,0.9,"[""forms""]",

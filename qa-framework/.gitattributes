@@ -1,6 +1,5 @@
-﻿# Keep CSV bytes stable (BOM+CRLF); do not alter line endings during checkout
-*.csv text eol=crlf working-tree-encoding=UTF-8
-
-# Source & docs normalize to LF in repo; Windows users can still work fine
-*.ts text eol=lf
-*.md text eol=lf
+﻿* text=auto eol=lf
+*.md  text eol=lf
+*.ts  text eol=lf
+*.hbs text eol=lf
+*.json text eol=lf

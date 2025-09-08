@@ -1,0 +1,4 @@
+﻿module,tipFunctionalitate,bucket,narrative_ro,atoms.setup,atoms.action,atoms.assert,selector_needs,selector_strategy,data_profile,feasibility,source,confidence,rule_tags,notes,review_disposition,review_needs,review_notes,reviewer,reviewed_at
+Accesare,Login,Basic,"User logs in, sees dashboard",setup1;setup2,click \Login\,assert \Welcome\,ids,css,"name, email",B,manual,0.9,tag1;tag2,"Note with comma, and quotes inside",,,,,
+Accesare,View,Advanced,"Multiline description: line1
+line2",prepare,"view item, id=123",assert details,roles,xpath,profileC,A,auto,0.8,tag3,Another note,,,,,
