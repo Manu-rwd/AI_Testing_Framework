@@ -36,7 +36,11 @@
     "review:summary:sample": "node packages/planner/dist/cli/index.js plan:review:summary --input qa-framework/tmp_exports/Accesare_Automation.csv --module Accesare --out qa-framework/tmp_docs/Accesare_Review_Summary.md"
     ,
     "test:validation": "vitest run packages/planner/test/validation --run",
-    "validate:sample": "node packages/planner/dist/cli/index.js plan:validate --input \"tmp_exports/**/*.csv\" --format text --module Accesare"
+    "validate:sample": "node packages/planner/dist/cli/index.js plan:validate --input \"tmp_exports/**/*.csv\" --format text --module Accesare",
+    "review:verify:one": "node scripts/review-verify-one.js",
+    "review:report:one": "node scripts/review-report-one.js",
+    "review:verify:exports": "node scripts/review-verify-exports.js",
+    "review:report:exports": "node scripts/review-report-exports.js"
   },
   "workspaces": [
     "apps/*",

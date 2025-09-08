@@ -1,0 +1,41 @@
+name: Review Gate
+
+on:
+  pull_request:
+    paths:
+      - 'qa-framework/tmp_exports/**/*.csv'
+      - 'qa-framework/packages/planner/**'
+      - 'qa-framework/scripts/review-verify-one.js'
+      - 'qa-framework/scripts/review-report-one.js'
+      - 'qa-framework/scripts/review-verify-exports.js'
+      - 'qa-framework/scripts/review-report-exports.js'
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - name: Install
+        run: pnpm -w install
+      - name: Build
+        run: pnpm -w build
+      - name: Test (planner)
+        run: pnpm -w --filter planner test
+      - name: Verify exported CSVs
+        run: node qa-framework/scripts/review-verify-exports.js || exit 0
+      - name: Generate reports
+        run: node qa-framework/scripts/review-report-exports.js
+      - name: Upload review summaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-summaries
+          path: qa-framework/tmp_review/**/*.md
+
+

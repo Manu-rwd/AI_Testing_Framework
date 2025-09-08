@@ -66,10 +66,10 @@ function safeSplit(line: string): string[] {
 }
 
 describe("review extend library", () => {
-  const cwd = process.cwd();
-  const fixtureDir = path.join(cwd, "packages", "planner", "test", "review-tools", "fixtures");
+  const plannerRoot = path.resolve(__dirname, "..");
+  const fixtureDir = path.resolve(__dirname, "fixtures");
   const fixture = path.join(fixtureDir, "automation.sample.csv");
-  const tmpDir = path.join(cwd, "tmp_review_tests");
+  const tmpDir = path.join(plannerRoot, "tmp_review_tests");
 
   it("appends review columns, preserves BOM+CRLF, idempotent", async () => {
     await fs.remove(tmpDir);

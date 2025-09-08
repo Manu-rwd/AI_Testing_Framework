@@ -152,6 +152,17 @@ export const REVIEW_SUFFIX = [
   "review_disposition","feasibility","review_needs","review_notes","reviewer","reviewed_at",
 ] as const;
 
+// Shared across modules (Module 9 validation and Module 10 review gate)
+// Keep this single source of truth so the allowed set stays in sync.
+export const REVIEW_DISPOSITION_ALLOWED = new Set([
+  "ok",
+  "needs-ids",
+  "needs-roles",
+  "needs-data",
+  "skip",
+  "ambiguous",
+]);
+
 export const SELECTOR_STRATEGY_ALLOWED = new Set([
   "data-testid-preferred","role-with-name","role","css","text"
 ]);
