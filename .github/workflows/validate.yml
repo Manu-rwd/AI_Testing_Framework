@@ -1,0 +1,26 @@
+name: validation-gate
+on:
+  pull_request:
+    paths:
+      - "qa-framework/tmp_exports/**/*.csv"
+      - "qa-framework/packages/planner/**"
+      - "qa-framework/package.json"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with: { version: 9 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+          cache-dependency-path: qa-framework/pnpm-lock.yaml
+      - run: pnpm -w install
+      - run: pnpm -w build
+      - run: pnpm -w test
+      - run: node qa-framework/packages/planner/dist/cli/index.js plan:validate --input "qa-framework/tmp_exports/**/*.csv" --format text --module Accesare
+
+
+
