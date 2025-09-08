@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { normalizeUS } from "../src/us-review/normalize";
 import { computeConfidence } from "../src/us-review/confidence";
 import { applyProjectFallbacks } from "../src/us-review/applyProject";
+import { it } from "vitest";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,4 +33,4 @@ async function main() {
 
 main().catch(err => { console.error(err); process.exit(1); });
 
-
+it("smoke", () => {});

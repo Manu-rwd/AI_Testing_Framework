@@ -1,4 +1,38 @@
-﻿# Python
+﻿# Node / PNPM
+node_modules/
+.pnpm-store/
+.pnp.*
+
+# Build artifacts
+dist/
+coverage/
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Workspace-level temps
+qa-framework/tmp_*/
+qa-framework/exports/
+qa-framework/docs/
+
+# Planner package temps
+qa-framework/packages/planner/tmp_*/
+qa-framework/packages/planner/test/tmp_*/
+qa-framework/packages/planner/test/review-gate/..../
+
+# Accidental nested checkouts
+qa-framework/qa-framework/
+qa-framework/packages/planner/qa-framework/
+
+# Vitest snapshots (if any)
+**/__snapshots__/
+
+# OS
+Thumbs.db
+
+# Python
 __pycache__/
 *.py[cod]
 .mypy_cache/
