@@ -40,6 +40,12 @@ def add_framework_to_sys_path() -> None:
     sys.path.insert(0, str(framework_root))
     prev = os.environ.get("PYTHONPATH", "")
     os.environ["PYTHONPATH"] = os.pathsep.join([str(src_path), str(framework_root), prev]) if prev else os.pathsep.join([str(src_path), str(framework_root)])
+    # Provide a lightweight namespace package shim for 'src' if missing
+    if "src" not in sys.modules:
+        import types
+        ns = types.ModuleType("src")
+        ns.__path__ = [str(src_path)]  # type: ignore[attr-defined]
+        sys.modules["src"] = ns
 
 
 def main() -> int:
