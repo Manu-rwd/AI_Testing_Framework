@@ -1,0 +1,2 @@
+﻿module,tipFunctionalitate,bucket,narrative_ro,atoms,selector_needs,WRONG_COL,data_profile,feasibility,source,confidence,rule_tags,notes
+Accesare,Adaugare,X,Y,"{ ""setup"": [""Open""], ""action"": [""Click""] }",needs-ids,role,{},A,US,0.12345,"[ ""auth"" ]",

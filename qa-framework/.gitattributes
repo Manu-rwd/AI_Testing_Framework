@@ -1,8 +1,6 @@
-﻿# Preserve exact bytes (BOM + CRLF) for emitted/fixture CSVs
-tmp_exports/*.csv -text
-tmp_review/*.csv -text
-packages/planner/test/**/*.csv -text
+﻿# Keep CSV bytes stable (BOM+CRLF); do not alter line endings during checkout
+*.csv text eol=crlf working-tree-encoding=UTF-8
 
-# Everything else can stay normalized
+# Source & docs normalize to LF in repo; Windows users can still work fine
 *.ts text eol=lf
 *.md text eol=lf
