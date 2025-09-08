@@ -1,0 +1,19 @@
+﻿2025-09-08T07:18:31.1205287Z ##[group]Run actions/setup-node@v4
+2025-09-08T07:18:31.1206460Z with:
+2025-09-08T07:18:31.1207239Z   node-version: 22
+2025-09-08T07:18:31.1208294Z   cache: pnpm
+2025-09-08T07:18:31.1209141Z   always-auth: false
+2025-09-08T07:18:31.1210002Z   check-latest: false
+2025-09-08T07:18:31.1211191Z   token: ***
+2025-09-08T07:18:31.1211983Z env:
+2025-09-08T07:18:31.1212934Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-08T07:18:31.1214276Z ##[endgroup]
+2025-09-08T07:18:31.3007620Z Found in cache @ /opt/hostedtoolcache/node/22.19.0/x64
+2025-09-08T07:18:31.3016441Z ##[group]Environment details
+2025-09-08T07:18:33.7435405Z node: v22.19.0
+2025-09-08T07:18:33.7435807Z npm: 10.9.3
+2025-09-08T07:18:33.7436089Z yarn: 1.22.22
+2025-09-08T07:18:33.7437613Z ##[endgroup]
+2025-09-08T07:18:33.7460187Z [command]/home/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
+2025-09-08T07:18:34.2682410Z /home/runner/setup-pnpm/node_modules/.bin/store/v3
+2025-09-08T07:18:34.2777758Z ##[error]Dependencies lock file is not found in /home/runner/work/AI_Testing_Framework/AI_Testing_Framework. Supported file patterns: pnpm-lock.yaml
