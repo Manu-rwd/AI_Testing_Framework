@@ -36,7 +36,7 @@ export async function generateReport(inputFile: string, moduleName: string, outP
   const lines: string[] = [];
   lines.push(`# Review Summary: ${moduleName}`);
   lines.push("");
-  lines.push(`Totals: rows=${totals.rows} issues=${totals.issues}`);
+  lines.push(`Totals: rows=${totals.rows} incomplete=${totals.issues}`);
   lines.push("");
   lines.push("## Disposition Counts");
   lines.push("");
@@ -59,6 +59,8 @@ export async function generateReport(inputFile: string, moduleName: string, outP
   }
 
   await fs.writeFile(outFile, lines.join("\r\n"), "utf8");
+  console.log(`Totals: files=1 issues=${totalsIssues}`);
+  console.log(`WROTE ${outFile}`);
   return { outFile };
 }
 
