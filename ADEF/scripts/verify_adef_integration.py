@@ -7,7 +7,11 @@ def add_framework_to_sys_path() -> None:
     # Project root: D:\Proj\Ai_Testing_Framework
     project_root = Path(__file__).resolve().parents[2]
     framework_root = project_root / "ADEF" / "framework"
+    # Add both the framework root and its 'src' to sys.path to support imports like 'src.*'
     sys.path.insert(0, str(framework_root))
+    src_dir = framework_root / "src"
+    if src_dir.exists():
+        sys.path.insert(0, str(src_dir))
 
 
 def main() -> int:
