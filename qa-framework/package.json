@@ -34,6 +34,9 @@
     "test:review-tools": "vitest run packages/planner/test/review-tools --run",
     "review:init:sample": "node packages/planner/dist/cli/index.js plan:review:init --input qa-framework/tmp_exports/Accesare_Automation.csv --inPlace",
     "review:summary:sample": "node packages/planner/dist/cli/index.js plan:review:summary --input qa-framework/tmp_exports/Accesare_Automation.csv --module Accesare --out qa-framework/tmp_docs/Accesare_Review_Summary.md"
+    ,
+    "test:validation": "vitest run packages/planner/test/validation --run",
+    "validate:sample": "node packages/planner/dist/cli/index.js plan:validate --input \"tmp_exports/**/*.csv\" --format text --module Accesare"
   },
   "workspaces": [
     "apps/*",
@@ -41,6 +44,7 @@
   ],
   "devDependencies": {
     "@types/node": "^24.3.0",
+    "execa": "^8.0.1",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
     "vitest": "^2.0.5"

@@ -8,8 +8,11 @@
     "src/cli/index.ts",
     "src/cli/emit-automation.ts",
     "src/cli/emit.ts",
+    // add:
+    "src/cli/validate.ts",
     "src/cli/review.ts",
     "src/cli/enrich.ts",
+    "src/validate/**/*.ts",
     "src/review/**/*",
     "src/emitter/automation/**/*",
     "src/emit/**/*",

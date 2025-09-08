@@ -15,6 +15,10 @@ async function main() {
     await import("./review.js");
     return;
   }
+  if (command === "plan:validate") {
+    await import("./validate.js");
+    return;
+  }
   // Default to manual CLI for backwards compatibility
   await import("./manual.js");
 }
