@@ -4,14 +4,30 @@ from pathlib import Path
 
 
 def add_framework_to_sys_path() -> None:
-    # Project root: D:\Proj\Ai_Testing_Framework
-    project_root = Path(__file__).resolve().parents[2]
-    framework_root = project_root / "ADEF" / "framework"
-    # Add both the framework root and its 'src' to sys.path to support imports like 'src.*'
+    """Add ADEF/framework and its 'src' to sys.path reliably on CI and locally.
+
+    We search upwards from this file for a directory that contains
+    ADEF/framework/src to avoid assumptions about the working tree layout on CI.
+    """
+    start = Path(__file__).resolve()
+    candidates = [start.parent, *start.parents]
+    framework_root: Path | None = None
+    for base in candidates[:6]:  # search up to repo root
+        probe = base / ".." / "framework" if base.name == "ADEF" else base / "ADEF" / "framework"
+        probe = probe.resolve()
+        if (probe / "src").exists():
+            framework_root = probe
+            break
+    if framework_root is None:
+        # Fallback to two-levels-up heuristic
+        project_root = Path(__file__).resolve().parents[2]
+        probe = (project_root / "ADEF" / "framework").resolve()
+        if (probe / "src").exists():
+            framework_root = probe
+    if framework_root is None:
+        return
     sys.path.insert(0, str(framework_root))
-    src_dir = framework_root / "src"
-    if src_dir.exists():
-        sys.path.insert(0, str(src_dir))
+    sys.path.insert(0, str(framework_root / "src"))
 
 
 def main() -> int:
