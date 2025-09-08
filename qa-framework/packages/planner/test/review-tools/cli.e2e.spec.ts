@@ -50,7 +50,7 @@ function runNode(cmd: string, args: string[], cwd: string): Promise<{ stdout: st
 
 describe("review CLI e2e", () => {
   const cwd = process.cwd();
-  const fixtureDir = path.join(cwd, "packages", "planner", "test", "review-tools", "fixtures");
+  const fixtureDir = path.join(cwd, "test", "review-tools", "fixtures");
   const fixture = path.join(fixtureDir, "automation.sample.csv");
   const tmpDir = path.join(cwd, "tmp_review");
 
@@ -60,7 +60,7 @@ describe("review CLI e2e", () => {
     const tmpCsv = path.join(tmpDir, "automation.sample.csv");
     await fs.copyFile(fixture, tmpCsv);
 
-    const cli = path.join(cwd, "packages", "planner", "dist", "cli", "index.js");
+    const cli = path.join(cwd, "dist", "cli", "index.js");
     const res1 = await runNode(cli, ["plan:review:init", "--input", tmpCsv, "--outDir", tmpDir], cwd);
     expect(res1.code).toBe(0);
     const reviewCsv = path.join(tmpDir, "automation.sample.review.csv");

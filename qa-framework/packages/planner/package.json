@@ -6,7 +6,7 @@
   "scripts": {
     "start": "tsx src/cli.ts",
     "build": "tsc -p tsconfig.json",
-    "test": "vitest run",
+    "test": "vitest run --root ../../",
     "test:automation-emitter": "vitest run packages/planner/test/automation-emitter --run",
     "test:selectors": "vitest run packages/planner/test/selector-data-profiles --run"
   },

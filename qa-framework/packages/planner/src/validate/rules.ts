@@ -2,7 +2,8 @@ import { CsvContext, RuleFn } from "./types.js";
 import {
   MODULE5_HEADER, REVIEW_SUFFIX,
   SELECTOR_NEEDS_ALLOWED, SELECTOR_STRATEGY_ALLOWED,
-  isCompactJsonString, decimalsAtMost, pickCols
+  isCompactJsonString, decimalsAtMost, pickCols,
+  REVIEW_DISPOSITION_ALLOWED,
 } from "./utils.js";
 
 // 1) Encoding/EOL
@@ -123,7 +124,7 @@ export const ruleReviewValues: RuleFn = (ctx) => {
 
   const dispIdx = h.indexOf("review_disposition");
   const feas2Idx = h.lastIndexOf("feasibility"); // the review one (duplicate name)
-  const ALLOWED_DISP = new Set(["ok","needs-ids","needs-roles","needs-data","skip","ambiguous"]);
+  const ALLOWED_DISP = REVIEW_DISPOSITION_ALLOWED;
   const FEAS = new Set(["High","Medium","Low","H","M","L"]);
 
   for (const [rowNum, row] of dataRows(ctx)) {

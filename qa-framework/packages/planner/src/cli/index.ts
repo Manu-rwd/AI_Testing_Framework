@@ -11,7 +11,7 @@ async function main() {
     await import("./emit.js");
     return;
   }
-  if (command === "plan:review:init" || command === "plan:review:summary") {
+  if (command === "plan:review:init" || command === "plan:review:summary" || command === "plan:review:verify" || command === "plan:review:report") {
     await import("./review.js");
     return;
   }
