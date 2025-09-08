@@ -4,30 +4,34 @@ from pathlib import Path
 
 
 def add_framework_to_sys_path() -> None:
-    """Add ADEF/framework and its 'src' to sys.path reliably on CI and locally.
+    """Add ADEF/framework and its 'src' to sys.path (and PYTHONPATH) robustly.
 
-    We search upwards from this file for a directory that contains
-    ADEF/framework/src to avoid assumptions about the working tree layout on CI.
+    Priority order:
+    1) Direct path relative to this file: ADEF/framework/src
+    2) Search upwards for .../ADEF/framework/src
     """
-    start = Path(__file__).resolve()
-    candidates = [start.parent, *start.parents]
+    here = Path(__file__).resolve()
+    # 1) Direct relative probe from ADEF/scripts -> ADEF/framework/src
+    direct_src = (here.parents[1] / "framework" / "src").resolve()
     framework_root: Path | None = None
-    for base in candidates[:6]:  # search up to repo root
-        probe = base / ".." / "framework" if base.name == "ADEF" else base / "ADEF" / "framework"
-        probe = probe.resolve()
-        if (probe / "src").exists():
-            framework_root = probe
-            break
-    if framework_root is None:
-        # Fallback to two-levels-up heuristic
-        project_root = Path(__file__).resolve().parents[2]
-        probe = (project_root / "ADEF" / "framework").resolve()
-        if (probe / "src").exists():
-            framework_root = probe
+    if direct_src.exists():
+        framework_root = direct_src.parent
+    else:
+        # 2) Fallback search upwards
+        for base in [here.parent, *here.parents][:6]:
+            candidate = (base / "ADEF" / "framework" / "src").resolve()
+            if candidate.exists():
+                framework_root = candidate.parent
+                break
     if framework_root is None:
         return
+    src_path = framework_root / "src"
+    # Prepend to sys.path and also export PYTHONPATH for any subprocess usage
     sys.path.insert(0, str(framework_root))
-    sys.path.insert(0, str(framework_root / "src"))
+    sys.path.insert(0, str(src_path))
+    os.environ["PYTHONPATH"] = os.pathsep.join(
+        [str(src_path), str(framework_root), os.environ.get("PYTHONPATH", "")]
+    )
 
 
 def main() -> int:
