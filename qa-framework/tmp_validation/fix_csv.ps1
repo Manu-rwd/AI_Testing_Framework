@@ -1,4 +1,8 @@
-﻿module,tipFunctionalitate,bucket,narrative_ro,atoms,selector_needs,selector_strategy,data_profile,feasibility,source,confidence,rule_tags,notes,review_disposition,feasibility,review_needs,review_notes,reviewer,reviewed_at
+$out = Join-Path $PSScriptRoot 'fixed_Accesare_Automation.csv'
+New-Item -ItemType Directory -Force -Path $PSScriptRoot | Out-Null
+
+$csv = @'
+module,tipFunctionalitate,bucket,narrative_ro,atoms,selector_needs,selector_strategy,data_profile,feasibility,source,confidence,rule_tags,notes,review_disposition,feasibility,review_needs,review_notes,reviewer,reviewed_at
 Accesare,Adaugare,Login,"A narrative, with comma","{""setup"":[""Open""],""action"":[""Click""],""assert"":[""See""]}",needs-ids,data-testid-preferred,"{""required"":[""user""]}",A,US,0.735,"[""auth"",""happy""]",,ok,H,,,qa,2025-09-07T12:00:00Z
 Accesare,Adaugare,M8-1,M8 review synthetic row,"{""setup"":[""Open""],""action"":[""Click""],""assert"":[""See""]}",needs-ids,data-testid-preferred,"{""required"":[]}",B,review,0.800,"[""m8""]","M8 human review",ok,H,,,m8-reviewer,2025-09-05T00:00:00Z
 Accesare,Adaugare,M8-2,M8 review synthetic row,"{""setup"":[""Open""],""action"":[""Click""],""assert"":[""See""]}",needs-ids,data-testid-preferred,"{}",B,review,0.800,"[""m8""]","M8 human review",needs-ids,H,ids,Needs prep,m8-reviewer,2025-09-05T00:00:00Z
@@ -12,3 +16,12 @@ Accesare,Adaugare,M8-9,M8 review synthetic row,"{""setup"":[""Open""],""action""
 Accesare,Adaugare,M8-10,M8 review synthetic row,"{""setup"":[""Open""],""action"":[""Click""],""assert"":[""See""]}",needs-data,data-testid-preferred,"{}",B,review,0.800,"[""m8""]","M8 human review",needs-data,H,data,Needs prep,m8-reviewer,2025-09-05T00:00:00Z
 Accesare,Adaugare,M8-11,M8 review synthetic row,"{""setup"":[""Open""],""action"":[""Click""],""assert"":[""See""]}",needs-ids,data-testid-preferred,"{}",B,review,0.800,"[""m8""]","M8 human review",ok,H,,,m8-reviewer,2025-09-05T00:00:00Z
 Accesare,Adaugare,M8-12,M8 review synthetic row,"{""setup"":[""Open""],""action"":[""Click""],""assert"":[""See""]}",needs-ids,data-testid-preferred,"{}",B,review,0.800,"[""m8""]","M8 human review",ok,H,,,m8-reviewer,2025-09-05T00:00:00Z
+'@
+
+# Normalize line endings to CRLF and write with BOM
+$csvCRLF = $csv -replace "`r?`n","`r`n"
+$enc = New-Object System.Text.UTF8Encoding($true)
+[System.IO.File]::WriteAllText($out, $csvCRLF, $enc)
+Write-Host "WROTE $out"
+
+
