@@ -33,7 +33,10 @@ jobs:
           mypy --config-file mypy.ini ADEF/scripts
 
       - name: Verify integration script
+        env:
+          PYTHONPATH: ADEF/framework/src:ADEF/framework
         run: |
+          python -c "import sys,os;print('PYTHONPATH=',os.environ.get('PYTHONPATH'));print('sys.path[0:5]=',sys.path[0:5])"
           python ADEF/scripts/verify_adef_integration.py
 
       - name: Quality gates

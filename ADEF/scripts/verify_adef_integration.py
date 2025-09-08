@@ -34,11 +34,11 @@ def add_framework_to_sys_path() -> None:
         return
     src_path = framework_root / "src"
     # Prepend to sys.path and also export PYTHONPATH for any subprocess usage
-    sys.path.insert(0, str(framework_root))
+    # Ensure 'src' is first so 'from src.*' works on CI
     sys.path.insert(0, str(src_path))
-    os.environ["PYTHONPATH"] = os.pathsep.join(
-        [str(src_path), str(framework_root), os.environ.get("PYTHONPATH", "")]
-    )
+    sys.path.insert(0, str(framework_root))
+    prev = os.environ.get("PYTHONPATH", "")
+    os.environ["PYTHONPATH"] = os.pathsep.join([str(src_path), str(framework_root), prev]) if prev else os.pathsep.join([str(src_path), str(framework_root)])
 
 
 def main() -> int:
