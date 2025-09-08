@@ -8,10 +8,13 @@ async function main() {
     return;
   }
   if (command === "plan:emit") {
-    await import("./emit.js");
+    const m: any = await import("./emit.js");
+    if (typeof m?.main === "function") {
+      await m.main();
+    }
     return;
   }
-  if (command === "plan:review:init" || command === "plan:review:summary") {
+  if (command === "plan:review:init" || command === "plan:review:summary" || command === "plan:review:verify" || command === "plan:review:report") {
     await import("./review.js");
     return;
   }

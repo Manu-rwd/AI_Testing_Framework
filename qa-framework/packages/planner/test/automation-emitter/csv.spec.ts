@@ -3,7 +3,7 @@ import path from "node:path";
 import { describe, it, expect } from "vitest";
 import { automationPlanToCsvBuffer, AUTOMATION_CSV_COLUMNS } from "../../src/emit/automation_csv.js";
 
-const planPath = path.join(process.cwd(), "packages/planner/test/emitter/automation/fixtures/plan.sample.json");
+const planPath = path.resolve(__dirname, "../emitter/automation/fixtures/plan.sample.json");
 
 function parseCsvLine(line: string): string[] {
   const out: string[] = [];

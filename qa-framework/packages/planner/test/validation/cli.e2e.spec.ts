@@ -28,7 +28,7 @@ async function writeGoodCsv() {
     "ok","H","","","qa","2025-09-07T12:00:00Z",
   ];
   const body = Array.from({length:10}).map(()=>row(base)).join("");
-  const dir = path.join(process.cwd(), "tmp_validation");
+  const dir = path.resolve(__dirname, "../tmp_validation");
   await fs.mkdir(dir, { recursive: true });
   const p = path.join(dir, "good_e2e.csv");
   await fs.writeFile(p, BOM + header + body, "utf8");
@@ -42,7 +42,7 @@ async function writeBadCsv() {
     "selector_needs","selector_strategy","data_profile",
     "feasibility","source","confidence","rule_tags","notes",
   ].join(",") + "\n";
-  const p = path.join(process.cwd(), "tmp_validation", "bad_e2e.csv");
+  const p = path.resolve(__dirname, "../tmp_validation/bad_e2e.csv");
   await fs.writeFile(p, header + row(["A","Adaugare","B","N","{}","needs-ids","role","{}","A","US","0.1","[]",""]), "utf8");
   return p;
 }
@@ -52,14 +52,14 @@ describe("plan:validate CLI", () => {
     const good = await writeGoodCsv();
     const bad = await writeBadCsv();
 
-    const cli = path.join(process.cwd(), "packages", "planner", "dist", "cli", "index.js");
+    const distCli = path.resolve(__dirname, "../../dist/cli/index.js");
     // good (should exit 0)
-    await execa("node", [cli, "plan:validate", "--input", good, "--module", "Accesare"]);
+    await execa("node", [distCli, "plan:validate", "--input", good, "--module", "Accesare"]);
 
     // bad (should exit 1)
     let failed = false;
     try {
-      await execa("node", [cli, "plan:validate", "--input", bad, "--module", "Accesare"]);
+      await execa("node", [distCli, "plan:validate", "--input", bad, "--module", "Accesare"]);
     } catch (e:any) {
       failed = true;
       expect(e.exitCode).toBe(1);
