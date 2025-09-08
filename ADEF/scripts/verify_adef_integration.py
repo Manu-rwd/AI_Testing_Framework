@@ -24,6 +24,13 @@ def add_framework_to_sys_path() -> None:
                 framework_root = candidate.parent
                 break
     if framework_root is None:
+        # 3) GITHUB_WORKSPACE hint (CI)
+        ws = os.environ.get("GITHUB_WORKSPACE", "")
+        if ws:
+            candidate = (Path(ws) / "ADEF" / "framework").resolve()
+            if (candidate / "src").exists():
+                framework_root = candidate
+    if framework_root is None:
         return
     src_path = framework_root / "src"
     # Prepend to sys.path and also export PYTHONPATH for any subprocess usage
