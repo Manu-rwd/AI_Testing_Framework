@@ -1,57 +1,62 @@
-# Plan de Automatizare — Accesare
+# Accesare — Automation Plan
 
-Generat: 2025-09-05T11:33:08.158Z
-Sursă: US
+## Login — A narrative, with comma
 
-| tipFunctionalitate | bucket | feasibility | confidence | rule_tags |
-|---|---|---|---|---|
-| Adaugare | Login | A | 73.5% | auth, happy |
-| Adaugare | Form | B | 90.0% | forms |
+### Arrange
+- Open app
 
+### Act
+- Click "Login"
 
----
+### Assert
+- He said: "quote"
 
-## Login — Adaugare
+### Selectors
+- needs: needs-ids, roles
+- strategy: data-testid-preferred
 
-**Narațiune**
-A narrative, with comma
-
-**Atomi (AAA)**
-```
-{"setup":["Open app"],"action":["Click \"Login\""],"assert":["He said: \"quote\""]}
-```
-
-**Selectori**
-needs: needs-ids, roles
-strategy: data-testid-preferred
-
-**Profil de date**
+### Data Profile
 {required:[user,pass]}
 
-**Proveniență**
-source: US
+### Feasibility
+A — A/B = codegen-ready; C/D/E = needs work
+
+### Provenance
+source: `US`
+rule tags: `auth`, `happy`
+
+### Confidence
+73.5%
+
+### Notes
 Line1
 Line2
 
+## Form — Fill form and submit
 
----
+### Arrange
+- Navigate to form
 
-## Form — Adaugare
+### Act
+- Type data
+- Submit
 
-**Narațiune**
-Fill form and submit
+### Assert
+- See success
 
-**Atomi (AAA)**
-```
-{"setup":["Navigate to form"],"action":["Type data","Submit"],"assert":["See success"]}
-```
+### Selectors
+- needs: labels
+- strategy: role
 
-**Selectori**
-needs: labels
-strategy: role
-
-**Profil de date**
+### Data Profile
 {required:[nume],generators:{nume:faker.name}}
 
-**Proveniență**
-source: project
+### Feasibility
+B — A/B = codegen-ready; C/D/E = needs work
+
+### Provenance
+source: `project`
+rule tags: `forms`
+
+### Confidence
+90.0%

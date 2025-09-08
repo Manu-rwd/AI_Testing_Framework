@@ -208,6 +208,26 @@ async function main() {
     await cmdSummary(args);
     return;
   }
+  if (command === "plan:review:verify") {
+    const input = String(args.input || "");
+    const moduleName = String(args.module || "");
+    const strict = Boolean(args.strict);
+    if (!input) { console.error("--input <path> is required"); process.exit(2); }
+    const { verifyAndPrint } = await import("../review/verify.js");
+    const code = await verifyAndPrint(path.resolve(repoRoot, input), moduleName, { strict });
+    process.exit(code);
+  }
+  if (command === "plan:review:report") {
+    const input = String(args.input || "");
+    const moduleName = String(args.module || "");
+    const outFlag = typeof args.out === "string" ? (args.out as string) : "";
+    if (!input) { console.error("--input <path> is required"); process.exit(2); }
+    if (!moduleName) { console.error("--module <Name> is required"); process.exit(2); }
+    const { generateReport } = await import("../review/report.js");
+    const { outFile } = await generateReport(path.resolve(repoRoot, input), moduleName, outFlag ? path.resolve(repoRoot, outFlag) : undefined);
+    console.log(`WROTE ${outFile}`);
+    return;
+  }
   console.error("Unknown command. Use plan:review:init or plan:review:summary");
   process.exit(1);
 }

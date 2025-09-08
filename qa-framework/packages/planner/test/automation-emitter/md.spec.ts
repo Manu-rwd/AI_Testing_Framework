@@ -3,7 +3,7 @@ import path from "node:path";
 import { describe, it, expect } from "vitest";
 import { automationPlanToMarkdown } from "../../src/emit/automation_md.js";
 
-const planPath = path.join(process.cwd(), "packages/planner/test/emitter/automation/fixtures/plan.sample.json");
+const planPath = path.join(process.cwd(), "qa-framework/packages/planner/test/emitter/automation/fixtures/plan.sample.json");
 
 describe("automation emitter - MD", () => {
   it("generates MD with title, table, and atoms block", async () => {
