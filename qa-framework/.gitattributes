@@ -1,8 +1,8 @@
 ﻿# Preserve exact bytes (BOM + CRLF) for emitted/fixture CSVs
-tmp_exports/*.csv -text
-tmp_review/*.csv -text
-packages/planner/test/**/*.csv -text
+qa-framework/tmp_exports/*.csv -text
+qa-framework/tmp_review/*.csv -text
+qa-framework/packages/planner/test/**/*.csv -text
 
-# Everything else can stay normalized
+# Normalize source/docs
 *.ts text eol=lf
 *.md text eol=lf
