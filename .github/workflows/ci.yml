@@ -35,9 +35,10 @@ jobs:
       - name: Verify integration script
         env:
           PYTHONPATH: ADEF/framework/src:ADEF/framework
-        run: |
-          python -c "import sys,os;print('PYTHONPATH=',os.environ.get('PYTHONPATH'));print('sys.path[0:5]=',sys.path[0:5])"
-          python ADEF/scripts/verify_adef_integration.py
+run: |
+    python -c "import sys,os;print('PYTHONPATH=',os.environ.get('PYTHONPATH'));print('sys.path[0:5]=',sys.path[0:5])"
+    sed -n '1,120p' ADEF/scripts/verify_adef_integration.py
+    python ADEF/scripts/verify_adef_integration.py
 
       - name: Quality gates
         run: |
