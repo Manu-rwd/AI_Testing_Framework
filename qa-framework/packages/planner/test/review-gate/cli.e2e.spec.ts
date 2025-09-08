@@ -12,9 +12,12 @@ async function writeCsv(tmpDir: string, name: string, lines: string[]): Promise<
   return p;
 }
 
+const plannerRoot = path.resolve(__dirname, "..");
+const distCli = path.resolve(plannerRoot, "dist/cli/index.js");
+
 describe("plan:review CLI e2e", () => {
   it("verify exits 0 on good, 1 on bad and prints RV codes", async () => {
-    const tmp = path.join(process.cwd(), "tmp_review_cli");
+    const tmp = path.resolve(plannerRoot, "tmp_review_cli");
     const good = await writeCsv(tmp, "good.csv", [
       "module,tipFunctionalitate,bucket,narrative_ro,atoms,selector_needs,selector_strategy,data_profile,feasibility,source,confidence,rule_tags,notes,review_disposition,review_needs,review_notes,reviewer,reviewed_at",
       "Accesare,Adaugare,bk,desc,{},needs-ids,css,{},H,src,0.9,[],n,ok,needs,notes,rev,2025-01-01",
@@ -23,11 +26,10 @@ describe("plan:review CLI e2e", () => {
       "module,tipFunctionalitate,bucket,narrative_ro,atoms,selector_needs,selector_strategy,data_profile,feasibility,source,confidence,rule_tags,notes,review_disposition,review_needs,review_notes,reviewer,reviewed_at",
       "Accesare,Adaugare,bk,desc,{},needs-ids,css,{},H,src,0.9,[],n,BAD, , , ,bad-date",
     ]);
-    const cli = path.join(process.cwd(), "dist", "cli", "index.js");
-    await execa("node", [cli, "plan:review:verify", "--input", good, "--module", "Accesare"], { stdio: "inherit" });
+    await execa("node", [distCli, "plan:review:verify", "--input", good, "--module", "Accesare"], { stdio: "inherit" });
     let failed = false;
     try {
-      await execa("node", [cli, "plan:review:verify", "--input", bad, "--module", "Accesare"], { reject: true });
+      await execa("node", [distCli, "plan:review:verify", "--input", bad, "--module", "Accesare"], { reject: true });
     } catch (e:any) {
       failed = true;
     }
@@ -35,16 +37,15 @@ describe("plan:review CLI e2e", () => {
   });
 
   it("report writes summary and prints WROTE", async () => {
-    const tmp = path.join(process.cwd(), "tmp_review_cli");
+    const tmp = path.resolve(plannerRoot, "tmp_review_cli");
     const csv = await writeCsv(tmp, "report.csv", [
       "module,tipFunctionalitate,bucket,narrative_ro,atoms,selector_needs,selector_strategy,data_profile,feasibility,source,confidence,rule_tags,notes,review_disposition,review_needs,review_notes,reviewer,reviewed_at",
       "Accesare,Adaugare,bk,desc,{},needs-ids,css,{},H,src,0.9,[],n,ok,needs,notes,rev,2025-01-01",
     ]);
-    const cli = path.join(process.cwd(), "dist", "cli", "index.js");
-    const { stdout } = await execa("node", [cli, "plan:review:report", "--input", csv, "--module", "Accesare"], { reject: false });
+    const mdOut = path.resolve(tmp, "Accesare_Review_Summary.md");
+    const { stdout } = await execa("node", [distCli, "plan:review:report", "--input", csv, "--module", "Accesare", "--out", mdOut], { reject: false });
     expect(stdout).toMatch(/WROTE/);
-    const md = path.join(process.cwd(), "..", "..", "tmp_review", "Accesare_Review_Summary.md");
-    const content = await fs.readFile(md, "utf8");
+    const content = await fs.readFile(mdOut, "utf8");
     expect(content).toMatch(/Totals:/);
   });
 });

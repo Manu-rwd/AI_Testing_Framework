@@ -13,14 +13,19 @@ function runNode(cmd: string, args: string[], opts: any = {}) {
   });
 }
 
+// path anchors
+const plannerRoot = path.resolve(__dirname, "..");
+const distCli = path.resolve(plannerRoot, "dist/cli/index.js");
+
 describe("CLI plan:emit e2e", () => {
   it("emits CSV and MD for Accesare", async () => {
-    const bin = path.join(process.cwd(), "packages/planner/dist/cli/index.js");
-    const input = path.join(process.cwd(), "packages/planner/test/selector-data-profiles/fixtures/plan.v2.sample.json");
-    const res = await runNode("node", [bin, "plan:emit", "--input", input, "--module", "Accesare", "--docDir", "tmp_docs", "--outDir", "tmp_exports"]);
+    const input = path.resolve(plannerRoot, "test/selector-data-profiles/fixtures/plan.v2.sample.json");
+    const outDocs = path.resolve(plannerRoot, "tmp_docs");
+    const outCsv = path.resolve(plannerRoot, "tmp_exports");
+    const res = await runNode("node", [distCli, "plan:emit", "--input", input, "--module", "Accesare", "--docDir", outDocs, "--outDir", outCsv]);
     expect(res.code).toBe(0);
-    expect(await fs.pathExists("tmp_exports/Accesare_Automation.csv")).toBe(true);
-    expect(await fs.pathExists("tmp_docs/Accesare_Automation.md")).toBe(true);
+    expect(await fs.pathExists(path.join(outCsv, "Accesare_Automation.csv"))).toBe(true);
+    expect(await fs.pathExists(path.join(outDocs, "Accesare_Automation.md"))).toBe(true);
   }, 30000);
 });
 

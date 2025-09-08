@@ -104,6 +104,7 @@ export async function verifyAndPrint(file: string, moduleName?: string, opts?: {
   console.log(rel);
   if (!res.issues.length) {
     console.log("  OK\n");
+    process.exitCode = 0;
     return 0;
   }
   const limit = typeof opts?.limit === "number" ? Math.max(1, opts!.limit!) : 50;
@@ -115,6 +116,7 @@ export async function verifyAndPrint(file: string, moduleName?: string, opts?: {
     shown++;
   }
   console.log("");
+  process.exitCode = 1;
   return res.issues.length ? 1 : 0;
 }
 
