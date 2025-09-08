@@ -47,8 +47,14 @@ def main() -> int:
     # Prevent auto file logging to project root by disabling auto-setup
     os.environ["TESTING"] = "true"
 
-    from src.infrastructure.monitoring.logger import get_logger, setup_logging
-    from src.shared.config.environment import load_config
+    try:
+        from src.infrastructure.monitoring.logger import get_logger, setup_logging
+        from src.shared.config.environment import load_config
+    except ModuleNotFoundError:
+        # Fallback import path when 'src' package name is not recognized but its
+        # contents are available directly on sys.path (namespace/package variance)
+        from infrastructure.monitoring.logger import get_logger, setup_logging  # type: ignore
+        from shared.config.environment import load_config  # type: ignore
 
     # Setup root logging and also explicitly setup the environment module logger
     setup_logging(level="INFO", console_output=True, file_output=False)
