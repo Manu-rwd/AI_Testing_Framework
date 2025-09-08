@@ -12,7 +12,7 @@ async function writeCsv(tmpDir: string, name: string, lines: string[]): Promise<
   return p;
 }
 
-const plannerRoot = path.resolve(__dirname, "..");
+const plannerRoot = path.resolve(__dirname, "../..");
 const distCli = path.resolve(plannerRoot, "dist/cli/index.js");
 
 describe("plan:review CLI e2e", () => {

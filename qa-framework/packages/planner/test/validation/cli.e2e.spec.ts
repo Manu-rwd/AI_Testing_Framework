@@ -52,7 +52,7 @@ describe("plan:validate CLI", () => {
     const good = await writeGoodCsv();
     const bad = await writeBadCsv();
 
-    const distCli = path.resolve(__dirname, "../dist/cli/index.js");
+    const distCli = path.resolve(__dirname, "../../dist/cli/index.js");
     // good (should exit 0)
     await execa("node", [distCli, "plan:validate", "--input", good, "--module", "Accesare"]);
 

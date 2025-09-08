@@ -30,8 +30,8 @@ export async function main() {
   const moduleName = String(args.module || "");
   const csvOnly = Boolean(args["csv-only"]);
   const mdOnly = Boolean(args["md-only"]);
-  const outDir = String(args.outDir || "qa-framework/exports");
-  const docDir = String(args.docDir || "qa-framework/docs/modules");
+  const outDir = String(args.outDir || "tmp_exports");
+  const docDir = String(args.docDir || "tmp_docs");
 
   if (!input) {
     console.error("Usage: plan:emit --input <path> --module <name> [--outDir <path>] [--docDir <path>] [--csv-only|--md-only]");
