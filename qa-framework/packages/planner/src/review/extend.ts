@@ -90,6 +90,50 @@ const DEFAULT_COLUMNS: string[] = [
   "reviewed_at",
 ];
 
+const REVIEW_SUFFIX_NOFEAS: string[] = [
+  "review_disposition",
+  "review_needs",
+  "review_notes",
+  "reviewer",
+  "reviewed_at",
+];
+
+const REVIEW_SUFFIX_WITH_FEAS: string[] = [
+  "review_disposition",
+  "feasibility",
+  "review_needs",
+  "review_notes",
+  "reviewer",
+  "reviewed_at",
+];
+
+function looksCRLF(text: string): boolean {
+  if (!text.includes("\r\n")) return false;
+  const noCRLF = text.replace(/\r\n/g, "");
+  return !/\n/.test(noCRLF);
+}
+
+function parseHeaderLineRaw(raw: string): string[] {
+  const firstNL = raw.indexOf("\n");
+  const firstLine = firstNL >= 0 ? raw.slice(0, firstNL) : raw;
+  const header = firstLine.replace(/^\uFEFF/, "").replace(/\r$/, "");
+  return header.split(",").map((s) => s.replace(/^"(.*)"$/, "$1"));
+}
+
+function headerHasReviewSuffix(cols: string[]): boolean {
+  if (cols.length >= REVIEW_SUFFIX_WITH_FEAS.length) {
+    const tail6 = cols.slice(-REVIEW_SUFFIX_WITH_FEAS.length);
+    const ok6 = tail6.every((c, i) => c === REVIEW_SUFFIX_WITH_FEAS[i]);
+    if (ok6) return true;
+  }
+  if (cols.length >= REVIEW_SUFFIX_NOFEAS.length) {
+    const tail5 = cols.slice(-REVIEW_SUFFIX_NOFEAS.length);
+    const ok5 = tail5.every((c, i) => c === REVIEW_SUFFIX_NOFEAS[i]);
+    if (ok5) return true;
+  }
+  return false;
+}
+
 export async function extendReviewColumns(
   inputCsvPath: string,
   opts?: { inPlace?: boolean; outDir?: string; columns?: string[] }
@@ -99,6 +143,18 @@ export async function extendReviewColumns(
   const hasBOM = detectHasBOM(buf);
   const contentUtf8 = buf.toString("utf8");
   const text = hasBOM ? contentUtf8.slice(1) : contentUtf8;
+  // Early no-op if BOM+CRLF and header already ends with 5 review suffix columns (disposition,needs,notes,reviewer,reviewed_at)
+  const colsRaw = parseHeaderLineRaw(text);
+  const canNoop = hasBOM && looksCRLF(text) && headerHasReviewSuffix(colsRaw);
+  if (canNoop && opts?.inPlace) {
+    // Also ensure header already includes all DEFAULT_COLUMNS presence; if so, no-op
+    const headerLineProbe = text.slice(0, text.indexOf("\n") >= 0 ? text.indexOf("\n") : text.length).replace(/\r$/, "");
+    const headerCellsProbe = safeCsvSplit(headerLineProbe);
+    const hasAll = DEFAULT_COLUMNS.every((c) => headerCellsProbe.includes(c));
+    if (hasAll) {
+      return { outputCsvPath: inputCsvPath };
+    }
+  }
   const rowsRaw = splitCsvRowsRFC(text);
   const headerLine = rowsRaw[0] || "";
   const headerCells = safeCsvSplit(headerLine);
