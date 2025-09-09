@@ -1,6 +1,6 @@
 # Accesare: Plan de automatizare
 
-_Generat la 2025-09-08T12:22:36.104Z_
+_Generat la 2025-09-09T07:15:53.024Z_
 
 | tipFunctionalitate | bucket | feasibility | source | confidence | rule_tags |
 |---|---|---|---|---:|---|
@@ -8,58 +8,41 @@ _Generat la 2025-09-08T12:22:36.104Z_
 | Adaugare | Form | B | project | 0.9 | forms |
 
 ---
-## 1. Login — Adaugare
-**Narațiune (RO):** A narrative, with comma
-**Selector needs:** needs-ids, roles | **Strategy:** data-testid-preferred
-**Data profile:** {required:[user,pass]}
-**Feasibility:** A | **Source:** US | **Confidence:** 0.735
-**Tags:** auth, happy
-**Notes:** Line1
+## 1. Login — A narrative, with comma
+**Fezabilitate:** A 🟢
+
+**Narațiune:** A narrative, with comma
+### Arrange
+- Open app
+
+### Act
+- Click "Login"
+
+### Assert
+- He said: "quote"
+**Selecție UI (strategie):**  (sursă: ; încredere: )
+**Profil date:** minimal_valid=; edge_cases=[] (sursă: ; încredere: )
+**Proveniență & Încredere rând:** US · 0.73
+**Etichete reguli:** `auth`, `happy`
+**Note:** Line1
 Line2
 
-<details><summary>AAA atoms</summary>
-
-```json
-{
-  "setup": [
-    "Open app"
-  ],
-  "action": [
-    "Click \"Login\""
-  ],
-  "assert": [
-    "He said: \"quote\""
-  ]
-}
-```
-
-</details>
-
 ---
-## 2. Form — Adaugare
-**Narațiune (RO):** Fill form and submit
-**Selector needs:** labels | **Strategy:** role
-**Data profile:** {required:[nume],generators:{nume:faker.name}}
-**Feasibility:** B | **Source:** project | **Confidence:** 0.9
-**Tags:** forms
-**Notes:** 
+## 2. Form — Fill form and submit
+**Fezabilitate:** B 🟡
 
-<details><summary>AAA atoms</summary>
+**Narațiune:** Fill form and submit
+### Arrange
+- Navigate to form
 
-```json
-{
-  "setup": [
-    "Navigate to form"
-  ],
-  "action": [
-    "Type data",
-    "Submit"
-  ],
-  "assert": [
-    "See success"
-  ]
-}
-```
+### Act
+- Type data
+- Submit
 
-</details>
+### Assert
+- See success
+**Selecție UI (strategie):**  (sursă: ; încredere: )
+**Profil date:** minimal_valid=; edge_cases=[] (sursă: ; încredere: )
+**Proveniență & Încredere rând:** project · 0.90
+**Etichete reguli:** `forms`
 

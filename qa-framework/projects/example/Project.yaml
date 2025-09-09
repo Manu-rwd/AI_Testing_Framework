@@ -1,0 +1,9 @@
+selector_strategy_preference:
+  allow_text_selectors: false
+  allow_nth_child: false
+  prefer_role_over_label: true
+use_project_fallbacks: true
+annotate_source: true
+buckets_mode: strict
+
+
