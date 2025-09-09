@@ -60,7 +60,7 @@ describe("review CLI e2e", () => {
     const tmpCsv = path.join(tmpDir, "automation.sample.csv");
     await fs.copyFile(fixture, tmpCsv);
 
-    const cli = path.join(cwd, "packages", "planner", "dist", "cli", "index.js");
+    const cli = path.join(cwd, "dist", "cli", "index.js");
     const res1 = await runNode(cli, ["plan:review:init", "--input", tmpCsv, "--outDir", tmpDir], cwd);
     expect(res1.code).toBe(0);
     const reviewCsv = path.join(tmpDir, "automation.sample.review.csv");

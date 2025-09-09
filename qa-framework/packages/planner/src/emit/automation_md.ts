@@ -24,7 +24,10 @@ export function automationPlanToMarkdown(moduleName: string, rows: PlanRow[]): s
     return `| ${r.tipFunctionalitate ?? ""} | ${r.bucket ?? ""} | ${r.feasibility ?? ""} | ${r.source ?? ""} | ${conf} | ${tags} |`;
   }).join("\n");
   const sections = (rows || []).map((r, i) => {
-    const atoms = r.atoms ?? { setup: [], action: [], assert: [] };
+    const atomsRaw: any = (r as any).atoms;
+    const atomsObj: { setup: string[]; action: string[]; assert: string[] } = Array.isArray(atomsRaw)
+      ? { setup: atomsRaw[0] ?? [], action: atomsRaw[1] ?? [], assert: atomsRaw[2] ?? [] }
+      : (atomsRaw ?? { setup: [], action: [], assert: [] });
     const feasBadge = badgeFor(r.feasibility ?? "");
     const primary = (r as any)["selector_strategy.primary"] ?? "";
     const fallbacks = (r as any)["selector_strategy.fallbacks"] ?? "";
@@ -36,16 +39,16 @@ export function automationPlanToMarkdown(moduleName: string, rows: PlanRow[]): s
     const dpConf = (r as any)["data_profile.confidence"] ?? "";
     const aaaBullets = [
       "### Arrange",
-      ...(atoms.setup || []).map((s: string) => `- ${s}`),
+      ...(atomsObj.setup || []).map((s: string) => `- ${s}`),
       "",
       "### Act",
-      ...(atoms.action || []).map((s: string) => `- ${s}`),
+      ...(atomsObj.action || []).map((s: string) => `- ${s}`),
       "",
       "### Assert",
-      ...(atoms.assert || []).map((s: string) => `- ${s}`),
+      ...(atomsObj.assert || []).map((s: string) => `- ${s}`),
       "",
       "```json",
-      JSON.stringify(atoms, null, 2),
+      JSON.stringify(atomsObj, null, 2),
       "```",
     ].join("\n");
     return [
