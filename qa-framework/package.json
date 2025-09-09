@@ -16,6 +16,7 @@
     "planner:run": "pnpm --filter @pkg/planner start",
     "planner:precheck": "pnpm --filter @pkg/planner start -- --review-precheck",
     "us:review": "tsx packages/planner/src/us-review/cli.ts",
+    "review:extend": "pnpm --filter @pkg/planner review:extend",
     "review:extend:accesare": "tsx packages/tools/review/extend_csv.ts ./exports/Accesare.csv",
     "build": "pnpm -r --filter ./packages/** run build",
     "dev": "pnpm -r --filter ./packages/** run dev",
