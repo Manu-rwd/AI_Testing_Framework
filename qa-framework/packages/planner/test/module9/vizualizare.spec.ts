@@ -27,7 +27,8 @@ function csvSplit(line: string): string[] {
 }
 
 describe("Module 9: Vizualizare review flow", () => {
-  const plannerDir = path.resolve(process.cwd());
+  // Run from planner package dir to avoid Windows cwd issues
+  const plannerDir = path.resolve(__dirname, "..", "..");
   const workspaceRoot = path.join(plannerDir, "..", "..");
   const tsxRunner = path.join(workspaceRoot, "node_modules", "tsx", "dist", "cli.mjs");
   const extendSrc = path.join(workspaceRoot, "packages", "planner", "src", "review", "extend_csv.ts");
