@@ -49,10 +49,11 @@ function runNode(cmd: string, args: string[], cwd: string): Promise<{ stdout: st
 }
 
 describe("review CLI e2e", () => {
-  const cwd = process.cwd();
+  // Ensure paths resolve from the planner package directory, not the workspace root
+  const plannerDir = path.resolve(__dirname, "..", "..");
   const fixtureDir = path.join(__dirname, "fixtures");
   const fixture = path.join(fixtureDir, "automation.sample.csv");
-  const tmpDir = path.join(cwd, "tmp_review");
+  const tmpDir = path.join(plannerDir, "tmp_review");
 
   it("runs plan:review:init and plan:review:summary", async () => {
     await fs.remove(tmpDir);
@@ -60,8 +61,8 @@ describe("review CLI e2e", () => {
     const tmpCsv = path.join(tmpDir, "automation.sample.csv");
     await fs.copyFile(fixture, tmpCsv);
 
-    const cli = path.join(cwd, "dist", "cli", "index.js");
-    const res1 = await runNode(cli, ["plan:review:init", "--input", tmpCsv, "--outDir", tmpDir], cwd);
+    const cli = path.join(plannerDir, "dist", "cli", "index.js");
+    const res1 = await runNode(cli, ["plan:review:init", "--input", tmpCsv, "--outDir", tmpDir], plannerDir);
     expect(res1.code).toBe(0);
     const reviewCsv = path.join(tmpDir, "automation.sample.review.csv");
     const outBuf1 = await fs.readFile(reviewCsv);
@@ -87,7 +88,7 @@ describe("review CLI e2e", () => {
     expect(cols1.slice(-expectedSuffix.length)).toEqual(expectedSuffix);
 
     const mdOut = path.join(tmpDir, "Accesare_Review_Summary.md");
-    const res2 = await runNode(cli, ["plan:review:summary", "--input", reviewCsv, "--module", "Accesare", "--out", mdOut], cwd);
+    const res2 = await runNode(cli, ["plan:review:summary", "--input", reviewCsv, "--module", "Accesare", "--out", mdOut], plannerDir);
     expect(res2.code).toBe(0);
     const md = await fs.readFile(mdOut, "utf8");
     expect(md.includes("# Review Summary: Accesare")).toBe(true);

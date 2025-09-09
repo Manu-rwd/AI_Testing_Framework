@@ -14,8 +14,10 @@ coverage/
 
 # Workspace-level temps
 qa-framework/tmp_*/
-qa-framework/exports/
-qa-framework/docs/
+# Keep exports and docs tracked, ignore only transient build artifacts if needed
+# qa-framework/exports/
+# qa-framework/docs/
+qa-framework/docs/**/dist/
 
 # Planner package temps
 qa-framework/packages/planner/tmp_*/
