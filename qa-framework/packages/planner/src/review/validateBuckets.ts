@@ -43,6 +43,7 @@ function uniq<T>(arr: T[]): T[] { return Array.from(new Set(arr)); }
 export async function validateBucketsStrict(args: {
   csvPath: string;
   usPath: string;
+  failEmptyBuckets?: boolean;
 }): Promise<{ ok: true; total: number; uniqueBuckets: string[] } | { ok: false; message: string }> {
   const csvBuf = await fs.readFile(args.csvPath);
   const txtAll = csvBuf.toString("utf8");
@@ -61,11 +62,16 @@ export async function validateBucketsStrict(args: {
   if (allowed.length === 0) return { ok: false, message: `US nu conține lista 'buckets'` };
 
   const violations: { row: number; bucket: string }[] = [];
+  const emptyRows: number[] = [];
   const seen: string[] = [];
   for (let i = 0; i < rows.length; i++) {
-    const bucket = rows[i]?.[bucketIdx] ?? "";
+    const bucket = (rows[i]?.[bucketIdx] ?? "").trim();
     if (bucket) seen.push(bucket);
+    else emptyRows.push(i + 2);
     if (bucket && !allowed.includes(bucket)) violations.push({ row: i + 2, bucket }); // +2 for 1-based and header
+  }
+  if (args.failEmptyBuckets !== false && emptyRows.length > 0) {
+    return { ok: false, message: `Bucket gol pe rândurile: ${emptyRows.join(", ")}` };
   }
   if (violations.length > 0) {
     const lines = [

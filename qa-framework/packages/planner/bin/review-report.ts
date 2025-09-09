@@ -28,8 +28,9 @@ async function main() {
     const usPref = path.resolve(process.cwd(), "docs/us/US_Normalized.yaml");
     const usFallback = path.resolve(process.cwd(), "exports/US_Normalized.yaml");
     const useUs = usPref;
-    const res = await validateBucketsStrict({ csvPath: csv, usPath: useUs });
+    const res = await validateBucketsStrict({ csvPath: csv, usPath: useUs, failEmptyBuckets: true });
     validateSummary = (res as any).ok ? "Verified" : "Eșec";
+    console.log(`US folosit din: ${useUs}`);
   } catch {
     validateSummary = undefined;
   }
