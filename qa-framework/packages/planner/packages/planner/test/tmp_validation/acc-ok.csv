@@ -1,0 +1,4 @@
+module,tipFunctionalitate,bucket,narrative_ro,atoms.setup,atoms.action,atoms.assert,oracle_kind,selector_strategy,selector_needs,data_profile.required,feasibility,source,confidence,rule_tags,notes
+Accesare,Adaugare,BUCKET_A,"nara 1",s1,a1,as1,oracle1,,selA|selB,,B,us,0.9,tag1,
+Accesare,Adaugare,BUCKET_B,"nara 2",s2,a2,as2,oracle1,,selC,,C,us,0.8,tag2,
+Accesare,Adaugare,BUCKET_A,"nara 3",s3,a3,as3,oracle1,,selD,,A,us,0.7,tag3,
