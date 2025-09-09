@@ -1,5 +1,7 @@
 # Modul Review — Accesare (Vizualizare)
 
+> Înapoi la [Accesare — Index](Accesare.md)
+
 ## Status & Scope
 
 Status: Approved
