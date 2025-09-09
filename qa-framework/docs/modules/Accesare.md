@@ -1,4 +1,35 @@
-# Accesare — Plan normalizat (Tip: Adaugare)
+# Accesare (Adăugare)
+
+Status: Approved
+
+## Review Cheatsheet
+
+```powershell
+# 1) Extend CSV with review fields (idempotent)
+pnpm -s planner:review:extend -- --in exports/Accesare.csv
+
+# 2) Open CSV for QA review
+Start-Process exports/Accesare.csv
+
+# 3) Validate strict bucket compliance
+pnpm -s planner:review:validate:accese
+
+# 4) Append changelog entry + status
+pnpm -s planner:review:report:accese
+```
+
+## Changelog
+
+- Data: 09.09.2025, 13:38
+
+### Distribuție Dispoziții
+- (gol): 11
+
+### Distribuție Fezabilitate
+- (gol): 11
+
+- Conformitate bucket: Verified
+
 
 *Total cazuri:* 11
 
