@@ -10,9 +10,9 @@ export function pickWithProvenance<T>(
   return { value: defaultVal, source: "defaults" };
 }
 
-export function bumpConfidence(base: number, usedProject: boolean): number {
-  // Bump +0.1 if project filled a gap; cap at 1.0
-  const inc = usedProject ? 0.1 : 0;
+export function bumpConfidence(base: number, usedFallback: boolean): number {
+  // Bump +0.05 when project/defaults filled a gap; cap at 1.0
+  const inc = usedFallback ? 0.05 : 0;
   return Math.min(1, base + inc);
 }
 
