@@ -1,0 +1,12 @@
+priority: [data-testid, role, aria, label, placeholder, id, name, text, css]
+role_name_overrides:
+  button_submit: { role: button, name: "(Salvare|Adaugă|Trimite)" }
+  link_back: { role: link, name: "(Înapoi|Anulează)" }
+stable_attributes:
+  - id
+  - name
+disallow:
+  - "[class*=ant-]"
+  - "[class*=Mui-]"
+
+
