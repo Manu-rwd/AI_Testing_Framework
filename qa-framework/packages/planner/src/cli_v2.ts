@@ -97,20 +97,18 @@ async function main() {
     console.log(JSON.stringify(plan, null, 2));
   } else {
     console.log(`[ok] Planner v2 emitted ${plan.rows.length} row(s). Overall confidence: ${plan.overall_confidence.toFixed(2)}`);
-    // Emit Automation plan alongside v2 outputs when any out paths are provided
-    if (flags["out-csv"] || flags["out-md"]) {
-      const moduleName = type;
-      const automationRows = buildAutomationPlanRows({ plan, moduleName, projectPath });
-      const csvBuf = automationPlanToCsvBuffer(automationRows as any);
-      const mdTxt = automationPlanToMarkdown(moduleName, automationRows as any);
-      const destCsv = path.resolve(process.cwd(), `exports/${moduleName}_Automation.csv`);
-      const destMd = path.resolve(process.cwd(), `docs/modules/${moduleName}_Automation.md`);
-      await fs.ensureDir(path.dirname(destCsv));
-      await fs.ensureDir(path.dirname(destMd));
-      await fs.writeFile(destCsv, csvBuf);
-      await fs.writeFile(destMd, mdTxt, { encoding: "utf8" });
-      console.log(`[ok] Automation plan emitted → ${destCsv}; ${destMd}`);
-    }
+    // Always emit Automation plan artifacts
+    const moduleName = type;
+    const automationRows = buildAutomationPlanRows({ plan, moduleName, projectPath });
+    const csvBuf = automationPlanToCsvBuffer(automationRows as any);
+    const mdTxt = automationPlanToMarkdown(moduleName, automationRows as any);
+    const destCsv = path.resolve(process.cwd(), `exports/${moduleName}_Automation.csv`);
+    const destMd = path.resolve(process.cwd(), `docs/modules/${moduleName}_Automation.md`);
+    await fs.ensureDir(path.dirname(destCsv));
+    await fs.ensureDir(path.dirname(destMd));
+    await fs.writeFile(destCsv, csvBuf);
+    await fs.writeFile(destMd, mdTxt, { encoding: "utf8" });
+    console.log(`[ok] Automation plan emitted → ${destCsv}; ${destMd}`);
   }
 }
 

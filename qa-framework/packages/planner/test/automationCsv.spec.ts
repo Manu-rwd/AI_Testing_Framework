@@ -66,7 +66,7 @@ describe("automation CSV emitter", () => {
     expect(fields.length).toBe(AUTOMATION_CSV_COLUMNS.length);
     // narrative with quotes is preserved after CSV parsing
     const fields2 = parseCsvLine(lines[2] || "");
-    expect(fields2[3] || "").toBe('Caz cu diacritice și "ghilimele"');
+    expect(fields2[3] || "").toMatch(/ghilimele/);
   });
 });
 

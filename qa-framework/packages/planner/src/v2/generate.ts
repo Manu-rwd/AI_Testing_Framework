@@ -8,6 +8,8 @@ import { buildAAA } from "./aaa";
 import { pickWithProvenance, bumpConfidence } from "./../v2/provenance";
 import { assessFeasibility } from "./feasibility";
 import { emitCSV, emitMarkdown } from "./emit";
+import { resolveSelectorStrategy } from "../selectors/selectorResolver";
+import { resolveDataProfile } from "../dataProfiles/dataProfileResolver";
 
 type GenerateArgs = {
   type: string;
@@ -122,6 +124,15 @@ export async function generatePlanV2(args: GenerateArgs): Promise<PlanV2> {
       rule_tags: rules.rule_tags ?? [],
       notes: undefined,
     };
+
+    // Apply Module 6 resolvers for Accesare flows (Adaugare/Vizualizare)
+    if (type === "Adaugare" || type === "Vizualizare") {
+      const sel = resolveSelectorStrategy({ narrative_ro }, projectPath);
+      const dp = resolveDataProfile({ narrative_ro, data_profile: row.data_profile as any }, projectPath);
+      (row as any).selector_strategy = sel.selector_strategy;
+      (row as any).selectors = sel.selectors;
+      (row as any).data_profile = dp as any;
+    }
 
     const feas = assessFeasibility(row, rules);
     row.feasibility = feas.tier;

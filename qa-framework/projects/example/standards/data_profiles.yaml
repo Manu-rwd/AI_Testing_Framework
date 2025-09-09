@@ -1,0 +1,46 @@
+fields:
+  nume:
+    minimal_valid: "A"
+    invalid_regex: ["^\\s+$"]
+    edge_cases:
+      - { name: empty, value: "" }
+      - { name: whitespace, value: " " }
+      - { name: unicode, value: "Ăîșțâ" }
+    generators: ["faker.person.firstName"]
+  email:
+    minimal_valid: "a@b.ro"
+    invalid_regex: ["^.+@.+$", "\\s", "@@"]
+    edge_cases:
+      - { name: missing_tld, value: "x@y" }
+      - { name: plus_alias, value: "qa+test@exemplu.ro" }
+      - { name: unicode_local, value: "îșț@exemplu.ro" }
+    generators: ["faker.internet.email"]
+  telefon:
+    minimal_valid: "0712345678"
+    invalid_regex: ["[^0-9]"]
+    edge_cases:
+      - { name: too_short, value: "07123" }
+      - { name: too_long, value: "071234567890" }
+  cnp:
+    minimal_valid: "1800101221144"
+    invalid_regex: ["[^0-9]", "^[0-9]{1,12}$", "^[0-9]{14,}$"]
+    edge_cases:
+      - { name: all_same_digits, value: "1111111111111" }
+  iban:
+    minimal_valid: "RO49AAAA1B31007593840000"
+    invalid_regex: ["[^A-Z0-9]"]
+    edge_cases:
+      - { name: lowercase, value: "ro49aaaa1b31007593840000" }
+defaults:
+  minimal_valid_by_type:
+    string: "a"
+    integer: "1"
+    date: "2024-01-01"
+  invalid_regex_common:
+    - "^$"
+    - "^\\s+$"
+  edge_cases_common:
+    - { name: sql_like, value: "' OR 1=1 --" }
+    - { name: xss_like, value: "<script>alert(1)</script>" }
+
+
