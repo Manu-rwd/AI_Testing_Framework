@@ -48,7 +48,7 @@ export function buildAutomationPlanRows(args: AutomationPipelineArgs): Automatio
       source: mapSource(r.source),
       confidence: Math.min(1, Math.max(0, Number((r.confidence ?? 0).toFixed(2)) || 0)),
       rule_tags: r.rule_tags || [],
-      notes: feas.rationale,
+      notes: [feas.rationale].filter(Boolean).join(""),
     };
     out.push(row);
   }

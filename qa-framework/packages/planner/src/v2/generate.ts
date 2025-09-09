@@ -97,7 +97,7 @@ export async function generatePlanV2(args: GenerateArgs): Promise<PlanV2> {
     // Provenance examples for fields/messages (US > Project > Defaults)
     const pFields = pickWithProvenance(us?.fields, project?.fields, []);
     const pMessages = pickWithProvenance(us?.messages, project?.messages, {});
-    const usedProject = pFields.source === "project" || pMessages.source === "project";
+    const usedFallback = pFields.source !== "us" || pMessages.source !== "us";
 
     const baseConfidence: number =
       typeof us?.confidence?.overall === "number" ? us.confidence.overall : rules.min_confidence ?? 0.6;
@@ -118,7 +118,7 @@ export async function generatePlanV2(args: GenerateArgs): Promise<PlanV2> {
         fields: { all: pFields.source },
         messages: { all: pMessages.source },
       },
-      confidence: bumpConfidence(baseConfidence, applyProjectFallbacks && usedProject),
+      confidence: bumpConfidence(baseConfidence, applyProjectFallbacks && usedFallback),
       rule_tags: rules.rule_tags ?? [],
       notes: undefined,
     };
