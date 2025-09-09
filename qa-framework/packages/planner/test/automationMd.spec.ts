@@ -24,7 +24,7 @@ describe("automation MD emitter", () => {
     const md = automationPlanToMarkdown("Adăugare", rows as any);
     expect(md).toContain("# Adăugare: Plan de automatizare");
     expect(md).toContain("## 1. General — Utilizatorul adaugă un element.");
-    expect(md).toContain("Fezabilitate: A 🟢");
+    expect(md).toContain("**Fezabilitate:** A 🟢");
     expect(md).toContain("### Arrange");
     expect(md).toContain("### Act");
     expect(md).toContain("### Assert");

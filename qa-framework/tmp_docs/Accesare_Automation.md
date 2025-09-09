@@ -1,6 +1,6 @@
 # Accesare: Plan de automatizare
 
-_Generat la 2025-09-09T07:15:53.024Z_
+_Generat la 2025-09-09T09:52:24.442Z_
 
 | tipFunctionalitate | bucket | feasibility | source | confidence | rule_tags |
 |---|---|---|---|---:|---|
@@ -10,6 +10,7 @@ _Generat la 2025-09-09T07:15:53.024Z_
 ---
 ## 1. Login — A narrative, with comma
 **Fezabilitate:** A 🟢
+Fezabilitate: A 🟢
 
 **Narațiune:** A narrative, with comma
 ### Arrange
@@ -20,7 +21,20 @@ _Generat la 2025-09-09T07:15:53.024Z_
 
 ### Assert
 - He said: "quote"
-**Selecție UI (strategie):**  (sursă: ; încredere: )
+
+```json
+{
+  "setup": [
+    "Open app"
+  ],
+  "action": [
+    "Click \"Login\""
+  ],
+  "assert": [
+    "He said: \"quote\""
+  ]
+}
+```**Selecție UI (strategie):**  (sursă: ; încredere: )
 **Profil date:** minimal_valid=; edge_cases=[] (sursă: ; încredere: )
 **Proveniență & Încredere rând:** US · 0.73
 **Etichete reguli:** `auth`, `happy`
@@ -30,6 +44,7 @@ Line2
 ---
 ## 2. Form — Fill form and submit
 **Fezabilitate:** B 🟡
+Fezabilitate: B 🟡
 
 **Narațiune:** Fill form and submit
 ### Arrange
@@ -41,7 +56,21 @@ Line2
 
 ### Assert
 - See success
-**Selecție UI (strategie):**  (sursă: ; încredere: )
+
+```json
+{
+  "setup": [
+    "Navigate to form"
+  ],
+  "action": [
+    "Type data",
+    "Submit"
+  ],
+  "assert": [
+    "See success"
+  ]
+}
+```**Selecție UI (strategie):**  (sursă: ; încredere: )
 **Profil date:** minimal_valid=; edge_cases=[] (sursă: ; încredere: )
 **Proveniență & Încredere rând:** project · 0.90
 **Etichete reguli:** `forms`
