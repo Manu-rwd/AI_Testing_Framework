@@ -58,11 +58,14 @@ export async function generatePlanV2(args: GenerateArgs): Promise<PlanV2> {
 
   // buckets policy
   const effectiveBuckets = (() => {
-    const usBuckets: string[] = Array.isArray(us?.buckets) ? us.buckets : [];
-    if ((buckets ?? rules.buckets_policy) === "strict") return usBuckets.length ? usBuckets : ["General"];
+    const usBucketsRaw: any[] = Array.isArray(us?.buckets) ? us.buckets : [];
+    const usBucketNames: string[] = usBucketsRaw
+      .map((b) => (typeof b === "string" ? b : (b && typeof b.name === "string" ? b.name : undefined)))
+      .filter((v: any): v is string => Boolean(v));
+    if ((buckets ?? rules.buckets_policy) === "strict") return usBucketNames.length ? usBucketNames : ["General"];
     // lax: try to extend with project coverage if present
     const projBuckets: string[] = Array.isArray(project?.coverage?.buckets) ? project.coverage.buckets : [];
-    const merged = new Set<string>([...usBuckets, ...projBuckets]);
+    const merged = new Set<string>([...usBucketNames, ...projBuckets]);
     return merged.size ? Array.from(merged) : ["General"];
   })();
 
