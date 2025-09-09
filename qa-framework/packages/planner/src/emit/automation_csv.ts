@@ -28,7 +28,7 @@ function toCompactJSON(value: unknown): string {
 }
 
 function formatConfidence(n: number): string {
-  return (Math.round(n * 1000) / 1000).toString();
+  return Number.isFinite(n) ? n.toFixed(2) : "";
 }
 
 export function automationPlanToCsvBuffer(rows: PlanRow[]): Buffer {
