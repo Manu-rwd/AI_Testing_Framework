@@ -12,9 +12,15 @@ function lineify(row: PlanRowV2): string {
     row.atoms.assert.join(SEP_ATOMS),
   ];
 
-  const selector_strategy = row.selector_strategy.join(SEP_LIST);
+  const selector_strategy = Array.isArray(row.selector_strategy)
+    ? row.selector_strategy.join(SEP_LIST)
+    : typeof (row as any).selector_strategy?.primary === "string"
+      ? `${(row as any).selector_strategy.primary}|${((row as any).selector_strategy.fallbacks || []).join("|")}`
+      : "";
   const selector_needs = row.selector_needs.join(SEP_LIST);
-  const data_required = row.data_profile.required.join(SEP_LIST);
+  const data_required = (row as any).data_profile && Array.isArray((row as any).data_profile.required)
+    ? (row as any).data_profile.required.join(SEP_LIST)
+    : (row as any).data_profile?.minimal_valid ? String((row as any).data_profile.minimal_valid) : "";
   const rule_tags = row.rule_tags.join(SEP_LIST);
 
   const cols = [

@@ -26,6 +26,14 @@ export function automationPlanToMarkdown(moduleName: string, rows: PlanRow[]): s
   const sections = (rows || []).map((r, i) => {
     const atoms = r.atoms ?? { setup: [], action: [], assert: [] };
     const feasBadge = badgeFor(r.feasibility ?? "");
+    const primary = (r as any)["selector_strategy.primary"] ?? "";
+    const fallbacks = (r as any)["selector_strategy.fallbacks"] ?? "";
+    const sSource = (r as any)["selector_strategy.source"] ?? "";
+    const sConf = (r as any)["selector_strategy.confidence"] ?? "";
+    const dpMin = (r as any)["data_profile.minimal_valid"] ?? "";
+    const dpEdges = (r as any)["data_profile.edge_cases"] ?? "[]";
+    const dpSource = (r as any)["data_profile.source"] ?? "";
+    const dpConf = (r as any)["data_profile.confidence"] ?? "";
     const aaaBullets = [
       "### Arrange",
       ...(atoms.setup || []).map((s: string) => `- ${s}`),
@@ -36,15 +44,20 @@ export function automationPlanToMarkdown(moduleName: string, rows: PlanRow[]): s
       "### Assert",
       ...(atoms.assert || []).map((s: string) => `- ${s}`),
       "",
+      "```json",
+      JSON.stringify(atoms, null, 2),
+      "```",
     ].join("\n");
     return [
       `\n---\n`,
       `## ${i + 1}. ${r.bucket ?? "(fără bucket)"} — ${r.narrative_ro ?? ""}\n`,
       `**Fezabilitate:** ${feasBadge}\n`,
+      `Fezabilitate: ${feasBadge}\n`,
       `\n**Narațiune:** ${r.narrative_ro ?? ""}\n`,
       aaaBullets,
-      `**Selecție & Date:** ${r.selector_strategy ?? ""} · ${r.selector_needs ?? ""} · ${r.data_profile ?? ""}\n`,
-      `**Proveniență & Încredere:** ${r.source ?? ""} · ${(r.confidence ?? 0).toFixed(2)}\n`,
+      `**Selecție UI (strategie):** ${primary}${fallbacks ? `; fallback: ${fallbacks}` : ""} (sursă: ${sSource}; încredere: ${sConf})\n`,
+      `**Profil date:** minimal_valid=${dpMin}; edge_cases=${dpEdges} (sursă: ${dpSource}; încredere: ${dpConf})\n`,
+      `**Proveniență & Încredere rând:** ${r.source ?? ""} · ${(r.confidence ?? 0).toFixed(2)}\n`,
       (r.rule_tags?.length ? `**Etichete reguli:** ${(r.rule_tags || []).map(t => `\`${t}\``).join(", ")}\n` : ""),
       r.notes ? `**Note:** ${r.notes}\n` : "",
     ].join("");
