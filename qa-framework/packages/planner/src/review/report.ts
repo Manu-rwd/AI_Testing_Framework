@@ -1,4 +1,4 @@
-import fs from "fs-extra";
+import fsx from "fs-extra";
 import path from "node:path";
 
 type Hist = Record<string, number>;
@@ -43,7 +43,7 @@ function renderHistRO(title: string, h: Hist): string {
 }
 
 export async function buildMarkdownFragment(csvPath: string, validateSummary: string | undefined): Promise<string> {
-  const buf = await fs.readFile(csvPath);
+  const buf = await fsx.readFile(csvPath);
   const txtAll = buf.toString("utf8");
   const txt = txtAll.charCodeAt(0) === 0xfeff ? txtAll.slice(1) : txtAll;
   const { header, rows } = parseCsv(txt);
@@ -62,19 +62,125 @@ export async function buildMarkdownFragment(csvPath: string, validateSummary: st
   return out;
 }
 
+function formatDateYMD_Bucharest(d: Date): string {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Bucharest",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(d);
+  const get = (t: string) => String(parts.find(p => p.type === t)?.value || "");
+  return `${get("year")}-${get("month")}-${get("day")}`;
+}
+
+export async function upsertModuleDoc(
+  docPath: string,
+  moduleTitle: string,
+  fragment: string,
+  approved: boolean,
+  cheatsheetPowershell: string,
+  scopeLine: string
+): Promise<void> {
+  const exists = await fileExists(docPath);
+  const statusLine = `Status: ${approved ? "Approved" : "În curs"}`;
+  const today = formatDateYMD_Bucharest(new Date());
+  const changelogEntry = [
+    `### ${today}`,
+    "- Extindere CSV cu coloane de review (disposition, feasibility, selector_needs, parameter_needs, notes)",
+    "- Raport review actualizat pentru Vizualizare",
+    "- Status setat: Approved",
+    "",
+  ].join("\n");
+
+  if (!exists) {
+    const text = [
+      `# Modul Review — ${moduleTitle}`,
+      "",
+      "## Status & Scope",
+      "",
+      statusLine,
+      `Modul: ${moduleTitle}`,
+      `Sursă: ${scopeLine}`,
+      "",
+      "## Rezumat review",
+      "",
+      fragment.trim(),
+      "",
+      "## Observații & note",
+      "",
+      "- (nu sunt observații suplimentare)",
+      "",
+      "## Changelog",
+      "",
+      changelogEntry,
+      "## Cheatsheet CLI",
+      "",
+      "```powershell",
+      cheatsheetPowershell.trim(),
+      "```",
+      "",
+    ].join("\n");
+    await fsx.ensureDir(path.dirname(docPath));
+    await fsx.writeFile(docPath, text, { encoding: "utf8" });
+    return;
+  }
+
+  // Update existing
+  let text = await fsx.readFile(docPath, { encoding: "utf8" });
+  // Ensure title contains module title
+  if (!/^#\s+Modul Review/i.test(text)) {
+    text = `# Modul Review — ${moduleTitle}\n\n` + text;
+  }
+  // Status & Scope section and Status line
+  if (!/##\s+Status\s*&\s*Scope/i.test(text)) {
+    text = text + `\n\n## Status & Scope\n\n${statusLine}\nModul: ${moduleTitle}\nSursă: ${scopeLine}\n`;
+  }
+  text = text.replace(/Status:\s*(Approved|În curs)/i, statusLine);
+
+  // Rezumat review: ensure section exists, then prepend latest fragment at the top of that section
+  if (!/##\s+Rezumat review/i.test(text)) {
+    text = text + `\n\n## Rezumat review\n\n`;
+  }
+  text = text.replace(/(##\s+Rezumat review[\s\S]*?)(\n##\s+|\n$)/i, (_m, p1: string, p2: string) => {
+    const body = p1.endsWith("\n") ? p1 : p1 + "\n";
+    return body + "\n" + fragment.trim() + "\n" + (p2 || "\n");
+  });
+
+  // Observații & note
+  if (!/##\s+Observații\s*&\s*note/i.test(text)) {
+    text = text + `\n\n## Observații & note\n\n- (nu sunt observații suplimentare)\n`;
+  }
+
+  // Changelog: append new entry at top of changelog section
+  if (!/##\s+Changelog/i.test(text)) {
+    text = text + `\n\n## Changelog\n\n`;
+  }
+  // Deduplicate by date: insert only if today's header not already present
+  if (!new RegExp(`^###\\s+${today}\\b`, 'm').test(text)) {
+    text = text.replace(/(##\s+Changelog\s*\n)/i, `$1\n${changelogEntry}`);
+  }
+
+  // Cheatsheet CLI
+  if (!/##\s+Cheatsheet CLI/i.test(text)) {
+    text = text + `\n\n## Cheatsheet CLI\n\n\`\`\`powershell\n${cheatsheetPowershell.trim()}\n\`\`\`\n`;
+  }
+
+  await fsx.writeFile(docPath, text, { encoding: "utf8" });
+}
+
 async function fileExists(p: string): Promise<boolean> {
-  try { await fs.stat(p); return true; } catch { return false; }
+  try { await fsx.stat(p); return true; } catch { return false; }
 }
 
 export async function upsertAccesareDoc(docPath: string, fragment: string, statusApproved: boolean): Promise<void> {
   const exists = await fileExists(docPath);
   if (!exists) {
     const base = `# Accesare (Adăugare)\n\n## Status\n\nStatus: ${statusApproved ? "Approved" : "În curs"}\n\n## Changelog\n\n${fragment}`;
-    await fs.ensureDir(path.dirname(docPath));
-    await fs.writeFile(docPath, base, { encoding: "utf8" });
+    await fsx.ensureDir(path.dirname(docPath));
+    await fsx.writeFile(docPath, base, { encoding: "utf8" });
     return;
   }
-  const text = await fs.readFile(docPath, { encoding: "utf8" });
+  const text = await fsx.readFile(docPath, { encoding: "utf8" });
   const statusRx = /## Status[\s\S]*?(Status:\s*)(.*)/i;
   let next = text;
   if (statusRx.test(next)) {
@@ -91,11 +197,9 @@ export async function upsertAccesareDoc(docPath: string, fragment: string, statu
   } else {
     next = next + `\n\n## Changelog\n\n${fragment}`;
   }
-  await fs.writeFile(docPath, next, { encoding: "utf8" });
+  await fsx.writeFile(docPath, next, { encoding: "utf8" });
 }
-
-import * as path from "node:path";
-import * as fs from "node:fs/promises";
+// Keep using fsx across the file for consistent fs-extra helpers
 import { verifyFile } from "./verify.js";
 
 export async function generateReport(inputFile: string, moduleName: string, outPath?: string): Promise<{ outFile: string }> {
@@ -106,7 +210,7 @@ export async function generateReport(inputFile: string, moduleName: string, outP
   // Instead, quickly re-read and count dispositions without duplicating parsing logic too much
   // Keep CRLF and BOM concerns out; verifyFile already parsed rows count
 
-  const buf = await fs.readFile(inputFile);
+  const buf = await fsx.readFile(inputFile);
   const text = buf.toString("utf8");
   const content = text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
   const rows = content.split("\r\n");
@@ -127,7 +231,7 @@ export async function generateReport(inputFile: string, moduleName: string, outP
   const totalsIssues = result.issues.length;
   const totals = { files: 1, rows: result.totals.rows, issues: totalsIssues };
   const outFile = outPath ? path.resolve(outPath) : path.resolve(process.cwd(), "qa-framework/tmp_review", `${moduleName}_Review_Summary.md`);
-  await fs.mkdir(path.dirname(outFile), { recursive: true });
+  await fsx.mkdirp(path.dirname(outFile));
 
   const lines: string[] = [];
   lines.push(`# Review Summary: ${moduleName}`);
@@ -154,7 +258,7 @@ export async function generateReport(inputFile: string, moduleName: string, outP
     }
   }
 
-  await fs.writeFile(outFile, lines.join("\r\n"), "utf8");
+  await fsx.writeFile(outFile, lines.join("\r\n"), "utf8");
   console.log(`Totals: files=1 issues=${totalsIssues}`);
   console.log(`WROTE ${outFile}`);
   return { outFile };

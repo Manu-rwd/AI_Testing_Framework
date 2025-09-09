@@ -9,6 +9,9 @@
     "test": "vitest run",
     "planner:emit:manual": "tsx src/cli/manual.ts",
     "review:extend": "tsx src/review/extend_csv.ts",
+    "review:viz:extend": "tsx src/review/extend_csv.ts ../../exports/Vizualizare_Automation.csv --out ../../exports/Accesare_Vizualizare.csv",
+    "review:viz:report": "tsx bin/review-report-viz.ts --csv ../../exports/Accesare_Vizualizare.csv --md ../../docs/modules/Accesare_Vizualizare.md --approve",
+    "gen:viz": "pnpm -s -C ../../ planner:v2:vizualizare ; node -e \"const fs=require('fs');const p=require('path');const root=p.resolve(process.cwd(),'../../');const src=p.join(root,'exports','Vizualizare_Automation.csv');const dst=p.join(root,'exports','Accesare_Vizualizare.csv');if(fs.existsSync(src)){fs.copyFileSync(src,dst);console.log('generated',dst);}else{console.error('missing source',src);process.exit(1);}\"",
     "clean:tmp": "node -e \"const fs=require('fs/promises');const p=require('path');(async()=>{const del=async x=>{try{await fs.rm(x,{recursive:true,force:true})}catch{}};const R=p.resolve;await Promise.all([del(R('qa-framework/tmp_docs')),del(R('qa-framework/tmp_exports')),del(R('qa-framework/packages/planner/tmp_review')),del(R('qa-framework/packages/planner/test/tmp_review_cli')),del(R('qa-framework/packages/planner/test/tmp_review_tests')),del(R('qa-framework/packages/planner/test/tmp_validation'))]);})();\"",
     "test:automation-emitter": "vitest run packages/planner/test/automation-emitter --run",
     "test:selectors": "vitest run packages/planner/test/selector-data-profiles --run"
