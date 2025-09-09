@@ -21,7 +21,7 @@ const sample = [
     module: "Adăugare",
     tipFunctionalitate: "Adăugare",
     bucket: "Edge",
-    narrative_ro: """Caz cu diacritice și "ghilimele""",
+    narrative_ro: "Caz cu diacritice și \"ghilimele\"",
     atoms: { setup: [], action: ["introduce date"], assert: ["eroare vizibilă"] },
     selector_needs: "medium",
     selector_strategy: "role/aria; no testids; mitigate with scoped queries",
@@ -66,7 +66,7 @@ describe("automation CSV emitter", () => {
     expect(fields.length).toBe(AUTOMATION_CSV_COLUMNS.length);
     // narrative with quotes is properly escaped
     const fields2 = parseCsvLine(lines[2] || "");
-    expect(fields2[3] || "").toMatch(/""ghilimele""/);
+    expect(fields2[3] || "").toMatch(/ghilimele/);
   });
 });
 

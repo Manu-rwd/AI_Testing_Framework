@@ -2,7 +2,7 @@
 
 ## Rând 1: Verifică fluxul de adăugare în bucket-ul Tabel.
 
-**Fezabilitate:** B
+**Fezabilitate:** D
 
 **Bucket:** Tabel · **Oracle:** dom · **Sursă:** us · **Încredere rând:** 0.25 · **Etichete:** crud, create
 
@@ -16,7 +16,7 @@
 
 ## Rând 2: Verifică fluxul de adăugare în bucket-ul Formular.
 
-**Fezabilitate:** B
+**Fezabilitate:** D
 
 **Bucket:** Formular · **Oracle:** dom · **Sursă:** us · **Încredere rând:** 0.25 · **Etichete:** crud, create
 
