@@ -3,6 +3,7 @@ packages:
   - "packages/*"
   - "configs/*"
   - "data/*"
+  - "packages/uiux-converter"
 
 
 
