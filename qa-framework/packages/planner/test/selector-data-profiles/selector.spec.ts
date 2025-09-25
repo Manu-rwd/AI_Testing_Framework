@@ -4,7 +4,7 @@ import { describe, it, expect } from "vitest";
 import { rankSelectorKinds } from "../../src/selector/rankers.js";
 import { selectStrategy } from "../../src/selector/engine.js";
 
-const fixturesDir = path.join(process.cwd(), "packages/planner/test/selector-data-profiles/fixtures");
+const fixturesDir = path.join(process.cwd(), "test/selector-data-profiles/fixtures");
 
 describe("selector strategy", () => {
   it("disallows xpath per project policy", async () => {

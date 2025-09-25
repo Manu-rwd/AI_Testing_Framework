@@ -19,9 +19,9 @@ describe("CLI plan:enrich e2e", () => {
     const tmp = path.join(process.cwd(), "tmp_cli");
     await fs.emptyDir(tmp);
     const input = path.join(tmp, "plan.v2.sample.json");
-    await fs.copyFile(path.join(process.cwd(), "packages/planner/test/selector-data-profiles/fixtures/plan.v2.sample.json"), input);
+    await fs.copyFile(path.join(process.cwd(), "test/selector-data-profiles/fixtures/plan.v2.sample.json"), input);
 
-    const bin = path.join(process.cwd(), "packages/planner/dist/cli/index.js");
+    const bin = path.join(process.cwd(), "dist/cli/index.js");
     const project = path.join(process.cwd(), "projects/example");
     const outJson = path.join(tmp, "plan.enriched.json");
 

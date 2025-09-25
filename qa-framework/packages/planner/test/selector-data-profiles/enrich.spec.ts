@@ -3,7 +3,7 @@ import path from "node:path";
 import { describe, it, expect } from "vitest";
 import { enrichRows } from "../../src/v2/enrich.js";
 
-const fixtures = path.join(process.cwd(), "packages/planner/test/selector-data-profiles/fixtures");
+const fixtures = path.join(process.cwd(), "test/selector-data-profiles/fixtures");
 const planPath = path.join(fixtures, "plan.v2.sample.json");
 const exampleProject = path.join(process.cwd(), "projects/example");
 
