@@ -15,8 +15,7 @@ function runNode(args: string[], cwd: string): Promise<{ code: number; stdout: s
 }
 
 describe("review:extend CLI", () => {
-  // Ensure deterministic working dir for Windows: planner package directory
-  const plannerDir = path.resolve(__dirname, "..", "..");
+  const plannerDir = process.cwd();
   const workspaceRoot = path.join(plannerDir, "..", ".."); // qa-framework
   const src = path.join(workspaceRoot, "packages", "planner", "src", "review", "extend_csv.ts");
   const fixtures = path.join(workspaceRoot, "packages", "planner", "test", "_fixtures", "review_cli");
