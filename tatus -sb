@@ -1,0 +1,35 @@
+* [33m5f7f341[m[33m ([m[1;31morigin/feature/selector-data-profiles[m[33m, [m[1;32mfeature/selector-data-profiles[m[33m)[m feat(planner): selector strategy & data profiles enrichment with CLI and tests
+*   [33mc72e5b8[m Merge branch 'Module5'
+[32m|[m[33m\[m  
+[32m|[m * [33mb5a32d5[m[33m ([m[1;31morigin/Module5[m[33m)[m Merge branch 'feature/automation-emitter' into Module5
+[32m|[m[32m/[m[35m|[m 
+[32m|[m * [33m07c72ce[m feat(planner): Automation Plan Emitter (CSV+MD) with CLI and tests
+[32m|[m[32m/[m  
+* [33m16a0f92[m chore: editorconfig + git-scoped line-ending checks\n\n- Add .editorconfig (LF + final newline)\n- Tweak .gitattributes LF rules\n- Refactor check-lineendings.ts to use git paths and --since/--paths\n- Add scripts: check:lineendings, check:lineendings:changed
+*   [33m0059400[m merge: module4 into main (Manual Plan Emitter)
+[36m|[m[1;31m\[m  
+[36m|[m * [33ma3cb190[m feat(planner): deterministic manual emitter whitespace\n\n- Strict template spacing; control tags isolated; no trims.\n- Exactly one blank line after front-matter and between cases/sections.\n- Emitter enforces LF + single trailing newline.\n- Verifier LF-normalizes expected.\n\nChange doc: ADEF/framework/docs/changes/features/2025-09-04_manual_plan_emitter.md
+[36m|[m * [33mbe8ddaf[m chore: normalize LF line endings (repo-wide)
+[36m|[m * [33mb9a4102[m[33m ([m[1;31morigin/Module3[m[33m)[m feat(planner): Planner & Rules v2 — AAA atoms, selectors/data profiles, feasibility, provenance (opt-in v2)\n\nDocs: ADEF/framework/docs/changes/features/2025-09-04_planner_rules_v2.md
+[36m|[m[36m/[m  
+*   [33m9ecc76d[m Merge Module2 into main: US Review Agent & Normalization
+[1;32m|[m[1;33m\[m  
+[1;32m|[m *   [33m73f1bcf[m[33m ([m[1;31morigin/Module2[m[33m)[m Merge feature/us-review into Module2: resolve conflicts preferring feature/us-review
+[1;32m|[m [1;34m|[m[1;35m\[m  
+[1;32m|[m [1;34m|[m * [33m2bbd9e9[m chore: normalize EOL (auto LF updates)
+[1;32m|[m [1;34m|[m * [33me5777d0[m[33m ([m[1;31morigin/feature/us-review[m[33m)[m chore: normalize EOL via .gitattributes
+[1;32m|[m [1;34m|[m * [33ma9a84bc[m feat(planner): Module 2 — US Review Agent & Normalization (normalize+confidence+gaps+CLI+precheck)
+[1;32m|[m [1;34m|[m[1;32m/[m  
+[1;32m|[m[1;32m/[m[1;34m|[m   
+[1;32m|[m * [33m2e2f971[m feat(planner): Module 2 – US Review Agent & Normalization
+[1;32m|[m[1;32m/[m  
+* [33mf7e14de[m Revert "feat(planner): Module 2 — integrate Project Standards and add JSON/MD/CSV exports\n\nChange doc: ADEF/framework/docs/changes/features/2025-09-04_module2_planner_integration.md"
+* [33mfcf75cf[m Revert "chore(repo): add .gitattributes and planner shortcuts (planner:generate/apply)"
+* [33m0980304[m chore(repo): add .gitattributes and planner shortcuts (planner:generate/apply)
+* [33m582fb72[m feat(planner): Module 2 — integrate Project Standards and add JSON/MD/CSV exports\n\nChange doc: ADEF/framework/docs/changes/features/2025-09-04_module2_planner_integration.md
+* [33m67cd902[m[33m ([m[1;31morigin/Module1[m[33m)[m feat(project-standards): Module 1 — Project Standards Pack\n\nChange doc: ADEF/framework/docs/changes/features/2025-09-04_module1_project_standards.md
+* [33m7c1028e[m[33m ([m[1;31morigin/feature/planner-rules-adaugare[m[33m)[m chore(planner): pin csv libs and add review extension tool
+* [33m43c3429[m feat(planner): rules engine + starter flow for Adaugare; emit CSV/MD\n\nDocs: ADEF/framework/docs/changes/features/2025-09-03_planner_rules_adaugare.md
+* [33m36d2238[m[33m ([m[1;31morigin/feature/importer-acceseaza[m[33m)[m fix(importer): align step_hints to ‘Caz de testare’ cells, capture Bucket, write outputs at repo root
+* [33m990a183[m feat(importer): Accesare XLSX importer → normalized JSON/CSV/MD (Tip functionalitate)\n\nDocs: ADEF change entry added for importer
+* [33m8d3ba59[m fix(repo): track qa-framework as regular dir (remove submodule link)

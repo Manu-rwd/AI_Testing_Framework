@@ -141,7 +141,7 @@ export async function upsertModuleDoc(
   if (!/##\s+Rezumat review/i.test(text)) {
     text = text + `\n\n## Rezumat review\n\n`;
   }
-  text = text.replace(/(##\s+Rezumat review[\s\S]*?)(\n##\s+|\n$)/i, (_m, p1: string, p2: string) => {
+  text = text.replace(/(##\s+Rezumat review[\s\S]*?)(\n##\s+|\n$)/i, (_m: string, p1: string, p2: string) => {
     const body = p1.endsWith("\n") ? p1 : p1 + "\n";
     return body + "\n" + fragment.trim() + "\n" + (p2 || "\n");
   });
@@ -184,7 +184,7 @@ export async function upsertAccesareDoc(docPath: string, fragment: string, statu
   const statusRx = /## Status[\s\S]*?(Status:\s*)(.*)/i;
   let next = text;
   if (statusRx.test(next)) {
-    next = next.replace(statusRx, (_m, p1) => `${p1}${statusApproved ? "Approved" : "În curs"}`);
+    next = next.replace(statusRx, (_m: string, p1: string) => `${p1}${statusApproved ? "Approved" : "În curs"}`);
   } else {
     next = next + `\n\n## Status\n\nStatus: ${statusApproved ? "Approved" : "În curs"}`;
   }
