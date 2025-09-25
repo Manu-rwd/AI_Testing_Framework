@@ -20,6 +20,7 @@
     "planner:review:extend": "tsx packages/planner/bin/review-extend-csv.ts",
     "planner:review:validate:accese": "tsx packages/planner/bin/review-validate-buckets.ts --csv exports/Accesare.csv --us docs/us/US_Normalized.yaml --project ./projects/example --policy strict",
     "planner:review:report:accese": "tsx packages/planner/bin/review-report.ts --csv exports/Accesare.csv --out docs/modules/Accesare.md",
+    "mod9:viz": "pnpm -s --filter @pkg/planner review:viz:extend ; pnpm -s --filter @pkg/planner review:viz:report",
     "build": "pnpm -r --filter ./packages/** run build",
     "dev": "pnpm -r --filter ./packages/** run dev",
     "test": "pnpm -r --filter ./packages/** run test",
@@ -42,7 +43,8 @@
     "review:verify:one": "node scripts/review-verify-one.js",
     "review:report:one": "node scripts/review-report-one.js",
     "review:verify:exports": "node scripts/review-verify-exports.js",
-    "review:report:exports": "node scripts/review-report-exports.js"
+    "review:report:exports": "node scripts/review-report-exports.js",
+    "docs:acc": "Start-Process ./docs/modules/Accesare.md"
   },
   "workspaces": [
     "apps/*",
