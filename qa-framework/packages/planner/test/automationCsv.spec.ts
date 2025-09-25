@@ -64,7 +64,7 @@ describe("automation CSV emitter", () => {
     expect(lines[0]).toBe(AUTOMATION_CSV_COLUMNS.join(","));
     const fields = parseCsvLine(lines[1] || "");
     expect(fields.length).toBe(AUTOMATION_CSV_COLUMNS.length);
-    // narrative with quotes is preserved after CSV parsing
+    // narrative with quotes is properly escaped
     const fields2 = parseCsvLine(lines[2] || "");
     expect(fields2[3] || "").toMatch(/ghilimele/);
   });
