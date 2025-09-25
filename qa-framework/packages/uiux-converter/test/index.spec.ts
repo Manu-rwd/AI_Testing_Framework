@@ -10,25 +10,27 @@ describe("Converter logging", () => {
     (console.log as any).mockRestore?.();
   });
 
-  it("logs chosen pandoc path", async () => {
-    // Force resolver to return our explicit path
+  it("prefers pandoc for non-PDF inputs", async () => {
+    // For .docx, prefer pandoc
     vi.spyOn(convert, "resolveTool").mockImplementation((name: any, explicit?: string) => {
-      return name === "pandoc" ? (explicit ?? "C:/repo/tools/pandoc/pandoc.exe") : null;
+      if (name === "pandoc") return explicit ?? "C:/bin/pandoc.exe";
+      return null;
     });
     vi.spyOn(convert, "runPandocToMarkdown").mockResolvedValue();
     await convert.convertPdfToMarkdownHtml({
-      inputPdfPath: "qa-framework/input/Ghid UIUX - Norme si bune practici 1.pdf",
+      inputPdfPath: "qa-framework/input/sample.docx",
       outputMarkdownPath: "qa-framework/temp/uiux_guide.md",
       alsoHtml: false,
-      pandocPath: "C:/repo/tools/pandoc/pandoc.exe",
-      resolvedPandocBin: "C:/repo/tools/pandoc/pandoc.exe",
+      pandocPath: "C:/bin/pandoc.exe",
+      resolvedPandocBin: "C:/bin/pandoc.exe",
     });
     expect((console.log as any).mock.calls.some((c: any) => String(c[0]).includes("Using pandoc at:"))).toBe(true);
   });
 
-  it("logs chosen pdftohtml path when pandoc missing", async () => {
+  it("prefers pdftohtml for PDF inputs", async () => {
     vi.spyOn(convert, "resolveTool").mockImplementation((name: any, explicit?: string) => {
-      return name === "pdftohtml" ? (explicit ?? "C:/repo/tools/poppler/bin/pdftohtml.exe") : null;
+      if (name === "pdftohtml") return explicit ?? "C:/bin/pdftohtml.exe";
+      return null;
     });
     vi.spyOn(convert, "runPdftohtmlToHtml").mockResolvedValue();
     const fs = await import("fs");
@@ -38,8 +40,8 @@ describe("Converter logging", () => {
       inputPdfPath: "qa-framework/input/Ghid UIUX - Norme si bune practici 1.pdf",
       outputMarkdownPath: "qa-framework/temp/uiux_guide.md",
       alsoHtml: false,
-      pdftohtmlPath: "C:/repo/tools/poppler/bin/pdftohtml.exe",
-      resolvedPdftohtmlBin: "C:/repo/tools/poppler/bin/pdftohtml.exe",
+      pdftohtmlPath: "C:/bin/pdftohtml.exe",
+      resolvedPdftohtmlBin: "C:/bin/pdftohtml.exe",
     });
     expect((console.log as any).mock.calls.some((c: any) => String(c[0]).includes("Using pdftohtml at:"))).toBe(true);
   });
