@@ -8,8 +8,6 @@ import { buildAAA } from "./aaa";
 import { pickWithProvenance, bumpConfidence } from "./../v2/provenance";
 import { assessFeasibility } from "./feasibility";
 import { emitCSV, emitMarkdown } from "./emit";
-import { resolveSelectorStrategy } from "../selectors/selectorResolver";
-import { resolveDataProfile } from "../dataProfiles/dataProfileResolver";
 
 type GenerateArgs = {
   type: string;
@@ -60,14 +58,11 @@ export async function generatePlanV2(args: GenerateArgs): Promise<PlanV2> {
 
   // buckets policy
   const effectiveBuckets = (() => {
-    const usBucketsRaw: any[] = Array.isArray(us?.buckets) ? us.buckets : [];
-    const usBucketNames: string[] = usBucketsRaw
-      .map((b) => (typeof b === "string" ? b : (b && typeof b.name === "string" ? b.name : undefined)))
-      .filter((v: any): v is string => Boolean(v));
-    if ((buckets ?? rules.buckets_policy) === "strict") return usBucketNames.length ? usBucketNames : ["General"];
+    const usBuckets: string[] = Array.isArray(us?.buckets) ? us.buckets : [];
+    if ((buckets ?? rules.buckets_policy) === "strict") return usBuckets.length ? usBuckets : ["General"];
     // lax: try to extend with project coverage if present
     const projBuckets: string[] = Array.isArray(project?.coverage?.buckets) ? project.coverage.buckets : [];
-    const merged = new Set<string>([...usBucketNames, ...projBuckets]);
+    const merged = new Set<string>([...usBuckets, ...projBuckets]);
     return merged.size ? Array.from(merged) : ["General"];
   })();
 
@@ -99,7 +94,7 @@ export async function generatePlanV2(args: GenerateArgs): Promise<PlanV2> {
     // Provenance examples for fields/messages (US > Project > Defaults)
     const pFields = pickWithProvenance(us?.fields, project?.fields, []);
     const pMessages = pickWithProvenance(us?.messages, project?.messages, {});
-    const usedFallback = pFields.source !== "us" || pMessages.source !== "us";
+    const usedProject = pFields.source === "project" || pMessages.source === "project";
 
     const baseConfidence: number =
       typeof us?.confidence?.overall === "number" ? us.confidence.overall : rules.min_confidence ?? 0.6;
@@ -120,19 +115,10 @@ export async function generatePlanV2(args: GenerateArgs): Promise<PlanV2> {
         fields: { all: pFields.source },
         messages: { all: pMessages.source },
       },
-      confidence: bumpConfidence(baseConfidence, applyProjectFallbacks && usedFallback),
+      confidence: bumpConfidence(baseConfidence, applyProjectFallbacks && usedProject),
       rule_tags: rules.rule_tags ?? [],
       notes: undefined,
     };
-
-    // Apply Module 6 resolvers for Accesare flows (Adaugare/Vizualizare)
-    if (type === "Adaugare" || type === "Vizualizare") {
-      const sel = resolveSelectorStrategy({ narrative_ro }, projectPath);
-      const dp = resolveDataProfile({ narrative_ro, data_profile: row.data_profile as any }, projectPath);
-      (row as any).selector_strategy = sel.selector_strategy;
-      (row as any).selectors = sel.selectors;
-      (row as any).data_profile = dp as any;
-    }
 
     const feas = assessFeasibility(row, rules);
     row.feasibility = feas.tier;

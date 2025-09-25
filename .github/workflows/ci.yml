@@ -30,20 +30,11 @@ jobs:
 
       - name: Type check (mypy)
         run: |
-          mypy --config-file mypy.ini ADEF/scripts || true
+          mypy --config-file mypy.ini ADEF/scripts
 
       - name: Verify integration script
-        if: ${{ hashFiles('ADEF/framework/src/infrastructure/monitoring/logger.py') != '' }}
-        env:
-          PYTHONPATH: ${{ github.workspace }}/ADEF/framework/src:${{ github.workspace }}/ADEF/framework
         run: |
-          python -c "import sys,os;print('PYTHONPATH=',os.environ.get('PYTHONPATH'));print('sys.path[0:5]=',sys.path[0:5])"
-          sed -n '1,120p' ADEF/scripts/verify_adef_integration.py
           python ADEF/scripts/verify_adef_integration.py
-
-      - name: Verify integration script (skipped)
-        if: ${{ hashFiles('ADEF/framework/src/infrastructure/monitoring/logger.py') == '' }}
-        run: echo "Skipping ADEF verify: framework src not present in checkout"
 
       - name: Quality gates
         run: |

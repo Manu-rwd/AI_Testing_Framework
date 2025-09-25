@@ -1,0 +1,271 @@
+[
+  {
+    "module": "Accesare",
+    "tipFunctionalitate": "Adăugare",
+    "bucket": "Login",
+    "narrative_ro": "Utilizatorul se autentifică cu email și parolă valide.",
+    "atoms": {
+      "setup": [
+        "Deschide aplicația"
+      ],
+      "action": [
+        "Introdu email",
+        "Introdu parolă",
+        "Apasă Autentificare"
+      ],
+      "assert": [
+        "Este autentificat"
+      ]
+    },
+    "selector_needs": "needs-ids, roles",
+    "selector_strategy": "role-with-name",
+    "data_profile": "minimal_valid",
+    "feasibility": "A",
+    "source": "US",
+    "confidence": 0.74,
+    "rule_tags": [
+      "auth",
+      "happy"
+    ],
+    "notes": "selector_provenance=US ; profile_provenance=defaults"
+  },
+  {
+    "module": "Accesare",
+    "tipFunctionalitate": "Adăugare",
+    "bucket": "Form",
+    "narrative_ro": "Completează profilul cu nume și telefon.",
+    "atoms": {
+      "setup": [
+        "Navighează la profil"
+      ],
+      "action": [
+        "Introdu nume",
+        "Introdu telefon"
+      ],
+      "assert": [
+        "Profil salvat"
+      ]
+    },
+    "selector_needs": "label, aria",
+    "selector_strategy": "data-testid-preferred",
+    "data_profile": "edge_empty",
+    "feasibility": "B",
+    "source": "US",
+    "confidence": 0.7000000000000001,
+    "rule_tags": [
+      "form"
+    ],
+    "notes": "selector_provenance=US ; profile_provenance=defaults"
+  },
+  {
+    "module": "Accesare",
+    "tipFunctionalitate": "Adăugare",
+    "bucket": "Form",
+    "narrative_ro": "Validează lungime maximă pentru nume.",
+    "atoms": {
+      "setup": [
+        "Navighează la profil"
+      ],
+      "action": [
+        "Introdu nume foarte lung"
+      ],
+      "assert": [
+        "Apare eroare de validare"
+      ]
+    },
+    "selector_needs": "text",
+    "selector_strategy": "data-testid-preferred",
+    "data_profile": "edge_empty",
+    "feasibility": "C",
+    "source": "US",
+    "confidence": 0.62,
+    "rule_tags": [
+      "validation"
+    ],
+    "notes": "selector_provenance=US ; profile_provenance=defaults"
+  },
+  {
+    "module": "Accesare",
+    "tipFunctionalitate": "Adăugare",
+    "bucket": "Form",
+    "narrative_ro": "Validare format telefon.",
+    "atoms": {
+      "setup": [
+        "Navighează la profil"
+      ],
+      "action": [
+        "Introdu telefon invalid"
+      ],
+      "assert": [
+        "Apare eroare"
+      ]
+    },
+    "selector_needs": "roles",
+    "selector_strategy": "role-with-name",
+    "data_profile": "edge_empty",
+    "feasibility": "C",
+    "source": "US",
+    "confidence": 0.63,
+    "rule_tags": [
+      "validation"
+    ],
+    "notes": "selector_provenance=US ; profile_provenance=defaults"
+  },
+  {
+    "module": "Accesare",
+    "tipFunctionalitate": "Adăugare",
+    "bucket": "Form",
+    "narrative_ro": "Validare regex email invalid.",
+    "atoms": {
+      "setup": [
+        "Navighează la login"
+      ],
+      "action": [
+        "Introdu email invalid"
+      ],
+      "assert": [
+        "Eroare email"
+      ]
+    },
+    "selector_needs": "aria",
+    "selector_strategy": "data-testid-preferred",
+    "data_profile": "edge_empty",
+    "feasibility": "D",
+    "source": "US",
+    "confidence": 0.5700000000000001,
+    "rule_tags": [
+      "validation"
+    ],
+    "notes": "selector_provenance=US ; profile_provenance=defaults"
+  },
+  {
+    "module": "Accesare",
+    "tipFunctionalitate": "Vizualizare",
+    "bucket": "Vizualizare",
+    "narrative_ro": "Vizualizează datele de profil.",
+    "atoms": {
+      "setup": [
+        "Navighează la profil"
+      ],
+      "action": [],
+      "assert": [
+        "Numele este afișat",
+        "Telefonul este afișat"
+      ]
+    },
+    "selector_needs": "text",
+    "selector_strategy": "data-testid-preferred",
+    "data_profile": "edge_empty",
+    "feasibility": "A",
+    "source": "US",
+    "confidence": 0.72,
+    "rule_tags": [
+      "read"
+    ],
+    "notes": "selector_provenance=US ; profile_provenance=defaults"
+  },
+  {
+    "module": "Accesare",
+    "tipFunctionalitate": "Vizualizare",
+    "bucket": "Vizualizare",
+    "narrative_ro": "Vezi mesaj de gol.",
+    "atoms": {
+      "setup": [
+        "Golește profil"
+      ],
+      "action": [],
+      "assert": [
+        "Mesaj lipsă date"
+      ]
+    },
+    "selector_needs": "aria, text",
+    "selector_strategy": "data-testid-preferred",
+    "data_profile": "edge_empty",
+    "feasibility": "B",
+    "source": "US",
+    "confidence": 0.66,
+    "rule_tags": [
+      "empty"
+    ],
+    "notes": "selector_provenance=US ; profile_provenance=defaults"
+  },
+  {
+    "module": "Accesare",
+    "tipFunctionalitate": "Vizualizare",
+    "bucket": "Vizualizare",
+    "narrative_ro": "Listă utilizatori.",
+    "atoms": {
+      "setup": [
+        "Navighează la listă"
+      ],
+      "action": [],
+      "assert": [
+        "Se afișează 10 elemente"
+      ]
+    },
+    "selector_needs": "css",
+    "selector_strategy": "data-testid-preferred",
+    "data_profile": "edge_empty",
+    "feasibility": "B",
+    "source": "US",
+    "confidence": 0.68,
+    "rule_tags": [
+      "list"
+    ],
+    "notes": "selector_provenance=US ; profile_provenance=defaults"
+  },
+  {
+    "module": "Accesare",
+    "tipFunctionalitate": "Vizualizare",
+    "bucket": "Vizualizare",
+    "narrative_ro": "Căutare utilizator.",
+    "atoms": {
+      "setup": [
+        "Navighează la listă"
+      ],
+      "action": [
+        "Introdu nume în căutare"
+      ],
+      "assert": [
+        "Rezultate filtrate"
+      ]
+    },
+    "selector_needs": "label",
+    "selector_strategy": "data-testid-preferred",
+    "data_profile": "edge_empty",
+    "feasibility": "C",
+    "source": "US",
+    "confidence": 0.62,
+    "rule_tags": [
+      "search"
+    ],
+    "notes": "selector_provenance=US ; profile_provenance=defaults"
+  },
+  {
+    "module": "Accesare",
+    "tipFunctionalitate": "Vizualizare",
+    "bucket": "Vizualizare",
+    "narrative_ro": "Paginare listă.",
+    "atoms": {
+      "setup": [
+        "Navighează la listă"
+      ],
+      "action": [
+        "Apasă următorul"
+      ],
+      "assert": [
+        "Pagina 2 vizibilă"
+      ]
+    },
+    "selector_needs": "roles, text",
+    "selector_strategy": "role-with-name",
+    "data_profile": "edge_empty",
+    "feasibility": "B",
+    "source": "US",
+    "confidence": 0.67,
+    "rule_tags": [
+      "pagination"
+    ],
+    "notes": "selector_provenance=US ; profile_provenance=defaults"
+  }
+]

@@ -21,17 +21,5 @@ pnpm -w prisma:migrate
 
 More detail: see `docs/roadmap.md`.
 
-## Planner v2 — Automation Plan emitter
-
-Cheatsheet:
-
-```powershell
-pnpm planner:v2:adaugare -- --out-csv exports/Plan_Adaugare_v2.csv --out-md docs/Plan_Adaugare_v2.md
-```
-
-Creează automat și:
-- `exports/Adaugare_Automation.csv` (UTF-8 BOM, CRLF)
-- `docs/modules/Adaugare_Automation.md`
-
 
 

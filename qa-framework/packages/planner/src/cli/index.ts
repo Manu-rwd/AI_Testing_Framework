@@ -7,19 +7,8 @@ async function main() {
     await import("./emit-automation.js");
     return;
   }
-  if (command === "plan:emit") {
-    const m: any = await import("./emit.js");
-    if (typeof m?.main === "function") {
-      await m.main();
-    }
-    return;
-  }
-  if (command === "plan:review:init" || command === "plan:review:summary" || command === "plan:review:verify" || command === "plan:review:report") {
-    await import("./review.js");
-    return;
-  }
-  if (command === "plan:validate") {
-    await import("./validate.js");
+  if (command === "plan:enrich") {
+    await import("./enrich.js");
     return;
   }
   // Default to manual CLI for backwards compatibility

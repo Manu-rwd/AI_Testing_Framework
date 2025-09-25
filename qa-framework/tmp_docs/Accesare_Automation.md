@@ -1,77 +1,312 @@
-# Accesare: Plan de automatizare
+# Accesare — Automation Plan
 
-_Generat la 2025-09-09T12:45:13.639Z_
+## Login — Utilizatorul se autentifică cu email și parolă valide.
 
-| tipFunctionalitate | bucket | feasibility | source | confidence | rule_tags |
-|---|---|---|---|---:|---|
-| Adaugare | Login | A | US | 0.735 | auth, happy |
-| Adaugare | Form | B | project | 0.9 | forms |
-
----
-## 1. Login — A narrative, with comma
-**Fezabilitate:** A 🟢
-Fezabilitate: A 🟢
-
-**Narațiune:** A narrative, with comma
 ### Arrange
-- Open app
+- Deschide aplicația
 
 ### Act
-- Click "Login"
+- Introdu email
+- Introdu parolă
+- Apasă Autentificare
 
 ### Assert
-- He said: "quote"
+- Este autentificat
 
-```json
-{
-  "setup": [
-    "Open app"
-  ],
-  "action": [
-    "Click \"Login\""
-  ],
-  "assert": [
-    "He said: \"quote\""
-  ]
-}
-```**Selecție UI (strategie):**  (sursă: ; încredere: )
-**Profil date:** minimal_valid=; edge_cases=[] (sursă: ; încredere: )
-**Proveniență & Încredere rând:** US · 0.73
-**Etichete reguli:** `auth`, `happy`
-**Note:** Line1
-Line2
+### Selectors
+- needs: needs-ids, roles
+- strategy: role-with-name
 
----
-## 2. Form — Fill form and submit
-**Fezabilitate:** B 🟡
-Fezabilitate: B 🟡
+### Data Profile
+minimal_valid
 
-**Narațiune:** Fill form and submit
+### Feasibility
+A — A/B = codegen-ready; C/D/E = needs work
+
+### Provenance
+source: `US`
+rule tags: `auth`, `happy`
+
+### Confidence
+74.0%
+
+### Notes
+selector_provenance=US ; profile_provenance=defaults
+
+## Form — Completează profilul cu nume și telefon.
+
 ### Arrange
-- Navigate to form
+- Navighează la profil
 
 ### Act
-- Type data
-- Submit
+- Introdu nume
+- Introdu telefon
 
 ### Assert
-- See success
+- Profil salvat
 
-```json
-{
-  "setup": [
-    "Navigate to form"
-  ],
-  "action": [
-    "Type data",
-    "Submit"
-  ],
-  "assert": [
-    "See success"
-  ]
-}
-```**Selecție UI (strategie):**  (sursă: ; încredere: )
-**Profil date:** minimal_valid=; edge_cases=[] (sursă: ; încredere: )
-**Proveniență & Încredere rând:** project · 0.90
-**Etichete reguli:** `forms`
+### Selectors
+- needs: label, aria
+- strategy: data-testid-preferred
 
+### Data Profile
+edge_empty
+
+### Feasibility
+B — A/B = codegen-ready; C/D/E = needs work
+
+### Provenance
+source: `US`
+rule tags: `form`
+
+### Confidence
+70.0%
+
+### Notes
+selector_provenance=US ; profile_provenance=defaults
+
+## Form — Validează lungime maximă pentru nume.
+
+### Arrange
+- Navighează la profil
+
+### Act
+- Introdu nume foarte lung
+
+### Assert
+- Apare eroare de validare
+
+### Selectors
+- needs: text
+- strategy: data-testid-preferred
+
+### Data Profile
+edge_empty
+
+### Feasibility
+C — A/B = codegen-ready; C/D/E = needs work
+
+### Provenance
+source: `US`
+rule tags: `validation`
+
+### Confidence
+62.0%
+
+### Notes
+selector_provenance=US ; profile_provenance=defaults
+
+## Form — Validare format telefon.
+
+### Arrange
+- Navighează la profil
+
+### Act
+- Introdu telefon invalid
+
+### Assert
+- Apare eroare
+
+### Selectors
+- needs: roles
+- strategy: role-with-name
+
+### Data Profile
+edge_empty
+
+### Feasibility
+C — A/B = codegen-ready; C/D/E = needs work
+
+### Provenance
+source: `US`
+rule tags: `validation`
+
+### Confidence
+63.0%
+
+### Notes
+selector_provenance=US ; profile_provenance=defaults
+
+## Form — Validare regex email invalid.
+
+### Arrange
+- Navighează la login
+
+### Act
+- Introdu email invalid
+
+### Assert
+- Eroare email
+
+### Selectors
+- needs: aria
+- strategy: data-testid-preferred
+
+### Data Profile
+edge_empty
+
+### Feasibility
+D — A/B = codegen-ready; C/D/E = needs work
+
+### Provenance
+source: `US`
+rule tags: `validation`
+
+### Confidence
+57.0%
+
+### Notes
+selector_provenance=US ; profile_provenance=defaults
+
+## Vizualizare — Vizualizează datele de profil.
+
+### Arrange
+- Navighează la profil
+
+### Act
+
+### Assert
+- Numele este afișat
+- Telefonul este afișat
+
+### Selectors
+- needs: text
+- strategy: data-testid-preferred
+
+### Data Profile
+edge_empty
+
+### Feasibility
+A — A/B = codegen-ready; C/D/E = needs work
+
+### Provenance
+source: `US`
+rule tags: `read`
+
+### Confidence
+72.0%
+
+### Notes
+selector_provenance=US ; profile_provenance=defaults
+
+## Vizualizare — Vezi mesaj de gol.
+
+### Arrange
+- Golește profil
+
+### Act
+
+### Assert
+- Mesaj lipsă date
+
+### Selectors
+- needs: aria, text
+- strategy: data-testid-preferred
+
+### Data Profile
+edge_empty
+
+### Feasibility
+B — A/B = codegen-ready; C/D/E = needs work
+
+### Provenance
+source: `US`
+rule tags: `empty`
+
+### Confidence
+66.0%
+
+### Notes
+selector_provenance=US ; profile_provenance=defaults
+
+## Vizualizare — Listă utilizatori.
+
+### Arrange
+- Navighează la listă
+
+### Act
+
+### Assert
+- Se afișează 10 elemente
+
+### Selectors
+- needs: css
+- strategy: data-testid-preferred
+
+### Data Profile
+edge_empty
+
+### Feasibility
+B — A/B = codegen-ready; C/D/E = needs work
+
+### Provenance
+source: `US`
+rule tags: `list`
+
+### Confidence
+68.0%
+
+### Notes
+selector_provenance=US ; profile_provenance=defaults
+
+## Vizualizare — Căutare utilizator.
+
+### Arrange
+- Navighează la listă
+
+### Act
+- Introdu nume în căutare
+
+### Assert
+- Rezultate filtrate
+
+### Selectors
+- needs: label
+- strategy: data-testid-preferred
+
+### Data Profile
+edge_empty
+
+### Feasibility
+C — A/B = codegen-ready; C/D/E = needs work
+
+### Provenance
+source: `US`
+rule tags: `search`
+
+### Confidence
+62.0%
+
+### Notes
+selector_provenance=US ; profile_provenance=defaults
+
+## Vizualizare — Paginare listă.
+
+### Arrange
+- Navighează la listă
+
+### Act
+- Apasă următorul
+
+### Assert
+- Pagina 2 vizibilă
+
+### Selectors
+- needs: roles, text
+- strategy: role-with-name
+
+### Data Profile
+edge_empty
+
+### Feasibility
+B — A/B = codegen-ready; C/D/E = needs work
+
+### Provenance
+source: `US`
+rule tags: `pagination`
+
+### Confidence
+67.0%
+
+### Notes
+selector_provenance=US ; profile_provenance=defaults

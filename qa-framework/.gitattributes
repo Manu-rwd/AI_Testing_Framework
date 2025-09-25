@@ -1,5 +1,15 @@
 ﻿* text=auto eol=lf
-*.md  text eol=lf
-*.ts  text eol=lf
+*.md text eol=lf
+*.ts text eol=lf
 *.hbs text eol=lf
+
+* text=auto
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.mts text eol=lf
+*.cts text eol=lf
 *.json text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
