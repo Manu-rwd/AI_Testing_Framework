@@ -45,7 +45,8 @@
     "review:verify:exports": "node scripts/review-verify-exports.js",
     "review:report:exports": "node scripts/review-report-exports.js",
     "docs:acc": "Start-Process ./docs/modules/Accesare.md",
-    "uiux:convert": "pnpm --filter @pkg/uiux-converter start"
+    "uiux:convert": "pnpm --filter @pkg/uiux-converter start",
+    "uiux:convert:local": "pnpm uiux:convert -- --pandoc ./tools/pandoc/pandoc.exe --pdftohtml ./tools/poppler/bin/pdftohtml.exe"
   },
   "workspaces": [
     "apps/*",

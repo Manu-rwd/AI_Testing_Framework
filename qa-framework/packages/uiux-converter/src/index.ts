@@ -5,7 +5,7 @@ import { promises as fs } from "fs";
 import { convertPdfToMarkdownHtml } from "./convert.js";
 import { normalizeMarkdown } from "./normalize.js";
 
-const program = new Command();
+export const program = new Command();
 
 program
   .name("uiux-converter")
@@ -13,6 +13,8 @@ program
   .option("--in <pdf>", "Input PDF path")
   .option("--out <md>", "Output Markdown path", "temp/uiux_guide.md")
   .option("--also-html", "Also write HTML output alongside MD", false)
+  .option("--pandoc <path>", "Explicit path to pandoc binary")
+  .option("--pdftohtml <path>", "Explicit path to pdftohtml binary")
   .action(async (opts) => {
     const inputPdf = opts.in as string | undefined;
     const outMd = (opts.out as string | undefined) ?? "temp/uiux_guide.md";
@@ -31,6 +33,8 @@ program
         inputPdfPath: inputAbs,
         outputMarkdownPath: outAbs,
         alsoHtml,
+        pandocPath: opts.pandoc as string | undefined,
+        pdftohtmlPath: opts.pdftohtml as string | undefined,
       });
 
       const raw = await fs.readFile(mdPath, "utf-8");
@@ -49,6 +53,13 @@ program
     }
   });
 
-program.parseAsync();
+export async function runCli(): Promise<void> {
+  await program.parseAsync();
+}
+
+// ESM-friendly entry: run when executed directly
+if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith("index.ts")) {
+  runCli();
+}
 
 
