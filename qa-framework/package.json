@@ -20,17 +20,26 @@
     "build": "pnpm -r --filter ./packages/** run build",
     "dev": "pnpm -r --filter ./packages/** run dev",
     "test": "pnpm -r --filter ./packages/** run test",
-    "test:automation-emitter": "vitest run packages/planner/test/emitter/automation --run",
-    "test:selector-data-profiles": "vitest run packages/planner/test/selector-data-profiles --run",
+    "test:automation-emitter": "vitest run packages/planner/test/automation-emitter --run",
+    "test:module5": "vitest run packages/planner/test/automation-emitter --run",
     "lint": "echo 'add linter later'",
     "typecheck": "echo 'add typecheck later'",
     "planner:v2:adaugare": "tsx packages/planner/src/cli_v2.ts --type Adaugare --rules packages/rules/rules_v2/adaugare.yaml --us ./docs/us/US_Normalized.yaml --project ./projects/example --apply-project-fallbacks",
     "planner:v2:vizualizare": "tsx packages/planner/src/cli_v2.ts --type Vizualizare --rules packages/rules/rules_v2/vizualizare.yaml --us ./docs/us/US_Normalized.yaml --project ./projects/example --apply-project-fallbacks",
-    "planner:emit:manual": "tsx packages/planner/src/cli/manual.ts",
+    "planner:emit:manual": "pnpm -C packages/planner planner:emit:manual",
     "test:manual-emitter": "vitest run packages/planner/test/manual_emitter.test.ts",
     "planner:verify:snapshot": "tsx packages/planner/src/cli/verify-snapshot.ts",
     "check:lineendings": "tsx packages/planner/src/cli/check-lineendings.ts --paths qa-framework docs packages --exts .md,.mdx,.ts,.tsx,.js,.json,.hbs,.yaml,.yml",
-    "check:lineendings:changed": "tsx packages/planner/src/cli/check-lineendings.ts --since origin/main --paths qa-framework docs packages --exts .md,.mdx,.ts,.tsx,.js,.json,.hbs,.yaml,.yml"
+    "check:lineendings:changed": "tsx packages/planner/src/cli/check-lineendings.ts --since origin/main --paths qa-framework docs packages --exts .md,.mdx,.ts,.tsx,.js,.json,.hbs,.yaml,.yml",
+    "test:review-tools": "vitest run packages/planner/test/review-tools --run",
+    "review:init:sample": "node packages/planner/dist/cli/index.js plan:review:init --input qa-framework/tmp_exports/Accesare_Automation.csv --inPlace",
+    "review:summary:sample": "node packages/planner/dist/cli/index.js plan:review:summary --input qa-framework/tmp_exports/Accesare_Automation.csv --module Accesare --out qa-framework/tmp_docs/Accesare_Review_Summary.md",
+    "test:validation": "vitest run packages/planner/test/validation --run",
+    "validate:sample": "node packages/planner/dist/cli/index.js plan:validate --input \"tmp_exports/**/*.csv\" --format text --module Accesare",
+    "review:verify:one": "node scripts/review-verify-one.js",
+    "review:report:one": "node scripts/review-report-one.js",
+    "review:verify:exports": "node scripts/review-verify-exports.js",
+    "review:report:exports": "node scripts/review-report-exports.js"
   },
   "workspaces": [
     "apps/*",
@@ -38,6 +47,7 @@
   ],
   "devDependencies": {
     "@types/node": "^24.3.0",
+    "execa": "^8.0.1",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
     "vitest": "^2.0.5"

@@ -13,7 +13,7 @@ describe("automation emitter - MD", () => {
     expect(md).toContain("| tipFunctionalitate | bucket | feasibility | source | confidence | rule_tags |");
     // details delimiter
     expect(md).toContain("---");
-    // JSON details are displayed as a fenced block in current template
+    // fenced JSON block present
     expect(md).toContain("```json");
   });
 });
