@@ -1,3 +1,6 @@
+qa-framework/tools/pandoc/*.exe filter=lfs diff=lfs merge=lfs -text
+qa-framework/tools/poppler/bin/*.exe filter=lfs diff=lfs merge=lfs -text
+qa-framework/tools/poppler/bin/*.dll filter=lfs diff=lfs merge=lfs -text
 # Source uses LF
 *.ts  text eol=lf
 *.tsx text eol=lf
@@ -13,5 +16,3 @@ exports/*.csv -text eol=crlf
 *.jsx text eol=lf
 *.csv text eol=lf
 qa-framework/tools/pandoc/pandoc.exe filter=lfs diff=lfs merge=lfs -text
-qa-framework/tools/poppler/bin/*.exe filter=lfs diff=lfs merge=lfs -text
-qa-framework/tools/poppler/bin/*.dll filter=lfs diff=lfs merge=lfs -text
