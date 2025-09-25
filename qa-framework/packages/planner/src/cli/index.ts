@@ -14,6 +14,13 @@ async function main() {
     }
     return;
   }
+  if (command === "plan:enrich") {
+    const m: any = await import("./enrich.js");
+    if (typeof m?.default === "function") {
+      await m.default();
+    }
+    return;
+  }
   if (command === "plan:review:init" || command === "plan:review:summary" || command === "plan:review:verify" || command === "plan:review:report") {
     await import("./review.js");
     return;

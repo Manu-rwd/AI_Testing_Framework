@@ -24,7 +24,7 @@ function parseArgs(argv: string[]): Record<string, string | boolean> {
   return args;
 }
 
-async function main() {
+export default async function main() {
   const argv = process.argv.slice(2);
   const args = parseArgs(argv);
 
@@ -53,10 +53,5 @@ async function main() {
     await emitAutomation(enriched, { csvFile, mdFile });
   }
 }
-
-main().catch((err) => {
-  console.error(err?.stack || String(err));
-  process.exit(1);
-});
 
 
