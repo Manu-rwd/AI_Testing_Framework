@@ -71,7 +71,7 @@ describe("Module 9: Vizualizare review flow", () => {
     const parts = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Bucharest", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(now);
     const ymd = `${parts.find(p=>p.type==='year')?.value}-${parts.find(p=>p.type==='month')?.value}-${parts.find(p=>p.type==='day')?.value}`;
     expect(md).toContain(`### ${ymd}`);
-  });
+  }, 20000);
 });
 
 

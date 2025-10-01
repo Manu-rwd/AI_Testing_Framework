@@ -1,6 +1,6 @@
 # Adaugare: Plan de automatizare
 
-_Generat la 2025-09-25T08:19:47.718Z_
+_Generat la 2025-10-01T13:36:42.022Z_
 
 | tipFunctionalitate | bucket | feasibility | source | confidence | rule_tags |
 |---|---|---|---|---:|---|
