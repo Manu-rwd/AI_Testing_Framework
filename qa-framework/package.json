@@ -7,6 +7,8 @@
     "node": ">=22"
   },
   "scripts": {
+    "uiux:ingest": "pnpm --filter @pkg/uiux-ingestor start",
+    "uiux:convert": "pnpm --filter @pkg/uiux-converter start",
     "dev:web": "pnpm --filter @app/web dev",
     "dev:api": "pnpm --filter @app/api dev",
     "prisma:generate": "pnpm --filter @pkg/db prisma:generate",
