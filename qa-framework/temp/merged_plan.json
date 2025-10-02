@@ -1,0 +1,1 @@
+{ "cases": [ { "id": 1, "nume": "Accesare din meniu", "tipFunctionalitate": "Accesare", "general_valabile": 1, "pasi": ["Click pe meniu"], "rezultat_asteptat": ["Se deschide pagina"] } ] }

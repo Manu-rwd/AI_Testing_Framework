@@ -63,6 +63,22 @@ importers:
         specifier: ^4.7.0
         version: 4.20.5
 
+  packages/manual-emitter:
+    dependencies:
+      commander:
+        specifier: ^12.1.0
+        version: 12.1.0
+    devDependencies:
+      tsx:
+        specifier: ^4.19.1
+        version: 4.20.5
+      typescript:
+        specifier: ^5.5.4
+        version: 5.9.2
+      vitest:
+        specifier: ^2.1.1
+        version: 2.1.9(@types/node@24.3.0)
+
   packages/merge:
     dependencies:
       commander:
