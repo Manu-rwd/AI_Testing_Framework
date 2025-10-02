@@ -46,7 +46,8 @@
     "review:report:one": "node scripts/review-report-one.js",
     "review:verify:exports": "node scripts/review-verify-exports.js",
     "review:report:exports": "node scripts/review-report-exports.js",
-    "docs:acc": "Start-Process ./docs/modules/Accesare.md"
+    "docs:acc": "Start-Process ./docs/modules/Accesare.md",
+    "merge:plan": "pnpm --filter @pkg/merge run cli --"
   },
   "workspaces": [
     "apps/*",
