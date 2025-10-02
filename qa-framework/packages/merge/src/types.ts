@@ -1,10 +1,11 @@
-export type SourceTier = "us" | "project" | "uiux" | "coverage" | "defaults";
+export type SourceTier = "us" | "project" | "uiux" | "coverage" | "qa_library" | "defaults";
 
 export interface MergeInputs {
   us?: any;
   project?: any;
   uiux?: any;
   coverage?: any;
+  qa_library?: any;
   defaults?: any;
 }
 

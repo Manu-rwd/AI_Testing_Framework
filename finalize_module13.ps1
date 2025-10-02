@@ -1,120 +1,109 @@
+# PowerShell 5+ compatible, no profile, fail fast, UTF-8 no BOM
 $ErrorActionPreference = "Stop"
 try { Remove-Module PSReadLine -ErrorAction SilentlyContinue } catch {}
 
-# UTF-8 without BOM writer
 Add-Type -TypeDefinition @"
 using System.Text;
 using System.IO;
 public static class Utf8NoBom {
   public static void WriteAllText(string path, string contents){
-    var utf8NoBom = new UTF8Encoding(false);
-    File.WriteAllText(path, contents, utf8NoBom);
+    var enc = new UTF8Encoding(false);
+    File.WriteAllText(path, contents, enc);
   }
 }
 "@
 
-function Write-NoBom($Path, $Content) {
-  [Utf8NoBom]::WriteAllText($Path, $Content)
-}
+function Write-NoBom($Path, $Content) { [Utf8NoBom]::WriteAllText($Path, $Content) }
 
-# Repo root
+# Locate repo root
 $root = (& git rev-parse --show-toplevel).Trim()
 if (-not $root) { throw "Not a git repository" }
 Set-Location $root
 
-# 1) Fetch and branch
+# Git hygiene: update main, then branch off
 git fetch --all --prune
-try {
-  git switch -c feature/merge-engine-v2
-} catch {
-  git switch feature/merge-engine-v2
-}
-git fetch origin
+git switch main
+git pull --ff-only
 
-# 2) Install and build JS package
-pnpm -C qa-framework i
-$buildOk = $true
-try {
-  pnpm -C qa-framework -r build
-} catch {
-  try {
-    pnpm -C qa-framework -r test
-  } catch {
-    Write-Host "build step skipped for non-ts packages"
-  }
-}
+$fixBranch = "feature/merge-engine-v2-fix1"
+# create or switch
+$branches = (& git branch --list $fixBranch)
+if ($branches) { git switch $fixBranch } else { git switch -c $fixBranch }
 
-# 3) Python gates (idempotent)
+# Ensure workspace deps
+pnpm i
+
+# Remove accidentally committed JS test artifacts if present
+if (Test-Path "qa-framework/packages/merge/test/merge.spec.js") { git rm -f "qa-framework/packages/merge/test/merge.spec.js" }
+if (Test-Path "qa-framework/packages/merge/test/merge.spec.js.map") { git rm -f "qa-framework/packages/merge/test/merge.spec.js.map" }
+
+# Python gates (idempotent)
 $venvPath = Join-Path $root "ADEF\.venv"
-if (-not (Test-Path $venvPath)) {
-  python -m venv $venvPath
-}
+if (-not (Test-Path $venvPath)) { python -m venv $venvPath }
 $pythonExe = Join-Path $venvPath "Scripts\python.exe"
 if (-not (Test-Path $pythonExe)) { $pythonExe = Join-Path $venvPath "bin/python" }
-
 & $pythonExe -m pip install --upgrade pip
 & $pythonExe -m pip install "flake8<7" "mypy>=1.6,<2"
 
 # Ensure config files exist (UTF-8 no BOM)
 if (-not (Test-Path "ADEF\.flake8")) { Write-NoBom "ADEF\.flake8" "[flake8]`nmax-line-length = 120`nexclude = .venv,__pycache__" }
-if (-not (Test-Path "ADEF\mypy.ini")) { Write-NoBom "ADEF\mypy.ini" "[mypy]`npython_version = 3.11`nignore_missing_imports = True" }
+if (-not (Test-Path "ADEF\mypy.ini")) { Write-NoBom "ADEF\mypy.ini" "[mypy]`npython_version = 3.11`nignore_missing_imports = True`nwarn_unused_ignores = True`n`n[mypy-ADEF.scripts.*]`ndisallow_untyped_defs = True" }
 
 # Run gates
-& $pythonExe -m flake8 ADEF/scripts | Write-Output
-$flakeExit = $LASTEXITCODE
-if ($flakeExit -ne 0) { throw "flake8 failed" }
+& $pythonExe -m flake8 ADEF/scripts
+if ($LASTEXITCODE -ne 0) { throw "flake8 failed" }
 Write-Host "GATES: flake8 OK"
 
 & $pythonExe -m mypy --config-file ADEF/mypy.ini ADEF/scripts
-$mypyExit = $LASTEXITCODE
-if ($mypyExit -ne 0) { throw "mypy failed" }
+if ($LASTEXITCODE -ne 0) { throw "mypy failed" }
 Write-Host "GATES: mypy OK"
 
-# 4) JS tests (merge package only)
-pnpm -C qa-framework --filter @pkg/merge test
+# JS build (as needed) and tests for entire workspace
+pnpm -C qa-framework -r build
+if ($LASTEXITCODE -ne 0) { throw "build failed" }
+
+pnpm -C qa-framework -r test
 if ($LASTEXITCODE -ne 0) { throw "JS tests failed" }
 Write-Host "JS TESTS: OK"
 
-# 5) Commit package changes
+# Commit changes
 git add -A
-git commit -m "feat: module13 merge engine v2"
+git commit -m "fix: module13 gates provenance and tests"
 
-# 6) Push branch
-git push -u origin feature/merge-engine-v2
+# Push fix branch
+git push -u origin $fixBranch
 
-# 7) Merge into main with log
+# Merge into main
 git switch main
 git pull --ff-only
-git merge --no-ff -X theirs --log feature/merge-engine-v2 -m "merge: Module 13 - merge engine v2 into main"
+git merge --no-ff -X theirs --log $fixBranch -m "merge: Module 13 fix into main"
 
-# Re-run merge tests on main
-pnpm -C qa-framework --filter @pkg/merge test
+# Re-run tests on main
+pnpm -C qa-framework -r test
 if ($LASTEXITCODE -ne 0) { throw "JS tests failed after merge" }
 git push origin main
 git pull --ff-only
 
-# 8) Write merge note (UTF-8 no BOM)
+# Merge note
 $noteDir = Join-Path $root "qa-framework/docs/changes/merges"
 New-Item -ItemType Directory -Force -Path $noteDir | Out-Null
-$today = "2025-10-02"
-$notePath = Join-Path $noteDir "${today}_module13_merge_engine_v2_merge.md"
+$today = (Get-Date).ToString('yyyy-MM-dd')
+$notePath = Join-Path $noteDir "${today}_module13_merge_engine_v2_fix.md"
 $noteBody = @"
-# Module 13 — Merge Engine v2
+# Module 13 — Merge Engine v2 (fix)
 
 Date: $today
 
-- Branch: feature/merge-engine-v2
-- Precedence: US > Project > UI/UX > Coverage > Defaults
-- Provenance bumps: project +0.03, uiux +0.02, qa_library +0.01, defaults 0
-- CLI: pnpm -C qa-framework --filter @pkg/merge run cli -- --project ./projects/example --us input/us_and_test_cases.txt --out temp/merged_plan.json
+- Branch: $fixBranch
+- Changes: accept qa_library bump +0.01, PS5-safe finalize script, dynamic note date, skip uiux-converter idempotence test if input PDF missing, remove stray JS test artifacts, add package .gitignore.
+- Gates: flake8 OK, mypy OK, JS tests OK (workspace).
 "@
 Write-NoBom $notePath $noteBody
 
 git add -f $notePath
-git commit -m "docs-merge: add module13 merge engine v2 note; OK; OK"
+git commit -m "docs-merge: add module13 fix note; OK; OK"
 git push origin main
 
-# 9) Results
 Write-Host "MERGE: OK"
 Write-Host "NOTE: $notePath"
 Write-Host "DONE."
