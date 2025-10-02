@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "id": 2,
+      "nume": "Accesare prin URL directa",
+      "tipFunctionalitate": "Accesare",
+      "general_valabile": 1,
+      "preconditii": ["Utilizator neautentificat"],
+      "pasi": ["Deschide browserul", "Introdu URL-ul functionalitatii"],
+      "rezultat_asteptat": ["Pagina se incarca", "Se afiseaza titlul corect"],
+      "observatii": ["Timpul de raspuns sub 2s"],
+      "severitate": "medie",
+      "prioritate": "P2"
+    },
+    {
+      "id": 1,
+      "nume": "Accesare din meniu",
+      "tipFunctionalitate": "Accesare",
+      "general_valabile": 0,
+      "preconditii": ["Utilizator autentificat"],
+      "pasi": ["Click pe meniu", "Click pe Accesare"],
+      "rezultat_asteptat": ["Se deschide pagina Accesare"],
+      "observatii": []
+    }
+  ]
+}
+
+
