@@ -48,7 +48,8 @@
     "review:report:exports": "node scripts/review-report-exports.js",
     "docs:acc": "Start-Process ./docs/modules/Accesare.md",
     "merge:plan": "pnpm --filter @pkg/merge run cli --",
-    "manual:emit": "pnpm --filter @pkg/manual-emitter run cli --"
+    "manual:emit": "pnpm --filter @pkg/manual-emitter run cli --",
+    "parity:score": "pnpm --filter @pkg/parity run cli --"
   },
   "workspaces": [
     "apps/*",
