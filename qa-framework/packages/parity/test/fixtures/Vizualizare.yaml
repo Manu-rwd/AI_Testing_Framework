@@ -1,0 +1,9 @@
+items:
+  - bucket: happy
+    narrative: Afisare lista utilizatori
+    facets: [ tabel, sortare, paginare ]
+  - bucket: edge
+    narrative: Afisare cand nu exista date
+    facets: [ mesaj, gol ]
+
+
