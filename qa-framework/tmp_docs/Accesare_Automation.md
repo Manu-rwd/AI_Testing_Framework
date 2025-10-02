@@ -1,6 +1,6 @@
 # Accesare: Plan de automatizare
 
-_Generat la 2025-10-01T14:07:37.761Z_
+_Generat la 2025-10-02T08:17:28.775Z_
 
 | tipFunctionalitate | bucket | feasibility | source | confidence | rule_tags |
 |---|---|---|---|---:|---|

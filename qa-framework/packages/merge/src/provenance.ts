@@ -5,6 +5,7 @@ const BUMPS: Record<SourceTier, number> = {
   project: 0.03,
   uiux: 0.02,
   coverage: 0.01,
+  qa_library: 0.01, // alias accepted by spec
   defaults: 0
 };
 
