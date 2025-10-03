@@ -8,7 +8,7 @@ describe('Parity scorer', () => {
   it('passes with >=85% for Vizualizare when all match', () => {
     const cov = loadCoverage(fx('Vizualizare.yaml'));
     const man = loadManual(fx('Vizualizare_Manual_ok.md'));
-    const res = score(cov, man, 'Vizualizare');
+    const res = score(cov, man, 'Vizualizare'); // visual tips threshold 85
     expect(res.overall.percent).toBe(100);
     expect(res.overall.pass).toBe(true);
     expect(res.missing.length).toBe(0);
