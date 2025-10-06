@@ -45,7 +45,7 @@ def add_framework_to_sys_path() -> None:
     if "src" not in sys.modules:
         import types
         ns = types.ModuleType("src")
-        ns.__path__ = [str(src_path)]  # type: ignore[attr-defined]
+        ns.__path__ = [str(src_path)]
         sys.modules["src"] = ns
 
 
@@ -80,7 +80,7 @@ def main() -> int:
                 spec = importlib.util.spec_from_file_location(alt_name.replace(".", "_"), str(file_path))
                 if spec and spec.loader:
                     mod = importlib.util.module_from_spec(spec)
-                    spec.loader.exec_module(mod)  # type: ignore[assignment]
+                    spec.loader.exec_module(mod)
                     return mod
                 raise
 
