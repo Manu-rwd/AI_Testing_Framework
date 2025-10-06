@@ -7,6 +7,7 @@
     "node": ">=22"
   },
   "scripts": {
+    "agent:probe": "pnpm --filter @apps/agent probe",
     "uiux:ingest": "pnpm --filter @pkg/uiux-ingestor start",
     "uiux:convert": "pnpm --filter @pkg/uiux-converter start",
     "dev:web": "pnpm --filter @app/web dev",
