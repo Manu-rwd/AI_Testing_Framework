@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import 'dotenv/config';
 import OpenAI from "openai";
 
 function getEnv(name: string, def?: string): string {

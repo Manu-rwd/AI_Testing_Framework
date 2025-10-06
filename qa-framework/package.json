@@ -8,6 +8,7 @@
   },
   "scripts": {
     "agent:probe": "pnpm --filter @apps/agent probe",
+    "agent:probe:local": "cross-env-shell NODE_ENV=development pnpm --filter @apps/agent probe",
     "uiux:ingest": "pnpm --filter @pkg/uiux-ingestor start",
     "uiux:convert": "pnpm --filter @pkg/uiux-converter start",
     "dev:web": "pnpm --filter @app/web dev",
