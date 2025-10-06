@@ -15,7 +15,8 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "commander": "^12.1.0"
+    "commander": "^12.1.0",
+    "@pkg/spec": "workspace:*"
   },
   "devDependencies": {
     "tsx": "^4.19.1",

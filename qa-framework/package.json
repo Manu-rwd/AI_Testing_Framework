@@ -48,9 +48,14 @@
     "review:report:exports": "node scripts/review-report-exports.js",
     "docs:acc": "Start-Process ./docs/modules/Accesare.md",
     "merge:plan": "pnpm --filter @pkg/merge run cli --",
-    "manual:emit": "pnpm -C qa-framework --filter @pkg/manual-emitter run cli",
+    "spec:build": "pnpm --filter @pkg/spec build",
+    "spec:test": "pnpm --filter @pkg/spec test",
+    "manual:emit": "pnpm -C qa-framework --filter @pkg/manual-emitter run cli -- --strict-spec",
     "manual:tune:viz": "pnpm -C qa-framework --filter @pkg/manual-emitter run cli -- --in qa-framework/temp/merged_plan.json --out qa-framework/docs/modules/Vizualizare_Manual.md --filter-tip Vizualizare --include-general-only --title \"Plan de testare — Vizualizare\"",
-    "parity:score": "pnpm -C qa-framework --filter @pkg/parity run cli"
+    "parity:score": "pnpm -C qa-framework --filter @pkg/parity run cli",
+    "us:bridge": "node tools/us2manual.mjs --strict-spec",
+    "qa:compare": "node tools/qa_compare.mjs",
+    "us:emit": "tsx packages/us2manual/src/index.ts"
   },
   "workspaces": [
     "apps/*",

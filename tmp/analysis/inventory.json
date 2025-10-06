@@ -1,0 +1,5059 @@
+{
+  "repo": "D:\\Proj\\Ai_Testing_Framework",
+  "tree": {
+    "root": [
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.cursor",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.cursor\\rules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.cursor\\rules\\001-core-adef.mdc",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.cursor\\rules\\010-change-documentation.mdc",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.cursor\\rules\\020-quality-gates.mdc",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.cursor\\rules\\030-logging-and-observability.mdc",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.cursor\\rules\\040-configuration-and-security.mdc",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.cursor\\rules\\050-error-handling-result-type.mdc",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.cursor\\rules\\060-repo-structure-and-integration.mdc",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.cursor\\rules\\070-commit-and-pr-standards.mdc",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.env",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.flake8",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\COMMIT_EDITMSG",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\config",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\description",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\FETCH_HEAD",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\HEAD",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\applypatch-msg.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\commit-msg.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\fsmonitor-watchman.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\post-checkout",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\post-commit",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\post-merge",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\post-update.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\pre-applypatch.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\pre-commit.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\pre-merge-commit.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\pre-push",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\pre-push.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\pre-rebase.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\pre-receive.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\prepare-commit-msg.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\push-to-checkout.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\sendemail-validate.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\hooks\\update.sample",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\index",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\info",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\info\\exclude",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\lfs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\lfs\\cache",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\lfs\\objects",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\lfs\\tmp",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\logs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\logs\\HEAD",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\logs\\refs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\00",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\01",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\02",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\03",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\04",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\05",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\06",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\07",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\08",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\09",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\0a",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\0b",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\0c",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\0d",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\0e",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\0f",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\10",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\11",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\12",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\13",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\14",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\15",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\16",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\17",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\18",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\19",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\1a",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\1b",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\1c",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\1d",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\1e",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\1f",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\20",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\21",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\22",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\23",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\24",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\25",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\26",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\27",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\28",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\29",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\2a",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\2b",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\2c",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\2d",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\2e",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\2f",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\30",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\31",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\32",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\33",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\34",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\35",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\36",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\37",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\38",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\39",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\3a",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\3b",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\3c",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\3d",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\3e",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\3f",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\40",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\41",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\42",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\43",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\44",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\45",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\46",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\47",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\48",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\49",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\4a",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\4b",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\4c",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\4d",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\4e",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\4f",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\50",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\51",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\52",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\53",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\54",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\55",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\56",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\57",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\58",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\59",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\5a",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\5b",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\5c",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\5d",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\5e",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\5f",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\60",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\61",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\62",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\63",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\64",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\65",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\66",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\67",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\68",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\69",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\6a",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\6b",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\6c",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\6d",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\6e",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\6f",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\70",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\71",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\72",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\73",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\74",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\75",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\76",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\77",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\78",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\79",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\7a",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\7b",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\7c",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\7d",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\7e",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\7f",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\80",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\81",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\82",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\83",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\84",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\85",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\86",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\87",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\88",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\89",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\8a",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\8b",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\8c",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\8d",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\8e",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\8f",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\90",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\91",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\92",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\93",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\94",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\95",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\96",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\97",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\98",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\99",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\9a",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\9b",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\9c",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\9d",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\9e",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\9f",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\a0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\a1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\a2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\a3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\a4",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\a5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\a6",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\a7",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\a8",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\a9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\aa",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ab",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ac",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ad",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ae",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\af",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\b0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\b1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\b2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\b3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\b4",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\b5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\b6",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\b7",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\b8",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\b9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ba",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\bb",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\bc",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\bd",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\be",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\bf",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\c0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\c1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\c2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\c3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\c4",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\c5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\c6",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\c7",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\c8",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\c9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ca",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\cb",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\cc",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\cd",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ce",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\cf",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\d0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\d1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\d2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\d3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\d4",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\d5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\d6",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\d7",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\d8",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\d9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\da",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\db",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\dc",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\dd",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\de",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\df",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\e0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\e1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\e2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\e3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\e4",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\e5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\e6",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\e7",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\e8",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\e9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ea",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\eb",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ec",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ed",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ee",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ef",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\f0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\f1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\f2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\f3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\f4",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\f5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\f6",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\f7",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\f8",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\f9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\fa",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\fb",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\fc",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\fd",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\fe",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\ff",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\info",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\objects\\pack",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\ORIG_HEAD",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\refs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\refs\\heads",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\refs\\remotes",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\refs\\stash",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.git\\refs\\tags",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.gitattributes",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.github",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.github\\workflows",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.github\\workflows\\ci.yml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.github\\workflows\\review-gate.yml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.github\\workflows\\validate.yml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.gitignore",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\.gitignore",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\@plugins_snapshot.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\abc.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\abc.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\ast.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\ast.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\builtins.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\builtins.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\codecs.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\codecs.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\collections",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\contextlib.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\contextlib.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\dataclasses.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\dataclasses.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\email",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\enum.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\enum.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\genericpath.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\genericpath.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\importlib",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\io.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\io.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\ntpath.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\ntpath.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\os",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\pathlib",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\posixpath.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\posixpath.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\re.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\re.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\scripts",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\sre_compile.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\sre_compile.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\sre_constants.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\sre_constants.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\sre_parse.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\sre_parse.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\subprocess.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\subprocess.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\sys",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\types.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\types.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\typing.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\typing.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\typing_extensions.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\typing_extensions.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\verify_adef_integration.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\verify_adef_integration.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\zipfile",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\zipimport.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\zipimport.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_ast.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_ast.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_codecs.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_codecs.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_collections_abc.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_collections_abc.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_frozen_importlib.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_frozen_importlib.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_frozen_importlib_external.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_frozen_importlib_external.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_io.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_io.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_sitebuiltins.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_sitebuiltins.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_typeshed",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_winapi.data.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\3.12\\_winapi.meta.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\.mypy_cache\\CACHEDIR.TAG",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\.flake8",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\.venv",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\.venv\\Include",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\.venv\\Lib",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\.venv\\pyvenv.cfg",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\.venv\\Scripts",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\config",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\config\\environments",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\1.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\2.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\config",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\context",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\cursor_get_latest_changes_from_git.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\docs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\guidelines",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\requirements-dev.txt",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\requirements.txt",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\WORK_PC_CONTINUATION_PROMPT.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\framework\\WORK_PC_SESSION_ATOM003_CONTINUATION_PROMPT.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\logs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\logs_root",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\logs_root\\audit",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\logs_root\\errors",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\logs_root\\scraping",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\mypy.ini",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\requirements.txt",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\scripts",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\scripts\\checks.py",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\scripts\\verify_adef_integration.py",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\scripts\\__init__.py",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\tools",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF\\tools\\check_quality_gates.py",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Include",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Lib",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Lib\\site-packages",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\pyvenv.cfg",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\activate",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\activate.bat",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\Activate.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\deactivate.bat",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\dmypy.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\flake8.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\mypy.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\mypyc.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\pip.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\pip3.12.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\pip3.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\pycodestyle.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\pyflakes.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\python.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\pythonw.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\stubgen.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\ADEF.venv\\Scripts\\stubtest.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\finalize_module.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\finalize_module11.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\finalize_module11_auto.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\finalize_module13.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\finalize_module14.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\finalize_module15.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\finalize_module16.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\logs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\logs\\audit",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\logs\\audit\\audit.log",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\logs\\errors",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\logs\\errors\\errors.log",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\manual_output",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\manual_output\\2024_08_15-Web6-Propuneri_tehnice-Planificare-CRUD_documente_Manual.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\manual_output\\Qa team generated test cases.txt",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\mypy.ini",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\.cursorrules",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\.editorconfig",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\.env",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\.env.example",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\.gitattributes",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\.gitignore",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\ADEF",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\ADEF\\framework",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\ADEF_change_doc_placeholder.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\apps",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\apps\\api",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\apps\\web",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\CHANGELOG.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\data",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\data\\projects",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\data\\templates",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docker",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docker\\compose.local.yml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\changes",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\decisions",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\Plan_Adaugare_v2.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\Plan_Vizualizare_v2.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\roadmap.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\templates",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\tools",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\troubleshooting",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\us",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\.gitkeep",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Accesare.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Accesare_Vizualizare.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Adaugare_Automation.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Plan_Adaugare.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Plan_Adaugare_v2.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Plan_Vizualizare_v2.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Vizualizare_Automation.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\input",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\input\\Biblioteca_cazuri_de_testare-update.xlsx",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\input\\Ghid UIUX - Norme si bune practici 1.pdf",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\input\\us_and_test_cases.txt",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\logs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\logs\\audit",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\logs\\errors",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.cache",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.ignored_tsx",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.modules.yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.package-lock.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.prisma",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.vite",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@esbuild",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@pkg",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@prisma",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@types",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\esbuild",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\execa",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\get-tsconfig",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\prisma",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\resolve-pkg-maps",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\tsx",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\typescript",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\vitest",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\zod",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\package-lock.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\agents",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\codegen",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\db",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\executors",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\importer",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\manual-emitter",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\project",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\rules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\schemas",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\tools",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-converter",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-ingestor",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\us2manual",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\pnpm-lock.yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\pnpm-workspace.yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\projects",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\projects\\example",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\PR_BODY.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\ADEF",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\projects",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\temp",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\tmp_validation",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\scripts",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\scripts\\review-report-exports.js",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\scripts\\review-report-one.js",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\scripts\\review-verify-exports.js",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\scripts\\review-verify-one.js",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\temp",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\temp\\.gitkeep",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\temp\\merged_plan.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp\\enriched.plan.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_cli",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_cli\\plan.enriched.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_cli\\plan.v2.sample.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_docs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_docs\\Accesare_Automation.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_exports",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_exports\\Accesare_Automation.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_review",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_review\\automation.sample.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\.keep",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\pandoc",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\poppler",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\us2manual.mjs",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tsconfig.base.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tsconfig.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\repo_snapshot.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\repo_snapshot.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\tatus -sb",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\tmp",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\tmp\\01.ai_qa_framework_modular_roadmap_downloadable.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\tmp\\02.initial_commit_pack_copy_paste_for_codex.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\tmp\\analysis",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\tmp\\analysis\\inventory.mjs",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\tmp\\finalize_module_12.err",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\tmp\\finalize_module_12.log",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\tmp\\finalize_module_12.out",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\tmp\\run_finalize_module_12.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\tmp_finalize_module11.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\tmp_finalize_module11_v2.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\US_input",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\US_input\\.gitkeep",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\US_input\\2024_08_15-Web6-Propuneri_tehnice-Planificare-CRUD_documente.txt",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\US_input\\Propuneri_tehnice_Centralizatoare_Manual(2).md",
+        "dir": false
+      }
+    ],
+    "qaFramework": [
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\.cursorrules",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\.editorconfig",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\.env",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\.env.example",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\.gitattributes",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\.gitignore",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\ADEF",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\ADEF\\framework",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\ADEF\\framework\\docs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\ADEF_change_doc_placeholder.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\apps",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\apps\\api",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\apps\\api\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\apps\\web",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\apps\\web\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\CHANGELOG.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\data",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\data\\projects",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\data\\projects\\default.project.yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\data\\projects\\sample.crm.project.yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\data\\templates",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\data\\templates\\.gitkeep",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\data\\templates\\Accesare.normalized.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docker",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docker\\compose.local.yml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\changes",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\changes\\features",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\changes\\merges",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\decisions",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\decisions\\changes",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\modules\\.gitkeep",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\modules\\Accesare.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\modules\\Accesare_Manual.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\modules\\Accesare_Review_Summary.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\modules\\Accesare_Vizualizare.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\modules\\Adaugare_Automation.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\modules\\Plan_Adaugare.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\modules\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\modules\\Vizualizare_Automation.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\Plan_Adaugare_v2.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\Plan_Vizualizare_v2.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\roadmap.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\templates",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\templates\\manual",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\tools",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\tools\\Review_Tools.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\troubleshooting",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\troubleshooting\\prisma_p1000_windows_docker.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\us",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\us\\.keep",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\us\\US_Gaps.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\docs\\us\\US_Normalized.yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\.gitkeep",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Accesare.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Accesare_Vizualizare.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Adaugare_Automation.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Plan_Adaugare.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Plan_Adaugare_v2.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Plan_Vizualizare_v2.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\exports\\Vizualizare_Automation.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\input",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\input\\Biblioteca_cazuri_de_testare-update.xlsx",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\input\\Ghid UIUX - Norme si bune practici 1.pdf",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\input\\us_and_test_cases.txt",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\logs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\logs\\audit",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\logs\\audit\\audit.log",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\logs\\errors",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\logs\\errors\\errors.log",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\esbuild",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\esbuild.CMD",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\esbuild.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\prisma",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\prisma.CMD",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\prisma.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\tsc",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\tsc.CMD",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\tsc.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\tsserver",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\tsserver.CMD",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\tsserver.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\tsx",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\tsx.CMD",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\tsx.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\vitest",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\vitest.CMD",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\vitest.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\yaml.CMD",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.bin\\yaml.ps1",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.cache",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.cache\\prisma",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.ignored_tsx",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.ignored_tsx\\dist",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.ignored_tsx\\LICENSE",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.ignored_tsx\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.ignored_tsx\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.modules.yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.package-lock.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@esbuild+win32-x64@0.21.5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@esbuild+win32-x64@0.25.9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@jridgewell+sourcemap-codec@1.5.5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@prisma+client@5.22.0_prisma@5.22.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@prisma+debug@5.22.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@prisma+engines-version@5.22.0-44.605197351a3c8bdd595af2d2a9bc3025bca48ea2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@prisma+engines@5.22.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@prisma+fetch-engine@5.22.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@prisma+get-platform@5.22.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@rollup+rollup-win32-x64-msvc@4.50.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@types+debug@4.1.12",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@types+estree@1.0.8",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@types+fs-extra@11.0.4",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@types+handlebars@4.1.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@types+js-yaml@4.0.9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@types+jsonfile@6.1.4",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@types+mdast@4.0.4",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@types+ms@2.1.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@types+node@20.19.17",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@types+node@24.3.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@types+unist@3.0.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@vitest+expect@2.1.9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@vitest+mocker@2.1.9_vite@5.4.19_@types+node@24.3.0_",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@vitest+pretty-format@2.1.9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@vitest+runner@2.1.9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@vitest+snapshot@2.1.9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@vitest+spy@2.1.9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\@vitest+utils@2.1.9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\adler-32@1.3.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\ajv@8.17.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\ansi-regex@5.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\ansi-styles@4.3.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\argparse@1.0.10",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\argparse@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\assertion-error@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\bail@2.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\boolbase@1.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\cac@6.7.14",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\cfb@1.2.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\chai@5.3.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\character-entities@2.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\check-error@2.1.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\cliui@8.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\codepage@1.15.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\color-convert@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\color-name@1.1.4",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\commander@11.1.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\commander@12.1.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\crc-32@1.2.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\cross-spawn@7.0.6",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\css-select@5.2.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\css-what@6.2.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\csv-parse@5.6.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\csv-stringify@6.6.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\debug@4.4.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\decode-named-character-reference@1.2.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\deep-eql@5.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\dequal@2.0.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\devlop@1.1.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\dom-serializer@2.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\domelementtype@2.3.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\domhandler@5.0.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\domutils@3.2.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\emoji-regex@8.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\entities@4.5.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\es-module-lexer@1.7.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\esbuild@0.21.5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\esbuild@0.25.9",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\escalade@3.2.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\esprima@4.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\estree-walker@3.0.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\execa@8.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\expect-type@1.2.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\extend-shallow@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\extend@3.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\fast-deep-equal@3.1.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\fast-uri@3.1.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\frac@1.1.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\fs-extra@11.3.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\get-caller-file@2.0.5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\get-stream@8.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\get-tsconfig@4.10.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\graceful-fs@4.2.11",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\gray-matter@4.0.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\handlebars@4.7.8",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\he@1.2.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\human-signals@5.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\is-extendable@0.1.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\is-fullwidth-code-point@3.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\is-plain-obj@4.1.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\is-stream@3.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\isexe@2.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\isexe@3.1.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\js-yaml@3.14.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\js-yaml@4.1.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\json-schema-traverse@1.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\jsonfile@6.2.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\kind-of@6.0.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\lock.yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\longest-streak@3.1.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\loupe@3.2.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\magic-string@0.30.18",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\mdast-util-from-markdown@2.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\mdast-util-phrasing@4.1.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\mdast-util-to-markdown@2.1.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\mdast-util-to-string@4.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\merge-stream@2.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-core-commonmark@2.0.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-factory-destination@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-factory-label@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-factory-space@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-factory-title@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-factory-whitespace@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-character@2.1.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-chunked@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-classify-character@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-combine-extensions@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-decode-numeric-character-reference@2.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-decode-string@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-encode@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-html-tag-name@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-normalize-identifier@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-resolve-all@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-sanitize-uri@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-subtokenize@2.1.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-symbol@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark-util-types@2.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\micromark@4.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\mimic-fn@4.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\minimist@1.2.8",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\ms@2.1.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\nanoid@3.3.11",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\neo-async@2.6.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\node-html-markdown@1.3.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\node-html-parser@6.1.13",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\npm-run-path@5.3.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\nth-check@2.1.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\onetime@6.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\path-key@3.1.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\path-key@4.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\pathe@1.1.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\pathval@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\picocolors@1.1.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\postcss@8.5.6",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\prisma@5.22.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\remark-parse@11.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\remark-stringify@11.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\remark@15.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\require-directory@2.1.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\require-from-string@2.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\resolve-pkg-maps@1.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\rollup@4.50.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\section-matter@1.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\shebang-command@2.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\shebang-regex@3.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\siginfo@2.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\signal-exit@4.1.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\source-map-js@1.2.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\source-map@0.6.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\sprintf-js@1.0.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\ssf@0.11.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\stackback@0.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\std-env@3.9.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\string-width@4.2.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\strip-ansi@6.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\strip-bom-string@1.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\strip-final-newline@3.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\tinybench@2.9.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\tinyexec@0.3.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\tinypool@1.1.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\tinyrainbow@1.2.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\tinyspy@3.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\trough@2.2.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\tsx@4.20.5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\typescript@5.9.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\uglify-js@3.19.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\undici-types@6.21.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\undici-types@7.10.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\unified@11.0.5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\unist-util-is@6.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\unist-util-stringify-position@4.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\unist-util-visit-parents@6.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\unist-util-visit@5.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\universalify@2.0.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\vfile-message@4.0.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\vfile@6.0.3",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\vite-node@2.1.9_@types+node@20.19.17",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\vite-node@2.1.9_@types+node@24.3.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\vite@5.4.19_@types+node@20.19.17",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\vite@5.4.19_@types+node@24.3.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\vitest@2.1.9_@types+node@20.19.17",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\vitest@2.1.9_@types+node@24.3.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\which@2.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\which@4.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\why-is-node-running@2.3.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\wmf@1.0.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\word@0.3.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\wordwrap@1.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\wrap-ansi@7.0.0",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\xlsx@0.18.5",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\y18n@5.0.8",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\yaml@2.8.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\yargs-parser@21.1.1",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\yargs@17.7.2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\zod@3.25.76",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.pnpm\\zwitch@2.0.4",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.prisma",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.prisma\\client",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.vite",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\.vite\\vitest",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@esbuild",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@esbuild\\win32-x64",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@pkg",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@pkg\\db",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@prisma",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@prisma\\client",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@prisma\\debug",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@prisma\\engines",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@prisma\\engines-version",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@prisma\\fetch-engine",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@prisma\\get-platform",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@types",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\@types\\node",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\esbuild",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\esbuild\\bin",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\esbuild\\install.js",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\esbuild\\lib",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\esbuild\\LICENSE.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\esbuild\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\esbuild\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\execa",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\get-tsconfig",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\get-tsconfig\\dist",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\get-tsconfig\\LICENSE",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\get-tsconfig\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\get-tsconfig\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\prisma",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\prisma\\build",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\prisma\\libquery_engine-debian-openssl-3.0.x.so.node",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\prisma\\LICENSE",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\prisma\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\prisma\\preinstall",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\prisma\\prisma-client",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\prisma\\query_engine-windows.dll.node",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\prisma\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\prisma\\scripts",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\resolve-pkg-maps",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\resolve-pkg-maps\\dist",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\resolve-pkg-maps\\LICENSE",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\resolve-pkg-maps\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\resolve-pkg-maps\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\tsx",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\typescript",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\vitest",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\node_modules\\zod",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\package-lock.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\agents",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\agents\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\codegen",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\codegen\\.gitkeep",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\db",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\db\\.env",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\db\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\db\\package-lock.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\db\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\db\\prisma",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\db\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\db\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\executors",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\executors\\.gitkeep",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\importer",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\importer\\data",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\importer\\docs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\importer\\exports",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\importer\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\importer\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\importer\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\manual-emitter",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\manual-emitter\\.gitignore",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\manual-emitter\\dist",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\manual-emitter\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\manual-emitter\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\manual-emitter\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\manual-emitter\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\manual-emitter\\test",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\manual-emitter\\tsconfig.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\manual-emitter\\vitest.config.ts",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge\\.gitignore",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge\\.npmrc",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge\\dist",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge\\test",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge\\tsconfig.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge\\vitest.config.ts",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity\\.gitignore",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity\\.npmrc",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity\\dist",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity\\manual-emitter-proxy.ts",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity\\reports",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity\\test",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity\\tsconfig.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity\\vitest.config.ts",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\bin",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\dist",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\docs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\packages",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\projects",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\qa-framework",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\test",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\tmp",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\tmp_cli",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\tmp_docs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\tmp_exports",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\tmp_review",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\tmp_review_cli",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner\\tsconfig.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\project",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\project\\dist",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\project\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\project\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\project\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\project\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\project\\tsconfig.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\rules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\rules\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\rules\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\rules\\rules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\rules\\rules_v2",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\rules\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\schemas",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\schemas\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\schemas\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\schemas\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\tools",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\tools\\review",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-converter",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-converter\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-converter\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-converter\\qa-framework",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-converter\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-converter\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-converter\\test",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-converter\\tsconfig.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-ingestor",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-ingestor\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-ingestor\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-ingestor\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-ingestor\\test",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-ingestor\\tsconfig.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\us2manual",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\us2manual\\dist",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\us2manual\\node_modules",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\us2manual\\package.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\us2manual\\src",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\us2manual\\test",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\us2manual\\tsconfig.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\pnpm-lock.yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\pnpm-workspace.yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\projects",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\projects\\example",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\projects\\example\\Project.yaml",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\projects\\example\\standards",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\PR_BODY.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\ADEF",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\ADEF\\framework",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\projects",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\projects\\example",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\temp",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\tmp_validation",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\tmp_validation\\bad_eol.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\tmp_validation\\bad_header_json.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\qa-framework\\tmp_validation\\good.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\README.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\scripts",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\scripts\\review-report-exports.js",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\scripts\\review-report-one.js",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\scripts\\review-verify-exports.js",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\scripts\\review-verify-one.js",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\temp",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\temp\\.gitkeep",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\temp\\merged_plan.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp\\enriched.plan.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_cli",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_cli\\plan.enriched.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_cli\\plan.v2.sample.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_docs",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_docs\\Accesare_Automation.md",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_exports",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_exports\\Accesare_Automation.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_review",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tmp_review\\automation.sample.csv",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\.keep",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\pandoc",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\pandoc\\pandoc.exe",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\poppler",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\poppler\\bin",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\poppler\\include",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\poppler\\lib",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\poppler\\share",
+        "dir": true
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tools\\us2manual.mjs",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tsconfig.base.json",
+        "dir": false
+      },
+      {
+        "path": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\tsconfig.json",
+        "dir": false
+      }
+    ]
+  },
+  "workspaces": {
+    "rootPkg": {
+      "name": "qa-framework",
+      "private": true,
+      "type": "module",
+      "packageManager": "pnpm@9.0.0",
+      "engines": {
+        "node": ">=22"
+      },
+      "scripts": {
+        "uiux:ingest": "pnpm --filter @pkg/uiux-ingestor start",
+        "uiux:convert": "pnpm --filter @pkg/uiux-converter start",
+        "dev:web": "pnpm --filter @app/web dev",
+        "dev:api": "pnpm --filter @app/api dev",
+        "prisma:generate": "pnpm --filter @pkg/db prisma:generate",
+        "prisma:migrate": "pnpm --filter @pkg/db prisma:migrate",
+        "db:seed": "pnpm --filter @pkg/db seed",
+        "importer:acceseaza": "pnpm --filter @pkg/importer start:acceseaza",
+        "planner:run": "pnpm --filter @pkg/planner start",
+        "planner:precheck": "pnpm --filter @pkg/planner start -- --review-precheck",
+        "us:review": "tsx packages/planner/src/us-review/cli.ts",
+        "review:extend": "pnpm --filter @pkg/planner review:extend",
+        "planner:review:extend": "tsx packages/planner/bin/review-extend-csv.ts",
+        "planner:review:validate:accese": "tsx packages/planner/bin/review-validate-buckets.ts --csv exports/Accesare.csv --us docs/us/US_Normalized.yaml --project ./projects/example --policy strict",
+        "planner:review:report:accese": "tsx packages/planner/bin/review-report.ts --csv exports/Accesare.csv --out docs/modules/Accesare.md",
+        "mod9:viz": "pnpm -s --filter @pkg/planner review:viz:extend ; pnpm -s --filter @pkg/planner review:viz:report",
+        "build": "pnpm -r --filter ./packages/** run build",
+        "dev": "pnpm -r --filter ./packages/** run dev",
+        "test": "pnpm -r --filter ./packages/** run test",
+        "test:automation-emitter": "vitest run packages/planner/test/automation-emitter --run",
+        "test:module5": "vitest run packages/planner/test/automation-emitter --run",
+        "lint": "echo 'add linter later'",
+        "typecheck": "echo 'add typecheck later'",
+        "planner:v2:adaugare": "tsx packages/planner/src/cli_v2.ts --type Adaugare --rules packages/rules/rules_v2/adaugare.yaml --us ./docs/us/US_Normalized.yaml",
+        "planner:v2:vizualizare": "tsx packages/planner/src/cli_v2.ts --type Vizualizare --rules packages/rules/rules_v2/vizualizare.yaml --us ./docs/us/US_Normalized.yaml --project ./projects/example --apply-project-fallbacks",
+        "planner:emit:manual": "pnpm -C packages/planner planner:emit:manual",
+        "test:manual-emitter": "vitest run packages/planner/test/manual_emitter.test.ts",
+        "planner:verify:snapshot": "tsx packages/planner/src/cli/verify-snapshot.ts",
+        "check:lineendings": "tsx packages/planner/src/cli/check-lineendings.ts --paths qa-framework docs packages --exts .md,.mdx,.ts,.tsx,.js,.json,.hbs,.yaml,.yml",
+        "check:lineendings:changed": "tsx packages/planner/src/cli/check-lineendings.ts --since origin/main --paths qa-framework docs packages --exts .md,.mdx,.ts,.tsx,.js,.json,.hbs,.yaml,.yml",
+        "test:review-tools": "vitest run packages/planner/test/review-tools --run",
+        "review:init:sample": "node packages/planner/dist/cli/index.js plan:review:init --input qa-framework/tmp_exports/Accesare_Automation.csv --inPlace",
+        "review:summary:sample": "node packages/planner/dist/cli/index.js plan:review:summary --input qa-framework/tmp_exports/Accesare_Automation.csv --module Accesare --out qa-framework/tmp_docs/Accesare_Review_Summary.md",
+        "test:validation": "vitest run packages/planner/test/validation --run",
+        "validate:sample": "node packages/planner/dist/cli/index.js plan:validate --input \"tmp_exports/**/*.csv\" --format text --module Accesare",
+        "review:verify:one": "node scripts/review-verify-one.js",
+        "review:report:one": "node scripts/review-report-one.js",
+        "review:verify:exports": "node scripts/review-verify-exports.js",
+        "review:report:exports": "node scripts/review-report-exports.js",
+        "docs:acc": "Start-Process ./docs/modules/Accesare.md",
+        "merge:plan": "pnpm --filter @pkg/merge run cli --",
+        "manual:emit": "pnpm -C qa-framework --filter @pkg/manual-emitter run cli",
+        "manual:tune:viz": "pnpm -C qa-framework --filter @pkg/manual-emitter run cli -- --in qa-framework/temp/merged_plan.json --out qa-framework/docs/modules/Vizualizare_Manual.md --filter-tip Vizualizare --include-general-only --title \"Plan de testare — Vizualizare\"",
+        "parity:score": "pnpm -C qa-framework --filter @pkg/parity run cli",
+        "us:bridge": "node tools/us2manual.mjs",
+        "us:emit": "tsx packages/us2manual/src/index.ts"
+      },
+      "workspaces": [
+        "apps/*",
+        "packages/*"
+      ],
+      "devDependencies": {
+        "@types/node": "^24.3.0",
+        "execa": "^8.0.1",
+        "tsx": "^4.20.5",
+        "typescript": "^5.9.2",
+        "vitest": "^2.0.5"
+      },
+      "dependencies": {
+        "yaml": "^2.5.0",
+        "zod": "^3.23.8"
+      }
+    },
+    "patterns": []
+  },
+  "packages": [
+    {
+      "dir": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\us2manual",
+      "pkg": {
+        "name": "@apps/us2manual",
+        "version": "0.1.0",
+        "private": true,
+        "type": "module",
+        "bin": {
+          "us2manual": "src/index.ts"
+        },
+        "scripts": {
+          "build": "tsc -p tsconfig.json",
+          "test": "vitest run"
+        },
+        "dependencies": {
+          "yargs": "^17.7.2"
+        },
+        "devDependencies": {
+          "@types/node": "^20.12.12",
+          "tsx": "^4.16.2",
+          "typescript": "^5.5.4",
+          "vitest": "^2.1.9"
+        }
+      },
+      "hasTs": true,
+      "hasVitest": false,
+      "hasDist": true,
+      "bin": {
+        "us2manual": "src/index.ts"
+      },
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "test": "vitest run"
+      },
+      "hasTests": false
+    },
+    {
+      "dir": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\db",
+      "pkg": {
+        "name": "@pkg/db",
+        "version": "0.0.0",
+        "private": true,
+        "type": "module",
+        "scripts": {
+          "prisma:generate": "prisma generate",
+          "prisma:migrate": "prisma migrate dev --name init",
+          "seed": "tsx src/seed.ts"
+        },
+        "dependencies": {
+          "@prisma/client": "^5.22.0"
+        },
+        "devDependencies": {
+          "prisma": "^5.22.0",
+          "tsx": "^4.20.5"
+        }
+      },
+      "hasTs": false,
+      "hasVitest": false,
+      "hasDist": false,
+      "bin": null,
+      "scripts": {
+        "prisma:generate": "prisma generate",
+        "prisma:migrate": "prisma migrate dev --name init",
+        "seed": "tsx src/seed.ts"
+      },
+      "hasTests": false
+    },
+    {
+      "dir": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\importer",
+      "pkg": {
+        "name": "@pkg/importer",
+        "version": "0.0.0",
+        "private": true,
+        "type": "module",
+        "scripts": {
+          "start:acceseaza": "tsx src/acceseaza.ts"
+        },
+        "dependencies": {
+          "xlsx": "^0.18.5",
+          "csv-stringify": "^6.5.0",
+          "zod": "^3.23.8",
+          "fs-extra": "^11.2.0"
+        },
+        "devDependencies": {
+          "tsx": "^4.7.0"
+        }
+      },
+      "hasTs": false,
+      "hasVitest": false,
+      "hasDist": false,
+      "bin": null,
+      "scripts": {
+        "start:acceseaza": "tsx src/acceseaza.ts"
+      },
+      "hasTests": false
+    },
+    {
+      "dir": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\manual-emitter",
+      "pkg": {
+        "name": "@pkg/manual-emitter",
+        "version": "0.1.0",
+        "private": true,
+        "type": "module",
+        "main": "dist/index.js",
+        "bin": {
+          "manual-emit": "dist/index.js"
+        },
+        "scripts": {
+          "build": "tsc -p tsconfig.json",
+          "dev": "tsx src/index.ts",
+          "test": "vitest run",
+          "cli": "tsx src/index.ts",
+          "prepublishOnly": "pnpm run build"
+        },
+        "dependencies": {
+          "commander": "^12.1.0"
+        },
+        "devDependencies": {
+          "tsx": "^4.19.1",
+          "typescript": "^5.5.4",
+          "vitest": "^2.1.1"
+        }
+      },
+      "hasTs": true,
+      "hasVitest": true,
+      "hasDist": true,
+      "bin": {
+        "manual-emit": "dist/index.js"
+      },
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "dev": "tsx src/index.ts",
+        "test": "vitest run",
+        "cli": "tsx src/index.ts",
+        "prepublishOnly": "pnpm run build"
+      },
+      "hasTests": true
+    },
+    {
+      "dir": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\merge",
+      "pkg": {
+        "name": "@pkg/merge",
+        "version": "0.1.0",
+        "private": true,
+        "type": "module",
+        "main": "dist/index.js",
+        "bin": {
+          "merge-plan": "dist/index.js"
+        },
+        "scripts": {
+          "build": "tsc -p tsconfig.json",
+          "dev": "tsx src/index.ts",
+          "test": "vitest run",
+          "cli": "tsx src/index.ts",
+          "prepublishOnly": "pnpm run build"
+        },
+        "dependencies": {
+          "commander": "^12.1.0"
+        },
+        "devDependencies": {
+          "tsx": "^4.19.1",
+          "typescript": "^5.5.4",
+          "vitest": "^2.0.5"
+        }
+      },
+      "hasTs": true,
+      "hasVitest": true,
+      "hasDist": true,
+      "bin": {
+        "merge-plan": "dist/index.js"
+      },
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "dev": "tsx src/index.ts",
+        "test": "vitest run",
+        "cli": "tsx src/index.ts",
+        "prepublishOnly": "pnpm run build"
+      },
+      "hasTests": true
+    },
+    {
+      "dir": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\parity",
+      "pkg": {
+        "name": "@pkg/parity",
+        "version": "0.1.0",
+        "private": true,
+        "type": "module",
+        "main": "dist/index.js",
+        "files": [
+          "dist"
+        ],
+        "scripts": {
+          "build": "tsc -p tsconfig.json",
+          "test": "vitest run",
+          "cli": "tsx src/index.ts"
+        },
+        "dependencies": {
+          "commander": "^11.1.0",
+          "js-yaml": "^4.1.0"
+        },
+        "devDependencies": {
+          "@types/js-yaml": "^4.0.9",
+          "tsx": "^4.19.0",
+          "typescript": "^5.4.5",
+          "vitest": "^2.1.9"
+        }
+      },
+      "hasTs": true,
+      "hasVitest": true,
+      "hasDist": true,
+      "bin": null,
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "test": "vitest run",
+        "cli": "tsx src/index.ts"
+      },
+      "hasTests": true
+    },
+    {
+      "dir": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\planner",
+      "pkg": {
+        "name": "@pkg/planner",
+        "version": "0.0.0",
+        "private": true,
+        "type": "module",
+        "scripts": {
+          "start": "tsx src/cli.ts",
+          "build": "tsc -p tsconfig.json",
+          "test": "vitest run",
+          "planner:emit:manual": "tsx src/cli/manual.ts",
+          "review:extend": "tsx src/review/extend_csv.ts",
+          "review:viz:extend": "tsx src/review/extend_csv.ts ../../exports/Vizualizare_Automation.csv --out ../../exports/Accesare_Vizualizare.csv",
+          "review:viz:report": "tsx bin/review-report-viz.ts --csv ../../exports/Accesare_Vizualizare.csv --md ../../docs/modules/Accesare_Vizualizare.md --approve",
+          "gen:viz": "pnpm -s -C ../../ planner:v2:vizualizare ; node -e \"const fs=require('fs');const p=require('path');const root=p.resolve(process.cwd(),'../../');const src=p.join(root,'exports','Vizualizare_Automation.csv');const dst=p.join(root,'exports','Accesare_Vizualizare.csv');if(fs.existsSync(src)){fs.copyFileSync(src,dst);console.log('generated',dst);}else{console.error('missing source',src);process.exit(1);}\"",
+          "clean:tmp": "node -e \"const fs=require('fs/promises');const p=require('path');(async()=>{const del=async x=>{try{await fs.rm(x,{recursive:true,force:true})}catch{}};const R=p.resolve;await Promise.all([del(R('qa-framework/tmp_docs')),del(R('qa-framework/tmp_exports')),del(R('qa-framework/packages/planner/tmp_review')),del(R('qa-framework/packages/planner/test/tmp_review_cli')),del(R('qa-framework/packages/planner/test/tmp_review_tests')),del(R('qa-framework/packages/planner/test/tmp_validation'))]);})();\"",
+          "test:automation-emitter": "vitest run packages/planner/test/automation-emitter --run",
+          "test:selectors": "vitest run packages/planner/test/selector-data-profiles --run"
+        },
+        "dependencies": {
+          "@pkg/project": "workspace:*",
+          "@pkg/schemas": "workspace:*",
+          "ajv": "^8.17.1",
+          "csv-parse": "^5.5.6",
+          "csv-stringify": "^6.5.2",
+          "fs-extra": "^11.2.0",
+          "handlebars": "^4.7.8",
+          "yaml": "^2.5.0",
+          "zod": "^3.23.8"
+        },
+        "devDependencies": {
+          "@types/fs-extra": "^11.0.4",
+          "@types/handlebars": "^4.1.0",
+          "tsx": "^4.7.0",
+          "execa": "^8.0.1",
+          "vitest": "^2.0.5"
+        }
+      },
+      "hasTs": true,
+      "hasVitest": false,
+      "hasDist": true,
+      "bin": null,
+      "scripts": {
+        "start": "tsx src/cli.ts",
+        "build": "tsc -p tsconfig.json",
+        "test": "vitest run",
+        "planner:emit:manual": "tsx src/cli/manual.ts",
+        "review:extend": "tsx src/review/extend_csv.ts",
+        "review:viz:extend": "tsx src/review/extend_csv.ts ../../exports/Vizualizare_Automation.csv --out ../../exports/Accesare_Vizualizare.csv",
+        "review:viz:report": "tsx bin/review-report-viz.ts --csv ../../exports/Accesare_Vizualizare.csv --md ../../docs/modules/Accesare_Vizualizare.md --approve",
+        "gen:viz": "pnpm -s -C ../../ planner:v2:vizualizare ; node -e \"const fs=require('fs');const p=require('path');const root=p.resolve(process.cwd(),'../../');const src=p.join(root,'exports','Vizualizare_Automation.csv');const dst=p.join(root,'exports','Accesare_Vizualizare.csv');if(fs.existsSync(src)){fs.copyFileSync(src,dst);console.log('generated',dst);}else{console.error('missing source',src);process.exit(1);}\"",
+        "clean:tmp": "node -e \"const fs=require('fs/promises');const p=require('path');(async()=>{const del=async x=>{try{await fs.rm(x,{recursive:true,force:true})}catch{}};const R=p.resolve;await Promise.all([del(R('qa-framework/tmp_docs')),del(R('qa-framework/tmp_exports')),del(R('qa-framework/packages/planner/tmp_review')),del(R('qa-framework/packages/planner/test/tmp_review_cli')),del(R('qa-framework/packages/planner/test/tmp_review_tests')),del(R('qa-framework/packages/planner/test/tmp_validation'))]);})();\"",
+        "test:automation-emitter": "vitest run packages/planner/test/automation-emitter --run",
+        "test:selectors": "vitest run packages/planner/test/selector-data-profiles --run"
+      },
+      "hasTests": true
+    },
+    {
+      "dir": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\project",
+      "pkg": {
+        "name": "@pkg/project",
+        "version": "0.1.0",
+        "private": true,
+        "type": "module",
+        "main": "dist/index.js",
+        "types": "dist/index.d.ts",
+        "exports": {
+          ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+          }
+        },
+        "scripts": {
+          "build": "tsc -p tsconfig.json",
+          "dev": "tsx src/demo.ts",
+          "test": "tsx src/demo.ts"
+        },
+        "dependencies": {
+          "yaml": "^2.5.0",
+          "zod": "^3.23.8"
+        }
+      },
+      "hasTs": true,
+      "hasVitest": false,
+      "hasDist": true,
+      "bin": null,
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "dev": "tsx src/demo.ts",
+        "test": "tsx src/demo.ts"
+      },
+      "hasTests": false
+    },
+    {
+      "dir": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\rules",
+      "pkg": {
+        "name": "@pkg/rules",
+        "version": "0.0.0",
+        "private": true,
+        "type": "module",
+        "exports": {
+          ".": "./src/index.ts",
+          "./v2/schema": "./src/v2/schema.ts"
+        },
+        "dependencies": {
+          "yaml": "^2.5.0",
+          "zod": "^3.23.8"
+        }
+      },
+      "hasTs": false,
+      "hasVitest": false,
+      "hasDist": false,
+      "bin": null,
+      "scripts": {},
+      "hasTests": false
+    },
+    {
+      "dir": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\schemas",
+      "pkg": {
+        "name": "@pkg/schemas",
+        "version": "0.0.0",
+        "private": true,
+        "type": "module",
+        "dependencies": {
+          "zod": "^3.23.8"
+        }
+      },
+      "hasTs": false,
+      "hasVitest": false,
+      "hasDist": false,
+      "bin": null,
+      "scripts": {},
+      "hasTests": false
+    },
+    {
+      "dir": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-converter",
+      "pkg": {
+        "name": "@pkg/uiux-converter",
+        "version": "0.1.0",
+        "private": true,
+        "type": "module",
+        "main": "src/index.ts",
+        "scripts": {
+          "start": "tsx src/index.ts",
+          "test": "vitest run --run"
+        },
+        "dependencies": {
+          "commander": "^12.1.0",
+          "execa": "^8.0.1",
+          "node-html-markdown": "^1.3.0",
+          "which": "^4.0.0"
+        }
+      },
+      "hasTs": true,
+      "hasVitest": false,
+      "hasDist": false,
+      "bin": null,
+      "scripts": {
+        "start": "tsx src/index.ts",
+        "test": "vitest run --run"
+      },
+      "hasTests": true
+    },
+    {
+      "dir": "D:\\Proj\\Ai_Testing_Framework\\qa-framework\\packages\\uiux-ingestor",
+      "pkg": {
+        "name": "@pkg/uiux-ingestor",
+        "version": "0.1.0",
+        "private": true,
+        "type": "module",
+        "scripts": {
+          "start": "tsx src/index.ts",
+          "test": "vitest run --run"
+        },
+        "dependencies": {
+          "gray-matter": "^4.0.3",
+          "remark": "^15.0.1",
+          "remark-parse": "^11.0.0",
+          "unified": "^11.0.4",
+          "zod": "^3.23.8"
+        },
+        "devDependencies": {
+          "@types/node": "^20.11.30",
+          "tsx": "^4.16.0",
+          "vitest": "^2.1.9",
+          "yaml": "^2.5.0"
+        }
+      },
+      "hasTs": true,
+      "hasVitest": false,
+      "hasDist": false,
+      "bin": null,
+      "scripts": {
+        "start": "tsx src/index.ts",
+        "test": "vitest run --run"
+      },
+      "hasTests": false
+    }
+  ],
+  "graph": {
+    "edges": [
+      [
+        "@pkg/planner",
+        "@pkg/project"
+      ],
+      [
+        "@pkg/planner",
+        "@pkg/schemas"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,537 @@
+2024_08_15-Web6-Propuneri_tehnice-Planificare-CRUD_documente
+
+db: „ecf_auction_document.document”
+            Id INT PK AUTOINCREMENT,
+            Name * VARCHAR(30),
+            TypeId *  INT, 
+                        ProjectId  * INT, (preselectat cu proiectul ales din pagina „Propuneri tehnice”. Tabela locală „ecf_auction_document.Project.Name”),
+            Description VARCHAR(255), 
+                        FilePath (VARCHAR 255),
+            Added TIMESTAMP,
+            AddedBy INT,
+            Updated TIMESTAMP,
+            UpdatedBy INT,
+            IsDeleted TINYINT DEFAULT 0
+
+### Read
+    **TITLE:** 
+        - „Documente” (en: „Documents”)
+    **ACCESS:**  
+        - Navigation path: Click the button icon „Documents" on Documents column in page auction-document/projects/index    
+        - Feature page: auction-document/projects/{id}/documents/index  
+
+    **PERMISSION:**  
+        - Name: viewDocuments  
+        - Description: User can view all documents  
+
+    **AUTHORIZATION:**
+
+    **MODELS (involved):**  
+        - User  
+            - id  
+            - username  
+            - first_name  
+            - last_name  
+            - auth_key  
+            - password_hash  
+            - password_reset_token  
+            - verification_token  
+            - email  
+            - photo  
+            - last_auth  
+            - status  
+            - created_at  
+            - updated_at  
+            - psw_changed  
+            - first_time_login  
+
+        - Document  
+            Id INT PK AUTOINCREMENT ,
+            Name  VARCHAR(255),
+            TypeId  INT,
+                        ProjectId INT,
+            Description VARCHAR(255), 
+            Added TIMESTAMP,
+            AddedBy INT,
+            Updated TIMESTAMP,
+            UpdatedBy INT,
+            IsDeleted TINYINT DEFAULT 0
+
+    **VIEW IMPLEMENTATION:**  
+        - Title: „Documente Proiect „{Denumire proiect}” (en: „{Denumire proiect} Documents”)
+        - Breadcrumbs: „Acasă / Propuneri tehnice / {Denumire proiect} / Documente” (en: „Home / Technical proposals / {Denumire proiect} / Documents”) 
+        - Pagination: Enabled, default items number: 20  
+
+    **Create Button:**  
+        - Name: „Adaugă Document” (en: „Add Document”)  
+        - Location: Right of page title  
+        - ID: button_create  
+        - Class: btn btn-sm btn-success  
+        - Text: „Adaugă Document” (en: „Add Document”)  
+        - Icon: fas fa-plus  
+        - Hover: „Adaugă Document” (en: „Add Document”)  
+
+    **Document Actions Column:**  
+        - Name: „Acțiuni” (en: „Actions")  
+        - Location: Leftmost  
+        - ID: th_actions_column  
+        - Header-Label: „Acțiuni” (en: „Actions")  
+        - Hover: „Acțiuni” (en: „Actions")  
+        - Align-Header: Center  
+        - Sort: False  
+        - Action Buttons:  
+            - View Details  
+                - ID: button_view  
+                - Class: btn btn-xs btn-info  
+                - Icon: fas fa-eye  
+                - Hover: „Vezi mai multe detalii” (en: „View more details")  
+            - Edit  
+                - ID: button_edit  
+                - Class: btn btn-xs btn-warning  
+                - Icon: fas fa-pencil-alt  
+                - Hover: „Editează” (en: „Edit")  
+            - Delete  
+                - ID: button_delete  
+                - Class: btn btn-xs btn-danger  
+                - Icon: fas fa-trash  
+                - Hover: „Șterge” (en: „Delete")  
+
+    **Document Content Actions Column:**  
+        - Name: „Conținut” (en: „Content")  
+        - Location: Leftmost  
+        - ID: th_actions_column  
+        - Header-Label: „Conținut” (en: „Content")  
+        - Hover: „Conținut” (en: „Content")  
+        - Align-Header: Center  
+        - Sort: False  
+        - Action Buttons:  
+            - View Details  
+                - ID: button_view_content
+                - Class: btn btn-xs btn-info  
+                - Icon: fas fa-eye  
+                - Hover: „Vezi mai multe detalii” (en: „View more details")  
+            - Edit  
+                - ID: button_edit_content
+                - Class: btn btn-xs btn-warning  
+                - Icon: fas fa-pencil-alt  
+                - Hover: „Editează conținut document” (en: „Edit document content")  
+            - Export  
+                - ID: button_export_content
+                - Class: btn btn-xs btn-danger  
+                - Icon: fas fa-trash  
+                 - Hover: „Exportă document” (en: „Export document")  
+    **Id Column:**  
+        - Name: „Id” (en: „Id”)  
+            - Location: Next to Actions  
+            - ID: th_id  
+            - Header-Label: „Id” (en: „Id”)  
+            - Hover: „Id” (en: „Id”)  
+            - Align-Header: Center  
+            - Sort: True  
+            - Column Filter: Input-text  
+
+    **Name Column:**  
+        - Name: „Nume” (en: „Name”)  
+        - Regex: `^[a-zA-Z0-9 ]{1,255}$`  
+        - Location: Next to Id
+        - ID: th_name  
+        - Header-Label: „Nume” (en: „Name”)  
+        - Hover: „Nume” (en: „Name”)  
+        - Align-Header: Center  
+        - Sort: True  
+        - Column Filter: Input-text  
+
+    **Type Column:**  
+        - Name: „Tip” (en: „Type”)  
+        - Regex: `^[0-9]{1,10}$`  
+        - Location: Next to Name  
+        - ID: th_type  
+        - Header-Label: „Tip” (en: „Type”)  
+        - Hover: „Tip” (en: „Type”)  
+        - Align-Header: Center  
+        - Sort: True  
+        - Column Filter: Select  
+
+    **Description Column:**  
+        - Name: „Descriere” (en: „Description”)  
+        - Regex: `^[a-zA-Z0-9 ]{1,255}$`  
+        - Location: Next to Type  
+        - ID: th_description  
+        - Header-Label: „Descriere” (en: „Description”)  
+        - Hover: „Descriere” (en: „Description”)  
+        - Align-Header: Center  
+        - Sort: False  
+        - Column Filter: Input-text  
+
+    **CONTROLLER IMPLEMENTATION:**  
+        - View logic to fetch and display document details.  
+        - Include pagination and sorting functionality.  
+        - Implement filter logic for the „Id”, "Name", "Type", and "Description" columns.
+        - Implement sort logic (ASC, DESC) for the Id, Name, Added, AddedBy, Updated, UpdatedBy columns.
+
+===================================================================================================================
+
+### Create
+    **TITLE:** 
+        - „Adaugă Document” (en: „Add Document”)
+    **ACCESS:**  
+        - Navigation path: Click the button "Adaugă Document" in page auction-document/projects/{id}/documents/index  
+        - Feature page: auction-document/projects/{id}/documents/create  
+
+    **PERMISSION:**  
+        - Name: createDocument  
+        - Description: User can add a new document  
+
+    **AUTHORIZATION:**
+
+    **MODELS (involved):**  
+        - User  
+            - id  
+            - username  
+            - first_name  
+            - last_name  
+            - auth_key  
+            - password_hash  
+            - password_reset_token  
+            - verification_token  
+            - email  
+            - photo  
+            - last_auth  
+            - status  
+            - created_at  
+            - updated_at  
+            - psw_changed  
+            - first_time_login  
+
+        - Document  
+            - document_id  
+            - name  
+            - type  
+            - description  
+            - is_deleted  
+
+    **VIEW IMPLEMENTATION:**  
+        - Title: "Adaugă Document" (en: "Add Document")
+        - Breadcrumbs: „Acasă / Propuneri tehnice / {Denumire proiect} / Documente / Adaugă” (en: „Home / Technical proposals / {Denumire proiect} / Documents / Add”) 
+
+    **Form Fields:**  
+        - **Document Name *:**  
+            - Name: „Nume *” (en: „Name”)  
+            - ID: input_document_name  
+            - Type: Input  
+            - Regex: `^[a-zA-Z0-9 ]{1,255}$`  
+            - Placeholder: „Introduceți numele documentului” (en: „Enter document name”)  
+            - Hover: „Nume Document” (en: „Document Name”)  
+
+        - **Document Type *:**  
+            - Name: „Tip *” (en: „Type”)  
+            - ID: select2_document_type  
+            - Type: select2
+            - Regex: `^[0-9]{1,10}$`  
+            - Placeholder: „Introduceți tipul documentului” (en: „Enter document type”)  
+            - Hover: „Tip Document” (en: „Document Type”)  
+                        - Value: (select2 din „ecf_auction_document.DocumentType.Name”),
+
+        - **Description:**  
+            - Name: „Descriere” (en: „Description”)  
+            - ID: input_document_description  
+            - Type: Input  
+            - Regex: `^[a-zA-Z0-9 ]{1,255}$`  
+            - Placeholder: „Adăugați o descriere” (en: „Enter document description”)  
+            - Hover: „Descriere Document” (en: „Document Description”)  
+
+        - **File *:**  
+            - Name: „Fișier” (en: „File”)  
+                        - Placeholder (hint): „Selectează fișierul .docx” (en: „Select .docx file”) 
+            - ID: document_file
+            - Type: File  
+            - Hover: „Încarcă Document” (en: „Upload Description”)      
+
+        **Buttons:**  
+            - **Back Button:**  
+                - Name: „Înapoi” (en: „Back”)  
+                - ID: back_button  
+                - Class: btn btn-info  
+                - Text: „Înapoi” (en: „Back”)  
+                - Icon: fas fa-chevron-circle-left  
+                - Hover: „Înapoi” (en: „Back”)  
+
+            - **Reset Button:**  
+                - Name: „Resetează” (en: „Reset”)  
+                - ID: reload_button  
+                - Class: btn btn-primary  
+                - Text: „Resetează” (en: „Reset”)  
+                - Icon: fas fa-redo  
+                - Hover: „Resetează” (en: „Reset”)  
+
+            - **Save Button:**  
+                - Name: „Salvează” (en: „Save”)  
+                - ID: button_save  
+                - Class: btn btn-success  
+                - Text: „Salvează” (en: „Save”)  
+                - Icon: far fa-save  
+                - Hover: „Salvează Document” (en: „Save Document”)  
+
+    **CONTROLLER IMPLEMENTATION:**  
+        - Logic to handle form submission.  
+        - Validate form data against the defined regex.  
+            - name: 1-30 chars
+                - 0 chars:   „The «Name» field is mandatory” -  ro: !„Câmpul «Denumire» este obligatoriu!”
+                - 30+ chars: user cannot insert more content (set maxchar to input to 30)
+        - Save new document details to the database.  
+        - Check if already exists an document with the same name for current project
+            - error: „There is already an document with this name!” - ro: „Există deja un document cu această denumire!”
+        - Redirect to the document index page after successful creation or cancellation.
+
+===================================================================================================================
+
+### Update
+    **TITLE:**
+        - „Editează Document” (en: „Edit Document”)
+    **ACCESS:**  
+        - Navigation path:  Click the „Edit icon button” in the Actions column on the page auction-document/projects/{id}/documents/index  
+        - Feature page: page auction-document/projects/{id}/documents/edit  
+
+    **PERMISSION:**  
+        - Name: editDocument  
+        - Description: User can edit an existing document  
+
+    **AUTHORIZATION:**
+
+    **MODELS (involved):**  
+        - User  
+            - id  
+            - username  
+            - first_name  
+            - last_name  
+            - auth_key  
+            - password_hash  
+            - password_reset_token  
+            - verification_token  
+            - email  
+            - photo  
+            - last_auth  
+            - status  
+            - created_at  
+            - updated_at  
+            - psw_changed  
+            - first_time_login  
+
+        - Document  
+            - document_id  
+            - name  
+            - type  
+            - description  
+            - is_deleted  
+
+    **VIEW IMPLEMENTATION:**  
+        - Title: „Editează Document” (en: „Edit Document”)
+        - Breadcrumbs: „Acasă / Propuneri tehnice / {Denumire proiect} / {Denumire Document} / Modifică” (en: „Home / Technical proposals / {Denumire proiect} / {Denumire document} / Update”) 
+
+    **Form Fields:**  
+        - **Document Name:**  
+            - Name: „Nume *” (en: „Name”)  
+            - ID: input_document_name  
+            - Type: Input  
+            - Regex: `^[a-zA-Z0-9 ]{1,255}$`  
+            - Placeholder: „Introduceți numele documentului” (en: „Enter document name”)  
+            - Hover: „Nume Document” (en: „Document Name”)  
+
+        - **Document Type:**  
+            - Name: „Tip *” (en: „Type”)  
+            - ID: input_document_type  
+            - Type: Input  
+            - Regex: `^[0-9]{1,10}$`  
+            - Placeholder: „Introduceți tipul documentului” (en: „Enter document type”)  
+            - Hover: „Tip Document” (en: „Document Type”)  
+
+        - **Description:**  
+            - Name: „Descriere” (en: „Description”)  
+            - ID: input_document_description  
+            - Type: Input  
+            - Regex: `^[a-zA-Z0-9 ]{1,255}$`  
+            - Placeholder: „Adăugați o descriere” (en: „Enter document description”)  
+            - Hover: „Descriere Document” (en: „Document Description”)  
+
+        - **File:**  
+            - Name: „Fișier” (en: „File”)  
+            - ID: document_file
+            - Type: File  
+            - Hover: „Încarcă Document” (en: „Upload Description”)      
+
+    **Buttons:**  
+        - **Back Button:**  
+            - Name: „Înapoi” (en: „Back”)  
+            - ID: back_button  
+            - Class: btn btn-info  
+            - Text: „Înapoi” (en: „Back”)  
+            - Icon: fas fa-chevron-circle-left  
+            - Hover: „Înapoi” (en: „Back”)  
+
+        - **Reset Button:**  
+            - Name: „Resetează” (en: „Reset”)  
+            - ID: reload_button  
+            - Class: btn btn-primary  
+            - Text: „Resetează” (en: „Reset”)  
+            - Icon: fas fa-redo  
+            - Hover: „Resetează” (en: „Reset”)  
+
+        - **Save Button:**  
+            - Name: „Salvează” (en: „Save”)  
+            - ID: button_save  
+            - Class: btn btn-success  
+            - Text: „Salvează” (en: „Save”)  
+            - Icon: far fa-save  
+            - Hover: „Salvează Document” (en: „Save Document”)  
+
+    **CONTROLLER IMPLEMENTATION:**  
+        - Logic to handle form submission.  
+        - Validate form data against the defined regex.  
+            - name: 1-30 chars
+                - 0 chars:   „The «Name» field is mandatory” -  ro: !„Câmpul «Denumire» este obligatoriu!”
+                - 30+ chars: user cannot insert more content (set maxchar to input to 30)
+        - Save new document details to the database.  
+        - Check if already exists an document with the same name for current project
+            - error: „There is already an document with this name!” - ro: „Există deja un document cu această denumire!”
+        - Redirect to the document index page after successful creation or cancellation.
+
+===================================================================================================================
+
+### Delete
+    **TITLE:**
+        - „Șterge Document” (en: „Delete Document”)
+    **ACCESS:**  
+        - Navigation path: Click the „Șterge” (en: „Delete”) button icon in the page auction-document/projects/{id}/documents/index  page
+        - Feature page: auction-document/projects/{id}/documents/index
+
+    **PERMISSION:**  
+        - Name: deleteDocument  
+        - Description: User can delete a document  
+
+    **AUTHORIZATION:**
+
+    **MODELS (involved):**  
+        - User  
+            - id  
+            - username  
+            - first_name  
+            - last_name  
+            - auth_key  
+            - password_hash  
+            - password_reset_token  
+            - verification_token  
+            - email  
+            - photo  
+            - last_auth  
+            - status  
+            - created_at  
+            - updated_at  
+            - psw_changed  
+            - first_time_login  
+
+        - Document  
+            - document_id  
+            - name  
+            - type  
+            - description  
+            - is_deleted  
+
+    **VIEW IMPLEMENTATION:**  
+        **Confirmation Message:**  
+            - Message: „Sunteți sigur că doriți să ștergeți acest document?” (en: „Are you sure you want to delete this document?”)  
+
+        **Buttons:**  
+            - **Yes Button:**  
+                - Name: „Da” (en: „Yes”)  
+                - ID: yes_button  
+                - Class: btn btn-danger  
+                - Text: „Da” (en: „Yes”)  
+                - Icon: fas fa-check  
+                - Hover: „Șterge Document” (en: „Delete Document”)  
+
+            - **No Button:**  
+                - Name: „Nu” (en: „No”)  
+                - ID: no_button  
+                - Class: btn btn-secondary  
+                - Text: „Nu” (en: „No”)  
+                - Icon: fas fa-times  
+                - Hover: „Anulează” (en: „Cancel”)  
+
+        **CONTROLLER IMPLEMENTATION:**  
+        - Logic to handle the delete confirmation.  
+        - Perform the delete operation in the database.  (IsDeleted = 1)
+        - Redirect to the document index page after successful deletion or cancellation.
+            - Display Succes message on index page if successful
+
+===================================================================================================================
+
+### Activate
+    TITLE:
+            Activare document
+    ACCESS:
+        Navigation path:
+            Left Menu
+                APLICATII
+                    Licitații 
+                        Propuneri tehnice
+                            Click pe butonul din coloana „Documente” al {Denumire proiect} dorit
+
+        Feature page: 
+            „auction-document/projects/{id}/documents/index?&ShowActive=false”
+
+    PERMISSION & AUTHORIZATION:
+        Name: 
+            activateDocument
+        Description: 
+            Utilizatorul poate activa un document
+
+    PAGE LAYOUT:
+        Name: 
+            Activate (Activează)
+        Location: 
+            action column after update buttton (the „Deleted” icon button wil be replaced by this one)
+        ID: 
+            button_activate
+        Text:
+            Null
+        Class: 
+            btn btn-xs btn-success custom-btn-height d-inline-flex align-items-center justify-content-center
+        Icon: 
+            fab fa-rev
+        Hover: 
+            "Activate" (Activează)
+        CONTROLLER IMPLEMENTATION:
+            La click pe buton deschidem Activate Confirmation Dialog:
+                Activate CONFIRMATION DIALOG:
+                    TITLE: 
+                        "Are you sure you want to activate?" (Sunteți sigur că doriți să activati?)
+                    BUTTONS:
+                        No Button:
+                            Name: ”No” (Nu)
+                            ID: button_no
+                            Class: btn btn-secondary
+                            Text: "No" (Nu)
+                            Icon: none
+                            Hover: "Cancel activation" (Anulează activarea)
+                            CONTROLLER IMPLEMENTATION:
+                                -> se inchide fereastra modală
+                        Yes Button:
+                            Name: ”Yes” (Da)
+                            ID: button_yes
+                            Class: btn btn-danger
+                            Text: "Yes" (Da)
+                            Icon: none
+                            Hover: "Confirm activation" (Confirmă activarea)
+                            CONTROLLER IMPLEMENTATION:
+                                -> la confirmare activarea se va adauga deleted=0 pentru inregistrarea selectata
+                                MessageAlert:
+                                        type:
+                                            succes
+                                        background-color:
+                                            green
+                                        position:
+                                            top-left index page
+                                        auto-hide:
+                                            true (5 sec)
+                                        text:
+                                            'Successfully activated' => 'Activarea a fost realizată cu succes'

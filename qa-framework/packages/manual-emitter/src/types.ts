@@ -43,6 +43,9 @@ export interface EmitOptions {
   filterTip?: string | null;
   includeGeneralOnly?: boolean; // if true, include only cases with general_valabile == 1/true
   title?: string; // document title
+  compatAuthStandalone?: boolean; // if true, emit legacy auth outcome lines for coverage
+  qaStyle?: boolean; // if true, return QA-style numbered cases instead of bucket lines
+  removeProvenance?: boolean; // if true, strip provenance HTML comments
 }
 
 // Normalized manual line (used internally before rendering)

@@ -1,0 +1,420 @@
+USER STORY:
+===========
+
+Read
+
+TITLE: „Domenii ECF”
+ACCESS:
+
+    Navigation path: Click the button „Domenii ECF” in page dynamic-document-generation/domains
+
+    Feature page: dynamic-document-generation/domains/index
+
+PERMISSION:
+
+    Name: indexDynamicDocumentGenerationDomains
+
+    Description: User can view all domains
+
+AUTHORIZATION:
+
+MODELS (involved):
+
+    Domanins
+
+        id
+
+        name
+
+        description
+
+        Added
+
+        AddedBy
+
+        Updated
+
+        UpdatedBy
+
+    User
+
+        id
+
+        username
+
+        first_name
+
+        last_name
+
+        auth_key
+
+        password_hash
+
+        password_reset_token
+
+        verification_token
+
+        email
+
+        photo
+
+        last_auth
+
+        status
+
+        created_at
+
+        updated_at
+
+        psw_changed
+
+        first_time_login
+
+VIEW IMPLEMENTATION:
+
+    Title: „Domenii ECF”
+
+    Breadcrumbs: „ Acasă / Generare dinamică documente / Domenii ECF” (en: „Home / Dynamic document generation / ECF Domains”)
+
+    Pagination: Enabled, default items number: 20
+
+Create Button:
+
+    Name: „Adaugă” (en: „Add”)
+
+    Location: Right of page title
+
+    ID: button_create
+
+    Class: btn btn-sm btn-success
+
+    Text: „Add” (ro: „Adaugă”)
+
+    Icon: fas fa-plus
+
+    Hover: „Adaugă Domeniu” (ro: „Adaugă domeniu”)
+
+Actions Column:
+
+    Name: „Acțiuni” (en: „Actions”)
+
+    Location: Leftmost
+
+    ID: th_actions_column
+
+    Header-Label: „Acțiuni” (en: „Actions”)
+
+    Hover: „Acțiuni” (en: „Actions”)
+
+    Align-Header: Center
+
+    Sort: False
+
+        Toggle button:
+
+            Class: 
+                Active: toggle-text toggle-text-active
+                Șterse: toggle-text toggle-text-deleted
+
+            Icon: toggle button
+
+    Action Buttons:
+
+        View Details
+
+            ID: button_view
+
+            Class: btn btn-xs btn-info
+
+            Icon: fas fa-eye
+
+            Hover: „Vezi mai multe detalii” (en: „View more details”)
+
+        Edit
+
+            ID: button_edit
+
+            Class: btn btn-xs btn-warning
+
+            Icon: fas fa-pencil-alt
+
+            Hover: „Editează” (en: „Edit”)
+
+        Delete
+
+            ID: button_delete
+
+            Class: btn btn-xs btn-danger
+
+            Icon: fas fa-trash
+
+            Hover: „Șterge” (en: „Delete”)
+
+Id Column:
+
+    Name: „Id” (en: „Id”)
+
+    Regex: ^[a-zA-Z0-9\-_\/]{1,20}$
+
+    Location: Next to Actions
+
+    ID: th_id
+
+    Header-Label: „Id” (en: „Id”)
+
+    Hover: „Id” (en: „Id”)
+
+    Align-Header: Center
+
+    Sort: True
+
+    Column Filter: Input-text
+
+Denumire Column:
+
+    Name: „Denumire” (en: „Name”)
+
+    Regex: ^[a-zA-Z0-9\-_\/]{1,100}$
+
+    Location: Next to Id
+
+    ID: th_name
+
+    Header-Label: „Denumire” (en: „Name”)
+
+    Hover: „Denumire” (en: „Name”)
+
+    Align-Header: Center
+
+    Sort: True
+
+    Column Filter: Select
+
+Descriere Column:
+
+    Name: „Descriere” (en: „Description”)
+
+    Regex: ^[a-zA-Z0-9\-_\/]{1,200}$
+
+    Location: Next to Denumire
+
+    ID: th_description
+
+    Header-Label: „Descriere” (en: „Description”)
+
+    Hover: „Descriere” (en: „Description”)
+
+    Align-Header: Center
+
+    Sort: False
+
+    Column Filter: Input-text
+
+Adăugat Column:
+
+    Name: „Adăugat” (en: „Added”)
+
+    Regex: ^[a-zA-Z0-9 ]{1,50}$
+
+    Location: Next to Descriere
+
+    ID: th_added
+
+    Header-Label: „Adăugat” (en: „Added”)
+
+    Hover: „Adăugat” (en: „Added”)
+
+    Align-Header: Center
+
+    Sort: False
+
+Modificat Column:
+
+    Name: „Modificat” (en: „Updated”)
+
+    Regex: ^[a-zA-Z0-9 ]{1,50}$
+
+    Location: Next to Adăugat
+
+    ID: th_modified
+
+    Header-Label: „Modificat” (en: „Modified”)
+
+    Hover: „Modificat” (en: „Modified”)
+
+    Align-Header: Center
+
+    Sort: False
+
+CONTROLLER IMPLEMENTATION:
+
+    Fetch all domains, including user details if needed.
+
+    Handle sorting, pagination, filtering.
+
+CREATE
+
+TITLE: Adaugă Domeniu ECF (en: "Add ECF Domain")
+ACCESS:
+
+    Navigation path: Click the button „Adaugă” in page home/dynamic-document-generation/domains
+
+    Feature page: home/dynamic-document-generation/domains/create
+
+PERMISSION:
+
+    Name: createDynamicDocumentGenerationDomains
+
+    Description: User can add a new domain
+
+AUTHORIZATION:
+
+MODELS (involved):
+
+    Domanins
+
+    User
+
+VIEW IMPLEMENTATION:
+
+    Title: „Adaugă Domeniu ECF”
+
+    Breadcrumbs: „Acasă / Generare dinamică documente / Adaugă domeniu ECF” (en: „Home / Dynamic document generation / Add ECF domain”)
+
+Form Fields:
+
+    Name:
+
+        Name: „Nume (en: Name)”
+
+        ID: input_domain_id
+
+        Type: Input
+
+        Regex: ^[a-zA-Z0-9\-_\/]{1,20}$
+
+        Placeholder: „Denumirea domeniului (en: Domain name)”
+
+        Hover: „Nume (en: Name)”
+
+    Descriere:
+
+        Name: „Descriere (en: Description)”
+
+        ID: input_domain_description
+
+        Type: Input
+
+        Regex: ^[a-zA-Z0-9\-_\/]{1,100}$
+
+        Placeholder: „Descrierea domeniului (en: Domain description)”
+
+        Hover: „Descriere”
+
+Buttons:
+
+    Back Button
+
+    Reset Button
+
+    Save Button (with icons, hovers as required)
+
+CONTROLLER IMPLEMENTATION:
+
+    Validate and create domain.
+
+    Backend handles setting „Adăugat”, linked with the logged-in User.
+
+DATABASE:
+
+CREATE TABLE domains (
+  id          SERIAL PRIMARY KEY,
+  name        TEXT NOT NULL UNIQUE,
+  description TEXT,
+  "Deleted"   SMALLINT DEFAULT 0,           
+  "Added"     TIMESTAMPTZ NOT NULL DEFAULT now(),
+  "AddedBy"   TEXT NOT NULL DEFAULT current_user,
+  "Updated"   TIMESTAMPTZ NOT NULL DEFAULT now(),
+  "UpdatedBy" TEXT NOT NULL DEFAULT current_user
+);
+
+
+
+GENERATED TEST CASES:
+=====================
+
+
+Cazuri de testare - Index Domenii ECF
+01. Accesarea functionalitatii prin apasare <buton> [Domenii ECF], {prezenta, pozitionare (Acasă -> APLICAȚII -> Acasă / Generare dinamică documente / Domenii ECF), text-valoare, text-traducere}
+02. Accesarea functionalitatii prin apasarea succesiva pe <buton> [Domenii ECF] {comportament}
+03. Accesarea functionalitatii prin introducerea directa a URL-ului in bara de adrese {comportament}
+04. Accesarea functionalitatii atunci cand nu exista conexiune la internet {comportament}
+05. Accesarea functionalitatii atunci cand conexiunea cu server-ul este slaba {comportament}
+06. Verificarea permisiunii [ndexDynamicDocumentGenerationDomains] {prezenta, descriere}
+07. Ascundere <buton> [Domenii ECF], pentru utilizatorii neautorizati {comportament}
+08. Afisarea titlului in pagina aplicatiei {prezenta, pozitionare, text-valoare („Domenii ECF” ), text-traducere(„ECF domains”)}
+09. Afisare <buton>[Adaugă] in dreapta titlului {prezenta, pozitionare, text-valoare, text-traducere}
+10. Afisarea breadcrumb-ului in pagina aplicatiei {prezenta, pozitionare, text-valoare("Acasă / Generare dinamică documente / Domenii ECF”), text-traducere("Home / Dynamic document generation / ECF Domains"), container-tip_link, container-comportament}
+11. Afisarea paginatiei in pagina {prezenta, pozitionare, text-valoare, container-tip_buton, container-comportament}
+12. Afisarea corecta a continutului paginii la diferite rezolutii {prezenta, pozitionare, dimensiune, comportament}
+13. Afisarea tabelului in pagina aplicatiei {prezenta}
+14. Afisarea header-ului coloanei [Acțiuni] in tabel {prezenta, pozitionare, text-valoare, text-culoare (negru) text-traducere, mouseover (sageata)}
+15. Afisare <buton toggle> in header-ul coloanei [Acțiuni] a tabelului {prezenta, pozitionare, text-valoare(Active/Șterse), text-traducere(Active/Deleted)}
+16. Afisare <buton> [Vezi mai multe detalii] in coloana [Acțiuni] a tabelului {prezenta, pozitionare, container-tip_badge}
+17. Afisare <buton> [Modifică] in coloana [Acțiuni] a tabelului {prezenta, pozitionare, container-tip_badge}
+18. Afisare <buton> [Șterge] in coloana [Acțiuni] a tabelului {prezenta, pozitionare, container-tip_badge}
+19. Afisarea header-ului coloanei [Id] in tabel {prezenta, pozitionare, text-valoare, text-culoare (albastru) text-traducere, mouseover (manuta)}
+20. Afisare <input> in header-ul coloanei [Id] a tabelului {prezenta, pozitionare, text-valoare (Filtrează), text-traducere}
+21. Afisarea header-ului coloanei [Denumire] in tabel {prezenta, pozitionare, text-valoare,  text-culoare (albastru), text-traducere, mouseover (manuta)}
+22. Afisare <input> in header-ul coloanei [Denumire] a tabelului {prezenta, pozitionare, text-valoare, text-traducere}
+23. Afisarea header-ului coloanei [Descriere] in tabel {prezenta, pozitionare, text-valoare, text-culoare (albastru), text-traducere, mouseover (manuta)}
+24. Afisare <input> in header-ul coloanei [Nume] a tabelului {prezenta, pozitionare, text-valoare, text-culoare (albastru), text-traducere}
+26. Afisarea header-ului coloanei [Adăugat] in tabel {prezenta, pozitionare, text-valoare, text-culoare (albastru), text-traducere, mouseover (manuta)}
+27. Afisare <select> in header-ul coloanei [Adăugat] a tabelului {prezenta, pozitionare, text-valoare, text-culoare (albastru), text-traducere}
+28. Afisarea header-ului coloanei [Modificat] in tabel {prezenta, pozitionare, text-valoare, text-culoare (albastru), text-traducere, mouseover (manuta)}
+29. Afisare <select> in header-ul coloanei [Adăugat] a tabelului {prezenta, pozitionare, text-valoare, text-culoare (albastru), text-traducere}
+26. Afisarea inregistrarilor in tabel {pozitionare (centrate pe mijloc sus-jos, elementele din "Nume" si "Descriere" aliniate la stanga, din celelalte coloane aliniate central), ordine, nr. total}
+Adaugarea unui domeniu ECF
+=========
+01. Accesarea functionalitatii prin apasare <buton> [Adaugă] in pagina "auction-document/data-centralizer/index" {prezenta, pozitionare, text-valoare, text-traducere}
+02. Accesarea functionalitatii prin apasarea succesiva pe <buton> [Adaugă] in pagina "dynamic-document-generation/domains/index" {comportament}
+03. Accesarea functionalitatii atunci cand nu exista conexiune la internet {comportament}
+04. Accesarea functionalitatii atunci cand conexiunea cu server-ul este slaba {comportament}
+05. Verificarea permisiunii [createDynamicDocumentGenerationDomains] {prezenta, descriere}
+06. Ascundere <buton> [Adaugă], pentru utilizatorii neautorizati {comportament}
+07. Afisarea formularului in pagina aplicatiei {prezenta}
+08. Afisare <input> camp [Nume] in formular
+09. Afisarea label-ului campului [Nume] in formular {prezenta, pozitionare, text-valoare, text-traducere}
+10. Afisarea indicatorului de obligativitate a campului [Nume] in formular {comportament, prezenta, pozitionare, text-valoare, text-culoare}
+11. Afisarea hint-ului campului [Nume] in formular {prezenta, pozitionare, text-valoare (Introdu numele domeniului), text-traducere (Enter the name of the domain), comportament}
+12. Afisarea label-ului campului [Descriere] in formular {prezenta, pozitionare, text-valoare, text-traducere}
+13. Afisare <textbox> camp [Descriere] in formular
+14. Afisarea hint-ului campului [Descriere] in formular {prezenta, pozitionare, text-valoare (Introdu descrierea domeniului), text-traducere (Enter the name of the domain), comportament}
+15. Afisarea butonului de actiune [Înapoi] {comportament, prezenta, pozitionare, stil_forma, stil_border, stil_culoare, mouseover, text-valoare, text-traducere}
+16. Afisarea butonului de actiune [Resetează] {comportament, prezenta, pozitionare, stil_forma, stil_border, stil_culoare, mouseover, text-valoare, text-traducere}
+17. Afisarea butonului de trimitere date [Salvează] {comportament, prezenta, pozitionare, stil_forma, stil_border, stil_culoare, mouseover, text-valoare, text-traducere}
+18. Completarea campului [Nume], de tip input, cu o valoare ce respecta formatul cerut {comportament, comportament_validare_format, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+19. Completarea campului [Nume], de tip input, cu o valoare ce respecta formatul cerut si conditiile specifice {comportament, comportament_validare_format, comportament_conditii_specifice, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+20. Completarea campului [Nume], de tip input, cu o valoare ce respecta formatul cerut, dar nu indeplineste conditiile specifice {comportament, comportament_validare_condiții_specifice, comportament_feedback_eroare, comportament_interzicere_submit, comportament_resetare_camp}
+21. Completarea campului [Nume], de tip input, cu o valoare ce nu respecta formatul cerut {comportament, comportament_validare_format_invalid, comportament_feedback_eroare, comportament_interzicere_submit, comportament_restricții_input, comportament_resetare_camp}
+22. Completarea campului [Nume], de tip input, folosind comanda "Lipire" {comportament, comportament_lipire_valida, comportament_lipire_invalida, comportament_feedback_eroare, comportament_feedback_succes, comportament_validare_format, comportament_validare_conditii_specifice, comportament_limite}
+23. Necompletarea campului [Nume], de tip input {comportament, comportament_validare_necompletare, comportament_feedback_eroare, comportament_interzicere_submit, comportament_feedback_conditii_specifice, comportament_validare_conditii_specifice}
+24. Completarea campului [Descriere], de tip textbox, cu o valoare ce respecta formatul cerut {comportament, comportament_validare_format, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+25. Completarea campului [Descriere], de tip textbox, cu o valoare ce respecta formatul cerut si conditiile specifice {comportament, comportament_validare_format, comportament_conditii_specifice, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+26. Completarea campului [Descriere], de tip textbox, cu o valoare ce respecta formatul cerut, dar nu indeplineste conditiile specifice {comportament, comportament_validare_condiții_specifice, comportament_feedback_eroare, comportament_interzicere_submit, comportament_resetare_camp}
+27. Completarea campului [Descriere], de tip textbox, cu o valoare ce nu respecta formatul cerut {comportament, comportament_validare_format_invalid, comportament_feedback_eroare, comportament_interzicere_submit, comportament_restricții_input, comportament_resetare_camp}
+28. Completarea campului [Descriere], de tip textbox, folosind comanda "Lipire" {comportament, comportament_lipire_valida, comportament_lipire_invalida, comportament_feedback_eroare, comportament_feedback_succes, comportament_validare_format, comportament_validare_conditii_specifice, comportament_limite}
+29. Necompletarea campului [Descriere], de tip textbox {comportament, comportament_validare_necompletare, comportament_feedback_eroare, comportament_interzicere_submit, comportament_feedback_conditii_specifice, comportament_validare_conditii_specifice}
+30. Verificarea actiunii butonului de actiune [Înapoi] {comportament}
+	- Afisare mesaj de avertizare de pierdere a datelor daca am modificari in campuri
+	
+31. Verificarea actiunii butonului de actiune [Resetează] {comportament}
+	- Afisare mesaj de avertizare de pierdere a datelor daca am modificari in campuri
+	
+32. Verificarea actiunii butonului de trimitere date [Adauga] {comportament}
+33. Verificare redirect către pagina "dynamic-document-generation/domains/index", dupa finalizarea operatiei de adaugare
+34. Afisarea mesajului de succes la finalizarea functionalitatii {comportament, prezenta, pozitionare, auto-hide, auto-hide-timp, text-valoare, text-traducere}
+35. Afisarea mesajului de eroare la finalizarea functionalitatii {comportament, prezenta, pozitionare, auto-hide, auto-hide-timp, text-valoare, text-traducere}
+36. Afisarea mesajului de avertizare la incercarea de finalizare a functionalitatii {comportament, prezenta, pozitionare, comportament, text-valoare, text-traducere}
+	- Mesaj de avertizare cand campul "Nume" nu este completat -> "Introdu un nume!" si inrosire border
+37. Afisare mesaj de avertizare de pierdere a datelor daca am modificari in campuri si dau click pe: breadcrumbs, meniu stanga, logo, Profilul meu

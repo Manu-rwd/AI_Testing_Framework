@@ -5,7 +5,7 @@ import { score, loadCoverage, loadManual } from '../src/score';
 import { emitManualMarkdown } from '../../manual-emitter/src/emit';
 
 function runEmitter(plan: any, tip: string, title: string) {
-  const md = emitManualMarkdown(plan, { filterTip: tip, includeGeneralOnly: true, title });
+  const md = emitManualMarkdown(plan, { filterTip: tip, includeGeneralOnly: true, title, compatAuthStandalone: true });
   return md;
 }
 

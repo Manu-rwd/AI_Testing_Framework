@@ -1,0 +1,2628 @@
+Intrebarea_1: Ce tip de functionalitati se regasesc in cadrul US?
+    01. Vizualizare
+    02. Adaugare
+    03. Afisare
+    04. Modificare
+    05. Stergere
+    06. Activare
+    07. Resetare
+    08. Navigare
+    09. Filtrare
+    10. Cautare
+    11. Ordonare
+    12. Import
+    13. Incarcare
+    14. Export
+    15. Descarcare
+    16. Paginatie
+
+Instructiune_1: Memoreaza lista de functionalitati generata, sub numele "lista_functionalitati_identificate".
+Instructiune_2: Selecteaza prima functionalitate din lista "lista_functionalitati_identificate" si confirma selectia.
+
+Nota_1: In functie de functionalitatea selectata, se va aplica unul dintre urmatoarele cazuri:
+
+Caz_1: Daca functionalitatea selectata este "Vizualizare", atunci: 
+    Aplica "validare_vizualizare"
+      Daca "validare_vizualizare" = FALSE -> STOP
+      Daca "validare_vizualizare" = TRUE -> 
+        {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Vizualizare"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_vizualizare"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat
+                                    
+            pas_2.4: Treci la urmatorul pas
+
+        pas_3: selecteaza sheet-ul "Autorizare"
+            pas_3.1: interpreteaza "US"
+            pas_3.2: gasesti descrisa in cadrul "US" o permisiune ce este asociata functionalitatii de "Vizualizare", conform regulii "identificare_permisiune"?
+                DA -> 
+                        pas_3.2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Vizualizare"
+                        pas_3.2.2: listeaza rezultatele din coloana "Caz de testare"
+                            rezultat_1, rezultat_2, ..., rezultat_n
+                        pas_3.2.3: filtreaza coloana "General valabile" dupa valoarea "0"
+                            listeaza rezultatele din coloana "Caz de testare"
+                        pas_3.2.4 pentru fiecare rezultat: 
+                            {
+                                cazul are [nume_permisiune]?
+                                    DA ->
+                                       Numele permisiunii a fost gasit in detaliile US-ului?
+                                        DA:
+                                            identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                            inlocuire [nume_permisiune] cu valoarea regasita in US
+                                        NU:
+                                            Notificare POM pentru solicitare informatii suplimentare
+				                            STOP
+                                    NU ->
+                                            aplica "schema_logica"
+                            },
+                        pas_3.2.5: filtreaza coloana "General valabile" dupa valoarea "1" 
+                            listeaza rezultatele din coloana "Caz de testare"
+                            pentru fiecare rezultat aplica urmatorii pasi:
+                                    -> interpreteaza "US"
+                                    -> gasesti o legatura intre datele extrase din "US" si acest rezultat?
+                                        DA ->
+                                            pas_3.2.6 pentru fiecare rezultat: 
+                                                {
+                                                    cazul are [nume_permisiune]?
+                                                        DA ->
+                                                            Numele permisiunii a fost gasit in detaliile US-ului?
+                                                                DA:
+                                                                    identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                                    inlocuire [nume_permisiune] cu valoarea regasita in US
+                                                                NU:
+                                                                    Notificare POM pentru solicitare informatii suplimentare
+                                                                    STOP
+                                                        NU ->
+                                                                aplica "schema_logica"
+                                                },
+                                        NU ->
+                                                treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_4: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Vizualizare"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_4.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_4.4: Treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "FRT-Output final"
+                    pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Vizualizare"
+                    pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                        rezultat_1, rezultat_2, ..., rezultat_n
+                    pas_5.3: filtreaza coloana "Bucket" dupa cuvintele cheie "Layout pagina aplicatie" si "Mesaje"
+                    pas_5.4: aplica "schema_logica" pentru fiecare caz rezultat
+                    pas_5.5: interpreteaza "US"
+                    pas_5.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+                    pas_5.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+                    pas_5.8: listeaza rezultatele din coloana "Caz de testare"
+                    pas_5.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                        pas_5.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                            DA -> 
+                                    aplica "schema_logica" pentru acest rezultat
+                                    treci la urmatorul rezultat
+                            NU -> 
+                                    treci la urmatorul rezultat
+                    pas_5.10: interpreteaza "US"
+                    pas_5.11: exista un card descris in "US", conform regulii "identificare_card"?
+                        DA ->
+							cate carduri sunt descrise in cadrul US-ului?
+								pas_5.11.0: extragere nume card curent (titlu / tipul de continut / sumarizare)
+								pas_5.11.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+								pas_5.11.2: aplica "schema_logica" pentru fiecare rezultat
+								pas_5.11.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+									pas_5.11.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+									pas_5.11.3.2: listeaza rezultatele din coloana "Caz de testare"
+									pas_5.11.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+										pas_4.11.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+											DA -> 
+													aplica "schema_logica" pentru acest rezultat
+													treci la urmatorul rezultat
+											NU -> 
+													treci la urmatorul rezultat
+                        NU ->
+                            STOP
+        }
+
+Caz_2: Daca functionalitatea selectata este "Adaugare", atunci:
+    Aplica "validare_adaugare"
+      Daca "validare_adaugare" = FALSE -> STOP
+      Daca "validare_adaugare" = TRUE ->
+      {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Adaugare"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_adaugare"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "Autorizare"
+            pas_3.1: interpreteaza "US"
+            pas_3.2: gasesti descrisa in cadrul "US" o permisiune ce este asociata functionalitatii de "Adaugare"?
+                DA -> 
+                        pas_3.2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Adaugare"
+                        pas_3.2.2: listeaza rezultatele din coloana "Caz de testare"
+                            rezultat_1, rezultat_2, ..., rezultat_n
+                        pas_3.2.3: filtreaza coloana "Descris in 'US'" dupa valoarea "0"
+                            listeaza rezultatele din coloana "Caz de testare"
+                        pas_3.2.4 pentru fiecare rezultat: 
+                            {
+                                cazul are [nume_permisiune]?
+                                    DA ->
+                                        Numele permisiunii a fost gasit in detaliile US-ului?
+                                            DA:
+                                                identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                inlocuire [nume_permisiune] cu valoarea regasita in US
+                                            NU:
+                                                Notificare POM pentru solicitare informatii suplimentare
+                                                STOP
+                                    NU ->
+                                            aplica "schema_logica"
+                            }, 
+                            
+                        pas_3.2.2: filtreaza coloana "Descris in 'US'" dupa valoarea "1" 
+                            listeaza rezultatele din coloana "Caz de testare"
+                            pentru fiecare rezultat aplica urmatorii pasi:
+                                    -> interpreteaza "US"
+                                    -> gasesti o legatura intre datele extrase din "US" si acest rezultat?
+                                        DA ->
+                                            pas_3.2.4 pentru fiecare rezultat: 
+                                                {
+                                                    cazul are [nume_permisiune]?
+                                                        DA ->
+                                                            Numele permisiunii a fost gasit in detaliile US-ului?
+                                                                DA:
+                                                                    identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                                    inlocuire [nume_permisiune] cu valoarea regasita in US
+                                                                NU:
+                                                                    Notificare POM pentru solicitare informatii suplimentare
+                                                                    STOP
+                                                        NU ->
+                                                                aplica "schema_logica"
+                                                },
+                                        NU ->
+                                                treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_4: selecteaza sheet-ul "FRT-Output initial"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Adaugare"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: filtreaza coloana "Bucket" dupa cuvintele cheie "Layout pagina aplicatie" si "Mesaje"
+            pas_4.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_4.5: interpreteaza "US"
+            pas_4.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_4.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_4.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_4.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_4.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_4.10: interpreteaza "US"
+            pas_4.11: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_4.11.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_4.11.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_4.11.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_4.11.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_4.11.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_4.11.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_4.11.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "BKD-Input"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Adaugare"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+
+            pas_5.3: identifica tipurile de campuri, utilizand regula "identificare_tip_camp" = { campul se identifica dupa valoarea atributului "Type", descris in "US" }
+            pas_5.4: afiseaza rezultatele (rezultat_1, rezultat_2, ..., rezultat_n)
+            pas_5.5: pentru fiecare rezultat din rezultate, aplica urmatorii pasi:
+                pas_5.5.1: filtreaza coloana "Bucket" dupa rezultat
+                pas_5.5.2: listeaza coloana "Caz de testare"
+                pas_5.5.3: pentru fiecare rezultat din coloana "Caz de testare", aplica urmatorii
+                    pas_5.5.3.1 este rezultat == "input?
+                        DA
+                            exista o valoare in coloana "Regex"?
+                                DA
+                                    daca "valoare_Regex"=1
+                                        aplica "schema_logica" pentru acest rezultat
+                                        genereaza cazuri de testare pozitive pe baza regex-ului regasit in "US"
+                                    daca "valoare_Regex"=0
+                                        aplica "schema_logica" pentru acest rezultat
+                                        genereaza cazuri de testare negative pe baza regex-ului regasit in "US"
+                                NU
+                                    aplica "schema_logica" pentru acest rezultat
+                        NU
+                            aplica "schema_logica" pentru acest rezultat
+
+            pas_5.6: treci la urmatorul pas   
+
+        pas_6: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Adaugare"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_6.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_6.4: treci la urmatorul pas
+
+        pas_7: selecteaza sheet-ul "FRT-Output final"
+            pas_7.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Adaugare"
+            pas_7.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_7.3: interpreteaza "US"
+            pas_7.4: exista in "US" mentionat un output de tip email, folosind regula: "identificare_email"?
+                DA:
+                    pas_7.4.1: ce tip de continut se regaseste in cadrul email-ului, folosind regula: "identificare_continut_email"?
+                    pas_7.4.2: filtreaza coloana "Bucket" dupa tipul de continut email gasit
+                    pas_7.4.3: pentru fiecare rezultat afisat, aplica "schema_logica"
+                    pas_7.4.4: treci la urmatorul pas
+                NU:
+                    treci la urmatorul pas
+
+        pas_8: selecteaza sheet-ul "Reverificare output final"
+            pas_8.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Adaugare"
+            pas_8.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_8.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_8.3.1 aplica "schema_logica" pentru acest rezultat
+                pas_8.3.2 treci la urmatorul rezultat    
+            pas_8.4: STOP    
+      }
+
+Caz_3: Daca functionalitatea selectata este "Modificare", atunci:
+    Aplica "validare_afisare".
+      Daca "validare_afisare" = FALSE -> STOP
+      Daca "validare_afisare" = TRUE -> 
+      {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Modificare"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_modificare"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "Autorizare"
+            pas_3.1: interpreteaza "US"
+            pas_3.2: gasesti descrisa in cadrul "US" o permisiune ce este asociata functionalitatii de "Modificare", conform regulii "identificare_permisiune"?
+                DA -> 
+                        pas_3.2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Modificare"
+                        pas_3.2.2: listeaza rezultatele din coloana "Caz de testare"
+                            rezultat_1, rezultat_2, ..., rezultat_n
+                        pas_3.2.3: filtreaza coloana "Descris in 'US'" dupa valoarea "0"
+                            listeaza rezultatele din coloana "Caz de testare"
+                        pas_3.2.4 pentru fiecare rezultat: 
+                            {
+                                cazul are [nume_permisiune]?
+                                    DA ->
+                                        Numele permisiunii a fost gasit in detaliile US-ului?
+                                            DA:
+                                                identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                inlocuire [nume_permisiune] cu valoarea regasita in US
+                                            NU:
+                                                Notificare POM pentru solicitare informatii suplimentare
+                                                STOP
+                                    NU ->
+                                            aplica "schema_logica"
+                            },
+                        pas_3.2.5: filtreaza coloana "Descris in 'US'" dupa valoarea "1" 
+                            listeaza rezultatele din coloana "Caz de testare"
+                            pentru fiecare rezultat aplica urmatorii pasi:
+                                    -> interpreteaza "US"
+                                    -> gasesti o legatura intre datele extrase din "US" si acest rezultat?
+                                        DA ->
+                                            pas_3.2.4 pentru fiecare rezultat: 
+                                                {
+                                                    cazul are [nume_permisiune]?
+                                                        DA ->
+                                                            Numele permisiunii a fost gasit in detaliile US-ului?
+                                                                DA:
+                                                                    identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                                    inlocuire [nume_permisiune] cu valoarea regasita in US
+                                                                NU:
+                                                                    Notificare POM pentru solicitare informatii suplimentare
+                                                                    STOP
+                                                        NU ->
+                                                                aplica "schema_logica"
+                                                }
+                                        NU ->
+                                                treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_4: selecteaza sheet-ul "FRT-Output initial"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Modificare"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: filtreaza coloana "Bucket" dupa cuvintele cheie "Layout pagina aplicatie" si "Mesaje"
+            pas_4.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_4.5: interpreteaza "US"
+            pas_4.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_4.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_4.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_4.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_4.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_4.10: interpreteaza "US"
+            pas_4.11: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_4.11.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_4.11.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_4.11.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_4.11.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_4.11.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_4.11.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_4.11.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "BKD-Input"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Modificare"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: identifica tipurile de campuri, utilizand regula "identificare_tip_camp" = { campul se identifica dupa valoarea atributului "Type", descris in "US" }
+            pas_5.4: afiseaza rezultatele (rezultat_1, rezultat_2, ..., rezultat_n)
+            pas_5.5: pentru fiecare rezultat din rezultate, aplica urmatorii pasi:
+                pas_5.5.1: filtreaza coloana "Bucket" dupa rezultat
+                pas_5.5.2: listeaza coloana "Caz de testare"
+                pas_5.5.3: pentru fiecare rezultat din coloana "Caz de testare", aplica urmatorii
+                    pas_5.5.3.1 este rezultat == "input?
+                        DA
+                            exista o valoare in coloana "Regex"?
+                                DA
+                                    daca "valoare_Regex"=1
+                                        aplica "schema_logica" pentru acest rezultat
+                                        genereaza cazuri de testare pozitive pe baza regex-ului regasit in "US"
+                                    daca "valoare_Regex"=0
+                                        aplica "schema_logica" pentru acest rezultat
+                                        genereaza cazuri de testare negative pe baza regex-ului regasit in "US"
+                                NU
+                                    aplica "schema_logica" pentru acest rezultat
+                        NU
+                            aplica "schema_logica" pentru acest rezultat
+
+            pas_5.6: treci la urmatorul pas   
+
+        pas_6: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Modificare"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_6.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_6.4: treci la urmatorul rezultat
+    
+        pas_7: selecteaza sheet-ul "FRT-Output final"
+            pas_7.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Modificare"
+            pas_7.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_7.3: interpreteaza "US"
+            pas_7.4: exista in "US" mentionat un output de tip email, folosind regula: "identificare_email"?
+                DA:
+                    pas_7.4.1: ce tip de continut se regaseste in cadrul email-ului, folosind regula: "identificare_continut_email"?
+                    pas_7.4.2: filtreaza coloana "Bucket" dupa tipul de continut email gasit
+                    pas_7.4.3: pentru fiecare rezultat afisat, aplica "schema_logica"
+                    pas_7.4.4: treci la urmatorul pas
+                NU:
+                    treci la urmatorul pas 
+
+        pas_8: selecteaza sheet-ul "Reverificare output final"
+            pas_8.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Modificare"
+            pas_8.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_8.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_8.3.1 aplica "schema_logica" pentru acest rezultat
+                pas_8.3.2 treci la urmatorul rezultat    
+            pas_8.4: STOP
+      }
+
+Caz_4: Daca functionalitatea selectata este "Afisare", atunci: 
+    Aplica "validare_modificare".
+      Daca "validare_modificare" = FALSE -> STOP
+      Daca "validare_modificare" = TRUE ->
+        {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Afisare"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_afisare"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat              
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "Autorizare"
+            pas_3.1: interpreteaza "US"
+            pas_3.2: gasesti descrisa in cadrul "US" o permisiune ce este asociata functionalitatii de "Afisare", conform regulii "identificare_permisiune"?
+                DA -> 
+                        pas_3.2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Afisare"
+                        pas_3.2.2: listeaza rezultatele din coloana "Caz de testare"
+                            rezultat_1, rezultat_2, ..., rezultat_n
+                        pas_3.2.3: filtreaza coloana "General valabile" dupa valoarea "0"
+                            listeaza rezultatele din coloana "Caz de testare"
+                        pas_3.2.4 pentru fiecare rezultat: 
+                            {
+                                cazul are [nume_permisiune]?
+                                    DA ->
+                                        Numele permisiunii a fost gasit in detaliile US-ului?
+                                            DA:
+                                                identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                inlocuire [nume_permisiune] cu valoarea regasita in US
+                                            NU:
+                                                Notificare POM pentru solicitare informatii suplimentare
+                                                STOP
+                                    NU ->
+                                            aplica "schema_logica"
+                            },
+                            
+                        pas_3.2.5: filtreaza coloana "General valabile" dupa valoarea "1" 
+                            listeaza rezultatele din coloana "Caz de testare"
+                            pentru fiecare rezultat aplica urmatorii pasi:
+                                    -> interpreteaza "US"
+                                    -> gasesti o legatura intre datele extrase din "US" si acest rezultat?
+                                        DA ->
+                                            pas_3.2.5 pentru fiecare rezultat: 
+                                                {
+                                                    cazul are [nume_permisiune]?
+                                                        DA ->
+                                                            Numele permisiunii a fost gasit in detaliile US-ului?
+                                                                DA:
+                                                                    identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                                    inlocuire [nume_permisiune] cu valoarea regasita in US
+                                                                NU:
+                                                                    Notificare POM pentru solicitare informatii suplimentare
+                                                                    STOP
+                                                        NU ->
+                                                                aplica "schema_logica"
+                                                },
+                                        NU ->
+                                                treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_4: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Afisare"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_4.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_4.4: Treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "FRT-Output final"
+                    pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Afisare"
+                    pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                        rezultat_1, rezultat_2, ..., rezultat_n
+                    pas_5.3: filtreaza coloana "Bucket" dupa cuvintele cheie "Layout pagina aplicatie" si "Mesaje"
+                    pas_5.4: aplica "schema_logica" pentru fiecare caz rezultat
+                    pas_5.5: interpreteaza "US"
+                    pas_5.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+                    pas_5.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+                    pas_5.8: listeaza rezultatele din coloana "Caz de testare"
+                    pas_5.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                        pas_5.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                            DA -> 
+                                    aplica "schema_logica" pentru acest rezultat
+                                    treci la urmatorul rezultat
+                            NU -> 
+                                    treci la urmatorul rezultat
+                    pas_5.10: interpreteaza "US"
+                    pas_5.11: exista un card descris in "US", conform regulii "identificare_card"?
+                        DA ->
+							cate carduri sunt descrise in cadrul US-ului?
+								pas_5.11.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+								pas_5.11.2: aplica "schema_logica" pentru fiecare rezultat
+								pas_5.11.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+									pas_5.11.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+									pas_5.11.3.2: listeaza rezultatele din coloana "Caz de testare"
+									pas_5.11.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+										pas_4.11.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+											DA -> 
+													aplica "schema_logica" pentru acest rezultat
+													treci la urmatorul rezultat
+											NU -> 
+													treci la urmatorul rezultat
+                        NU ->
+                            STOP
+        }
+
+Caz_5: Daca functionalitatea selectata este "Stergere", atunci:
+    Aplica "validare_stergere".
+      Daca "validare_stergere" = FALSE -> STOP
+      Daca "validare_stergere" = TRUE ->
+        {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Stergere"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_stergere"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat              
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "Autorizare"
+            pas_3.1: interpreteaza "US"
+            pas_3.2: gasesti descrisa in cadrul "US" o permisiune ce este asociata functionalitatii de "Stergere", conform regulii "identificare_permisiune"?
+                DA -> 
+                        pas_3.2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Stergere"
+                        pas_3.2.2: listeaza rezultatele din coloana "Caz de testare"
+                            rezultat_1, rezultat_2, ..., rezultat_n
+                        pas_3.2.3: filtreaza coloana "General valabile" dupa valoarea "0"
+                            listeaza rezultatele din coloana "Caz de testare"
+                        pas_3.2.4 pentru fiecare rezultat: 
+                            {
+                                cazul are [nume_permisiune]?
+                                    DA ->
+                                        Numele permisiunii a fost gasit in detaliile US-ului?
+                                            DA:
+                                                identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                inlocuire [nume_permisiune] cu valoarea regasita in US
+                                            NU:
+                                                Notificare POM pentru solicitare informatii suplimentare
+                                                STOP
+                                    NU ->
+                                            aplica "schema_logica"
+                            },
+                            
+                        pas_3.2.5: filtreaza coloana "General valabile" dupa valoarea "1" 
+                            listeaza rezultatele din coloana "Caz de testare"
+                            pentru fiecare rezultat aplica urmatorii pasi:
+                                    -> interpreteaza "US"
+                                    -> gasesti o legatura intre datele extrase din "US" si acest rezultat?
+                                        DA ->
+                                            pas_3.2.5 pentru fiecare rezultat: 
+                                                {
+                                                    cazul are [nume_permisiune]?
+                                                        DA ->
+                                                            Numele permisiunii a fost gasit in detaliile US-ului?
+                                                                DA:
+                                                                    identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                                    inlocuire [nume_permisiune] cu valoarea regasita in US
+                                                                NU:
+                                                                    Notificare POM pentru solicitare informatii suplimentare
+                                                                    STOP
+                                                        NU ->
+                                                                aplica "schema_logica"
+                                                },
+                                                treci la urmatorul rezultat
+                                        NU ->
+                                                treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_4: selecteaza sheet-ul "FRT-Output initial"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Stergere"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: filtreaza coloana "Bucket" dupa cuvantul cheie "Mesaje"
+            pas_4.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_4.5: interpreteaza "US"
+            pas_4.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_4.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_4.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_4.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_4.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_4.10: interpreteaza "US"
+            pas_4.11: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_4.11.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_4.11.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_4.11.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_4.11.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_4.11.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_4.11.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_4.11.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "BKD-Input"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Stergere"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: pentru fiecare rezultat din rezultate, aplica "schema_logica"
+            pas_5.4: treci la urmatorul pas 
+
+        pas_6: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Stergere"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_6.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_6.4: Treci la urmatorul pas
+
+        pas_7: selecteaza sheet-ul "FRT-Output final"
+            pas_7.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Stergere"
+            pas_7.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_7.3: filtreaza coloana "Bucket" dupa cuvantul cheie "Mesaje"
+            pas_7.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_7.5: interpreteaza "US"
+            pas_7.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_7.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_7.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_7.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_7.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_7.10: interpreteaza "US"
+            pas_7.11: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_7.11.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_7.11.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_7.11.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_7.11.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_7.11.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_7.11.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_7.11.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    treci la urmatorul pas
+            pas_7.12: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Stergere"
+            pas_7.13: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_7.14: interpreteaza "US"
+            pas_7.15: exista in "US" mentionat un output de tip email, folosind regula: "identificare_email"?
+                DA:
+                    pas_7.15.1: ce tip de continut se regaseste in cadrul email-ului, folosind regula: "identificare_continut_email"?
+                    pas_7.15.2: filtreaza coloana "Bucket" dupa tipul de continut email gasit
+                    pas_7.15.3: pentru fiecare rezultat afisat, aplica "schema_logica"
+                    pas_7.15.4: treci la urmatorul pas
+                NU:
+                    treci la urmatorul pas 
+
+        pas_8: selecteaza sheet-ul "Reverificare output final"
+            pas_8.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Stergere"
+            pas_8.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_8.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_8.3.1 aplica "schema_logica" pentru acest rezultat
+                pas_8.3.2 treci la urmatorul rezultat    
+            pas_8.4: STOP        
+        }
+
+Caz_6: Daca functionalitatea selectata este "Activare", atunci:
+    Aplica "validare_activare".
+      Daca "validare_activare" = FALSE -> STOP
+      Daca "validare_activare" = TRUE ->
+        {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Activare"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_activare"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat              
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "Autorizare"
+            pas_3.1: interpreteaza "US"
+            pas_3.2: gasesti descrisa in cadrul "US" o permisiune ce este asociata functionalitatii de "Activare", conform regulii "identificare_permisiune"?
+                DA -> 
+                        pas_3.2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Activare"
+                        pas_3.2.2: listeaza rezultatele din coloana "Caz de testare"
+                            rezultat_1, rezultat_2, ..., rezultat_n
+                        pas_3.2.3: filtreaza coloana "General valabile" dupa valoarea "0"
+                            listeaza rezultatele din coloana "Caz de testare"
+                        pas_3.2.4 pentru fiecare rezultat: 
+                            {
+                                cazul are [nume_permisiune]?
+                                    DA ->
+                                        Numele permisiunii a fost gasit in detaliile US-ului?
+                                            DA:
+                                                identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                inlocuire [nume_permisiune] cu valoarea regasita in US
+                                            NU:
+                                                Notificare POM pentru solicitare informatii suplimentare
+                                                STOP
+                                    NU ->
+                                            aplica "schema_logica"
+                            },
+                        pas_3.2.5: filtreaza coloana "General valabile" dupa valoarea "1" 
+                            listeaza rezultatele din coloana "Caz de testare"
+                            pentru fiecare rezultat aplica urmatorii pasi:
+                                    -> interpreteaza "US"
+                                    -> gasesti o legatura intre datele extrase din "US" si acest rezultat?
+                                        DA ->
+                                            pas_3.2.4 pentru fiecare rezultat: 
+                                                {
+                                                    cazul are [nume_permisiune]?
+                                                        DA ->
+                                                            Numele permisiunii a fost gasit in detaliile US-ului?
+                                                                DA:
+                                                                    identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                                    inlocuire [nume_permisiune] cu valoarea regasita in US
+                                                                NU:
+                                                                    Notificare POM pentru solicitare informatii suplimentare
+                                                                    STOP
+                                                        NU ->
+                                                                aplica "schema_logica"
+                                                },
+
+                                        NU ->
+                                                treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_4: selecteaza sheet-ul "FRT-Output initial"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Activare"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: filtreaza coloana "Bucket" dupa cuvantul cheie "Mesaje"
+            pas_4.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_4.5: interpreteaza "US"
+            pas_4.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_4.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_4.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_4.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_4.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_4.10: interpreteaza "US"
+            pas_4.11: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_4.11.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_4.11.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_4.11.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_4.11.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_4.11.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_4.11.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_4.11.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "BKD-Input"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Activare"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: pentru fiecare rezultat din rezultate, aplica "schema_logica"
+            pas_5.4: treci la urmatorul pas 
+
+        pas_6: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Activare"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_6.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_6.4: Treci la urmatorul pas
+
+        pas_7: selecteaza sheet-ul "FRT-Output final"
+            pas_7.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Activare"
+            pas_7.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_7.3: filtreaza coloana "Bucket" dupa cuvantul cheie "Mesaje"
+            pas_7.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_7.5: interpreteaza "US"
+            pas_7.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_7.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_7.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_7.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_7.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_7.10: interpreteaza "US"
+            pas_7.11: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_7.11.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_7.11.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_7.11.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_7.11.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_7.11.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_7.11.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_7.11.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    treci la urmatorul pas
+            pas_7.12: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Stergere"
+            pas_7.13: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_7.14: interpreteaza "US"
+            pas_7.15: exista in "US" mentionat un output de tip email, folosind regula: "identificare_email"?
+                DA:
+                    pas_7.15.1: ce tip de continut se regaseste in cadrul email-ului, folosind regula: "identificare_continut_email"?
+                    pas_7.15.2: filtreaza coloana "Bucket" dupa tipul de continut email gasit
+                    pas_7.15.3: pentru fiecare rezultat afisat, aplica "schema_logica"
+                    pas_7.15.4: treci la urmatorul pas
+                NU:
+                    treci la urmatorul pas
+
+        pas_8: selecteaza sheet-ul "Reverificare output final"
+            pas_8.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Activare"
+            pas_8.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_8.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_8.3.1 aplica "schema_logica" pentru acest rezultat
+                pas_8.3.2 treci la urmatorul rezultat    
+            pas_8.4: STOP        
+        }
+
+Caz_7: Daca functionalitatea selectata este "Resetare", atunci:
+    Aplica "validare_resetare".
+      Daca "validare_resetare" = FALSE -> STOP
+      Daca "validare_resetare" = TRUE ->
+        {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Resetare"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_resetare"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat              
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "Autorizare"
+            pas_3.1: interpreteaza "US"
+            pas_3.2: gasesti descrisa in cadrul "US" o permisiune ce este asociata functionalitatii de "Resetare", conform regulii "identificare_permisiune"?
+                DA -> 
+                        pas_3.2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Resetare"
+                        pas_3.2.2: listeaza rezultatele din coloana "Caz de testare"
+                            rezultat_1, rezultat_2, ..., rezultat_n
+                        pas_3.2.3: filtreaza coloana "General valabile" dupa valoarea "0"
+                            listeaza rezultatele din coloana "Caz de testare"
+                        pas_3.2.4 pentru fiecare rezultat: 
+                            {
+                                cazul are [nume_permisiune]?
+                                    DA ->
+                                        Numele permisiunii a fost gasit in detaliile US-ului?
+                                            DA:
+                                                identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                inlocuire [nume_permisiune] cu valoarea regasita in US
+                                            NU:
+                                                Notificare POM pentru solicitare informatii suplimentare
+                                                STOP
+                                    NU ->
+                                            aplica "schema_logica"
+                            },
+                            
+                        pas_3.2.5: filtreaza coloana "General valabile" dupa valoarea "1" 
+                            listeaza rezultatele din coloana "Caz de testare"
+                            pentru fiecare rezultat aplica urmatorii pasi:
+                                    -> interpreteaza "US"
+                                    -> gasesti o legatura intre datele extrase din "US" si acest rezultat?
+                                        DA ->
+                                            pas_3.2.4 pentru fiecare rezultat: 
+                                                {
+                                                    cazul are [nume_permisiune]?
+                                                        DA ->
+                                                            Numele permisiunii a fost gasit in detaliile US-ului?
+                                                                DA:
+                                                                    identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                                    inlocuire [nume_permisiune] cu valoarea regasita in US
+                                                                NU:
+                                                                    Notificare POM pentru solicitare informatii suplimentare
+                                                                    STOP
+                                                        NU ->
+                                                                aplica "schema_logica"
+                                                },
+                                        NU ->
+                                                treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_4: selecteaza sheet-ul "FRT-Output initial"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Resetare"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: filtreaza coloana "Bucket" dupa cuvintele cheie "Layout pagina aplicatie" si "Mesaje"
+            pas_4.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_4.5: interpreteaza "US"
+            pas_4.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_4.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_4.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_4.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_4.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_4.10: interpreteaza "US"
+            pas_4.11: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_4.11.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_4.11.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_4.11.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_4.11.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_4.11.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_4.11.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_4.11.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "BKD-Input"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Resetare"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: pentru fiecare rezultat din rezultate, aplica "schema_logica"
+            pas_5.4: treci la urmatorul pas 
+
+        pas_6: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Resetare"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_6.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_6.4: Treci la urmatorul pas
+
+        pas_7: selecteaza sheet-ul "FRT-Output final"
+            pas_7.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Resetare"
+            pas_7.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_7.3: filtreaza coloana "Bucket" dupa cuvintele cheie "Layout pagina aplicatie" si "Mesaje"
+            pas_7.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_7.5: interpreteaza "US"
+            pas_7.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_7.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_7.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_7.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_7.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_7.10: interpreteaza "US"
+            pas_7.11: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_7.11.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_7.11.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_7.11.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_7.11.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_7.11.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_7.11.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_7.11.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    treci la urmatorul pas
+
+        pas_8: selecteaza sheet-ul "Reverificare output final"
+            pas_8.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Resetare"
+            pas_8.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_8.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_8.3.1 aplica "schema_logica" pentru acest rezultat
+                pas_8.3.2 treci la urmatorul rezultat    
+            pas_8.4: STOP        
+        }
+
+Caz_8: Daca functionalitatea selectata este "Navigare", atunci:
+    Aplica "validare_navigare".
+      Daca "validare_navigare" = FALSE -> STOP
+      Daca "validare_navigare" = TRUE ->
+        {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Navigare"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_navigare"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat              
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "Autorizare"
+            pas_3.1: interpreteaza "US"
+            pas_3.2: gasesti descrisa in cadrul "US" o permisiune ce este asociata functionalitatii de "Navigare", conform regulii "identificare_permisiune"?
+                DA -> 
+                        pas_3.2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Navigare"
+                        pas_3.2.2: listeaza rezultatele din coloana "Caz de testare"
+                            rezultat_1, rezultat_2, ..., rezultat_n
+                        pas_3.2.1: filtreaza coloana "General valabile" dupa valoarea "0"
+                            listeaza rezultatele din coloana "Caz de testare"
+                        pas_3.2.4 pentru fiecare rezultat: 
+                            {
+                                cazul are [nume_permisiune]?
+                                    DA ->
+                                        Numele permisiunii a fost gasit in detaliile US-ului?
+                                            DA:
+                                                identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                inlocuire [nume_permisiune] cu valoarea regasita in US
+                                            NU:
+                                                Notificare POM pentru solicitare informatii suplimentare
+                                                STOP
+                                    NU ->
+                                            aplica "schema_logica"
+                            },
+                            
+                        pas_3.2.2: filtreaza coloana "General valabile" dupa valoarea "1" 
+                            listeaza rezultatele din coloana "Caz de testare"
+                            pentru fiecare rezultat aplica urmatorii pasi:
+                                    -> interpreteaza "US"
+                                    -> gasesti o legatura intre datele extrase din "US" si acest rezultat?
+                                        DA ->
+                                             pas_3.2.4 pentru fiecare rezultat: 
+                                                {
+                                                    cazul are [nume_permisiune]?
+                                                        DA ->
+                                                            Numele permisiunii a fost gasit in detaliile US-ului?
+                                                                DA:
+                                                                    identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                                    inlocuire [nume_permisiune] cu valoarea regasita in US
+                                                                NU:
+                                                                    Notificare POM pentru solicitare informatii suplimentare
+                                                                    STOP
+                                                        NU ->
+                                                                aplica "schema_logica"
+                                                },
+                                        NU ->
+                                                treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_4: selecteaza sheet-ul "FRT-Output initial"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Navigare"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: filtreaza coloana "Bucket" dupa cuvintele cheie "Layout pagina aplicatie" si "Mesaje"
+            pas_4.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_4.5: interpreteaza "US"
+            pas_4.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_4.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_4.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_4.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_4.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_4.10: interpreteaza "US"
+            pas_4.11: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_4.11.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_4.11.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_4.11.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_4.11.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_4.11.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_4.11.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_4.11.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas 
+
+        pas_5: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Navigare"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_5.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_5.4: Treci la urmatorul pas
+
+        pas_6: selecteaza sheet-ul "FRT-Output final"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Navigare"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: filtreaza coloana "Bucket" dupa cuvintele cheie "Layout pagina aplicatie" si "Mesaje"
+            pas_6.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_6.5: interpreteaza "US"
+            pas_6.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_6.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_6.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_6.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_6.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_6.10: interpreteaza "US"
+            pas_6.11: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_6.11.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_6.11.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_6.11.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_6.11.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_6.11.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_6.11.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_6.11.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    treci la urmatorul pas
+
+        pas_7: selecteaza sheet-ul "Reverificare output final"
+            pas_7.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Navigare"
+            pas_7.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_7.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_7.3.1 aplica "schema_logica" pentru acest rezultat
+                pas_7.3.2 treci la urmatorul rezultat    
+            pas_7.4: STOP        
+        }
+
+Caz_9: Daca functionalitatea selectata este "Filtrare", atunci:
+    Aplica "validare_filtrare".
+      Daca "validare_filtrare" = FALSE -> STOP
+      Daca "validare_filtrare" = TRUE ->
+        {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Filtrare"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_filtrare"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat              
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "FRT-Output initial"
+            pas_3.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Filtrare"
+            pas_3.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_3.3: interpreteaza "US"
+            pas_3.4: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_3.5: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_3.6: listeaza rezultatele din coloana "Caz de testare"
+            pas_3.7: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_3.7.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_3.8: interpreteaza "US"
+            pas_3.9: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_3.9.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_3.9.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_3.9.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_3.9.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_3.9.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_3.9.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_3.9.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas 
+
+        pas_4: selecteaza sheet-ul "BKD-Input"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Filtrare"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: identifica tipurile de campuri, utilizand regula "identificare_tip_camp" = { campul se identifica dupa valoarea atributului "Type", descris in "US" }
+            pas_4.4: afiseaza rezultatele (rezultat_1, rezultat_2, ..., rezultat_n)
+            pas_4.5: pentru fiecare rezultat din rezultate, aplica urmatorii pasi:
+                pas_4.5.1: filtreaza coloana "Bucket" dupa rezultat
+                pas_4.5.2: listeaza coloana "Caz de testare"
+                pas_4.5.3: pentru fiecare rezultat din coloana "Caz de testare", aplica urmatorii
+                    pas_4.5.3.1 este rezultat == "input?
+                        DA
+                            exista o valoare in coloana "Regex"?
+                                DA
+                                    daca "valoare_Regex"=1
+                                        aplica "schema_logica" pentru acest rezultat
+                                        genereaza cazuri de testare pozitive pe baza regex-ului regasit in "US"
+                                    daca "valoare_Regex"=0
+                                        aplica "schema_logica" pentru acest rezultat
+                                        genereaza cazuri de testare negative pe baza regex-ului regasit in "US"
+                                NU
+                                    aplica "schema_logica" pentru acest rezultat
+                        NU
+                            aplica "schema_logica" pentru acest rezultat
+
+            pas_4.6: treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Filtrare"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_5.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_5.4: Treci la urmatorul pas
+
+        pas_6: selecteaza sheet-ul "Reverificare output final"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Filtrare"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_6.3.1 aplica "schema_logica" pentru acest rezultat
+                pas_6.3.2 treci la urmatorul rezultat    
+            pas_6.4: STOP        
+        }
+
+Caz_10: Daca functionalitatea selectata este "Cautare", atunci:
+    Aplica "validare_cautare".
+      Daca "validare_cautare" = FALSE -> STOP
+      Daca "validare_cautare" = TRUE ->
+        {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Cautare"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_cautare"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat              
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "FRT-Output initial"
+            pas_3.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Cautare"
+            pas_3.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_3.3: interpreteaza "US"
+            pas_3.4: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_3.5: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_3.6: listeaza rezultatele din coloana "Caz de testare"
+            pas_3.7: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_3.7.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_3.8: interpreteaza "US"
+            pas_3.9: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_3.9.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_3.9.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_3.9.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_3.9.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_3.9.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_3.9.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_3.9.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas 
+
+        pas_4: selecteaza sheet-ul "BKD-Input"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Cautare"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: identifica tipurile de campuri, utilizand regula "identificare_tip_camp" = { campul se identifica dupa valoarea atributului "Type", descris in "US" }
+            pas_4.4: afiseaza rezultatele (rezultat_1, rezultat_2, ..., rezultat_n)
+            pas_4.5: pentru fiecare rezultat din rezultate, aplica urmatorii pasi:
+                pas_4.5.1: filtreaza coloana "Bucket" dupa rezultat
+                pas_4.5.2: listeaza coloana "Caz de testare"
+                pas_4.5.3: pentru fiecare rezultat din coloana "Caz de testare", aplica urmatorii
+                    pas_4.5.3.1 este rezultat == "input?
+                        DA
+                            exista o valoare in coloana "Regex"?
+                                DA
+                                    daca "valoare_Regex"=1
+                                        aplica "schema_logica" pentru acest rezultat
+                                        genereaza cazuri de testare pozitive pe baza regex-ului regasit in "US"
+                                    daca "valoare_Regex"=0
+                                        aplica "schema_logica" pentru acest rezultat
+                                        genereaza cazuri de testare negative pe baza regex-ului regasit in "US"
+                                NU
+                                    aplica "schema_logica" pentru acest rezultat
+                        NU
+                            aplica "schema_logica" pentru acest rezultat
+
+            pas_4.6: treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Cautare"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_5.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_5.4: Treci la urmatorul pas
+
+        pas_6: selecteaza sheet-ul "Reverificare output final"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Cautare"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_6.3.1 aplica "schema_logica" pentru acest rezultat
+                pas_6.3.2 treci la urmatorul rezultat    
+            pas_6.4: STOP        
+        }
+
+Caz_11: Daca functionalitatea selectata este "Ordonare", atunci:
+    Aplica "validare_ordonare".
+      Daca "validare_ordonare" = FALSE -> STOP
+      Daca "validare_ordonare" = TRUE ->
+        {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Ordonare"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_ordonare"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat              
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "FRT-Output initial"
+            pas_3.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Ordonare"
+            pas_3.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_3.3: interpreteaza "US"
+            pas_3.4: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_3.5: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_3.6: listeaza rezultatele din coloana "Caz de testare"
+            pas_3.7: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_3.7.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_3.8: interpreteaza "US"
+            pas_3.9: exista un card descris in "US", conform regulii "identificare_card"?
+                DA ->
+					cate carduri sunt descrise in cadrul US-ului?
+						pas_3.9.1: filtreaza coloana "Bucket" dupa cuvantul cheie "Continut tip card"
+						pas_3.9.2: aplica "schema_logica" pentru fiecare rezultat
+						pas_3.9.3: ce tipuri de continut se regasesc in descrierea cardului, tinand cont de regula "tipuri_de_continut"?
+							pas_3.9.3.1: filtreaza coloana "Bucket" dupa tipurile de continut identificate
+							pas_3.9.3.2: listeaza rezultatele din coloana "Caz de testare"
+							pas_3.9.3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+								pas_3.9.3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+									DA -> 
+											aplica "schema_logica" pentru acest rezultat
+											treci la urmatorul rezultat
+									NU -> 
+											treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas 
+
+        pas_4: selecteaza sheet-ul "BKD-Input"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Ordonare"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: identifica tipurile de campuri, utilizand regula "identificare_tip_camp" = {campul se identifica dupa valoarea atributului "Type", descris in "US" }
+            pas_4.4: afiseaza rezultatele (rezultat_1, rezultat_2, ..., rezultat_n)
+            pas_4.5: pentru fiecare rezultat din rezultate, aplica urmatorii pasi:
+                pas_4.5.1: filtreaza coloana "Bucket" dupa rezultat
+                pas_4.5.2: listeaza coloana "Caz de testare"
+                pas_4.5.3: pentru fiecare rezultat din coloana "Caz de testare", aplica "schema_logica"
+            pas_4.6: treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Ordonare"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_5.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_5.4: Treci la urmatorul pas
+
+        pas_6: selecteaza sheet-ul "Reverificare output final"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Ordonare"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_6.3.1 aplica "schema_logica" pentru acest rezultat
+                pas_6.3.2 treci la urmatorul rezultat    
+            pas_6.4: STOP        
+        }
+
+Caz_12: Daca functionalitatea selectata este "Import", atunci:
+    Aplica "validare_import".
+      Daca "validare_import" = FALSE -> STOP
+      Daca "validare_import" = TRUE ->
+      {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Import"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_import"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "Autorizare"
+            pas_3.1: interpreteaza "US"
+            pas_3.2: gasesti descrisa in cadrul "US" o permisiune ce este asociata functionalitatii de "Import", conform regulii "identificare_permisiune"?
+                DA -> 
+                        pas_3.2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Import"
+                        pas_3.2.2: listeaza rezultatele din coloana "Caz de testare"
+                            rezultat_1, rezultat_2, ..., rezultat_n
+                        pas_3.2.3: filtreaza coloana "Descris in 'US'" dupa valoarea "0"
+                            listeaza rezultatele din coloana "Caz de testare"
+                        pas_3.2.4 pentru fiecare rezultat: 
+                            {
+                                cazul are [nume_permisiune]?
+                                    DA ->
+                                        Numele permisiunii a fost gasit in detaliile US-ului?
+                                            DA:
+                                                identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                inlocuire [nume_permisiune] cu valoarea regasita in US
+                                            NU:
+                                                Notificare POM pentru solicitare informatii suplimentare
+                                                STOP
+                                    NU ->
+                                            aplica "schema_logica"
+                            },
+    
+                        pas_3.2.5: filtreaza coloana "Descris in 'US'" dupa valoarea "1" 
+                            listeaza rezultatele din coloana "Caz de testare"
+                            pentru fiecare rezultat aplica urmatorii pasi:
+                                    -> interpreteaza "US"
+                                    -> gasesti o legatura intre datele extrase din "US" si acest rezultat?
+                                        DA ->
+                                             pas_3.2.4 pentru fiecare rezultat: 
+                                                {
+                                                    cazul are [nume_permisiune]?
+                                                        DA ->
+                                                            Numele permisiunii a fost gasit in detaliile US-ului?
+                                                                DA:
+                                                                    identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                                    inlocuire [nume_permisiune] cu valoarea regasita in US
+                                                                NU:
+                                                                    Notificare POM pentru solicitare informatii suplimentare
+                                                                    STOP
+                                                        NU ->
+                                                                aplica "schema_logica"
+                                                },
+                                        NU ->
+                                                treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_4: selecteaza sheet-ul "FRT-Output initial"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Import"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: filtreaza coloana "Bucket" dupa cuvintele cheie "Layout pagina aplicatie" si "Mesaje"
+            pas_4.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_4.5: interpreteaza "US"
+            pas_4.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_4.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_4.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_4.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_4.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_4.10: Treci la urmatorul pas
+           
+        pas_5: selecteaza sheet-ul "BKD-Input"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Import"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: pentru fiecare rezultat aplica "schema_logica"
+            pas_5.4: treci la urmatorul pas
+
+        pas_6: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Import"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_6.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_6.4: treci la urmatorul pas
+
+        pas_7: selecteaza sheet-ul "Reverificare output final"
+            pas_7.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Import"
+            pas_7.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_7.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_7.3.1 aplica "schema_logica" pentru acest rezultat
+                pas_7.3.2 treci la urmatorul rezultat    
+            pas_7.4: STOP    
+      }
+
+Caz_13: Daca functionalitatea selectata este "Incarcare", atunci:
+    Aplica "validare_incarcare".
+      Daca "validare_incarcare" = FALSE -> STOP
+      Daca "validare_incarcare" = TRUE ->
+      {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Incarcare"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_incarcare"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "Autorizare"
+            pas_3.1: interpreteaza "US"
+            pas_3.2: gasesti descrisa in cadrul "US" o permisiune ce este asociata functionalitatii de "Incarcare", conform regulii "identificare_permisiune"?
+                DA -> 
+                        pas_3.2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Incarcare"
+                        pas_3.2.2: listeaza rezultatele din coloana "Caz de testare"
+                            rezultat_1, rezultat_2, ..., rezultat_n
+                        pas_3.2.3: filtreaza coloana "Descris in 'US'" dupa valoarea "0"
+                            listeaza rezultatele din coloana "Caz de testare"
+                        pas_3.2.4 pentru fiecare rezultat: 
+                            {
+                                cazul are [nume_permisiune]?
+                                    DA ->
+                                        Numele permisiunii a fost gasit in detaliile US-ului?
+                                            DA:
+                                                identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                inlocuire [nume_permisiune] cu valoarea regasita in US
+                                            NU:
+                                                Notificare POM pentru solicitare informatii suplimentare
+                                                STOP
+                                    NU ->
+                                            aplica "schema_logica"
+                            },
+                            
+                        pas_3.2.5: filtreaza coloana "Descris in 'US'" dupa valoarea "1" 
+                            listeaza rezultatele din coloana "Caz de testare"
+                            pentru fiecare rezultat aplica urmatorii pasi:
+                                    -> interpreteaza "US"
+                                    -> gasesti o legatura intre datele extrase din "US" si acest rezultat?
+                                        DA ->
+                                            pas_3.2.4 pentru fiecare rezultat: 
+                                                {
+                                                    cazul are [nume_permisiune]?
+                                                        DA ->
+                                                            Numele permisiunii a fost gasit in detaliile US-ului?
+                                                                DA:
+                                                                    identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                                    inlocuire [nume_permisiune] cu valoarea regasita in US
+                                                                NU:
+                                                                    Notificare POM pentru solicitare informatii suplimentare
+                                                                    STOP
+                                                        NU ->
+                                                                aplica "schema_logica"
+                                                },
+                                        NU ->
+                                                treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+
+        pas_4: selecteaza sheet-ul "FRT-Output initial"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Incarcare"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: filtreaza coloana "Bucket" dupa cuvintele cheie "Layout pagina aplicatie" si "Mesaje"
+            pas_4.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_4.5: interpreteaza "US"
+            pas_4.6: ce tip de continut este descris in "US", tinand cont de regula "tipuri_de_continut"?
+            pas_4.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_4.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_4.9: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_4.9.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_4.10: Treci la urmatorul pas
+           
+        pas_5: selecteaza sheet-ul "BKD-Input"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Incarcare"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: pentru fiecare rezultat aplica "schema_logica"
+            pas_5.4: treci la urmatorul pas
+
+        pas_6: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Incarcare"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_6.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_6.4: treci la urmatorul pas
+
+        pas_7: selecteaza sheet-ul "Reverificare output final"
+            pas_7.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Incarcare"
+            pas_7.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_7.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_7.3.1 aplica "schema_logica" pentru acest rezultat
+                pas_7.3.2 treci la urmatorul rezultat    
+            pas_7.4: STOP    
+      }
+
+Caz_14: Daca functionalitatea selectata este "Export", atunci:
+    Aplica "validare_export".
+      Daca "validare_export" = FALSE -> STOP
+      Daca "validare_export" = TRUE ->
+      {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Export"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_export"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "Autorizare"
+            pas_3.1: interpreteaza "US"
+            pas_3.2: gasesti descrisa in cadrul "US" o permisiune ce este asociata functionalitatii de "Export", conform regulii "identificare_permisiune"?
+                DA -> 
+                        pas_3.2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Export"
+                        pas_3.2.2: listeaza rezultatele din coloana "Caz de testare"
+                            rezultat_1, rezultat_2, ..., rezultat_n
+                        pas_3.2.1: filtreaza coloana "Descris in 'US'" dupa valoarea "0"
+                            listeaza rezultatele din coloana "Caz de testare"
+                        pas_3.2.4 pentru fiecare rezultat: 
+                            {
+                                cazul are [nume_permisiune]?
+                                    DA ->
+                                        Numele permisiunii a fost gasit in detaliile US-ului?
+                                            DA:
+                                                identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                inlocuire [nume_permisiune] cu valoarea regasita in US
+                                            NU:
+                                                Notificare POM pentru solicitare informatii suplimentare
+                                                STOP
+                                    NU ->
+                                            aplica "schema_logica"
+                            }, 
+                            
+                        pas_3.2.2: filtreaza coloana "Descris in 'US'" dupa valoarea "1" 
+                            listeaza rezultatele din coloana "Caz de testare"
+                            pentru fiecare rezultat aplica urmatorii pasi:
+                                    -> interpreteaza "US"
+                                    -> gasesti o legatura intre datele extrase din "US" si acest rezultat?
+                                        DA ->
+                                            pas_3.2.4 pentru fiecare rezultat: 
+                                                {
+                                                    cazul are [nume_permisiune]?
+                                                        DA ->
+                                                            Numele permisiunii a fost gasit in detaliile US-ului?
+                                                                DA:
+                                                                    identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                                    inlocuire [nume_permisiune] cu valoarea regasita in US
+                                                                NU:
+                                                                    Notificare POM pentru solicitare informatii suplimentare
+                                                                    STOP
+                                                        NU ->
+                                                                aplica "schema_logica"
+                                                },
+                                        NU ->
+                                                treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+           
+        pas_4: selecteaza sheet-ul "BKD-Input"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Export"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: pentru fiecare rezultat aplica "schema_logica"
+            pas_4.4: treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Export"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_5.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_5.4: treci la urmatorul pas
+
+        pas_6: selecteaza sheet-ul "FRT-Output final"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Export"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: filtreaza coloana "Bucket" dupa cuvintele cheie "Layout fisier", "Mesaje" si "Fisiere"
+            pas_6.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_6.5: interpreteaza "US"
+            pas_6.6: ce tip de fisier este descris in "US", tinand cont de regula "tipuri_de_fisiere"?
+            pas_6.7: filtreaza coloana "Bucket" dupa tipul de fisier identificat
+            pas_6.8: pentru fiecare rezultat listat, aplica "schema_logica"
+            pas_6.9: STOP  
+      }
+
+Caz_15: Daca functionalitatea selectata este "Descarcare", atunci:
+    Aplica "validare_descarcare".
+      Daca "validare_descarcare" = FALSE -> STOP
+      Daca "validare_descarcare" = TRUE ->
+      {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "Accesare"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Descarcare"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: pentru fiecare rezulat, aplica urmatorii pasi:
+                pas_2.3.1: citeste valoare din "General valabile"
+                pas_2.3.2: este aceasta valoare = 1?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU ->
+                            interpreteaza "US"
+                            gasesti o legatura intre datele extrase din "US" si acest rezultat, aplicand regula "regula_accesare_descarcare"?
+                                DA ->
+                                        aplica "schema_logica" pentru acest rezultat
+                                        treci la urmatorul rezultat
+                                NU ->
+                                    treci la urmatorul rezultat
+            pas_2.4: Treci la urmatorul pas 
+
+        pas_3: selecteaza sheet-ul "Autorizare"
+            pas_3.1: interpreteaza "US"
+            pas_3.2: gasesti descrisa in cadrul "US" o permisiune ce este asociata functionalitatii de "Descarcare", conform regulii "identificare_permisiune"?
+                DA -> 
+                        pas_3.2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Descarcare"
+                        pas_3.2.2: listeaza rezultatele din coloana "Caz de testare"
+                            rezultat_1, rezultat_2, ..., rezultat_n
+                        pas_3.2.1: filtreaza coloana "Descris in 'US'" dupa valoarea "0"
+                            listeaza rezultatele din coloana "Caz de testare"
+                        pas_3.2.4 pentru fiecare rezultat: 
+                            {
+                                cazul are [nume_permisiune]?
+                                    DA ->
+                                        Numele permisiunii a fost gasit in detaliile US-ului?
+                                            DA:
+                                                identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                inlocuire [nume_permisiune] cu valoarea regasita in US
+                                            NU:
+                                                Notificare POM pentru solicitare informatii suplimentare
+                                                STOP
+                                    NU ->
+                                            aplica "schema_logica"
+                            },
+                            
+                        pas_3.2.2: filtreaza coloana "Descris in 'US'" dupa valoarea "1" 
+                            listeaza rezultatele din coloana "Caz de testare"
+                            pentru fiecare rezultat aplica urmatorii pasi:
+                                    -> interpreteaza "US"
+                                    -> gasesti o legatura intre datele extrase din "US" si acest rezultat?
+                                        DA ->
+                                            pas_3.2.4 pentru fiecare rezultat: 
+                                                {
+                                                    cazul are [nume_permisiune]?
+                                                        DA ->
+                                                            Numele permisiunii a fost gasit in detaliile US-ului?
+                                                                DA:
+                                                                    identificare nume permisiune in detaliile US-ului, conform regulii "identificare_permisiune"
+                                                                    inlocuire [nume_permisiune] cu valoarea regasita in US
+                                                                NU:
+                                                                    Notificare POM pentru solicitare informatii suplimentare
+                                                                    STOP
+                                                        NU ->
+                                                                aplica "schema_logica"
+                                                },
+                                        NU ->
+                                                treci la urmatorul rezultat
+                NU ->
+                    Treci la urmatorul pas
+           
+        pas_4: selecteaza sheet-ul "BKD-Input"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Descarcare"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: pentru fiecare rezultat aplica "schema_logica"
+            pas_4.4: treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Descarcare"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_5.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_5.4: treci la urmatorul pas
+
+        pas_6: selecteaza sheet-ul "FRT-Output final"
+            pas_6.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Descarcare"
+            pas_6.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_6.3: filtreaza coloana "Bucket" dupa cuvintele cheie "Mesaje" si "Fisiere"
+            pas_6.4: aplica "schema_logica" pentru fiecare caz rezultat
+            pas_6.5: STOP  
+      }
+
+Caz_16: Daca functionalitatea selectata este "Paginatie", atunci:
+    Aplica "validare_paginatie".
+      Daca "validare_paginatie" = FALSE -> STOP
+      Daca "validare_paginatie" = TRUE ->
+      {
+        pas_1: acceseaza fisierul "Biblioteca_cazuri_de_testare"
+
+        pas_2: selecteaza sheet-ul "FRT-Output initial"
+            pas_2.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Paginatie"
+            pas_2.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_2.3: filtreaza coloana "Bucket" dupa cuvantul cheie "Layout pagina aplicatie"
+            pas_2.4: aplica "schema_logica" pentru fiecare rezultat
+            pas_2.5: interpreteaza "US"
+            pas_2.6: ce tipuri de continut se regasesc in descrierea "US", tinand cont de regula "tipuri_de_continut"?
+            pas_2.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_2.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_2.9: pentru fiecare rezultat listat, aplica "schema_logica"
+            pas_2.10: treci la urmatorul pas  
+            
+        pas_3: selecteaza sheet-ul "FRT-Confirmare actiune"
+            pas_3.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Paginatie"
+            pas_3.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_3.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_3.3.1: gasesti o legatura intre acest rezultat si detaliile extrase din "US"?
+                    DA -> 
+                            aplica "schema_logica" pentru acest rezultat
+                            treci la urmatorul rezultat
+                    NU -> 
+                            treci la urmatorul rezultat
+            pas_3.4: treci la urmatorul pas    
+
+        pas_4: selecteaza sheet-ul "FRT-Output final"
+            pas_4.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Paginatie"
+            pas_4.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_4.3: filtreaza coloana "Bucket" dupa cuvantul cheie "Layout pagina aplicatie"
+            pas_4.4: aplica "schema_logica" pentru fiecare rezultat
+            pas_4.5: interpreteaza "US"
+            pas_4.6: ce tipuri de continut se regasesc in descrierea "US", tinand cont de regula "tipuri_de_continut"?
+            pas_4.7: filtreaza coloana "Bucket" dupa tipul de continut identificat
+            pas_4.8: listeaza rezultatele din coloana "Caz de testare"
+            pas_4.9: pentru fiecare rezultat listat, aplica "schema_logica"
+            pas_4.10: treci la urmatorul pas
+
+        pas_5: selecteaza sheet-ul "Reverificare output final"
+            pas_5.1: filtreaza coloana "Tip functionalitate" dupa cuvantul cheie "Paginatie"
+            pas_5.2: listeaza rezultatele din coloana "Caz de testare"
+                rezultat_1, rezultat_2, ..., rezultat_n
+            pas_5.3: pentru fiecare rezultat listat, aplica urmatorii pasi:
+                pas_5.3.1 aplica "schema_logica" pentru acest rezultat
+                pas_5.3.2 treci la urmatorul rezultat    
+            pas_5.4: STOP           
+      }
+	 
+===============================================================
+
+Metoda "validare_vizualizare":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Vizualizare"?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_vizualizare"?
+                 "regula_accesare_vizualizare":
+                    {
+                        Accesarea se face cu ajutorul meniului din partea stanga, ce este descris in "US" ca "left_menu" sau "left menu", urmata de descrierea detaliata a meniului. Actiunea se regasete in cadrul submeniului "functionality:"
+                    } 
+                        NU -> "validare_vizualizare" = FALSE
+                        DA -> "validare_vizualizare" = TRUE
+            DA -> "validare_vizualizare" = TRUE
+    }
+
+Metoda "validare_adaugare":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Adaugare"?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_adaugare"?
+                 "regula_accesare_adaugare":
+                    {
+                       Descrierea accesului se regaseste in sectiunea "acces". 
+                       Accesul se face in general printr-un buton denumit "button_create"
+                    } 
+                        NU -> "validare_adaugare" = FALSE
+                        DA -> "validare_adaugare" = TRUE
+            DA -> "validare_adaugare" = TRUE
+    }          
+
+Metoda "validare_afisare":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Afisare" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_afisare"?
+                 "regula_accesare_afisare":
+                    {
+                       Descrierea accesului se regaseste in coloana "actions_column", ce are ca "header-label": cuvantul: "Acțiuni"
+                       Accesul se face prin butonul descris in sectiunea: "button content", cu ID = "button_view"
+                    } 
+                        NU -> "validare_adaugare" = FALSE
+                        DA -> "validare_adaugare" = TRUE
+            DA -> "validare_adaugare" = TRUE
+    }            
+
+Metoda "validare_modificare":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Modificare" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_modificare"?
+                 "regula_accesare_modificare":
+                    {
+                       Descrierea accesului se regaseste in coloana "actions_column", ce are ca "header-label": cuvantul: "Acțiuni"
+                       Accesul se face prin butonul descris in sectiunea: "button content", cu ID = "button_update"
+                    } 
+                        NU -> "validare_modificare" = FALSE
+                        DA -> "validare_modificare" = TRUE
+            DA -> "validare_modificare" = TRUE
+    }   
+
+Metoda "validare_stergere":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Stergere" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_stergere"?
+                 "regula_accesare_stergere":
+                    {
+                       Descrierea accesului se regaseste in coloana "actions_column", ce are ca "header-label": cuvantul: "Acțiuni"
+                       Accesul se face prin butonul descris in sectiunea: "button content", cu ID = "button_delete"
+                    } 
+                        NU -> "validare_stergere" = FALSE
+                        DA -> "validare_stergere" = TRUE
+            DA -> "validare_stergere" = TRUE
+    }
+
+Metoda "validare_activare":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Activare" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_activare"?
+                 "regula_accesare_activare":
+                    {
+                       Accesul se face prin butonul cu ID = "button_activate"
+                    } 
+                        NU -> "validare_activare" = FALSE
+                        DA -> "validare_activare" = TRUE
+            DA -> "validare_activare" = TRUE
+    }
+
+Metoda "validare_resetare":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Resetare" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_resetare"?
+                 "regula_accesare_resetare":
+                    {
+                       Descrierea accesului se regaseste in coloana "button reset"
+                       Accesul se face prin butonul cu ID = "reset"
+                    } 
+                        NU -> "validare_resetare" = FALSE
+                        DA -> "validare_resetare" = TRUE
+            DA -> "validare_resetare" = TRUE
+    }
+
+Metoda "validare_navigare":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Navigare" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_navigare"?
+                 "regula_accesare_navigare":
+                    {
+                       Descrierea accesului se regaseste in coloana "button back"
+                       Accesul se face prin butonul cu ID = "back"
+                    } 
+                        NU -> "validare_navigare" = FALSE
+                        DA -> "validare_navigare" = TRUE
+            DA -> "validare_navigare" = TRUE
+    }    
+
+Metoda "validare_filtrare":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Filtrare" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_filtrare"?
+                 "regula_accesare_filtrare":
+                    {
+                       Descrierea accesului se regaseste in coloana "column filter"
+                    } 
+                        NU -> "validare_filtrare" = FALSE
+                        DA -> "validare_filtrare" = TRUE
+            DA -> "validare_filtrare" = TRUE
+    }
+
+Metoda "validare_cautare":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Cautare" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_cautare"?
+                 "regula_accesare_cautare":
+                    {
+                       Descrierea accesului se regaseste in coloana "column filter", dupa cuvantul cheie "search:", iar valoarea trebuie sa fie "true" (search: true)
+                    } 
+                        NU -> "validare_cautare" = FALSE
+                        DA -> "validare_cautare" = TRUE
+            DA -> "validare_cautare" = TRUE
+    }    
+
+Metoda "validare_ordonare":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Ordonare" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_ordonare"?
+                 "regula_accesare_ordonare":
+                    {
+                       Descrierea accesului se regaseste, dupa cuvantul cheie "sort:", iar valoarea trebuie sa fie "true" (sort: true)
+                    } 
+                        NU -> "validare_cautare" = FALSE
+                        DA -> "validare_cautare" = TRUE
+            DA -> "validare_cautare" = TRUE
+    }    
+
+Metoda "validare_import":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Import" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_import"?
+                 "regula_accesare_import":
+                    {
+                       Descrierea accesului se regaseste in coloana "updated_column:"
+                       Accesul se face prin butonul cu ID = "th_updated"
+                    } 
+                        NU -> "validare_import" = FALSE
+                        DA -> "validare_import" = TRUE
+            DA -> "validare_import" = TRUE
+    }
+
+Metoda "validare_incarcare":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Incarcare" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_incarcare"?
+                 "regula_accesare_incarcare":
+                    {
+                       Accesul se face prin butonul ce contine cuvantul cheie: "file_upload"
+                    } 
+                        NU -> "validare_incarcare" = FALSE
+                        DA -> "validare_incarcare" = TRUE
+            DA -> "validare_incarcare" = TRUE
+    }
+
+Metoda "validare_export":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Export" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_export"?
+                 "regula_accesare_export":
+                    {
+                       Accesul se face prin butonul ce contine cuvantul cheie: "button export" sau "button_export"
+                    } 
+                        NU -> "validare_export" = FALSE
+                        DA -> "validare_export" = TRUE
+            DA -> "validare_export" = TRUE
+    }   
+
+Metoda "validare_descarcare":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" un mod de accesare al functionalitatii de "Descarcare" ?
+            NU ->
+                Poti deduce un mod de accesare al functionalitatii, folosind regula: "regula_accesare_descarcare"?
+                 "regula_accesare_descarcare":
+                    {
+                       Accesul se face prin butonul ce contine cuvantul cheie: "button_download"
+                    } 
+                        NU -> "validare_descarcare" = FALSE
+                        DA -> "validare_descarcare" = TRUE
+            DA -> "validare_descarcare" = TRUE
+    } 
+
+Metoda "validare_paginatie":
+    {
+        pas_1: citeste si analizeaza descrierea "US".
+        Intrebare_1: Poti identifica in descrierea "US" o descriere a functionalitatii de "Paginatie" ?
+            NU ->
+                Poti deduce o descriere a functionalitatii, folosind regula: "regula_accesare_paginatie"?
+                 "regula_accesare_paginatie":
+                    {
+                       Descrierea se regaseste dupa cuvantul cheie "pagination", ce are valoarea "true"
+                    } 
+                        NU -> "validare_paginatie" = FALSE
+                        DA -> "validare_paginatie" = TRUE
+            DA -> "validare_paginatie" = TRUE
+    }
+
+Regula "tipuri_de_continut":
+    {
+    Tipurile de continut sunt:
+        1. Continut tip Tabel -> este utilizat pentru organizarea datelor in randuri si coloane. Contine obligatoriu notiunile de table (Thead, Tr, Td). In cadrul userstory-ului se regaseste descris sub denumirea de "column".
+        2. Continut tip Lista -> este reprezentata afisarea elementelor intr-o ordine secventiala, fie ordonata, fie neordonata. In cazul ERP-ului este reprezentata de meniul de accesare din partea stanga.
+        3. Continut tip Formular -> este utilizat pentru introducerea/modificarea informatiilor si include obligatoriu un buton de trimitere date (Adauga, Modifica, Salveaza, Importa, Exporta)
+        4. Continut tip Document -> reprezentata de un tot ceea ce nu este un tabel lista sau formular. Poate contine paragrafe, titluri, imagini sau link-uri.
+        }
+
+Regula "identificare_element":
+    {  
+    <element> se regaseste descris in cadrul userstory-ului si poate avea una dintre urmatoarele valori: {buton_text, buton_icon, radio, checkbox, input, select/dropdown, label/coloana}
+    }
+
+Regula "identificare_nume_element":
+    {  
+        [nume_element] este tot timpul precedat de <element>
+            Daca <element> este buton text, atunci [nume_element] se gaseste in atributul "Name"
+            Daca <element> este radio, atunci [nume_element] se gaseste in atributul "Name"
+            Daca <element> este checkbox, atunci [nume_element] se gaseste in atributul "Name"
+            Daca <element> este input, atunci [nume_element] se gaseste in atributul "Name"
+            Daca <element> este select/dropdown, atunci [nume_element] se gaseste in atributul "Name"
+            Daca <element> este buton icon, atunci [nume_element] se gaseste in atributul "Hover"
+            Daca <element> este label/coloana, atunci [nume_element] se gaseste in atributul "Header-Label"
+    }
+
+Regula "identificare_informatii_detaliu":
+    {
+        Detaliile sunt listate intre acolade. Fiecare detaliu este despartit prin virgula.
+    }
+
+Regula "tipuri_de_fisiere": 
+    {
+        Tipurile de fisiere pot fi:
+            1. Fisier tip document (.docx, .pdf)
+            2. Fisier tip excel
+            3. Fisier tip text
+    }
+
+Regula "identificare_email" 
+    {
+        Detaliile legate de trimiterea unui email, se vor regasi in descrierea functionalitatii.
+    }
+
+Regula "identificare_continut_email"
+    {
+        Un email poate avea urmatorul tip de continut:
+        1. Continut email tip Text
+        2. Continut email tip Tabel HTML
+        3. Continut email tip Lista HTML
+    }
+
+Regula "identificare_permisiune"
+    {
+        In cadrul "US-ului" permisiunile sunt descrise in sectiunea "permission", atribuita fiecarei functionalitati.
+    }
+
+Regula "identificare_card"
+	{
+		Cardul se identifica in cadrul detaliilor din "US", dupa cuvantul cheie "card"
+	}    
+
+Regula "identificare_tip_element_detaliu":
+    {
+        daca <element> != input, select, checkbox, radio
+            atunci {detalii} == {}
+        daca <element> == input,
+            atunci {detalii} == {prezenta, pozitionare, dimensiune, stil_forma, stil_border, stil_culoare, mouseover, text-valoare, text-font-size, text-font-family, text-traducere, text-culoare, placeholder-valoare, hint-valoare, hint-font-size, hint-font-family, hint-traducere, hint-culoare}
+        daca <element> == select, 
+            atunci {detalii} == {prezenta, pozitionare, dimensiune, stil_forma, stil_border, stil_culoare, mouseover, comportament_deschidere-atat-la-click-pe-body-cat-si-pe-simbol, comportament_selectare optiuni multiple, comportament_reselectare, optiune-selectata, optiune-valoare, optiune-text-valoare, optiune-text-font-size, optiune-text-font-family, optiune-text-traducere, optiune-text-culoare, hint-valoare, hint-font-size, hint-font-family, hint-traducere, hint-culoare}
+        daca <element> == checkbox,
+            atunci {detalii} == {prezenta, pozitionare, dimensiune, stil_forma, stil_border, stil_culoare, mouseover, comportament_bifare-prin-optiune-text-valoare, optiune-selectata, optiune-valoare,  optiune-text-valoare,  optiune-text-font-size, optiune-text-font-family, optiune-text-traducere, optiune-text-culoare}
+        daca <element> == radio,
+            atunci {detalii} == {prezenta, pozitionare, dimensiune, stil_forma, stil_border, stil_culoare, mouseover, comportament_bifare-prin-optiune-text-valoare, optiune-selectata, optiune-valoare,  optiune-text-valoare,  optiune-text-font-size, optiune-text-font-family, optiune-text-traducere, optiune-text-culoare}
+    }    
+
+schema_logica: 
+    {
+        Cazul v0 are <element>?
+            DA:
+                DA: Identificare tip element in detaliile US-ului (tipul de element poate fi: {buton, radio, checkbox, input, select, link, coloana})
+                DA: Tipul elementului a fost gasit in detaliile US-ului?
+                    DA:
+                        DA: DA: Inlocuire <element> cu tipul de element identificat, rezultand Caz_v1
+                        DA: DA: Cazul v1 are [nume_element]?
+                            DA:
+                                DA: DA: DA: Identificare nume element in detaliile US-ului
+                                DA: DA: DA: Inlocuire <nume_element> cu valoarea regasita, rezultand Caz_v2	
+                            NU:
+                                DA: DA: NU: Cazul v1 are [nume_camp]?
+                                    DA:
+                                        DA: DA: NU: DA: cate campuri sunt descrise in US?
+                                        DA: DA: NU: DA: *cloneaza cazul de testare
+                                        DA: DA: NU: DA: *Identificare nume camp in detaliile US-ului
+                                        DA: DA: NU: DA: *Inlocuire <nume_camp> cu valoarea regasita, rezultand caz v2
+                                        DA: DA: NU: DA: *Caz_v2 are {detalii}?
+                                            DA:
+                                                DA: DA: NU: DA: DA:	Adaugare Caz_v2 in lista fara transformare
+                                                DA: DA: NU: DA: DA: STOP bucla
+                                            NU:
+                                                DA: DA: NU: DA: NU: Adauga {detalii} la Caz_v2 conform regulii "identificare_tip_element_detaliu", rezultand Caz_v3
+                                    NU:
+                                        DA: DA: NU: NU: Cazul v1 are [nume_linie]?
+                                            DA:
+                                                DA: DA: NU: NU: DA: cate linii sunt descrise in US?
+                                                DA: DA: NU: NU: DA: *cloneaza cazul de testare
+                                                DA: DA: NU: NU: DA: *Identificare nume linie in detaliile US-ului
+                                                DA: DA: NU: NU: DA: *Inlocuire <nume_linie> cu valoarea regasita, rezultand Caz_v2
+                                                DA: DA: NU: NU: DA: *Caz_v2 are {detalii}?
+                                                    DA:
+                                                        DA: DA: NU: NU: DA: DA: Adaugare Caz_v2 in lista fara transformare
+                                                        DA: DA: NU: NU: DA: DA: STOP bucla
+                                                    NU:
+                                                        DA: DA: NU: NU: DA: NU: Adauga {detalii} la Caz_v2 conform regulii "identificare_tip_element_detaliu", rezultand Caz_v3	
+                                            NU:
+                                                Cazul v1 are [nume_coloana]?
+                                                    DA:
+                                                        DA: DA: NU: NU: DA: DA: cate coloane sunt descrise in US?
+                                                        DA: DA: NU: NU: DA: DA: *cloneaza cazul de testare
+                                                        DA: DA: NU: NU: DA: DA: *Identificare nume coloana in detaliile US-ului
+                                                        DA: DA: NU: NU: DA: DA: *Inlocuire <nume_coloana> cu valoarea regasita, rezultand caz v2	
+                                                        DA: DA: NU: NU: DA: DA: *Caz_v2 are {detalii}?
+                                                            DA:
+                                                                DA: DA: NU: NU: DA: DA: DA: Adaugare Caz_v2 in lista fara transformare
+                                                                DA: DA: NU: NU: DA: DA: DA: STOP bucla
+                                                            NU:
+                                                                DA: DA: NU: NU: DA: DA: NU: Adauga {detalii} la Caz_v2 conform regulii "identificare_tip_element_detaliu", rezultand Caz_v3	
+                                                    NU:
+                                                        DA: DA: NU: NU: DA: NU: Adaugare Caz_v1 in lista fara transformare
+                                                        DA: DA: NU: NU: DA: NU: STOP
+                            
+                    NU:
+                        DA: NU: Notificare POM pentru solicitare informatii suplimentare
+                        DA: NU: STOP
+                        
+            NU: 
+                NU: Cazul v0 are [nume_element]?
+                    DA:
+                        NU: DA: Identificare nume element in detaliile US-ului
+                        DA: DA: Inlocuire <nume_element> cu valoarea regasita, rezultand caz v1
+                    NU:
+                        NU: NU: Cazul v0 are [nume_camp]?
+                            DA:
+                                NU: NU: DA: cate campuri sunt descrise in US?
+                                NU: NU: DA: *cloneaza cazul de testare
+                                NU: NU: DA: *Identificare nume camp in detaliile US-ului
+                                NU: NU: DA: *Inlocuire <nume_camp> cu valoarea regasita, rezultand caz v1
+                                NU: NU: DA: *Caz_v1 are {detalii}?
+                                    DA:
+                                        NU: NU: DA: DA: Adaugare Caz_v1 in lista fara transformare
+                                        NU: NU: DA: DA: STOP bucla
+                                    NU:
+                                        NU: NU: DA: NU: Adauga {detalii} la Caz_v1 conform regulii "identificare_tip_element_detaliu", rezultand Caz_v2
+                            NU:
+                                NU: NU: NU: Cazul v0 are [nume_linie]?
+                                    DA:
+                                        NU: NU: NU: DA: cate linii sunt descrise in US?
+                                        NU: NU: NU: DA: *cloneaza cazul de testare
+                                        NU: NU: NU: DA: *Identificare nume linie in detaliile US-ului
+                                        NU: NU: NU: DA: *Inlocuire <nume_linie> cu valoarea regasita, rezultand caz v1
+                                        NU: NU: NU: DA: *Caz_v1 are {detalii}?
+                                            DA:
+                                                NU: NU: NU: DA: DA: Adaugare Caz_v1 in lista fara transformare
+                                                NU: NU: NU: DA: DA: STOP bucla
+                                            NU:
+                                                NU: NU: NU: DA: NU: Adauga {detalii} la Caz_v1 conform regulii "identificare_tip_element_detaliu", rezultand Caz_v2
+                                    NU:
+                                        Cazul v0 are [nume_coloana]?
+                                            DA:
+                                                NU: NU: NU: DA: DA: cate coloane sunt descrise in US?
+                                                NU: NU: NU: DA: DA: *cloneaza cazul de testare
+                                                NU: NU: NU: DA: DA: *Identificare nume coloana in detaliile US-ului
+                                                NU: NU: NU: DA: DA: *Inlocuire <nume_coloana> cu valoarea regasita, rezultand caz v1	
+                                                NU: NU: NU: DA: DA: *Caz_v1 are {detalii}?
+                                                    DA:
+                                                        NU: NU: NU: DA: DA: DA: Adaugare Caz_v1 in lista fara transformare
+                                                        NU: NU: NU: DA: DA: DA: STOP bucla
+                                                    NU:
+                                                        NU: NU: NU: DA: DA: NU: Adauga {detalii} la Caz_v1 conform regulii "identificare_tip_element_detaliu", rezultand Caz_v2
+                                            NU:
+                                                NU: NU: NU: DA: NU: Adaugare Caz v0 in lista fara transformare
+                                                NU: NU: NU: DA: NU: STOP
+    }

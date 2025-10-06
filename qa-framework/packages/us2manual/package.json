@@ -1,0 +1,24 @@
+{
+  "name": "@apps/us2manual",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "us2manual": "src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "yargs": "^17.7.2",
+    "@pkg/spec": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/yargs": "^17.0.33",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.9"
+  }
+}

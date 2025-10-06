@@ -1,0 +1,30 @@
+title: "Domenii ECF"
+functionality_types: ["Vizualizare"]
+buckets: ["Tabel"]
+navigation:
+  via_button:
+    label: "Domenii ECF"
+    page_hint: "dynamic-document-generation/domains"
+  direct_url: "dynamic-document-generation/domains/index"
+permission:
+  name: "indexDynamicDocumentGenerationDomains"
+actors: ["utilizator autentificat cu permisiunea de mai sus"]
+fields: []  # No specific input fields for 'Vizualizare' in the US snippet
+acceptance_criteria:
+  - "Lista Domenii ECF se afișează cu succes."
+  - "Sunt prezente acțiunile pe rând: 'Vezi detalii', 'Editează', 'Șterge'."
+negative_paths:
+  - "Acces fără permisiune → mesaj de eroare / redirect la login."
+  - "URL introdus direct fără sesiune → redirect la login."
+assumptions:
+  - "Structura tabelului este stabilă și are acțiuni pe rând."
+  - "ID-urile pentru butoane există în UI conform US (button_view / button_edit / button_delete)."
+confidence:
+  buckets: 0.9
+  navigation: 0.9
+  permission: 0.9
+  fields: 0.3
+  acceptance_criteria: 0.7
+  negative_paths: 0.6
+confidence_summary: 0.73
+source_file: "input/us_and_test_cases.txt"

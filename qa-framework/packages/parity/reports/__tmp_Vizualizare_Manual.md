@@ -1,14 +1,11 @@
 # Plan de testare — Vizualizare
-
 - [auth] Neautorizat — 403 la acces direct {facets:403}
+<!-- provenance: uiux -->
+- [auth] Neautorizat — elemente ascunse (hidden) {facets:hidden}
 <!-- provenance: uiux -->
 - [auth] Neautorizat — elemente dezactivate (disabled) {facets:disabled}
 <!-- provenance: uiux -->
 - [auth] Neautorizat — eroare la click (toast/dialog) {facets:eroare, click}
-<!-- provenance: uiux -->
-- [auth] Neautorizat — elemente ascunse (hidden) {facets:hidden}
-<!-- provenance: uiux -->
-- [auth] Rol non-admin — permisiuni limitate {facets:rol, non-admin}
 <!-- provenance: uiux -->
 - [auth] Neautentificat — redirect catre '/login' {facets:redirect}
 <!-- provenance: uiux -->
