@@ -1,0 +1,202 @@
+Vizualizarea de documente =========================
+
+01. Accesarea functionalitatii prin apasare <buton> [Documents] din coloana "Documente" a tabelului afisat in pagina "auction-document/projects/index" {prezenta, pozitionare, text-valoare, text-traducere, container-tip_badge}
+02. Accesarea functionalitatii prin apasarea succesiva pe <buton> [Documents] din coloana "Documente" a tabelului afisat in pagina "auction-document/projects/index" {comportament}
+03. Accesarea functionalitatii prin introducerea directa a URL-ului in bara de adrese ("auction-document/projects/index") {comportament}
+04. Accesarea functionalitatii atunci cand nu exista conexiune la internet {comportament}
+05. Accesarea functionalitatii atunci cand conexiunea cu server-ul este slaba {comportament}
+
+06. Verificarea permisiunii [viewDocuments] {prezenta, descriere}
+07. Ascundere <buton> [Documents], pentru utilizatorii neautorizati {comportament}
+
+08. Afisarea titlului in pagina aplicatiei {prezenta, pozitionare, text-valoare, text-traducere}
+09. Afisarea breadcrumb-ului in pagina aplicatiei {prezenta, pozitionare, text-valoare, text-traducere, container-tip_link, container-comportament}
+10. Afisarea paginatiei in pagina {prezenta, pozitionare, text-valoare, container-tip_buton, container-comportament}
+11. Afisarea corecta a continutului paginii la diferite rezolutii {prezenta, pozitionare, dimensiune, comportament}
+12. Afisarea tabelului in pagina aplicatiei {prezenta}
+13. Afisarea header-ului coloanei [Acțiuni] in tabel {prezenta, pozitionare, text-valoare, text-traducere}
+14. Afisare <buton toggle> in header-ul coloanei [Acțiuni] a tabelului {prezenta, pozitionare, text-valoare, text-traducere}
+15. Afisare <buton> [View Details] in coloana [Acțiuni] a tabelului {prezenta, pozitionare, container-tip_badge, mousehoover}
+16. Afisare <buton> [Edit] in coloana [Acțiuni] a tabelului {prezenta, pozitionare, container-tip_badge, mousehoover}
+17. Afisare <buton> [Delete] in coloana [Acțiuni] a tabelului {prezenta, pozitionare, container-tip_badge, mousehoover}
+18. Afisarea header-ului coloanei [Conținut] in tabel {prezenta, pozitionare, text-valoare, text-traducere}
+19. Afisare <buton> [View Details] in coloana [Acțiuni] a tabelului {prezenta, pozitionare, container-tip_badge, mousehoover}
+20. Afisare <buton> [Edit] in coloana [Acțiuni] a tabelului {prezenta, pozitionare, container-tip_badge, mousehoover}
+21. Afisare <buton> [Export] in coloana [Acțiuni] a tabelului {prezenta, pozitionare, container-tip_badge, mousehoover}
+22. Afisarea header-ului coloanei [Nume] in tabel {prezenta, pozitionare, text-valoare, text-traducere}
+23. Afisare <input> in header-ul coloanei [Nume] a tabelului {prezenta, pozitionare, text-valoare, text-traducere}
+24. Completarea campului [Nume], de tip input, cu o valoare ce respecta formatul cerut {comportament, comportament_validare_format, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+25. Completarea campului [Nume], de tip input, cu o valoare ce respecta formatul cerut si conditiile specifice {comportament, comportament_validare_format, comportament_conditii_specifice, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+26. Completarea campului [Nume], de tip input, cu o valoare ce respecta formatul cerut, dar nu indeplineste conditiile specifice {comportament, comportament_validare_condiții_specifice, comportament_feedback_eroare, comportament_interzicere_submit, comportament_resetare_camp}
+27. Completarea campului [Nume], de tip input, cu o valoare ce nu respecta formatul cerut {comportament, comportament_validare_format_invalid, comportament_feedback_eroare, comportament_interzicere_submit, comportament_restricții_input, comportament_resetare_camp}
+28. Completarea campului [Nume], de tip input, folosind comanda "Lipire" {comportament, comportament_lipire_valida, comportament_lipire_invalida, comportament_feedback_eroare, comportament_feedback_succes, comportament_validare_format, comportament_validare_conditii_specifice, comportament_limite}
+29. Necompletarea campului [Nume], de tip input {comportament, comportament_validare_necompletare, comportament_feedback_eroare, comportament_interzicere_submit, comportament_feedback_conditii_specifice, comportament_validare_conditii_specifice}
+30. Afisarea header-ului coloanei [Tip] in tabel {prezenta, pozitionare, text-valoare, text-traducere}
+31. Afisare <input> in header-ul coloanei [Tip] a tabelului {prezenta, pozitionare, text-valoare, text-traducere}
+32. Completarea campului [Tip], de tip input, cu o valoare ce respecta formatul cerut {comportament, comportament_validare_format, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+33. Completarea campului [Tip], de tip input, cu o valoare ce respecta formatul cerut si conditiile specifice {comportament, comportament_validare_format, comportament_conditii_specifice, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+34. Completarea campului [Tip], de tip input, cu o valoare ce respecta formatul cerut, dar nu indeplineste conditiile specifice {comportament, comportament_validare_condiții_specifice, comportament_feedback_eroare, comportament_interzicere_submit, comportament_resetare_camp}
+35. Completarea campului [Tip], de tip input, cu o valoare ce nu respecta formatul cerut {comportament, comportament_validare_format_invalid, comportament_feedback_eroare, comportament_interzicere_submit, comportament_restricții_input, comportament_resetare_camp}
+36. Completarea campului [Tip], de tip input, folosind comanda "Lipire" {comportament, comportament_lipire_valida, comportament_lipire_invalida, comportament_feedback_eroare, comportament_feedback_succes, comportament_validare_format, comportament_validare_conditii_specifice, comportament_limite}
+37. Necompletarea campului [Tip], de tip input {comportament, comportament_validare_necompletare, comportament_feedback_eroare, comportament_interzicere_submit, comportament_feedback_conditii_specifice, comportament_validare_conditii_specifice}
+38. Afisarea header-ului coloanei [Descriere] in tabel {prezenta, pozitionare, text-valoare, text-traducere}
+39. Afisare <input> in header-ul coloanei [Descriere] a tabelului {prezenta, pozitionare, text-valoare, text-traducere}
+40. Completarea campului [Descriere], de tip input, cu o valoare ce respecta formatul cerut {comportament, comportament_validare_format, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+41. Completarea campului [Descriere], de tip input, cu o valoare ce respecta formatul cerut si conditiile specifice {comportament, comportament_validare_format, comportament_conditii_specifice, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+42. Completarea campului [Descriere], de tip input, cu o valoare ce respecta formatul cerut, dar nu indeplineste conditiile specifice {comportament, comportament_validare_condiții_specifice, comportament_feedback_eroare, comportament_interzicere_submit, comportament_resetare_camp}
+43. Completarea campului [Descriere], de tip input, cu o valoare ce nu respecta formatul cerut {comportament, comportament_validare_format_invalid, comportament_feedback_eroare, comportament_interzicere_submit, comportament_restricții_input, comportament_resetare_camp}
+44. Completarea campului [Descriere], de tip input, folosind comanda "Lipire" {comportament, comportament_lipire_valida, comportament_lipire_invalida, comportament_feedback_eroare, comportament_feedback_succes, comportament_validare_format, comportament_validare_conditii_specifice, comportament_limite}
+45. Necompletarea campului [Descriere], de tip input {comportament, comportament_validare_necompletare, comportament_feedback_eroare, comportament_interzicere_submit, comportament_feedback_conditii_specifice, comportament_validare_conditii_specifice}
+46. Afisarea inregistrarilor in tabel {ordine, nr. total}
+
+Adaugarea unui document ==============================
+
+01. Accesarea functionalitatii prin apasare <buton> [Adaugă Document] in pagina "auction-document/projects/{id}/documents/index" {prezenta, pozitionare, text-valoare, text-traducere}
+02. Accesarea functionalitatii prin apasarea succesiva pe <buton> [Adaugă Document] in pagina "auction-document/projects/{id}/documents/index" {comportament}
+03. Accesarea functionalitatii atunci cand nu exista conexiune la internet {comportament}
+04. Accesarea functionalitatii atunci cand conexiunea cu server-ul este slaba {comportament}
+
+05. Verificarea permisiunii [createDocument] {prezenta, descriere}
+06. Ascundere <buton> [Adaugă Document], pentru utilizatorii neautorizati {comportament}
+
+07. Afisarea formularului in pagina aplicatiei {prezenta}
+08. Afisare <input> camp [Nume] in formular
+09. Afisarea label-ului campului [Nume] in formular {prezenta, pozitionare, text-valoare, text-traducere}
+10. Afisarea indicatorului de obligativitate a campului [Nume] in formular {comportament, prezenta, pozitionare, text-valoare, text-culoare}
+11. Afisarea placeholder-ului campului [Nume] in formular {prezenta, pozitionare, text-valoare, text-traducere, comportament}
+12. Afisare <input> camp [Tip] in formular
+13. Afisarea label-ului campului [Tip] in formular {prezenta, pozitionare, text-valoare, text-traducere}
+14. Afisarea placeholder-ului campului [Tip] in formular {prezenta, pozitionare, text-valoare, text-traducere, comportament}
+15. Afisare <input> camp [Descriere] in formular
+16. Afisarea label-ului campului [Descriere] in formular {prezenta, pozitionare, text-valoare, text-traducere}
+17. Afisarea placeholder-ului campului [Descriere] in formular {prezenta, pozitionare, text-valoare, text-traducere, comportament}
+18. Afisare <input> camp [Fisier] in formular
+19. Afisarea label-ului campului [Fisier] in formular {prezenta, pozitionare, text-valoare, text-traducere}
+20. Afisarea hint-ului campului [Descriere] in formular {prezenta, pozitionare, text-valoare, text-traducere, comportament}
+
+21. Afisarea butonului de actiune [Înapoi] {comportament, prezenta, pozitionare, stil_forma, stil_border, stil_culoare, mouseover, text-valoare, text-traducere}
+22. Afisarea butonului de actiune [Resetează] {comportament, prezenta, pozitionare, stil_forma, stil_border, stil_culoare, mouseover, text-valoare, text-traducere}
+23. Afisarea butonului de trimitere date [Adauga] {comportament, prezenta, pozitionare, stil_forma, stil_border, stil_culoare, mouseover, text-valoare, text-traducere}
+
+24. Completarea campului [Nume], de tip input, cu o valoare ce respecta formatul cerut {comportament, comportament_validare_format, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+25. Completarea campului [Nume], de tip input, cu o valoare ce respecta formatul cerut si conditiile specifice {comportament, comportament_validare_format, comportament_conditii_specifice, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+26. Completarea campului [Nume], de tip input, cu o valoare ce respecta formatul cerut, dar nu indeplineste conditiile specifice {comportament, comportament_validare_condiții_specifice, comportament_feedback_eroare, comportament_interzicere_submit, comportament_resetare_camp}
+27. Completarea campului [Nume], de tip input, cu o valoare ce nu respecta formatul cerut {comportament, comportament_validare_format_invalid, comportament_feedback_eroare, comportament_interzicere_submit, comportament_restricții_input, comportament_resetare_camp}
+28. Completarea campului [Nume], de tip input, folosind comanda "Lipire" {comportament, comportament_lipire_valida, comportament_lipire_invalida, comportament_feedback_eroare, comportament_feedback_succes, comportament_validare_format, comportament_validare_conditii_specifice, comportament_limite}
+29. Necompletarea campului [Nume], de tip input {comportament, comportament_validare_necompletare, comportament_feedback_eroare, comportament_interzicere_submit, comportament_feedback_conditii_specifice, comportament_validare_conditii_specifice}
+30. Completarea campului [Tip], de tip input, cu o valoare ce respecta formatul cerut {comportament, comportament_validare_format, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+31. Completarea campului [Tip], de tip input, cu o valoare ce respecta formatul cerut si conditiile specifice {comportament, comportament_validare_format, comportament_conditii_specifice, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+32. Completarea campului [Tip], de tip input, cu o valoare ce respecta formatul cerut, dar nu indeplineste conditiile specifice {comportament, comportament_validare_condiții_specifice, comportament_feedback_eroare, comportament_interzicere_submit, comportament_resetare_camp}
+33. Completarea campului [Tip], de tip input, cu o valoare ce nu respecta formatul cerut {comportament, comportament_validare_format_invalid, comportament_feedback_eroare, comportament_interzicere_submit, comportament_restricții_input, comportament_resetare_camp}
+34. Completarea campului [Tip], de tip input, folosind comanda "Lipire" {comportament, comportament_lipire_valida, comportament_lipire_invalida, comportament_feedback_eroare, comportament_feedback_succes, comportament_validare_format, comportament_validare_conditii_specifice, comportament_limite}
+35. Necompletarea campului [Tip], de tip input {comportament, comportament_validare_necompletare, comportament_feedback_eroare, comportament_interzicere_submit, comportament_feedback_conditii_specifice, comportament_validare_conditii_specifice}
+36. Completarea campului [Descriere], de tip input, cu o valoare ce respecta formatul cerut {comportament, comportament_validare_format, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+37. Completarea campului [Descriere], de tip input, cu o valoare ce respecta formatul cerut si conditiile specifice {comportament, comportament_validare_format, comportament_conditii_specifice, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+38. Completarea campului [Descriere], de tip input, cu o valoare ce respecta formatul cerut, dar nu indeplineste conditiile specifice {comportament, comportament_validare_condiții_specifice, comportament_feedback_eroare, comportament_interzicere_submit, comportament_resetare_camp}
+39. Completarea campului [Descriere], de tip input, cu o valoare ce nu respecta formatul cerut {comportament, comportament_validare_format_invalid, comportament_feedback_eroare, comportament_interzicere_submit, comportament_restricții_input, comportament_resetare_camp}
+40. Completarea campului [Descriere], de tip input, folosind comanda "Lipire" {comportament, comportament_lipire_valida, comportament_lipire_invalida, comportament_feedback_eroare, comportament_feedback_succes, comportament_validare_format, comportament_validare_conditii_specifice, comportament_limite}
+41. Necompletarea campului [Descriere], de tip input {comportament, comportament_validare_necompletare, comportament_feedback_eroare, comportament_interzicere_submit, comportament_feedback_conditii_specifice, comportament_validare_conditii_specifice}
+42. Incarcarea unui fisier {comportament}
+43. Incarcarea unui fisier atunci cand nu exista conexiune la internet {comportament}
+44. Incarcarea unui fisier atunci cand conexiunea cu server-ul este slaba {comportament}
+45. Incarcarea unui fisier cu acelasi nume, cu acelasi continut {comportament}
+46. Incarcarea unui fisier cu acelasi nume, cu continut diferit {comportament}
+47. Incarcarea unui fisier cu nume diferit, cu acelasi continut {comportament}
+48. Incarcarea unui fisier cu nume diferit, cu continut diferit {comportament}
+49. Incarcarea unui fisier ce respecta tipul cerut {comportament}
+50. Incarcarea unui fisier ce nu respecta tipul cerut {comportament}
+51. Incarcarea unui fisier ce respecta numele cerut {comportament}
+52. Incarcarea unui fisier ce nu respecta numele cerut {comportament}
+
+53. Verificarea actiunii butonului de actiune [Înapoi] {comportament}
+54. Verificarea actiunii butonului de actiune [Resetează] {comportament}
+55. Verificarea actiunii butonului de trimitere date [Adauga] {comportament}
+56. Verificare redirect către pagina "index", dupa finalizarea operatiei de adaugare
+
+57. Afisarea mesajului de succes la finalizarea functionalitatii {comportament, prezenta, pozitionare, auto-hide, auto-hide-timp, text-valoare, text-traducere}
+58. Afisarea mesajului de eroare la finalizarea functionalitatii {comportament, prezenta, pozitionare, auto-hide, auto-hide-timp, text-valoare, text-traducere}
+59. Afisarea mesajului de avertizare la incercarea de finalizare a functionalitatii {comportament, prezenta, pozitionare, comportament, text-valoare, text-traducere}
+
+Modificarea unui tip de document ================================
+
+01. Accesarea functionalitatii prin apasare <buton> [Editeaza Document] in coloana [Acțiuni] a tabelului din pagina "auction-document/projects/{id}/documents/index" {prezenta, pozitionare, container-tip_buton, celula-mouseover}
+02. Accesarea functionalitatii prin apasarea succesiva pe <buton> [Editeaza Document] in coloana [Acțiuni] a tabelului din pagina "auction-document/projects/{id}/documents/index" {comportament}
+03. Accesarea functionalitatii atunci cand nu exista conexiune la internet {comportament}
+04. Accesarea functionalitatii atunci cand conexiunea cu server-ul este slaba {comportament}
+
+06. Verificarea permisiunii [editDocument] {prezenta, descriere}
+07. Ascundere <buton> [Editeaza Document], pentru utilizatorii neautorizati {comportament}
+
+07. Afisarea formularului in pagina aplicatiei {prezenta}
+08. Afisare <input> camp [Nume] in formular
+09. Afisarea label-ului campului [Nume] in formular {prezenta, pozitionare, text-valoare, text-traducere}
+10. Afisarea indicatorului de obligativitate a campului [Nume] in formular {comportament, prezenta, pozitionare, text-valoare, text-culoare}
+11. Afisarea placeholder-ului campului [Nume] in formular {prezenta, pozitionare, text-valoare, text-traducere, comportament}
+12. Afisare <input> camp [Tip] in formular
+13. Afisarea label-ului campului [Tip] in formular {prezenta, pozitionare, text-valoare, text-traducere}
+14. Afisarea placeholder-ului campului [Tip] in formular {prezenta, pozitionare, text-valoare, text-traducere, comportament}
+15. Afisare <input> camp [Descriere] in formular
+16. Afisarea label-ului campului [Descriere] in formular {prezenta, pozitionare, text-valoare, text-traducere}
+17. Afisarea placeholder-ului campului [Descriere] in formular {prezenta, pozitionare, text-valoare, text-traducere, comportament}
+18. Afisare <input> camp [Fisier] in formular
+19. Afisarea label-ului campului [Fisier] in formular {prezenta, pozitionare, text-valoare, text-traducere}
+20. Afisarea hint-ului campului [Descriere] in formular {prezenta, pozitionare, text-valoare, text-traducere, comportament}
+
+21. Afisarea butonului de actiune [Înapoi] {comportament, prezenta, pozitionare, stil_forma, stil_border, stil_culoare, mouseover, text-valoare, text-traducere}
+22. Afisarea butonului de actiune [Resetează] {comportament, prezenta, pozitionare, stil_forma, stil_border, stil_culoare, mouseover, text-valoare, text-traducere}
+23. Afisarea butonului de trimitere date [Modifica] {comportament, prezenta, pozitionare, stil_forma, stil_border, stil_culoare, mouseover, text-valoare, text-traducere}
+
+24. Completarea campului [Nume], de tip input, cu o valoare ce respecta formatul cerut {comportament, comportament_validare_format, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+25. Completarea campului [Nume], de tip input, cu o valoare ce respecta formatul cerut si conditiile specifice {comportament, comportament_validare_format, comportament_conditii_specifice, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+26. Completarea campului [Nume], de tip input, cu o valoare ce respecta formatul cerut, dar nu indeplineste conditiile specifice {comportament, comportament_validare_condiții_specifice, comportament_feedback_eroare, comportament_interzicere_submit, comportament_resetare_camp}
+27. Completarea campului [Nume], de tip input, cu o valoare ce nu respecta formatul cerut {comportament, comportament_validare_format_invalid, comportament_feedback_eroare, comportament_interzicere_submit, comportament_restricții_input, comportament_resetare_camp}
+28. Completarea campului [Nume], de tip input, folosind comanda "Lipire" {comportament, comportament_lipire_valida, comportament_lipire_invalida, comportament_feedback_eroare, comportament_feedback_succes, comportament_validare_format, comportament_validare_conditii_specifice, comportament_limite}
+29. Necompletarea campului [Nume], de tip input {comportament, comportament_validare_necompletare, comportament_feedback_eroare, comportament_interzicere_submit, comportament_feedback_conditii_specifice, comportament_validare_conditii_specifice}
+30. Completarea campului [Tip], de tip input, cu o valoare ce respecta formatul cerut {comportament, comportament_validare_format, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+31. Completarea campului [Tip], de tip input, cu o valoare ce respecta formatul cerut si conditiile specifice {comportament, comportament_validare_format, comportament_conditii_specifice, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+32. Completarea campului [Tip], de tip input, cu o valoare ce respecta formatul cerut, dar nu indeplineste conditiile specifice {comportament, comportament_validare_condiții_specifice, comportament_feedback_eroare, comportament_interzicere_submit, comportament_resetare_camp}
+33. Completarea campului [Tip], de tip input, cu o valoare ce nu respecta formatul cerut {comportament, comportament_validare_format_invalid, comportament_feedback_eroare, comportament_interzicere_submit, comportament_restricții_input, comportament_resetare_camp}
+34. Completarea campului [Tip], de tip input, folosind comanda "Lipire" {comportament, comportament_lipire_valida, comportament_lipire_invalida, comportament_feedback_eroare, comportament_feedback_succes, comportament_validare_format, comportament_validare_conditii_specifice, comportament_limite}
+35. Necompletarea campului [Tip], de tip input {comportament, comportament_validare_necompletare, comportament_feedback_eroare, comportament_interzicere_submit, comportament_feedback_conditii_specifice, comportament_validare_conditii_specifice}
+36. Completarea campului [Descriere], de tip input, cu o valoare ce respecta formatul cerut {comportament, comportament_validare_format, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+37. Completarea campului [Descriere], de tip input, cu o valoare ce respecta formatul cerut si conditiile specifice {comportament, comportament_validare_format, comportament_conditii_specifice, comportament_feedback_succes, comportament_restricții_input, comportament_limite}
+38. Completarea campului [Descriere], de tip input, cu o valoare ce respecta formatul cerut, dar nu indeplineste conditiile specifice {comportament, comportament_validare_condiții_specifice, comportament_feedback_eroare, comportament_interzicere_submit, comportament_resetare_camp}
+39. Completarea campului [Descriere], de tip input, cu o valoare ce nu respecta formatul cerut {comportament, comportament_validare_format_invalid, comportament_feedback_eroare, comportament_interzicere_submit, comportament_restricții_input, comportament_resetare_camp}
+40. Completarea campului [Descriere], de tip input, folosind comanda "Lipire" {comportament, comportament_lipire_valida, comportament_lipire_invalida, comportament_feedback_eroare, comportament_feedback_succes, comportament_validare_format, comportament_validare_conditii_specifice, comportament_limite}
+41. Necompletarea campului [Descriere], de tip input {comportament, comportament_validare_necompletare, comportament_feedback_eroare, comportament_interzicere_submit, comportament_feedback_conditii_specifice, comportament_validare_conditii_specifice}
+42. Incarcarea unui fisier {comportament}
+43. Incarcarea unui fisier atunci cand nu exista conexiune la internet {comportament}
+44. Incarcarea unui fisier atunci cand conexiunea cu server-ul este slaba {comportament}
+45. Incarcarea unui fisier cu acelasi nume, cu acelasi continut {comportament}
+46. Incarcarea unui fisier cu acelasi nume, cu continut diferit {comportament}
+47. Incarcarea unui fisier cu nume diferit, cu acelasi continut {comportament}
+48. Incarcarea unui fisier cu nume diferit, cu continut diferit {comportament}
+49. Incarcarea unui fisier ce respecta tipul cerut {comportament}
+50. Incarcarea unui fisier ce nu respecta tipul cerut {comportament}
+51. Incarcarea unui fisier ce respecta numele cerut {comportament}
+52. Incarcarea unui fisier ce nu respecta numele cerut {comportament}
+
+53. Verificarea actiunii butonului de actiune [Înapoi] {comportament}
+54. Verificarea actiunii butonului de actiune [Resetează] {comportament}
+55. Verificarea actiunii butonului de trimitere date [Modifica] {comportament}
+56. Verificare redirect către pagina "index", dupa finalizarea operatiei de adaugare
+
+57. Afisarea mesajului de succes la finalizarea functionalitatii {comportament, prezenta, pozitionare, auto-hide, auto-hide-timp, text-valoare, text-traducere}
+58. Afisarea mesajului de eroare la finalizarea functionalitatii {comportament, prezenta, pozitionare, auto-hide, auto-hide-timp, text-valoare, text-traducere}
+59. Afisarea mesajului de avertizare la incercarea de finalizare a functionalitatii {comportament, prezenta, pozitionare, comportament, text-valoare, text-traducere}
+
+Stergerea unui tip de document ==============================
+
+01. Accesarea functionalitatii prin apasare <buton> [Sterge] in coloana [Acțiuni] a tabelului din pagina "auction-document/projects/{id}/documents/index" {prezenta, pozitionare, container-tip_buton, celula-mouseover}
+02. Accesarea functionalitatii prin apasarea succesiva pe <buton> [Delete] in coloana [Acțiuni] a tabelului din pagina "auction-document/projects/{id}/documents/index" {comportament}
+03. Accesarea functionalitatii atunci cand nu exista conexiune la internet {comportament}
+04. Accesarea functionalitatii atunci cand conexiunea cu server-ul este slaba {comportament}
+
+06. Verificarea permisiunii [deleteDocument] {prezenta, descriere}
+07. Ascundere <buton> [Sterge], pentru utilizatorii neautorizati {comportament}
+
+08. Stergerea unei inregistrari care exista {comportament}
+09. Stergerea unei inregistrari care nu exista {comportament}
+10. Afisarea mesajului de avertizare la incercarea de finalizare a functionalitatii {prezenta, pozitionare, auto-hide, auto-hide-timp, comportament_validare actiune, text-valoare, text-font-size, text-font-family, text-traducere, text-culoare}
+11. Afisarea tipurilor de documente sterse cand <butonul toggle> din header-ul coloanei [Acțiuni] a tabelului din pagina "auction-document/document-type/index", este in pozitia "Sterse"
+12. Redirectionarea la pagina "auction-document/document-type/index", dupa stergerea unui tip de document.

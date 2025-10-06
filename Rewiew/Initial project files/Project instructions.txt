@@ -1,0 +1,239 @@
+Last updated: 2025-09-04
+
+1) Overview
+
+We are building an AI-driven QA framework that mirrors the Romanian QA team’s Excel-based manual workflow and adds automation step-by-step.
+
+Backbone (single source of truth):
+
+User Story (RO) is ingested.
+
+US Review (agent + human-in-the-loop): normalize; detect gaps; compute confidence; propose clarifying questions.
+
+Dual Plans from the same inputs:
+
+Manual Plan (RO): must follow QA’s approved template exactly.
+
+Automation Plan: atoms (Arrange/Act/Assert), selectors, data profiles, feasibility, provenance.
+
+(Optional) Codegen: Playwright TypeScript (EN) with a Romanian header comment.
+
+Executor: run locally first; later via Playwright MCP; CI pipelines store artifacts.
+
+Integrations: export JUnit to Xray/TestRail; optional visual oracles (Applitools/Percy).
+
+GUI: simple app for non-technical QA; later add email auth.
+
+New concept: Project Standards. Each project carries standards (selectors, messages, regex, routes, permissions, coverage). During US Review/Planning, missing info can be filled from the Project with source=project and a small confidence bump, using precedence US > Project > Defaults.
+
+2) What’s Done
+
+Monorepo scaffold: qa-framework (Node 22, pnpm).
+
+Docker + Postgres (5433, user: qa_user, db: qa_framework).
+
+Prisma migrations + seed (9 modules).
+
+Roadmap doc; initial commit pack.
+
+PR #1 (Importer): Accesare sheet → normalized JSON/CSV/MD.
+
+PR #2 (Rules & Planner — draft on branch):
+
+@pkg/rules, @pkg/planner packages; CLI.
+
+Rules YAML for Adăugare.
+
+Planner emits Plan_Adaugare.csv + Plan_Adaugare.md.
+
+CSV now includes review columns: disposition, feasibility, selector_needs, parameter_needs, notes.
+
+Optional bucket matching from US; Markdown shows US fields & regex.
+
+Helper: review/extend_csv.ts to append review columns to legacy CSVs.
+
+Repo files of interest
+
+input/Biblioteca_cazuri_de_testare-update.xlsx (9 sheets library)
+
+input/us_and_test_cases.txt (example US)
+
+docs/modules/* (module docs)
+
+data/templates/* (normalized JSONs)
+
+exports/* (CSVs)
+
+3) How We Work (ChatGPT × Cursor)
+
+We work per module / per PR in separate chats to keep context clean.
+
+Loop per module:
+
+You open a new chat → I provide a one-shot Cursor prompt.
+
+You run Cursor → paste logs/results here.
+
+I review → provide tweaks/patch prompts if needed.
+
+Once accepted, I post a handover message to start the next module chat.
+
+Conventions
+
+Branch: feature/<module-slug>
+
+PR title: feat(<area>): <goal>
+
+Windows/PowerShell: prefer ; over &&
+
+Encoding: UTF-8 only (avoid diacritics mojibake)
+
+4) Roadmap (High-Level Phases)
+
+P0: Repo + DB bootstrap ✅
+
+P1: Importers per module (PR #1 → #9)
+
+P2: Planner + Rules v2 (strict/lax buckets, provenance, AAA atoms) (PR #2)
+
+P3: Module reviews (Accesare → Particulare) with dispositions & feasibility
+
+P4: Selector strategy + Data profiles
+
+P5: Playwright Codegen (EN, with RO comment)
+
+P6: Executor (local → MCP), CI & artifacts
+
+P7: GUI (no-auth → email auth)
+
+P8: Deployment on local server with IT
+
+P9: Iteration & governance
+
+5) Rules & Policies
+
+Language split:
+
+Manual & Automation plans: Romanian (user-facing text).
+
+Codegen: English (top comment in RO).
+
+Filtering: filter by Tip functionalitate, include rows with General valabile = 1 within the filter.
+
+Buckets: only those explicitly mentioned in the US; otherwise may use Project coverage templates (marked source=project).
+
+Regex: use US regex when present; else Project; else Excel defaults (mark provenance).
+
+Outputs: always generate Markdown (QA doc) + CSV. The automation CSV carries metadata (atoms, selectors, data profile, feasibility, provenance, confidence, rule_tags, notes).
+
+Review mandatory: QA validates each module (disposition, feasibility A–E, selector/parameter needs) before codegen.
+
+Feasibility gate: codegen only for A/B; C/D/E need manual work or improved selectors/data/oracles.
+
+Quality gate: min_confidence ≥ 0.6 in US Review (or apply Project fallbacks).
+
+6) Data Contracts (v1)
+
+US_Normalized.yaml
+buckets[], fields[{name,type,regex}], permissions[], routes[], messages, negatives[], assumptions[], confidence{per_section,overall}.
+
+Project pack (/projects/<id>)
+Project.yaml (policies: buckets_mode, min_confidence, feasibility_codegen_threshold, envs, default_env, selector_strategy_preference, use_project_fallbacks, annotate_source) and standards under standards/*.yaml (selectors, messages, regex, components, coverage, env, permissions).
+
+Rules YAML (per functionality type)
+Steps; required sections; buckets policy (strict/lax); min_confidence.
+
+Plan Row (automation)
+module, tipFunctionalitate, bucket, narrative_ro, atoms{setup[],action[],assert[]}, oracle_kind, selector_needs, selector_strategy, data_profile, feasibility(A–E), source(US|project|defaults), confidence(0–1), rule_tags[], notes.
+
+Plan (manual)
+Strict QA template; no internal metadata leaks into the doc.
+
+7) Acceptance Gates
+
+US Review passes (confidence ok or fallbacks applied; gaps addressed).
+
+Project precedence applied with visible source=* and confidence bump when used.
+
+Manual plan matches QA template 1:1.
+
+Automation plan contains atoms/selectors/data profiles/feasibility/provenance.
+
+Module Approved after review (dispositions + feasibility).
+
+Codegen only for A/B; others queued with reasons.
+
+8) Implementation Modules (sequence summary)
+
+Project Standards Pack (create /projects/<id>; schemas; loader; CLI --project).
+
+US Review Agent (normalize, gaps, confidence; US_Gaps.md; gate).
+
+Rules & Planner v2 (strict/lax, provenance, AAA atoms).
+
+Manual Plan Emitter (QA template).
+
+Automation Plan Emitter (atoms, selectors, data profiles, feasibility).
+
+Selector Strategy & Data Profiles (prefer data-testid/role; reusable profiles).
+
+Feasibility & Review Tools (extend CSV; helper scripts).
+8–9. Module Reviews: Accesare (Adăugare, Vizualizare).
+
+Playwright Codegen (EN, RO header; fixtures).
+
+Executor (local runner → MCP; artifacts/JUnit).
+
+CI/CD & Artifacts (matrix, traces/screenshots, OIDC).
+
+Integrations (Xray/TestRail via JUnit; optional API sync).
+
+Visual Oracles (optional) (Applitools/Percy).
+
+GUI MVP (US intake → Review Q&A → Dual Plans → Codegen).
+
+GUI Auth (email; basic RBAC).
+
+Deployment (local server with IT; runbook).
+
+9) Paths & Naming
+
+Packages: @pkg/rules, @pkg/planner, @pkg/codegen, @pkg/executors, apps/web
+
+Data: /projects/<id>/standards/*.yaml, /input/*.txt|xlsx, /data/templates/*.json
+
+Docs: /docs/modules/*.md, /docs/templates/manual/*.hbs, /docs/decisions/*
+
+Exports: /exports/*.csv, /artifacts/*
+
+Branches: feature/<module-slug>
+
+10) Security, Encoding, CI
+
+Encoding: UTF-8 end-to-end; normalize CRLF/LF; verify diacritics in RO text.
+
+Secrets: prefer OIDC-based CI; avoid long-lived tokens in repo.
+
+PII: redact before any hosted LLM usage; favor on-prem options when needed.
+
+CI artifacts: store traces, screenshots, JUnit XML; publish to test mgmt.
+
+11) Immediate Next Steps
+
+Finalize Module 1 — Project Standards Pack (one-shot Cursor prompt).
+
+Run US Review on input/us_and_test_cases.txt; confirm gaps & confidence.
+
+Lock data contracts (US_Normalized, Rules v2, Plan schemas, Project pack).
+
+Proceed to Module 3 — Planner v2 only after the above are signed off.
+
+12) Ground Rules (quick recall)
+
+Manual plan = QA’s template (unchangeable).
+
+Automation plan = free to optimize (atoms, selectors, data).
+
+Only A/B go to codegen.
+
+Every module/PR in its own chat; I provide the one-shot prompt; you paste the results; we tweak; I hand over the next module.

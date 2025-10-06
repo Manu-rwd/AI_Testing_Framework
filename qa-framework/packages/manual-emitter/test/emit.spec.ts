@@ -36,7 +36,7 @@ describe("Manual Emitter — Module16 rules", () => {
 
   it("resilience, responsive, and auth split lines are present", () => {
     const plan = JSON.parse(fs.readFileSync(fx("uiux_viz.json"), "utf8"));
-    const md = emitManualMarkdown(plan, { filterTip: "Vizualizare", includeGeneralOnly: true, title: "Plan de testare — Vizualizare" });
+    const md = emitManualMarkdown(plan, { filterTip: "Vizualizare", includeGeneralOnly: true, title: "Plan de testare — Vizualizare", compatAuthStandalone: true });
     expect(md).toMatch(/\[resilience] Offline — acces si afisare conform specificatiei/);
     expect(md).toMatch(/\[resilience] Retea lenta — feedback si timeouts adecvate/);
     expect(md).toMatch(/\[resilience] SLA incarcare — TTFB sub 2000ms, spinner\/schelet prezent/);
