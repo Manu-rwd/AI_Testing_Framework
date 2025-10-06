@@ -1,0 +1,24 @@
+{
+  "criteria": [
+    {"name": "instruction_following", "weight": 0.3},
+    {"name": "json_mode_reliability", "weight": 0.25},
+    {"name": "latency_cost", "weight": 0.2},
+    {"name": "context_length", "weight": 0.15},
+    {"name": "windows_dev_support", "weight": 0.1}
+  ],
+  "options": [
+    {
+      "id": "openai_gpt4_1_mini",
+      "scores": {"instruction_following": 9, "json_mode_reliability": 9, "latency_cost": 9, "context_length": 8, "windows_dev_support": 9}
+    },
+    {
+      "id": "openai_gpt4_1",
+      "scores": {"instruction_following": 9, "json_mode_reliability": 9, "latency_cost": 6, "context_length": 9, "windows_dev_support": 9}
+    },
+    {
+      "id": "anthropic_claude_3_5_sonnet",
+      "scores": {"instruction_following": 9, "json_mode_reliability": 8, "latency_cost": 7, "context_length": 9, "windows_dev_support": 8}
+    }
+  ]
+}
+

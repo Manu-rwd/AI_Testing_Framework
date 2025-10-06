@@ -1,0 +1,14 @@
+{
+  "criteria": [
+    {"name": "ro_diacritics_quality", "weight": 0.35},
+    {"name": "latency_cost", "weight": 0.25},
+    {"name": "vector_dim_size", "weight": 0.2},
+    {"name": "windows_dev_support", "weight": 0.2}
+  ],
+  "options": [
+    {"id": "openai_text_embedding_3_small", "scores": {"ro_diacritics_quality": 8, "latency_cost": 9, "vector_dim_size": 8, "windows_dev_support": 9}},
+    {"id": "openai_text_embedding_3_large", "scores": {"ro_diacritics_quality": 9, "latency_cost": 7, "vector_dim_size": 6, "windows_dev_support": 9}},
+    {"id": "bge_m3", "scores": {"ro_diacritics_quality": 8, "latency_cost": 8, "vector_dim_size": 7, "windows_dev_support": 7}}
+  ]
+}
+

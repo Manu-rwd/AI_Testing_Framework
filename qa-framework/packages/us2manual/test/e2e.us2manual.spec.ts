@@ -1,3 +1,4 @@
+import { it, expect } from "vitest";
 import { parseUsText } from "../src/parseUsText";
 import { sectionToMarkdown } from "../src/mapToEmitter";
 

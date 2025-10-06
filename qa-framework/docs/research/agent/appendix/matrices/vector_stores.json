@@ -1,0 +1,14 @@
+{
+  "criteria": [
+    {"name": "windows_docker_ergonomics", "weight": 0.35},
+    {"name": "throughput_scalability", "weight": 0.25},
+    {"name": "dev_simplicity", "weight": 0.25},
+    {"name": "cost", "weight": 0.15}
+  ],
+  "options": [
+    {"id": "in_memory_sqlite", "scores": {"windows_docker_ergonomics": 10, "throughput_scalability": 6, "dev_simplicity": 9, "cost": 10}},
+    {"id": "qdrant", "scores": {"windows_docker_ergonomics": 8, "throughput_scalability": 9, "dev_simplicity": 7, "cost": 9}},
+    {"id": "lancedb", "scores": {"windows_docker_ergonomics": 8, "throughput_scalability": 8, "dev_simplicity": 7, "cost": 9}}
+  ]
+}
+
