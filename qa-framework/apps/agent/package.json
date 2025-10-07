@@ -4,16 +4,19 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "probe": "tsx src/scripts/check-model.ts"
+    "probe": "tsx src/scripts/check-model.ts",
+    "start:refine": "tsx src/cli.ts refine",
+    "start:train": "tsx src/cli.ts train",
+    "start:suggest": "tsx src/cli.ts suggest"
   },
   "dependencies": {
+    "commander": "^14.0.1",
     "dotenv": "^16.4.5",
-    "openai": "^4.67.3"
+    "openai": "^4.67.3",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }
 }
-
-
