@@ -28,4 +28,13 @@ coverage/
 .idea/
 
 
+# Web UI uploads and env
+apps/agent/.env
+apps/web-ui/dist/
+apps/web-ui/node_modules/
+apps/web-ui/tmp_uploads/
+tmp_uploads/
+logs/
+
+
 

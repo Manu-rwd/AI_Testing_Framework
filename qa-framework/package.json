@@ -60,7 +60,13 @@
     "parity:score": "pnpm -C qa-framework --filter @pkg/parity run cli",
     "us:bridge": "node tools/us2manual.mjs --strict-spec",
     "qa:compare": "node tools/qa_compare.mjs",
-    "us:emit": "tsx packages/us2manual/src/index.ts"
+    "us:emit": "tsx packages/us2manual/src/index.ts",
+    "gui:dev": "pnpm --filter @apps/gui dev",
+    "gui:build": "pnpm --filter @apps/gui build",
+    "gui:start": "pnpm --filter @apps/gui start",
+    "webui:dev": "pnpm --filter @apps/web-ui dev",
+    "webui:build": "pnpm --filter @apps/web-ui build",
+    "webui:start": "pnpm --filter @apps/web-ui start"
   },
   "workspaces": [
     "apps/*",
